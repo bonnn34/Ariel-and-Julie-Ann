@@ -503,6 +503,12 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
           maxAttempts: 4,
           maxDelayMs: 3000,
           onRetry: () => setIsRetrying(true),
+        }).catch((entourageError) => {
+          if (isAbortError(entourageError)) throw entourageError
+          // Sponsors and entourage come from separate endpoints. A failure in
+          // the entourage endpoint must not hide valid principal sponsors.
+          console.warn("Failed to load entourage members:", entourageError)
+          return [] as EntourageMember[]
         }),
         loadSponsorsFromApi(sponsorsPath, signal, reload),
       ])
