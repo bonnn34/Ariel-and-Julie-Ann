@@ -8,7 +8,7 @@ import { sectionType } from "@/lib/section-typography"
 import { Cinzel } from "next/font/google"
 import { useSiteConfig } from "@/hooks/use-site-config"
 import { fetchUntilReady, isAbortError } from "@/lib/fetch-until-ready"
-import { fetchInvitationList, readCachedInvitationList } from "@/lib/invitation-data"
+import { fetchInvitationList } from "@/lib/invitation-data"
 import { PlainBubbles } from "@/components/loader/PlainBubbles"
 import { SectionBackdrop } from "@/components/section-backdrop"
 import { TintedDeco } from "@/components/tinted-deco"
@@ -472,15 +472,6 @@ async function loadSponsorsFromApi(url: string, signal?: AbortSignal, reload = f
   }
 }
 
-function readCachedParty(sponsorsPath: string) {
-  const members = readCachedInvitationList<Record<string, unknown>>("/api/entourage")
-  const sponsors = readCachedInvitationList<Record<string, unknown>>(sponsorsPath)
-  return {
-    members: members ? toEntourageMembers(members) : [],
-    sponsors: sponsors ? toPrincipalSponsors(sponsors) : [],
-  }
-}
-
 export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}) {
   const sponsorsPath = sponsorsUrl(sponsorsList)
   const siteConfig = useSiteConfig()
@@ -497,18 +488,11 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
   const sectionRef = useRef<HTMLDivElement>(null)
 
   const loadParty = async (signal?: AbortSignal, { reload = false } = {}) => {
-    const cached = readCachedParty(sponsorsPath)
-    const hasCached = cached.members.length > 0
-    if (hasCached) {
-      // Show the last known list right away; refresh quietly in the background
-      setEntourage(cached.members)
-      setSponsors(cached.sponsors)
-      setIsLoading(false)
-    } else {
-      setIsLoading(true)
-    }
-    setError(null)
+    // Keep only the couple visible while the current sheet is being checked.
+    // Persisted data can belong to a previous spreadsheet or deployment.
+    setIsLoading(true)
     setIsRetrying(false)
+    setError(null)
 
     try {
       const [members, sponsorList] = await Promise.all([
@@ -529,7 +513,7 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
     } catch (err: unknown) {
       if (isAbortError(err)) return
       console.error("Failed to load entourage:", err)
-      if (!hasCached) setError("Unable to load entourage")
+      setError("Unable to load entourage")
     } finally {
       if (!signal?.aborted) {
         setIsLoading(false)
@@ -833,28 +817,13 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
             />
 
             <div className="relative z-20 px-3 pb-7 pt-[18%] sm:px-8 sm:pt-[22%] sm:pb-12 md:px-12 md:pb-14 lg:px-14">
-            {isLoading ? (
+            {isLoading || error || (entourage.length === 0 && sponsors.length === 0) ? (
               <div className="flex items-center justify-center py-24 sm:py-28 md:py-32">
-                <div className="text-center">
-                  <p className={`font-goudy-italic ${ct.body}`} style={{ color: palette.body }}>
-                    {isRetrying ? content.retryingText : content.loadingText}
-                  </p>
-                </div>
-              </div>
-            ) : error ? (
-              <div className="flex items-center justify-center py-24 sm:py-28 md:py-32">
-                <div className="text-center">
-                  <p className={`font-goudy-italic ${ct.bodyLg} mb-3`} style={{ color: palette.body }}>
-                    {content.errorText}
-                  </p>
-                  <button
-                    onClick={() => void loadParty(undefined, { reload: true })}
-                    className={`${cinzel.className} ${ct.body} underline transition-colors duration-200 hover:opacity-80`}
-                    style={{ color: palette.accent }}
-                  >
-                    {content.retryText}
-                  </button>
-                </div>
+                <p className={`font-goudy-italic ${ct.body} text-center`} style={{ color: palette.body }}>
+                  {isRetrying || (!isLoading && entourage.length === 0 && sponsors.length === 0)
+                    ? content.retryingText
+                    : content.loadingText}
+                </p>
               </div>
             ) : (
             <>
@@ -1685,7 +1654,6 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
                   </div>
                 )
               })}
-
             </>
             )}
           </div>
