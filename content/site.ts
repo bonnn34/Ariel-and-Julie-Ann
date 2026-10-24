@@ -418,7 +418,7 @@ export const siteConfig = {
     sponsorsInviteOne: SPONSORS_API, // same sheet as sponsors above
     sponsorsInviteTwo: "https://script.google.com/macros/s/AKfycbyHhfhyTArNxJSkUMt5gmIXrwKiRMJBg5MLE2LMGiSp_r0KeyWv81TEYTQ5AKrRCwfH/exec",
 ////google share 
-    googleShare: "https://docs.google.com/spreadsheets/d/1jewfY5uUkdcS61izdcQRJ2C5vgGRPEMWcUcHsuOtGXo/edit?usp=sharing",
+    googleShare: "https://drive.google.com/drive/folders/1nKNjPjQ7F_HLQZmJgw4hzFHIDJ-k52jC?usp=sharing",
     videoMessageForm:
       "https://docs.google.com/forms/d/e/1FAIpQLSfeGlEl4CMXWefdvCw6AOPHFS1ROku_rs-Gbofa2LkVJ0sLGQ/viewform", 
   },
