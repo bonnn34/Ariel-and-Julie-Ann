@@ -56,6 +56,15 @@ function writeStored(url: string, data: unknown[]) {
   }
 }
 
+function removeStored(url: string) {
+  try {
+    window.localStorage.removeItem(STORAGE_PREFIX + url)
+  } catch {
+    // Storage may be blocked. Clearing the in-memory copy is still enough for
+    // the current page.
+  }
+}
+
 /**
  * Last known good list (memory, then localStorage), regardless of age.
  * Lets sections render instantly while a fresh copy loads.
@@ -83,6 +92,12 @@ async function requestList(url: string): Promise<unknown[]> {
         if (data.length > 0) {
           jsonCache.set(url, { data, at: Date.now() })
           writeStored(url, data)
+        } else {
+          // A successful empty response is authoritative. Without this, data
+          // from a previous spreadsheet remains in the visitor's browser and
+          // continues to appear after the site moves to a new empty sheet.
+          jsonCache.delete(url)
+          removeStored(url)
         }
         return data
       }

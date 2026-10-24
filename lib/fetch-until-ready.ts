@@ -48,6 +48,8 @@ export async function fetchUntilReady<T>({
   let delay = initialDelayMs
   let attempt = 0
   let lastError: unknown
+  let lastValue: T | undefined
+  let hasLastValue = false
 
   while (true) {
     if (signal?.aborted) {
@@ -56,6 +58,8 @@ export async function fetchUntilReady<T>({
 
     try {
       const value = await load(signal ?? new AbortController().signal)
+      lastValue = value
+      hasLastValue = true
       if (isReady(value)) return value
     } catch (error) {
       if (isAbortError(error)) throw error
@@ -64,6 +68,10 @@ export async function fetchUntilReady<T>({
 
     attempt += 1
     if (attempt >= maxAttempts) {
+      // A resolved-but-not-ready value (for example an empty array from a
+      // newly created sheet) is still authoritative after all retries. Return
+      // it so consumers can clear stale UI instead of displaying old data.
+      if (hasLastValue) return lastValue as T
       throw lastError instanceof Error ? lastError : new Error("Data is not ready")
     }
     onRetry?.(attempt)

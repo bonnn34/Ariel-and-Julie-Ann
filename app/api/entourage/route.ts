@@ -114,7 +114,10 @@ async function fetchEntourageRows() {
   try {
     const payload = await fetchGoogleScriptJson(ENTOURAGE_SCRIPT_URL)
     const rows = asSheetRows(payload)
-    if (rows?.some(isEntourageRow)) return rows
+    // An empty array is a valid response for a newly created or cleared sheet.
+    // Only fall back to the public spreadsheet when a non-empty response has
+    // the wrong shape.
+    if (rows && (rows.length === 0 || rows.some(isEntourageRow))) return rows
     scriptError = new Error("Entourage Apps Script returned a different sheet")
   } catch (error) {
     scriptError = error
