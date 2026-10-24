@@ -29,7 +29,7 @@ const revealEase = [0.22, 1, 0.36, 1] as const
 
 
 // Soft white edge so text stays crisp over the sky backdrop
-const onBgGlow = "0 1px 0 rgb(255 255 255 / 85%), 0 0 12px rgb(255 255 255 / 70%)"
+const onBgGlow = "0 1px 0 rgb(250 246 238 / 85%), 0 0 12px rgb(250 246 238 / 70%)"
 
 function formatStoryParagraph(
   paragraph: string,

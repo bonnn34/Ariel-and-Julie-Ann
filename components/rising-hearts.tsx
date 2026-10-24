@@ -8,8 +8,8 @@ import { useReducedMotion } from "motion/react"
 const RISE_COLORS = [
   "var(--color-motif-blush)",
   "var(--color-highlight-deep)",
-  "#F6D3D8",
-  "color-mix(in srgb, var(--color-highlight-deep) 55%, white)",
+  "#F2D087",
+  "color-mix(in srgb, var(--color-highlight-deep) 55%, #FAF6EE)",
 ] as const
 
 export const HEART_PATH =

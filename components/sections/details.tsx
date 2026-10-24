@@ -51,7 +51,7 @@ const C = {
 const sectionBg = "var(--color-bg-pattern-base)"
 
 // Soft white edge so text stays crisp over the circles (matches the gallery)
-const onBgGlow = "0 1px 0 rgb(255 255 255 / 85%), 0 0 12px rgb(255 255 255 / 70%)"
+const onBgGlow = "0 1px 0 rgb(250 246 238 / 85%), 0 0 12px rgb(250 246 238 / 70%)"
 
 // Text sitting directly on the background: deep slate titles, slate-blue labels
 const onBg = { color: C.heading, textShadow: onBgGlow } as const
@@ -65,11 +65,11 @@ const blushEdge = "color-mix(in srgb, var(--color-motif-blush) 90%, transparent)
 const cardStyle = {
   background: "var(--color-motif-soft)",
   boxShadow:
-    `0 0 0 1px ${blushEdge}, 0 22px 48px -26px color-mix(in srgb, var(--color-welcome-navy) 40%, transparent), inset 0 1px 0 rgb(255 255 255 / 80%)`,
+    `0 0 0 1px ${blushEdge}, 0 22px 48px -26px color-mix(in srgb, var(--color-welcome-navy) 40%, transparent), inset 0 1px 0 rgb(250 246 238 / 80%)`,
 } as const
 
 const softPanelStyle = {
-  backgroundColor: "color-mix(in srgb, var(--color-motif-blush) 28%, white)",
+  backgroundColor: "color-mix(in srgb, var(--color-motif-blush) 28%, #FAF6EE)",
 } as const
 
 // Primary button: dusty rose → charcoal with white text (matches the rest of the invitation)
@@ -221,7 +221,7 @@ function DressCodePaletteSwatches({ palette }: { palette: readonly PaletteColor[
     <div
       className="flex w-full overflow-hidden rounded-xl border-2"
       style={{
-        borderColor: "#FFFFFF",
+        borderColor: "#FAF6EE",
         boxShadow:
           "0 0 0 1px color-mix(in srgb, var(--color-motif-blush) 90%, transparent), 0 10px 22px -14px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent)",
       }}
@@ -232,7 +232,7 @@ function DressCodePaletteSwatches({ palette }: { palette: readonly PaletteColor[
         <div
           key={`${color.hex}-${index}`}
           className={`relative flex min-h-[88px] min-w-0 flex-1 items-center justify-center sm:min-h-[108px] md:min-h-[128px] lg:min-h-[148px] ${
-            index === palette.length - 1 ? "" : "border-r border-white/80"
+            index === palette.length - 1 ? "" : "border-r border-background/80"
           }`}
           style={{ backgroundColor: color.hex }}
           title={color.name || color.hex}
@@ -244,8 +244,8 @@ function DressCodePaletteSwatches({ palette }: { palette: readonly PaletteColor[
                 writingMode: "vertical-rl",
                 textOrientation: "mixed",
                 ...(isLightHex(color.hex)
-                  ? { color: "var(--color-motif-deep)", textShadow: "0 1px 0 rgb(255 255 255 / 60%)" }
-                  : { color: "#FFFFFF", textShadow: "0 1px 2px rgb(0 0 0 / 45%), 0 0 6px rgb(0 0 0 / 25%)" }),
+                  ? { color: "var(--color-motif-deep)", textShadow: "0 1px 0 rgb(250 246 238 / 60%)" }
+                  : { color: "#FAF6EE", textShadow: "0 1px 2px rgb(16 29 58 / 45%), 0 0 6px rgb(16 29 58 / 25%)" }),
               }}
             >
               {color.name}
@@ -451,7 +451,7 @@ function AttireCard({
               className={`${cinzel.className} rounded-full px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.18em] sm:text-[0.62rem]`}
               style={{
                 color: C.blue,
-                background: "color-mix(in srgb, var(--color-motif-blush) 35%, white)",
+                background: "color-mix(in srgb, var(--color-motif-blush) 35%, #FAF6EE)",
                 border: "1px solid color-mix(in srgb, var(--color-motif-blush) 90%, transparent)",
               }}
             >
@@ -465,7 +465,7 @@ function AttireCard({
             className="relative flex w-full shrink-0 items-center justify-center overflow-hidden"
             style={{
               background:
-                "radial-gradient(70% 80% at 50% 40%, #FFFFFF 0%, color-mix(in srgb, var(--color-motif-blush) 30%, white) 100%)",
+                "radial-gradient(70% 80% at 50% 40%, #FAF6EE 0%, color-mix(in srgb, var(--color-motif-blush) 30%, #FAF6EE) 100%)",
             }}
           >
             {/* Any image shape works: the 3/2 size is only a placeholder until the
@@ -579,7 +579,7 @@ function EventVenueCard({
         className="relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]"
         style={{ background: cardStyle.background, boxShadow: cardStyle.boxShadow }}
       >
-        <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[30rem] overflow-hidden" style={{ background: "color-mix(in srgb, var(--color-motif-blush) 40%, white)" }}>
+        <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[30rem] overflow-hidden" style={{ background: "color-mix(in srgb, var(--color-motif-blush) 40%, #FAF6EE)" }}>
           {images.map((src, index) => {
             const isActive = index === activeImageIndex
             return (
@@ -726,8 +726,8 @@ function EventVenueCard({
               className={`${cinzel.className} flex-1 flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2.5 sm:py-3 md:py-3.5 rounded-full border font-semibold uppercase tracking-[0.12em] ${ct.btn} transition-all duration-300 hover:scale-[1.02] hover:brightness-110 active:scale-[0.98]`}
               style={{
                 background: primaryButtonBg,
-                borderColor: "rgb(255 255 255 / 70%)",
-                color: "#FFFFFF",
+                borderColor: "rgb(250 246 238 / 70%)",
+                color: "#FAF6EE",
                 boxShadow: "0 12px 24px -10px color-mix(in srgb, var(--color-welcome-navy) 60%, transparent)",
               }}
               aria-label={`Get directions to ${badge.toLowerCase()} venue`}

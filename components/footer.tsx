@@ -15,7 +15,7 @@ export function Footer() {
       className="relative overflow-hidden border-t pt-8 pb-8 sm:pt-10 sm:pb-10"
       style={{
         backgroundColor: coastalLightBg,
-        borderColor: `color-mix(in srgb, ${coastalPalette.blueGray} 35%, white)`,
+        borderColor: `color-mix(in srgb, ${coastalPalette.blueGray} 35%, #FAF6EE)`,
       }}
     >
       <div className="pointer-events-none absolute left-0 top-0 z-10">
@@ -97,7 +97,7 @@ export function Footer() {
         <div
           className="mt-8 pt-8 text-center text-sm border-t"
           style={{
-            borderColor: `color-mix(in srgb, ${coastalPalette.blueGray} 35%, white)`,
+            borderColor: `color-mix(in srgb, ${coastalPalette.blueGray} 35%, #FAF6EE)`,
             color: coastalPalette.dustyRose,
           }}
         >

@@ -557,11 +557,11 @@ export function PhotoFlipbook({
     ? 'bg-motif-cream p-1.5 md:p-3 shadow-lg'
     : 'bg-motif-cream p-1.5 md:p-3 shadow-md'
 
-  const imageBg = isDark ? 'bg-black/15' : 'bg-motif-deep/[0.04]'
+  const imageBg = isDark ? 'bg-primary/15' : 'bg-motif-deep/[0.04]'
 
   const albumShell =
     variant === 'album'
-      ? 'album-flipbook relative rounded-sm bg-motif-cream/80 p-3 sm:p-4 md:p-5 shadow-[0_8px_40px_-12px_rgba(74, 58, 62,0.2)] border border-motif-silver/40'
+      ? 'album-flipbook relative rounded-sm bg-motif-cream/80 p-3 sm:p-4 md:p-5 shadow-[0_8px_40px_-12px_rgba(16, 29, 58,0.2)] border border-motif-silver/40'
       : isStoryFlipbook
         ? `album-flipbook album-flipbook-story-shell relative rounded-sm bg-motif-cream w-full max-w-full overflow-hidden border border-motif-silver/35 shadow-xl p-2 sm:p-2.5 md:p-3 ${rotation} ${
             currentIsSpread ? 'album-flipbook-spread-shell' : ''
@@ -661,7 +661,7 @@ export function PhotoFlipbook({
           </div>
 
           {isDark && variant === 'story' && (
-            <div className="pointer-events-none absolute inset-0 z-10 bg-black/5 mix-blend-multiply" />
+            <div className="pointer-events-none absolute inset-0 z-10 bg-primary/5 mix-blend-multiply" />
           )}
         </div>
       </div>

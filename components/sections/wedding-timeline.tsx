@@ -306,7 +306,7 @@ function TimelineItem({ event, index }: { event: TimelineEvent; index: number })
           />
           <div
             className="relative h-2 w-2 rounded-full"
-            style={{ background: "var(--color-motif-accent)", boxShadow: "0 0 0 2px #FFFFFF, 0 0 10px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent)" }}
+            style={{ background: "var(--color-motif-accent)", boxShadow: "0 0 0 2px #FAF6EE, 0 0 10px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent)" }}
           />
         </div>
 
@@ -347,7 +347,7 @@ function TimelineItem({ event, index }: { event: TimelineEvent; index: number })
           />
           <div
             className="relative h-2 w-2 rounded-full"
-            style={{ background: "var(--color-motif-accent)", boxShadow: "0 0 0 2px #FFFFFF, 0 0 10px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent)" }}
+            style={{ background: "var(--color-motif-accent)", boxShadow: "0 0 0 2px #FAF6EE, 0 0 10px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent)" }}
           />
         </div>
 
@@ -448,7 +448,7 @@ function IconMark({
   )
 }
 
-const iconStroke = "#FFFFFF"
+const iconStroke = "#FAF6EE"
 
 function ArrivalIcon(props: React.SVGProps<SVGSVGElement>) {
   return (

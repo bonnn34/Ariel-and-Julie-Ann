@@ -444,10 +444,10 @@ export default function DashboardPage() {
     return (
       <div className="dashboard-root min-h-screen bg-gradient-to-br from-dash-bg to-dash-bg-deep flex items-center justify-center p-4">
         <div className="w-full max-w-md">
-          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-dash-border">
+          <div className="bg-card rounded-2xl p-6 sm:p-8 shadow-xl border border-dash-border">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-dash-primary rounded-2xl mb-4 shadow-lg">
-                <Lock className="h-8 w-8 text-white" />
+                <Lock className="h-8 w-8 text-background" />
               </div>
               <div className="mb-2">
                 <span className="font-serif text-sm text-dash-accent">♥</span>
@@ -478,7 +478,7 @@ export default function DashboardPage() {
               </div>
 
               {error && (
-                <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                <div className="flex items-center gap-2 p-3 bg-card border border-border rounded-lg text-foreground text-sm">
                   <AlertCircle className="h-4 w-4 flex-shrink-0" />
                   <span>{error}</span>
                 </div>
@@ -486,7 +486,7 @@ export default function DashboardPage() {
 
               <Button
                 type="submit"
-                className="w-full bg-dash-primary hover:bg-dash-primary-hover text-white py-6 rounded-lg font-medium transition-all shadow-md hover:shadow-lg"
+                className="w-full bg-dash-primary hover:bg-dash-primary-hover text-background py-6 rounded-lg font-medium transition-all shadow-md hover:shadow-lg"
               >
                 Access Dashboard
               </Button>
@@ -513,7 +513,7 @@ export default function DashboardPage() {
       {/* Main Content */}
       <div className="min-w-0 flex-1 overflow-x-clip lg:overflow-auto">
         {/* Top Bar */}
-        <div className="sticky top-0 z-30 border-b border-dash-border bg-white/90 pt-[env(safe-area-inset-top)] shadow-[0_1px_8px_color-mix(in_srgb,var(--color-dash-ink)_4%,transparent)] backdrop-blur-md supports-[backdrop-filter]:bg-white/80 lg:z-10 lg:bg-white lg:pt-0 lg:shadow-none lg:backdrop-blur-none">
+        <div className="sticky top-0 z-30 border-b border-dash-border bg-card/90 pt-[env(safe-area-inset-top)] shadow-[0_1px_8px_color-mix(in_srgb,var(--color-dash-ink)_4%,transparent)] backdrop-blur-md supports-[backdrop-filter]:bg-card/80 lg:z-10 lg:bg-card lg:pt-0 lg:shadow-none lg:backdrop-blur-none">
           <div className="px-4 py-3 sm:px-6 lg:px-8 lg:py-4 flex items-center justify-between gap-3">
             <button
               type="button"
@@ -546,7 +546,7 @@ export default function DashboardPage() {
                 onClick={handleLogout}
                 size="sm"
                 variant="outline"
-                className="border-dash-border text-dash-muted hover:text-red-600 hover:border-red-300"
+                className="border-dash-border text-dash-muted hover:text-foreground hover:border-border"
               >
                 <LogOut className="h-4 w-4 sm:mr-2" />
                 <span className="hidden sm:inline">Logout</span>
@@ -559,7 +559,7 @@ export default function DashboardPage() {
         <div className="p-4 sm:p-6 lg:p-8">
           {/* Success/Error Messages */}
           {successMessage && (
-            <div className="mb-6 flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700">
+            <div className="mb-6 flex items-center gap-2 p-4 bg-card border border-border rounded-lg text-floral-leaves">
               <CheckCircle className="h-5 w-5 flex-shrink-0" />
               <span>{successMessage}</span>
               <button onClick={() => setSuccessMessage(null)} className="ml-auto">
@@ -569,7 +569,7 @@ export default function DashboardPage() {
           )}
 
           {error && (
-            <div className="mb-6 flex items-center gap-2 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+            <div className="mb-6 flex items-center gap-2 p-4 bg-card border border-border rounded-lg text-foreground">
               <AlertCircle className="h-5 w-5 flex-shrink-0" />
               <span>{error}</span>
               <button onClick={() => setError(null)} className="ml-auto">
@@ -602,7 +602,7 @@ export default function DashboardPage() {
           {activeTab === "guests" && (
             <div>
               <h2 className="text-xl font-bold text-dash-ink mb-4 sm:text-2xl sm:mb-6">Guest Management</h2>
-              <div className="sm:bg-white sm:rounded-xl sm:shadow-sm sm:border sm:border-dash-border sm:p-6">
+              <div className="sm:bg-card sm:rounded-xl sm:shadow-sm sm:border sm:border-dash-border sm:p-6">
                 <ImprovedGuestList
                   guests={filteredGuests}
                   onAddGuest={handleAddGuest}

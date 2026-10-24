@@ -159,7 +159,7 @@ export function TableFinderQrCard() {
           background: `linear-gradient(160deg, ${IVORY} 0%, var(--color-welcome-bg-soft) 55%, var(--color-motif-cream) 100%)`,
           borderColor: GOLD_BORDER,
           boxShadow:
-            "0 18px 44px -24px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent), inset 0 1px 0 rgb(255 255 255 / 85%)",
+            "0 18px 44px -24px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent), inset 0 1px 0 rgb(250 246 238 / 85%)",
         }}
       >
         {/* Double frame */}
@@ -193,7 +193,7 @@ export function TableFinderQrCard() {
                   className="h-auto w-full max-w-[188px]"
                 />
               ) : (
-                <div className="h-[188px] w-[188px] animate-pulse rounded-md" style={{ backgroundColor: "color-mix(in srgb, var(--color-motif-silver) 28%, white)" }} />
+                <div className="h-[188px] w-[188px] animate-pulse rounded-md" style={{ backgroundColor: "color-mix(in srgb, var(--color-motif-silver) 28%, #FAF6EE)" }} />
               )}
             </div>
             {card.scanLabel ? (
@@ -269,7 +269,7 @@ export function TableFinderQrCard() {
                   href={TABLE_FINDER_PATH}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${cinzel.className} inline-flex min-h-11 items-center gap-1.5 rounded-full border px-5 text-[0.625rem] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 hover:bg-white/60`}
+                  className={`${cinzel.className} inline-flex min-h-11 items-center gap-1.5 rounded-full border px-5 text-[0.625rem] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 hover:bg-card/60`}
                   style={{ color: NAVY, borderColor: GOLD_BORDER_SOFT }}
                 >
                   {card.previewText}

@@ -49,12 +49,12 @@ const BUTTON =
   "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)"
 const BUTTON_HOVER = "var(--color-welcome-navy)"
 const BUTTON_SHADOW = "0 8px 18px -10px color-mix(in srgb, var(--color-welcome-navy) 60%, transparent)"
-const IVORY = "#FFFFFF"
+const IVORY = "#FAF6EE"
 const HAIRLINE = "color-mix(in srgb, var(--color-motif-medium) 60%, transparent)"
 
 const palette = {
   body: "var(--color-welcome-text)",
-  soft: "color-mix(in srgb, var(--color-welcome-text) 75%, white)",
+  soft: "color-mix(in srgb, var(--color-welcome-text) 75%, #FAF6EE)",
   heading: TEAL,
   label: "var(--color-welcome-heading)",
   accent: "var(--color-welcome-heading)",
@@ -64,7 +64,7 @@ const palette = {
 const sectionBg = "var(--color-bg-pattern-base)"
 
 // Text sitting directly on the background: deep slate with a soft white edge (matches the gallery)
-const onBgGlow = "0 1px 0 rgb(255 255 255 / 85%), 0 0 12px rgb(255 255 255 / 70%)"
+const onBgGlow = "0 1px 0 rgb(250 246 238 / 85%), 0 0 12px rgb(250 246 238 / 70%)"
 const onBg = { color: "var(--color-welcome-navy)", textShadow: onBgGlow } as const
 const onBgBlue = { color: "var(--color-welcome-heading)", textShadow: onBgGlow } as const
 
@@ -88,10 +88,10 @@ const ct = {
 
 const cardStyle = {
   background:
-    "radial-gradient(90% 35% at 50% 0%, rgb(255 255 255 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, color-mix(in srgb, var(--color-motif-medium) 10%, white) 100%)",
+    "radial-gradient(90% 35% at 50% 0%, rgb(250 246 238 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FAF6EE 0%, color-mix(in srgb, var(--color-motif-medium) 10%, #FAF6EE) 100%)",
   border: `1px solid ${HAIRLINE}`,
   boxShadow:
-    "0 0 0 5px rgb(255 255 255 / 35%), 0 22px 48px -28px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
+    "0 0 0 5px rgb(250 246 238 / 35%), 0 22px 48px -28px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
 } as const
 
 type IconProps = { className?: string }
@@ -327,7 +327,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
               className="block h-32 w-32 sm:h-40 sm:w-40 md:h-48 md:w-48"
               style={{
                 background: "var(--color-welcome-navy)",
-                filter: "drop-shadow(0 2px 10px rgb(255 255 255 / 70%))",
+                filter: "drop-shadow(0 2px 10px rgb(250 246 238 / 70%))",
                 WebkitMaskImage: `url("${siteConfig.couple.monogram}")`,
                 maskImage: `url("${siteConfig.couple.monogram}")`,
                 WebkitMaskSize: "contain",
@@ -452,7 +452,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                       <div
                         key={key}
                         className="flex items-start gap-3 rounded-2xl px-3 py-2.5"
-                        style={{ background: "color-mix(in srgb, var(--color-motif-medium) 14%, white)", boxShadow: `inset 0 0 0 1px ${HAIRLINE}` }}
+                        style={{ background: "color-mix(in srgb, var(--color-motif-medium) 14%, #FAF6EE)", boxShadow: `inset 0 0 0 1px ${HAIRLINE}` }}
                       >
                         <span
                           className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
@@ -513,7 +513,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                       className={`${cinzel.className} ${ct.label} mt-4 inline-flex min-h-10 w-full items-center justify-center rounded-full border px-5 py-2.5 font-semibold uppercase tracking-[0.14em] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110 active:scale-[0.98]`}
                       style={{
                         background: BUTTON,
-                        borderColor: "rgb(255 255 255 / 70%)",
+                        borderColor: "rgb(250 246 238 / 70%)",
                         color: IVORY,
                         boxShadow: `0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent), ${BUTTON_SHADOW}`,
                       }}
@@ -592,7 +592,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                       </span>
                       <span
                         className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full transition-colors duration-300"
-                        style={{ background: "rgb(255 255 255 / 22%)" }}
+                        style={{ background: "rgb(250 246 238 / 22%)" }}
                         aria-hidden
                       >
                         <ChevronRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" style={{ color: IVORY }} />

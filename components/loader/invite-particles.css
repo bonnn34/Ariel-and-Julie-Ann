@@ -2,10 +2,10 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  --particle-1: #FDFAFA;
+  --particle-1: #FAF6EE;
   --particle-2: var(--color-motif-accent);
-  --particle-3: #F6D3D8;
-  --particle-4: #E3A3AE;
+  --particle-3: #F2D087;
+  --particle-4: #E8D36A;
 }
 
 .invite-particles__particle {

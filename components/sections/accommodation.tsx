@@ -34,7 +34,7 @@ const cardStyle = {
   background: "var(--color-welcome-bg)",
   borderColor: "color-mix(in srgb, var(--color-motif-deep) 14%, transparent)",
   boxShadow:
-    "0 8px 28px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, white 70%, transparent)",
+    "0 8px 28px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, #FAF6EE 70%, transparent)",
 } as const
 
 const softPanelStyle = {
@@ -222,7 +222,7 @@ function AccommodationTitle() {
           fontSize: "var(--script-size)",
           color: palette.accent,
           textShadow:
-            "0 1px 0 color-mix(in srgb, var(--color-welcome-bg) 95%, white), 0 0 10px color-mix(in srgb, var(--color-welcome-bg) 65%, white)",
+            "0 1px 0 color-mix(in srgb, var(--color-welcome-bg) 95%, #FAF6EE), 0 0 10px color-mix(in srgb, var(--color-welcome-bg) 65%, #FAF6EE)",
         }}
       >
         plan your visit to Manila
@@ -554,7 +554,7 @@ export function Accommodation() {
                 className={`${aboveTheBeyond.className} ${sectionType.script}`}
                 style={{
                   color: palette.accent,
-                  textShadow: "0 1px 0 color-mix(in srgb, var(--color-welcome-bg) 90%, white)",
+                  textShadow: "0 1px 0 color-mix(in srgb, var(--color-welcome-bg) 90%, #FAF6EE)",
                 }}
               >
                 Safe travels, and see you soon!

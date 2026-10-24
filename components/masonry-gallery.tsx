@@ -10,7 +10,7 @@ const cinzel = Cinzel({
 })
 
 // Motif colors (app/globals.css): white paper, dusty-blue accents, sky borders
-const IVORY = "#FFFFFF"
+const IVORY = "#FAF6EE"
 const GOLD = "var(--color-welcome-heading)"
 const NAVY = "var(--color-welcome-navy)"
 const GOLD_BORDER = "color-mix(in srgb, var(--color-motif-medium) 60%, transparent)"
@@ -105,7 +105,7 @@ function RetryableGalleryImage({
           ? undefined
           : {
               aspectRatio: `${width} / ${height}`,
-              backgroundColor: "color-mix(in srgb, var(--color-motif-medium) 18%, white)",
+              backgroundColor: "color-mix(in srgb, var(--color-motif-medium) 18%, #FAF6EE)",
             }
       }
     >
@@ -221,7 +221,7 @@ export default function MasonryGallery({ images }: { images: ImageItem[] }) {
       {lightboxIdx != null && images[lightboxIdx] && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 backdrop-blur-sm"
-          style={{ background: "color-mix(in srgb, var(--color-welcome-navy) 40%, black 60%)" }}
+          style={{ background: "color-mix(in srgb, var(--color-welcome-navy) 40%, #101D3A 60%)" }}
           onClick={() => setLightboxIdx(null)}
         >
           <div

@@ -24,7 +24,7 @@ function autoBind(instance) {
   })
 }
 
-function createTextTexture(gl, text, font = "bold 48px Figtree", color = "white") {
+function createTextTexture(gl, text, font = "bold 48px Figtree", color = "#FAF6EE") {
   const canvas = document.createElement("canvas")
   const context = canvas.getContext("2d")
   context.font = font
@@ -38,7 +38,7 @@ function createTextTexture(gl, text, font = "bold 48px Figtree", color = "white"
   context.clearRect(0, 0, canvas.width, canvas.height)
 
   // Add semi-transparent dark background for contrast
-  context.fillStyle = "rgba(0, 0, 0, 0.4)"
+  context.fillStyle = "rgba(16, 29, 58, 0.4)"
   context.fillRect(0, 0, canvas.width, canvas.height)
 
   // Draw text with shadow and outline for better readability
@@ -47,7 +47,7 @@ function createTextTexture(gl, text, font = "bold 48px Figtree", color = "white"
   context.textAlign = "center"
 
   // Text shadow
-  context.fillStyle = "rgba(0, 0, 0, 0.6)"
+  context.fillStyle = "rgba(16, 29, 58, 0.6)"
   context.fillText(text, canvas.width / 2 + 2, canvas.height / 2 + 2)
 
   // Main text
@@ -60,7 +60,7 @@ function createTextTexture(gl, text, font = "bold 48px Figtree", color = "white"
 }
 
 class Title {
-  constructor({ gl, plane, renderer, text, textColor = "#ffffff", font = "bold 48px Figtree" }) {
+  constructor({ gl, plane, renderer, text, textColor = "#FAF6EE", font = "bold 48px Figtree" }) {
     autoBind(this)
     this.gl = gl
     this.plane = plane
@@ -160,7 +160,7 @@ class Media {
     placeholder.width = 2
     placeholder.height = 2
     const phx = placeholder.getContext("2d")
-    phx.fillStyle = "#333"
+    phx.fillStyle = "#101D3A"
     phx.fillRect(0, 0, 2, 2)
     texture.image = placeholder
     this.program = new Program(this.gl, {
@@ -332,7 +332,7 @@ class App {
     {
       items,
       bend,
-      textColor = "#ffffff",
+      textColor = "#FAF6EE",
       borderRadius = 0,
       font = "bold 48px Figtree",
       scrollSpeed = 2,
@@ -516,7 +516,7 @@ class App {
 export default function CircularGallery({
   items,
   bend = 3,
-  textColor = "#ffffff",
+  textColor = "#FAF6EE",
   borderRadius = 0.05,
   font = "bold 48px Figtree",
   scrollSpeed = 2,

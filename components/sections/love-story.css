@@ -1,9 +1,9 @@
 /* Love story — scrapbook roadmap */
 
 .love-story-section {
-  --ls-forest: var(--color-motif-deep, #5d6f47);
-  --ls-cream: var(--color-motif-cream, #f7f3e9);
-  --ls-ink: var(--color-welcome-text, #3a3128);
+  --ls-forest: var(--color-motif-deep, #4F6373);
+  --ls-cream: var(--color-motif-cream, #FAF6EE);
+  --ls-ink: var(--color-welcome-text, #101D3A);
 }
 
 .love-story-timeline__track {
@@ -42,7 +42,7 @@
 
 .love-story-timeline__dot {
   fill: var(--ls-forest);
-  stroke: color-mix(in srgb, var(--ls-cream) 88%, white);
+  stroke: color-mix(in srgb, var(--ls-cream) 88%, #FAF6EE);
   stroke-width: 2.5;
   filter: drop-shadow(0 1px 3px color-mix(in srgb, var(--ls-forest) 35%, transparent));
 }
@@ -51,7 +51,7 @@
 .love-story-polaroid {
   position: relative;
   flex-shrink: 0;
-  background: #fff;
+  background: #FAF6EE;
   padding: 0.55rem 0.55rem 0.55rem;
   box-shadow:
     0 8px 22px color-mix(in srgb, var(--ls-ink) 12%, transparent),
@@ -80,7 +80,7 @@
   position: relative;
   aspect-ratio: 1;
   overflow: hidden;
-  background: #ece8df;
+  background: #F5EDDF;
 }
 
 .love-story-polaroid__caption-wrap {
@@ -110,16 +110,16 @@
   border-radius: 50%;
   transform: translateX(-50%);
   box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.5),
-    0 2px 5px rgba(0, 0, 0, 0.24);
+    inset 0 1px 2px rgba(250, 246, 238, 0.5),
+    0 2px 5px rgba(16, 29, 58, 0.24);
 }
 
 .love-story-pin--red {
-  background: radial-gradient(circle at 35% 28%, #ef6464, #b82e2e);
+  background: radial-gradient(circle at 35% 28%, #D7A041, #101D3A);
 }
 
 .love-story-pin--white {
-  background: radial-gradient(circle at 35% 28%, #fff, #cfcbc3);
+  background: radial-gradient(circle at 35% 28%, #FAF6EE, #ABAEB0);
 }
 
 .love-story-tape {
@@ -130,8 +130,8 @@
   width: 3.75rem;
   height: 1.15rem;
   transform: translateX(-50%) rotate(-5deg);
-  background: color-mix(in srgb, #d9c9ad 78%, transparent);
-  border: 1px solid color-mix(in srgb, #b8a88c 30%, transparent);
+  background: color-mix(in srgb, #F2D087 78%, transparent);
+  border: 1px solid color-mix(in srgb, #ABAEB0 30%, transparent);
   opacity: 0.9;
 }
 
@@ -150,7 +150,7 @@
   width: 2.65rem;
   height: 2.65rem;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--ls-forest) 7%, white);
+  background: color-mix(in srgb, var(--ls-forest) 7%, #FAF6EE);
 }
 
 .love-story-milestone {

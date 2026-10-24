@@ -137,7 +137,7 @@ export function DashboardSidebar({
           <button
             type="button"
             onClick={onMobileClose}
-            className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-dash-border bg-white text-gray-500 shadow-sm transition-colors hover:text-dash-ink lg:hidden"
+            className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-dash-border bg-card text-floral-leaves shadow-sm transition-colors hover:text-dash-ink lg:hidden"
             aria-label="Close menu"
           >
             <X className="h-4 w-4" />
@@ -171,20 +171,20 @@ export function DashboardSidebar({
 
         {/* Countdown (compact) */}
         {daysLeft !== null ? (
-          <div className="relative mt-3 inline-flex items-center gap-2 rounded-full bg-dash-primary py-1.5 pl-1.5 pr-3.5 text-white shadow-[0_8px_18px_-12px_color-mix(in_srgb,var(--color-dash-ink)_80%,transparent)]">
+          <div className="relative mt-3 inline-flex items-center gap-2 rounded-full bg-dash-primary py-1.5 pl-1.5 pr-3.5 text-background shadow-[0_8px_18px_-12px_color-mix(in_srgb,var(--color-dash-ink)_80%,transparent)]">
             {daysLeft > 0 ? (
               <>
-                <span className={`${playfair.className} flex h-7 min-w-7 items-center justify-center rounded-full bg-white/15 px-1.5 text-sm font-semibold tabular-nums`}>
+                <span className={`${playfair.className} flex h-7 min-w-7 items-center justify-center rounded-full bg-card/15 px-1.5 text-sm font-semibold tabular-nums`}>
                   {daysLeft}
                 </span>
                 <span className="text-xs font-medium">
                   {daysLeft === 1 ? "day to go" : "days to go"}
-                  {daysLeft >= 14 ? <span className="text-white/70"> · {Math.round(daysLeft / 7)} wks</span> : null}
+                  {daysLeft >= 14 ? <span className="text-background/70"> · {Math.round(daysLeft / 7)} wks</span> : null}
                 </span>
               </>
             ) : (
               <span className="flex items-center gap-1.5 py-0.5 pl-2 text-xs font-semibold">
-                <Heart className="h-3.5 w-3.5 fill-white" />
+                <Heart className="h-3.5 w-3.5 fill-background" />
                 {daysLeft === 0 ? "Today's the day!" : `Married ${Math.abs(daysLeft)} ${Math.abs(daysLeft) === 1 ? "day" : "days"} ago`}
               </span>
             )}
@@ -221,8 +221,8 @@ export function DashboardSidebar({
                         className={cn(
                           "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors",
                           isActive
-                            ? "bg-white text-dash-primary shadow-sm ring-1 ring-dash-border"
-                            : "bg-dash-surface text-dash-faint group-hover:bg-white group-hover:text-dash-accent"
+                            ? "bg-card text-dash-primary shadow-sm ring-1 ring-dash-border"
+                            : "bg-dash-surface text-dash-faint group-hover:bg-card group-hover:text-dash-accent"
                         )}
                       >
                         <Icon className="h-4 w-4" />
@@ -232,7 +232,7 @@ export function DashboardSidebar({
                         <span
                           className={cn(
                             "min-w-[22px] rounded-full px-1.5 py-0.5 text-center text-[11px] font-semibold",
-                            item.id === "requests" ? "bg-dash-accent text-white" : "bg-dash-badge-bg text-dash-badge-text"
+                            item.id === "requests" ? "bg-dash-accent text-foreground" : "bg-dash-badge-bg text-dash-badge-text"
                           )}
                         >
                           {item.badge > 99 ? "99+" : item.badge}
@@ -256,7 +256,7 @@ export function DashboardSidebar({
         >
           <Globe className="h-4 w-4 text-dash-faint" />
           <span>View Invitation</span>
-          <ExternalLink className="ml-auto h-3 w-3 text-gray-400" />
+          <ExternalLink className="ml-auto h-3 w-3 text-floral-leaves" />
         </a>
         <a
           href={siteConfig.googleAPI.googleShare}
@@ -275,14 +275,14 @@ export function DashboardSidebar({
   return (
     <>
       {/* Desktop */}
-      <div className="hidden w-64 shrink-0 bg-white border-r border-dash-border h-screen sticky top-0 flex-col lg:flex">
+      <div className="hidden w-64 shrink-0 bg-card border-r border-dash-border h-screen sticky top-0 flex-col lg:flex">
         {panel}
       </div>
 
       {/* Phones / tablets: slide-in drawer */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-black/40 transition-opacity duration-300 lg:hidden",
+          "fixed inset-0 z-40 bg-primary/40 transition-opacity duration-300 lg:hidden",
           mobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
         )}
         onClick={onMobileClose}
@@ -290,7 +290,7 @@ export function DashboardSidebar({
       />
       <div
         className={cn(
-          "fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col bg-white shadow-2xl transition-transform duration-300 lg:hidden",
+          "fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col bg-card shadow-2xl transition-transform duration-300 lg:hidden",
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         )}
         role="dialog"

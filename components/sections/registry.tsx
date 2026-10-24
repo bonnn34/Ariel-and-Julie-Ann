@@ -29,13 +29,13 @@ const aboveTheBeyond = localFont({
 
 // Text outside the card sits on the dusty-blue page backdrop: white with a soft navy shadow
 const onBg = {
-  color: "white",
+  color: "#FAF6EE",
   textShadow:
     "0 1px 2px color-mix(in srgb, var(--color-welcome-navy) 50%, transparent), 0 2px 14px color-mix(in srgb, var(--color-welcome-navy) 40%, transparent)",
 } as const
 const onBgScript = { ...onBg, color: "var(--color-motif-silver)" } as const
 
-const onBgLine = "color-mix(in srgb, white 85%, transparent)"
+const onBgLine = "color-mix(in srgb, #FAF6EE 85%, transparent)"
 
 const ct = {
   body: sectionType.text,
@@ -111,11 +111,11 @@ export function Registry() {
   const initial = reduceMotion ? false : "hidden"
 
   const buttonBg = c.button
-  const buttonText = "#FFFFFF"
+  const buttonText = "#FAF6EE"
   const cardStyle = {
     background: c.card,
     border: `1px solid ${c.cardEdge}`,
-    boxShadow: `0 0 0 6px rgb(255 255 255 / 30%), 0 26px 56px -30px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)`,
+    boxShadow: `0 0 0 6px rgb(250 246 238 / 30%), 0 26px 56px -30px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)`,
   }
   const dividerLineStyle = { background: `linear-gradient(to right, transparent, ${onBgLine}, transparent)` }
 
@@ -257,7 +257,7 @@ export function Registry() {
                     className="mx-auto mt-4 grid w-full max-w-[17rem] gap-1 rounded-full p-1"
                     style={{
                       gridTemplateColumns: `repeat(${accounts.length}, minmax(0, 1fr))`,
-                      background: "#FFFFFF",
+                      background: "#FAF6EE",
                       boxShadow: `inset 0 0 0 1px ${c.cardEdge}, 0 6px 16px -10px color-mix(in srgb, var(--color-welcome-navy) 40%, transparent)`,
                     }}
                   >
@@ -327,7 +327,7 @@ export function Registry() {
                         <button
                           type="button"
                           onClick={() => setZoomQr({ src: active.qr, label: active.label })}
-                          className="group relative block w-full max-w-[13rem] rounded-2xl bg-white p-2 transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)]"
+                          className="group relative block w-full max-w-[13rem] rounded-2xl bg-card p-2 transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)]"
                           style={{ boxShadow: `0 0 0 1px ${c.cardEdge}, 0 0 0 6px color-mix(in srgb, var(--color-motif-medium) 14%, transparent), 0 14px 26px -16px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)` }}
                           aria-label={`Enlarge ${active.label} QR code`}
                         >
@@ -341,8 +341,8 @@ export function Registry() {
                             className="block aspect-square h-auto w-full object-contain"
                           />
                           <span
-                            className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full text-white shadow-md"
-                            style={{ background: buttonBg, boxShadow: "0 0 0 2px #FFFFFF" }}
+                            className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full text-background shadow-md"
+                            style={{ background: buttonBg, boxShadow: "0 0 0 2px #FAF6EE" }}
                             aria-hidden
                           >
                             <Expand className="h-3.5 w-3.5" />
@@ -375,7 +375,7 @@ export function Registry() {
                           href={active.qr}
                           download={qrFileName(active.label, active.qr)}
                           className={`${cinzel.className} relative mt-3.5 inline-flex items-center gap-1.5 rounded-full border px-5 py-2 text-[0.62rem] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03] hover:brightness-110`}
-                          style={{ background: buttonBg, color: buttonText, borderColor: "rgb(255 255 255 / 70%)", boxShadow: "0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent)" }}
+                          style={{ background: buttonBg, color: buttonText, borderColor: "rgb(250 246 238 / 70%)", boxShadow: "0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent)" }}
                         >
                           <Download className="h-3 w-3" aria-hidden />
                           {content.saveQrLabel}
@@ -455,7 +455,7 @@ export function Registry() {
             <button
               type="button"
               onClick={() => setZoomQr(null)}
-              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full text-white transition-transform hover:rotate-90"
+              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full text-background transition-transform hover:rotate-90"
               style={{ background: buttonBg }}
               aria-label="Close"
             >
@@ -464,7 +464,7 @@ export function Registry() {
             <p className={`${theSeasons.className} mb-3 text-lg uppercase tracking-[0.12em]`} style={{ color: c.title }}>
               {zoomQr.label}
             </p>
-            <div className="relative mx-auto w-full max-w-[18rem] overflow-hidden rounded-xl bg-white p-2" style={{ boxShadow: `0 0 0 1px ${c.glow}` }}>
+            <div className="relative mx-auto w-full max-w-[18rem] overflow-hidden rounded-xl bg-card p-2" style={{ boxShadow: `0 0 0 1px ${c.glow}` }}>
               <Image
                 src={encodeURI(zoomQr.src)}
                 alt={`${zoomQr.label} QR code`}
@@ -481,7 +481,7 @@ export function Registry() {
               href={zoomQr.src}
               download={qrFileName(zoomQr.label, zoomQr.src)}
               className={`${cinzel.className} mt-4 inline-flex items-center gap-1.5 rounded-full border px-5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03] hover:brightness-110`}
-              style={{ background: buttonBg, color: buttonText, borderColor: "rgb(255 255 255 / 70%)" }}
+              style={{ background: buttonBg, color: buttonText, borderColor: "rgb(250 246 238 / 70%)" }}
             >
               <Download className="h-3.5 w-3.5" aria-hidden />
               {content.saveQrLabel}

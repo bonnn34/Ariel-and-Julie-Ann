@@ -70,7 +70,7 @@ const DEFAULT_ROLE_CATEGORIES = [
 ]
 
 const FIELD =
-  "w-full rounded-xl border border-dash-border bg-dash-bg px-3 py-2.5 outline-none transition-colors focus:border-dash-focus focus:bg-white focus:ring-2 focus:ring-dash-focus/40"
+  "w-full rounded-xl border border-dash-border bg-dash-bg px-3 py-2.5 outline-none transition-colors focus:border-dash-focus focus:bg-card focus:ring-2 focus:ring-dash-focus/40"
 
 const sponsorLabel = (s: PrincipalSponsor) =>
   [s.MalePrincipalSponsor, s.FemalePrincipalSponsor].filter((n) => n && n.trim()).join(" & ") || "Sponsor pair"
@@ -82,7 +82,7 @@ function FieldLabel({ htmlFor, children, required = false }: { htmlFor?: string;
       {required ? (
         <span className="rounded-full bg-dash-tint px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-dash-primary">Required</span>
       ) : (
-        <span className="text-[10px] font-medium uppercase tracking-wide text-gray-400">Optional</span>
+        <span className="text-[10px] font-medium uppercase tracking-wide text-floral-leaves">Optional</span>
       )}
     </label>
   )
@@ -163,7 +163,7 @@ function RoleCombobox({
         tabIndex={-1}
         onClick={() => setOpen((o) => !o)}
         aria-label="Show roles"
-        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-gray-400 hover:text-dash-primary"
+        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-floral-leaves hover:text-dash-primary"
       >
         <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
@@ -172,7 +172,7 @@ function RoleCombobox({
         <ul
           id="ent-role-list"
           role="listbox"
-          className="absolute left-0 right-0 z-30 mt-1 max-h-52 overflow-y-auto rounded-xl border border-dash-border bg-white py-1 shadow-lg"
+          className="absolute left-0 right-0 z-30 mt-1 max-h-52 overflow-y-auto rounded-xl border border-dash-border bg-card py-1 shadow-lg"
         >
           {matches.map((option, i) => (
             <li
@@ -183,7 +183,7 @@ function RoleCombobox({
               onClick={() => pick(option)}
               onMouseEnter={() => setHighlight(i)}
               className={`flex cursor-pointer items-center justify-between px-3 py-2 text-sm ${
-                i === highlight ? "bg-dash-tint text-dash-ink" : "text-gray-700"
+                i === highlight ? "bg-dash-tint text-dash-ink" : "text-floral-leaves"
               }`}
             >
               {option}
@@ -196,7 +196,7 @@ function RoleCombobox({
               aria-selected={false}
               onPointerDown={(e) => e.preventDefault()}
               onClick={() => pick(value.trim())}
-              className="cursor-pointer border-t border-dash-tint px-3 py-2 text-xs text-gray-500 hover:bg-dash-surface"
+              className="cursor-pointer border-t border-dash-tint px-3 py-2 text-xs text-floral-leaves hover:bg-dash-surface"
             >
               Use &ldquo;<span className="font-medium text-dash-ink">{value.trim()}</span>&rdquo; as a new role
             </li>
@@ -232,16 +232,16 @@ function FormSheet({
 }) {
   const [showHelp, setShowHelp] = useState(false)
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-0 sm:items-center sm:p-4">
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-primary/50 p-0 sm:items-center sm:p-4">
       <form
         onSubmit={(e) => {
           e.preventDefault()
           onSubmit()
         }}
-        className="dash-sheet relative max-h-[94dvh] w-full max-w-md overflow-y-auto rounded-t-2xl bg-white shadow-2xl sm:max-h-[90vh] sm:rounded-2xl"
+        className="dash-sheet relative max-h-[94dvh] w-full max-w-md overflow-y-auto rounded-t-2xl bg-card shadow-2xl sm:max-h-[90vh] sm:rounded-2xl"
       >
         <div className="sticky top-0 z-20 border-b border-dash-border bg-dash-bg/95 px-4 pt-3 pb-4 backdrop-blur-sm sm:px-6 sm:py-5">
-          <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-gray-300/70 sm:hidden" aria-hidden />
+          <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-floral-soft/70 sm:hidden" aria-hidden />
           {help ? (
             <button
               type="button"
@@ -250,7 +250,7 @@ function FormSheet({
               aria-expanded={showHelp}
               aria-controls="form-sheet-help"
               className={`absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border shadow-sm transition-colors sm:left-auto sm:right-16 sm:top-5 ${
-                showHelp ? "border-dash-accent bg-dash-accent text-white" : "border-dash-border bg-white text-dash-primary hover:bg-dash-tint"
+                showHelp ? "border-dash-accent bg-dash-accent text-foreground" : "border-dash-border bg-card text-dash-primary hover:bg-dash-tint"
               }`}
             >
               <Info className="h-4 w-4" />
@@ -260,14 +260,14 @@ function FormSheet({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-dash-border bg-white text-gray-500 shadow-sm transition-colors hover:text-dash-ink sm:right-5 sm:top-5"
+            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-dash-border bg-card text-floral-leaves shadow-sm transition-colors hover:text-dash-ink sm:right-5 sm:top-5"
           >
             <X className="h-4 w-4" />
           </button>
           <div className={`px-10 text-center sm:px-0 sm:text-left ${help ? "sm:pr-24" : "sm:pr-12"}`}>
             <p className={`${cinzel.className} text-[10px] font-semibold uppercase tracking-[0.28em] text-dash-accent`}>{eyebrow}</p>
             <h2 className={`${playfair.className} mt-1 text-[1.45rem] font-semibold leading-tight text-dash-ink sm:text-2xl`}>{title}</h2>
-            <p className="mx-auto mt-1.5 max-w-xs text-[11px] leading-relaxed text-gray-500 sm:mx-0 sm:max-w-none sm:text-xs">{subtitle}</p>
+            <p className="mx-auto mt-1.5 max-w-xs text-[11px] leading-relaxed text-floral-leaves sm:mx-0 sm:max-w-none sm:text-xs">{subtitle}</p>
           </div>
         </div>
 
@@ -287,20 +287,20 @@ function FormSheet({
           )}
           {children}
 
-          <div className="sticky bottom-0 z-10 -mx-4 flex flex-col-reverse gap-2 border-t border-dash-border bg-white px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:static sm:mx-0 sm:flex-row sm:justify-end sm:gap-3 sm:px-0 sm:pt-5 sm:pb-0">
+          <div className="sticky bottom-0 z-10 -mx-4 flex flex-col-reverse gap-2 border-t border-dash-border bg-card px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:static sm:mx-0 sm:flex-row sm:justify-end sm:gap-3 sm:px-0 sm:pt-5 sm:pb-0">
             <Button
               type="button"
               variant="outline"
               onClick={onClose}
               disabled={busy}
-              className="h-11 w-full rounded-full border-dash-border px-7 text-sm font-medium text-gray-600 hover:bg-dash-surface hover:text-dash-ink sm:w-auto"
+              className="h-11 w-full rounded-full border-dash-border px-7 text-sm font-medium text-floral-leaves hover:bg-dash-surface hover:text-dash-ink sm:w-auto"
             >
               Cancel
             </Button>
             <Button
               type="submit"
               disabled={busy}
-              className="h-11 w-full rounded-full bg-dash-primary px-8 text-sm font-semibold tracking-wide text-white shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99] disabled:opacity-50 sm:w-auto"
+              className="h-11 w-full rounded-full bg-dash-primary px-8 text-sm font-semibold tracking-wide text-background shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99] disabled:opacity-50 sm:w-auto"
             >
               {busy ? (
                 <span className="flex items-center gap-2">
@@ -561,10 +561,10 @@ export function EntourageSponsors({
 
   const mobileActionBtn = "flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-lg border text-sm font-medium transition-colors"
   const emptyState = (title: string, text: string, icon: ReactNode) => (
-    <div className="rounded-xl border border-dash-border bg-white px-6 py-12 text-center">
+    <div className="rounded-xl border border-dash-border bg-card px-6 py-12 text-center">
       <span className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-dash-surface text-dash-line">{icon}</span>
       <h3 className={`${playfair.className} text-lg font-semibold text-dash-ink`}>{title}</h3>
-      <p className="mt-1 text-sm text-gray-500">{text}</p>
+      <p className="mt-1 text-sm text-floral-leaves">{text}</p>
     </div>
   )
 
@@ -577,7 +577,7 @@ export function EntourageSponsors({
           type="button"
           onClick={() => (activeSubTab === "entourage" ? onRefreshEntourage() : onRefreshSponsors())}
           disabled={isLoading}
-          className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-white px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-card px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface disabled:opacity-50"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? "animate-spin" : ""}`} />
           Refresh
@@ -585,7 +585,7 @@ export function EntourageSponsors({
       </div>
 
       {error && (
-        <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700" role="alert">
+        <div className="flex items-center gap-2 rounded-xl border border-border bg-card p-3 text-sm text-foreground" role="alert">
           <AlertCircle className="h-4 w-4 shrink-0" />
           <span className="flex-1">{error}</span>
           <button onClick={() => setError(null)} aria-label="Dismiss">
@@ -597,14 +597,14 @@ export function EntourageSponsors({
       {/* Stats */}
       <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
         {[
-          { label: "Entourage", value: entourage.length, tone: "border-dash-border bg-white text-dash-primary" },
-          { label: "Role groups", value: roleCategories.length, tone: "border-amber-200 bg-amber-50 text-amber-700" },
-          { label: "Sponsor pairs", value: principalSponsors.length, tone: "border-purple-200 bg-purple-50 text-purple-700" },
-          { label: "Sponsors", value: sponsorPeople, tone: "border-blue-200 bg-blue-50 text-blue-700" },
+          { label: "Entourage", value: entourage.length, tone: "border-dash-border bg-card text-dash-primary" },
+          { label: "Role groups", value: roleCategories.length, tone: "border-border bg-card text-foreground" },
+          { label: "Sponsor pairs", value: principalSponsors.length, tone: "border-border bg-card text-foreground" },
+          { label: "Sponsors", value: sponsorPeople, tone: "border-border bg-card text-foreground" },
         ].map((stat) => (
           <div key={stat.label} className={`rounded-lg border p-3 shadow-sm sm:p-4 ${stat.tone}`}>
             <div className="text-xl font-bold sm:text-2xl">{stat.value}</div>
-            <div className="text-[10px] uppercase tracking-wide text-gray-600 sm:text-xs">{stat.label}</div>
+            <div className="text-[10px] uppercase tracking-wide text-floral-leaves sm:text-xs">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -628,13 +628,13 @@ export function EntourageSponsors({
                 setSearchQuery("")
               }}
               className={`flex items-center justify-center gap-1.5 rounded-lg px-2 py-2.5 text-xs font-semibold transition-all sm:gap-2 sm:text-sm ${
-                active ? "bg-white text-dash-ink shadow-sm ring-1 ring-dash-border" : "text-gray-500 hover:text-dash-ink"
+                active ? "bg-card text-dash-ink shadow-sm ring-1 ring-dash-border" : "text-floral-leaves hover:text-dash-ink"
               }`}
             >
               {tab.icon}
               <span className="sm:hidden">{tab.short}</span>
               <span className="hidden sm:inline">{tab.label}</span>
-              <span className={`rounded-full px-1.5 py-0.5 text-[10px] ${active ? "bg-dash-tint text-dash-primary" : "bg-white/70 text-gray-500"}`}>
+              <span className={`rounded-full px-1.5 py-0.5 text-[10px] ${active ? "bg-dash-tint text-dash-primary" : "bg-card/70 text-floral-leaves"}`}>
                 {tab.count}
               </span>
             </button>
@@ -645,16 +645,16 @@ export function EntourageSponsors({
       {/* Search + add */}
       <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-floral-leaves" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={activeSubTab === "entourage" ? "Search by name, role or email..." : "Search sponsors..."}
-            className="w-full rounded-lg border border-dash-border bg-white py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-dash-focus"
+            className="w-full rounded-lg border border-dash-border bg-card py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-dash-focus"
           />
         </div>
-        <Button onClick={openAdd} className="h-11 rounded-full bg-dash-primary px-6 text-white hover:brightness-110 sm:h-10">
+        <Button onClick={openAdd} className="h-11 rounded-full bg-dash-primary px-6 text-background hover:brightness-110 sm:h-10">
           <Plus className="mr-1.5 h-4 w-4" />
           {activeSubTab === "entourage" ? "Add Member" : "Add Sponsors"}
         </Button>
@@ -663,7 +663,7 @@ export function EntourageSponsors({
       {/* Sponsor sheet switch: which invite page's sponsors are being edited */}
       {activeSubTab === "sponsors" && (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-medium text-gray-500">Editing sponsors for</span>
+          <span className="text-xs font-medium text-floral-leaves">Editing sponsors for</span>
           {(
             [
               { id: "one", label: "Invite One", path: "/inviteone" },
@@ -679,10 +679,10 @@ export function EntourageSponsors({
                   setSearchQuery("")
                 }}
                 className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-                  active ? "border-dash-accent bg-dash-accent text-white" : "border-dash-border bg-white text-gray-600 hover:text-dash-ink"
+                  active ? "border-dash-accent bg-dash-accent text-foreground" : "border-dash-border bg-card text-floral-leaves hover:text-dash-ink"
                 }`}
               >
-                {list.label} <span className={active ? "text-white/80" : "text-gray-400"}>{list.path}</span>
+                {list.label} <span className={active ? "text-foreground/80" : "text-floral-leaves"}>{list.path}</span>
               </button>
             )
           })}
@@ -700,10 +700,10 @@ export function EntourageSponsors({
                 key={cat}
                 onClick={() => setRoleFilter(cat)}
                 className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-                  active ? "border-dash-accent bg-dash-accent text-white" : "border-dash-border bg-white text-gray-600 hover:text-dash-ink"
+                  active ? "border-dash-accent bg-dash-accent text-foreground" : "border-dash-border bg-card text-floral-leaves hover:text-dash-ink"
                 }`}
               >
-                {cat === "all" ? "All roles" : cat} <span className={active ? "text-white/80" : "text-gray-400"}>{count}</span>
+                {cat === "all" ? "All roles" : cat} <span className={active ? "text-foreground/80" : "text-floral-leaves"}>{count}</span>
               </button>
             )
           })}
@@ -726,23 +726,23 @@ export function EntourageSponsors({
           <>
             <div className="space-y-3 md:hidden">
               {filteredEntourage.map((member, index) => (
-                <div key={`${member.Name}-${index}`} className="rounded-xl border border-dash-border bg-white p-4 shadow-sm">
+                <div key={`${member.Name}-${index}`} className="rounded-xl border border-dash-border bg-card p-4 shadow-sm">
                   <div className="flex items-start gap-3">
                     <span className={`${cinzel.className} flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-dash-tint text-xs font-semibold text-dash-primary`}>
                       {member.Name.trim().charAt(0).toUpperCase() || "?"}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="font-semibold text-gray-900 [overflow-wrap:anywhere]">{member.Name}</p>
+                      <p className="font-semibold text-floral-leaves [overflow-wrap:anywhere]">{member.Name}</p>
                       <div className="mt-1 flex flex-wrap gap-1.5">
                         {member.RoleCategory && (
                           <span className="rounded-full bg-dash-bg-deep px-2.5 py-0.5 text-[11px] font-medium text-dash-ink">{member.RoleCategory}</span>
                         )}
                         {member.RoleTitle && member.RoleTitle !== member.RoleCategory && (
-                          <span className="rounded-full border border-dash-border px-2.5 py-0.5 text-[11px] text-gray-500">{member.RoleTitle}</span>
+                          <span className="rounded-full border border-dash-border px-2.5 py-0.5 text-[11px] text-floral-leaves">{member.RoleTitle}</span>
                         )}
                       </div>
                       {member.Email && member.Email !== "Pending" && (
-                        <p className="mt-1.5 text-xs text-gray-500 [overflow-wrap:anywhere]">{member.Email}</p>
+                        <p className="mt-1.5 text-xs text-floral-leaves [overflow-wrap:anywhere]">{member.Email}</p>
                       )}
                     </div>
                   </div>
@@ -750,7 +750,7 @@ export function EntourageSponsors({
                     <button onClick={() => startEditEntourage(member)} className={`${mobileActionBtn} border-dash-border text-dash-ink active:bg-dash-surface`}>
                       <Edit2 className="h-4 w-4" /> Edit
                     </button>
-                    <button onClick={() => setConfirm({ kind: "entourage", member })} className={`${mobileActionBtn} border-red-100 text-red-600 active:bg-red-50`}>
+                    <button onClick={() => setConfirm({ kind: "entourage", member })} className={`${mobileActionBtn} border-border text-foreground active:bg-card`}>
                       <Trash2 className="h-4 w-4" /> Delete
                     </button>
                   </div>
@@ -758,7 +758,7 @@ export function EntourageSponsors({
               ))}
             </div>
 
-            <div className="hidden overflow-hidden rounded-xl border border-dash-border bg-white shadow-sm md:block">
+            <div className="hidden overflow-hidden rounded-xl border border-dash-border bg-card shadow-sm md:block">
               <table className="w-full text-left">
                 <thead className="bg-dash-border text-dash-ink">
                   <tr>
@@ -771,17 +771,17 @@ export function EntourageSponsors({
                 </thead>
                 <tbody className="divide-y divide-dash-border">
                   {filteredEntourage.map((member, index) => (
-                    <tr key={`${member.Name}-${index}`} className="transition-colors hover:bg-gray-50">
-                      <td className="px-4 py-4 font-medium text-gray-800 lg:px-6">{member.Name}</td>
+                    <tr key={`${member.Name}-${index}`} className="transition-colors hover:bg-floral-soft">
+                      <td className="px-4 py-4 font-medium text-floral-leaves lg:px-6">{member.Name}</td>
                       <td className="px-4 py-4 lg:px-6">
                         {member.RoleCategory ? (
                           <span className="rounded-full bg-dash-bg-deep px-2.5 py-1 text-xs font-medium text-dash-ink">{member.RoleCategory}</span>
                         ) : (
-                          <span className="text-xs text-gray-400">—</span>
+                          <span className="text-xs text-floral-leaves">—</span>
                         )}
                       </td>
-                      <td className="px-4 py-4 text-sm text-gray-600 lg:px-6">{member.RoleTitle || "—"}</td>
-                      <td className="px-4 py-4 text-xs text-gray-500 lg:px-6">
+                      <td className="px-4 py-4 text-sm text-floral-leaves lg:px-6">{member.RoleTitle || "—"}</td>
+                      <td className="px-4 py-4 text-xs text-floral-leaves lg:px-6">
                         {member.Email && member.Email !== "Pending" ? (
                           <span className="inline-flex items-center gap-1.5">
                             <Mail className="h-3 w-3" />
@@ -793,12 +793,12 @@ export function EntourageSponsors({
                       </td>
                       <td className="px-4 py-4 lg:px-6">
                         <div className="flex items-center justify-end gap-3">
-                          <button onClick={() => startEditEntourage(member)} className="text-blue-500 transition-colors hover:text-blue-700" title="Edit">
+                          <button onClick={() => startEditEntourage(member)} className="text-foreground transition-colors hover:text-foreground" title="Edit">
                             <Edit2 className="h-4 w-4" />
                           </button>
                           <button
                             onClick={() => setConfirm({ kind: "entourage", member })}
-                            className="text-red-500 transition-colors hover:text-red-700"
+                            className="text-foreground transition-colors hover:text-foreground"
                             title="Delete"
                           >
                             <Trash2 className="h-4 w-4" />
@@ -824,21 +824,21 @@ export function EntourageSponsors({
         ) : (
           <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
             {filteredSponsors.map((sponsor, index) => (
-              <div key={`${sponsorLabel(sponsor)}-${index}`} className="group rounded-2xl border border-dash-border bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
+              <div key={`${sponsorLabel(sponsor)}-${index}`} className="group rounded-2xl border border-dash-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md">
                 <div className="flex items-center justify-between">
                   <p className={`${cinzel.className} text-[10px] font-semibold uppercase tracking-[0.24em] text-dash-accent`}>Pair {index + 1}</p>
                   <HeartHandshake className="h-4 w-4 text-dash-line" aria-hidden />
                 </div>
                 <div className="mt-3 grid grid-cols-[1fr_auto_1fr] items-center gap-2">
                   <div className="min-w-0 rounded-xl bg-dash-surface px-3 py-2.5 text-center">
-                    <p className="text-[10px] font-medium uppercase tracking-wide text-gray-500">Ninong</p>
+                    <p className="text-[10px] font-medium uppercase tracking-wide text-floral-leaves">Ninong</p>
                     <p className={`${playfair.className} mt-0.5 text-sm font-semibold text-dash-ink [overflow-wrap:anywhere]`}>
                       {sponsor.MalePrincipalSponsor || "—"}
                     </p>
                   </div>
                   <span className={`${playfair.className} text-lg italic text-dash-line`} aria-hidden>&amp;</span>
                   <div className="min-w-0 rounded-xl bg-dash-surface px-3 py-2.5 text-center">
-                    <p className="text-[10px] font-medium uppercase tracking-wide text-gray-500">Ninang</p>
+                    <p className="text-[10px] font-medium uppercase tracking-wide text-floral-leaves">Ninang</p>
                     <p className={`${playfair.className} mt-0.5 text-sm font-semibold text-dash-ink [overflow-wrap:anywhere]`}>
                       {sponsor.FemalePrincipalSponsor || "—"}
                     </p>
@@ -848,7 +848,7 @@ export function EntourageSponsors({
                   <button onClick={() => startEditSponsor(sponsor)} className={`${mobileActionBtn} border-dash-border text-dash-ink hover:bg-dash-surface`}>
                     <Edit2 className="h-4 w-4" /> Edit
                   </button>
-                  <button onClick={() => setConfirm({ kind: "sponsor", sponsor })} className={`${mobileActionBtn} border-red-100 text-red-600 hover:bg-red-50`}>
+                  <button onClick={() => setConfirm({ kind: "sponsor", sponsor })} className={`${mobileActionBtn} border-border text-foreground hover:bg-card`}>
                     <Trash2 className="h-4 w-4" /> Delete
                   </button>
                 </div>
@@ -990,7 +990,7 @@ export function EntourageSponsors({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="px-6 pt-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-center sm:pt-7 sm:pb-6">
-              <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-gray-300/70 sm:hidden" aria-hidden />
+              <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-floral-soft/70 sm:hidden" aria-hidden />
               <span className="dash-pop-badge mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-dash-danger-soft ring-8 ring-dash-danger-softer">
                 <AlertTriangle className="h-6 w-6 text-dash-danger-text" />
               </span>
@@ -1000,15 +1000,15 @@ export function EntourageSponsors({
               <h3 id="ent-confirm-title" className={`${playfair.className} mt-1 text-[1.4rem] font-semibold leading-tight text-dash-ink`}>
                 {confirm.kind === "entourage" ? "Remove from entourage?" : "Remove this sponsor pair?"}
               </h3>
-              <div className="mx-auto mt-4 max-w-[17rem] rounded-2xl border border-dash-border bg-white px-4 py-3">
+              <div className="mx-auto mt-4 max-w-[17rem] rounded-2xl border border-dash-border bg-card px-4 py-3">
                 <p className={`${playfair.className} text-base font-semibold text-dash-ink [overflow-wrap:anywhere]`}>
                   {confirm.kind === "entourage" ? confirm.member.Name : sponsorLabel(confirm.sponsor)}
                 </p>
                 {confirm.kind === "entourage" && (confirm.member.RoleTitle || confirm.member.RoleCategory) && (
-                  <p className="mt-0.5 text-xs text-gray-500">{confirm.member.RoleTitle || confirm.member.RoleCategory}</p>
+                  <p className="mt-0.5 text-xs text-floral-leaves">{confirm.member.RoleTitle || confirm.member.RoleCategory}</p>
                 )}
               </div>
-              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-gray-600">
+              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-floral-leaves">
                 {confirm.kind === "entourage"
                   ? "They'll no longer appear in your entourage on the invitation. This can't be undone."
                   : "They'll no longer appear as principal sponsors on the invitation. This can't be undone."}
@@ -1019,14 +1019,14 @@ export function EntourageSponsors({
                   variant="outline"
                   autoFocus
                   onClick={() => setConfirm(null)}
-                  className="h-11 w-full rounded-full border-dash-border bg-white text-sm font-medium text-dash-ink hover:bg-dash-surface sm:flex-1"
+                  className="h-11 w-full rounded-full border-dash-border bg-card text-sm font-medium text-dash-ink hover:bg-dash-surface sm:flex-1"
                 >
                   Keep
                 </Button>
                 <Button
                   type="button"
                   onClick={() => void runDelete()}
-                  className="h-11 w-full rounded-full bg-dash-danger text-sm font-semibold text-white shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-danger)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99] sm:flex-1"
+                  className="h-11 w-full rounded-full bg-dash-danger text-sm font-semibold text-background shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-danger)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99] sm:flex-1"
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
                   Yes, Remove
@@ -1043,7 +1043,7 @@ export function EntourageSponsors({
           <div className="dash-pop w-full max-w-xs rounded-3xl border border-dash-border bg-dash-bg p-7 text-center shadow-2xl">
             <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-dash-border border-t-dash-primary" />
             <h3 className={`${playfair.className} text-lg font-semibold text-dash-ink`}>{busy}</h3>
-            <p className="mt-1 text-xs text-gray-500">This only takes a moment.</p>
+            <p className="mt-1 text-xs text-floral-leaves">This only takes a moment.</p>
           </div>
         </div>
       )}
@@ -1058,15 +1058,15 @@ export function EntourageSponsors({
         >
           <div className="dash-pop relative w-full max-w-sm overflow-hidden rounded-3xl border border-dash-border bg-dash-bg shadow-[0_30px_60px_-25px_color-mix(in_srgb,var(--color-dash-ink-strong)_55%,transparent)]">
             <div className="relative overflow-hidden bg-dash-primary px-6 pt-7 pb-12 text-center">
-              <span className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full bg-white/10" aria-hidden />
-              <span className="pointer-events-none absolute -right-8 top-6 h-20 w-20 rounded-full bg-white/10" aria-hidden />
-              <p className={`${cinzel.className} relative text-[10px] font-semibold uppercase tracking-[0.3em] text-white/75`}>{done.eyebrow}</p>
-              <h3 id="ent-done-title" className={`${playfair.className} relative mt-1.5 text-[1.6rem] font-semibold leading-tight text-white`}>
+              <span className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full bg-card/10" aria-hidden />
+              <span className="pointer-events-none absolute -right-8 top-6 h-20 w-20 rounded-full bg-card/10" aria-hidden />
+              <p className={`${cinzel.className} relative text-[10px] font-semibold uppercase tracking-[0.3em] text-background/75`}>{done.eyebrow}</p>
+              <h3 id="ent-done-title" className={`${playfair.className} relative mt-1.5 text-[1.6rem] font-semibold leading-tight text-background`}>
                 {done.title}
               </h3>
             </div>
             <div className="relative -mt-9 flex justify-center">
-              <span className="dash-pop-badge flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border-4 border-dash-bg bg-white shadow-lg">
+              <span className="dash-pop-badge flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border-4 border-dash-bg bg-card shadow-lg">
                 <span
                   className={`flex h-12 w-12 items-center justify-center rounded-full ${
                     done.deleted ? "bg-dash-danger-soft text-dash-danger-text" : "bg-dash-tint text-dash-primary"
@@ -1083,10 +1083,10 @@ export function EntourageSponsors({
                 <span className="h-1 w-1 rotate-45 bg-dash-accent" />
                 <span className="h-px flex-1 bg-dash-line" />
               </div>
-              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-gray-600">{done.text}</p>
+              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-floral-leaves">{done.text}</p>
               <Button
                 onClick={() => setDone(null)}
-                className="mt-6 h-11 w-full rounded-full bg-dash-primary text-sm font-semibold tracking-wide text-white shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99]"
+                className="mt-6 h-11 w-full rounded-full bg-dash-primary text-sm font-semibold tracking-wide text-background shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99]"
               >
                 Done
               </Button>

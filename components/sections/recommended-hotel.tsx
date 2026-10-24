@@ -28,18 +28,18 @@ const aboveTheBeyond = localFont({
 })
 
 const C = {
-  forest: "#5d6f47",
-  sage: "#949981",
-  mustard: "#eec853",
-  butter: "#f4dd97",
-  cream: "#f7f3e9",
+  forest: "#4F6373",
+  sage: "#ABAEB0",
+  mustard: "#E8D36A",
+  butter: "#F2D087",
+  cream: "#FAF6EE",
 } as const
 
 const sectionBackground = `
   radial-gradient(920px 520px at 50% 8%, color-mix(in srgb, ${C.butter} 35%, transparent) 0%, transparent 55%),
   radial-gradient(640px 420px at 12% 88%, color-mix(in srgb, ${C.sage} 16%, transparent) 0%, transparent 58%),
   radial-gradient(560px 380px at 92% 78%, color-mix(in srgb, ${C.mustard} 14%, transparent) 0%, transparent 55%),
-  linear-gradient(180deg, ${C.cream} 0%, #faf7ef 48%, ${C.cream} 100%)
+  linear-gradient(180deg, ${C.cream} 0%, #FAF6EE 48%, ${C.cream} 100%)
 `
 
 const detailText = {
@@ -55,7 +55,7 @@ const cardStyle = {
   borderWidth: "1px",
   borderStyle: "solid",
   boxShadow:
-    "0 8px 28px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, white 70%, transparent)",
+    "0 8px 28px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, #FAF6EE 70%, transparent)",
 } as const
 
 const softPanelStyle = {

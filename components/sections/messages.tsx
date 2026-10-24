@@ -31,8 +31,8 @@ const aboveTheBeyond = localFont({
 
 // Palette lives in globals.css → motif / welcome tokens.
 // Form card: white paper with navy text; dusty-blue labels and button.
-const PAPER = "#FFFFFF"
-const IVORY = "#FFFFFF"
+const PAPER = "#FAF6EE"
+const IVORY = "#FAF6EE"
 const NAVY = "var(--color-welcome-navy)"
 const BODY = "var(--color-welcome-text)"
 const ACCENT = "var(--color-welcome-heading)"
@@ -46,7 +46,7 @@ const palette = {
 } as const
 
 const lightLineStyle = {
-  background: "linear-gradient(to right, transparent, rgb(255 255 255 / 75%), transparent)",
+  background: "linear-gradient(to right, transparent, rgb(250 246 238 / 75%), transparent)",
 } as const
 
 // Header sits on the dusty-blue Silk backdrop — white text with a navy halo.
@@ -65,8 +65,8 @@ const silkGlowStyle = {
 // Primary button: dusty blue with a soft white ring (matches the rest of the invitation)
 const buttonStyle = {
   background: "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)",
-  borderColor: "rgb(255 255 255 / 70%)",
-  color: "#FFFFFF",
+  borderColor: "rgb(250 246 238 / 70%)",
+  color: "#FAF6EE",
   boxShadow:
     "0 0 0 4px color-mix(in srgb, var(--color-motif-medium) 25%, transparent), 0 12px 24px -10px color-mix(in srgb, var(--color-welcome-navy) 60%, transparent)",
 } as const
@@ -86,12 +86,12 @@ function SilkTextGlow({ children, className = "" }: { children: ReactNode; class
 
 const cardStyle = {
   background:
-    "radial-gradient(90% 40% at 50% 0%, rgb(255 255 255 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, color-mix(in srgb, var(--color-motif-medium) 14%, white) 100%)",
+    "radial-gradient(90% 40% at 50% 0%, rgb(250 246 238 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FAF6EE 0%, color-mix(in srgb, var(--color-motif-medium) 14%, #FAF6EE) 100%)",
   borderWidth: "1px",
   borderStyle: "solid",
   borderColor: "color-mix(in srgb, var(--color-motif-medium) 70%, transparent)",
   boxShadow:
-    "0 22px 48px -24px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent), inset 0 1px 0 rgb(255 255 255 / 80%)",
+    "0 22px 48px -24px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent), inset 0 1px 0 rgb(250 246 238 / 80%)",
 } as const
 
 interface Message {
@@ -108,9 +108,9 @@ interface MessageFormProps {
 function OutsideDivider() {
   return (
     <div className="flex items-center justify-center gap-2" aria-hidden>
-      <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to right, transparent, rgb(255 255 255 / 80%))" }} />
+      <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to right, transparent, rgb(250 246 238 / 80%))" }} />
       <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--color-motif-accent)" }} />
-      <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to left, transparent, rgb(255 255 255 / 80%))" }} />
+      <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to left, transparent, rgb(250 246 238 / 80%))" }} />
     </div>
   )
 }
@@ -329,7 +329,7 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
                 </label>
                 {messageValue && (
                   <span
-                    className={`${sectionType.label} ${messageValue.length > 500 ? "text-red-500" : ""}`}
+                    className={`${sectionType.label} ${messageValue.length > 500 ? "text-foreground" : ""}`}
                     style={messageValue.length <= 500 ? { color: palette.accent } : undefined}
                   >
                     {messageValue.length}/500

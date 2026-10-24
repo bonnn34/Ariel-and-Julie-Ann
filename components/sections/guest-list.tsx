@@ -52,17 +52,17 @@ const aboveTheBeyond = localFont({
 const NAVY = "var(--color-welcome-navy)"
 const TEAL = "var(--color-welcome-text)"
 const BUTTON = "var(--color-welcome-heading)"
-const IVORY = "#FFFFFF"
-const PAPER = "#FFFFFF"
+const IVORY = "#FAF6EE"
+const PAPER = "#FAF6EE"
 // Deep sage green (motif leaves) — guest names and avatars
-const LEAF = "color-mix(in srgb, var(--color-motif-yellow) 70%, #2C3619)"
+const LEAF = "color-mix(in srgb, var(--color-motif-yellow) 70%, #101D3A)"
 const DEEP_GRADIENT =
   "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)"
 const SAGE_GRADIENT =
-  "linear-gradient(180deg, var(--color-motif-yellow) 0%, color-mix(in srgb, var(--color-motif-yellow) 70%, #2C3619) 100%)"
+  "linear-gradient(180deg, var(--color-motif-yellow) 0%, color-mix(in srgb, var(--color-motif-yellow) 70%, #101D3A) 100%)"
 const HAIRLINE = "color-mix(in srgb, var(--color-motif-medium) 60%, transparent)"
 // Secondary text / unselected options (muted blue, still readable)
-const TEAL_SOFT = "color-mix(in srgb, var(--color-welcome-text) 75%, white)"
+const TEAL_SOFT = "color-mix(in srgb, var(--color-welcome-text) 75%, #FAF6EE)"
 // Navy veil (with blur) behind modals
 const LIGHT_OVERLAY = "color-mix(in srgb, var(--color-welcome-navy) 38%, transparent)"
 const DARK_OVERLAY = "color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)"
@@ -78,15 +78,15 @@ const modalCardStyle = {
   background: PAPER,
   border: "1px solid color-mix(in srgb, var(--color-motif-medium) 70%, transparent)",
   boxShadow:
-    "0 0 0 6px rgb(255 255 255 / 40%), 0 30px 60px -24px color-mix(in srgb, var(--color-welcome-navy) 60%, transparent)",
+    "0 0 0 6px rgb(250 246 238 / 40%), 0 30px 60px -24px color-mix(in srgb, var(--color-welcome-navy) 60%, transparent)",
 } as const
 
 const innerSurfaceStyle = {
-  background: "color-mix(in srgb, var(--color-motif-medium) 12%, white)",
+  background: "color-mix(in srgb, var(--color-motif-medium) 12%, #FAF6EE)",
   borderColor: HAIRLINE,
 } as const
 
-const modalInputClass = `w-full rounded-lg border bg-white px-2.5 py-1.5 font-goudy-italic ${sectionType.text} transition-all duration-300 outline-none focus:border-[var(--color-welcome-heading)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-motif-medium)_55%,transparent)] placeholder:text-[color-mix(in_srgb,var(--color-welcome-text)_55%,white)] sm:px-3 sm:py-2`
+const modalInputClass = `w-full rounded-lg border bg-card px-2.5 py-1.5 font-goudy-italic ${sectionType.text} transition-all duration-300 outline-none focus:border-[var(--color-welcome-heading)] focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-motif-medium)_55%,transparent)] placeholder:text-[color-mix(in_srgb,var(--color-welcome-text)_55%,#FAF6EE)] sm:px-3 sm:py-2`
 
 const modalInputStyle = {
   borderColor: HAIRLINE,
@@ -101,7 +101,7 @@ const dividerLineStyle = {
 
 const primaryButtonStyle = {
   background: DEEP_GRADIENT,
-  borderColor: "rgb(255 255 255 / 70%)",
+  borderColor: "rgb(250 246 238 / 70%)",
   color: IVORY,
   boxShadow:
     "0 0 0 4px color-mix(in srgb, var(--color-motif-medium) 25%, transparent), 0 12px 24px -10px color-mix(in srgb, var(--color-welcome-navy) 60%, transparent)",
@@ -109,7 +109,7 @@ const primaryButtonStyle = {
 
 // Soft sage-green notice box
 const noticeStyle = {
-  background: "color-mix(in srgb, var(--color-motif-yellow) 14%, white)",
+  background: "color-mix(in srgb, var(--color-motif-yellow) 14%, #FAF6EE)",
   borderColor: "color-mix(in srgb, var(--color-motif-yellow) 60%, transparent)",
   color: TEAL,
 } as const
@@ -660,7 +660,7 @@ export function GuestList() {
             style={{
               fontSize: "var(--script-size)",
               color: BUTTON,
-              textShadow: "0 1px 0 #FFFFFF",
+              textShadow: "0 1px 0 #FAF6EE",
             }}
           >
             {copy.script}
@@ -795,7 +795,7 @@ export function GuestList() {
                     placeholder={copy.search.placeholder}
                     autoFocus
                     autoComplete="off"
-                    className="w-full rounded-full border bg-white py-2.5 pl-10 pr-4 font-goudy-italic text-[0.95rem] shadow-sm outline-none transition-all duration-200 placeholder:text-[color-mix(in_srgb,var(--color-welcome-text)_55%,white)] sm:py-3 sm:text-base"
+                    className="w-full rounded-full border bg-card py-2.5 pl-10 pr-4 font-goudy-italic text-[0.95rem] shadow-sm outline-none transition-all duration-200 placeholder:text-[color-mix(in_srgb,var(--color-welcome-text)_55%,#FAF6EE)] sm:py-3 sm:text-base"
                     style={{
                       borderColor: searchQuery ? BUTTON : HAIRLINE,
                       color: palette.heading,
@@ -1177,7 +1177,7 @@ export function GuestList() {
                             formData.RSVP === "Yes"
                               ? {
                                   borderColor: palette.accent,
-                                  backgroundColor: "color-mix(in srgb, var(--color-motif-medium) 18%, white)",
+                                  backgroundColor: "color-mix(in srgb, var(--color-motif-medium) 18%, #FAF6EE)",
                                 }
                               : { borderColor: HAIRLINE, backgroundColor: IVORY }
                           }
@@ -1208,7 +1208,7 @@ export function GuestList() {
                             formData.RSVP === "No"
                               ? {
                                   borderColor: TEAL_SOFT,
-                                  backgroundColor: "color-mix(in srgb, var(--color-motif-medium) 18%, white)",
+                                  backgroundColor: "color-mix(in srgb, var(--color-motif-medium) 18%, #FAF6EE)",
                                 }
                               : { borderColor: HAIRLINE, backgroundColor: IVORY }
                           }
@@ -1280,7 +1280,7 @@ export function GuestList() {
                                         ? { background: DEEP_GRADIENT, color: IVORY, borderColor: "transparent" }
                                         : filled
                                           ? {
-                                              background: "color-mix(in srgb, var(--color-motif-medium) 18%, white)",
+                                              background: "color-mix(in srgb, var(--color-motif-medium) 18%, #FAF6EE)",
                                               color: palette.heading,
                                               borderColor: "color-mix(in srgb, var(--color-welcome-text) 45%, transparent)",
                                             }
@@ -1340,7 +1340,7 @@ export function GuestList() {
                                       style={
                                         picked
                                           ? {
-                                              background: "color-mix(in srgb, var(--color-motif-medium) 26%, white)",
+                                              background: "color-mix(in srgb, var(--color-motif-medium) 26%, #FAF6EE)",
                                               borderColor: palette.accent,
                                               color: palette.heading,
                                             }
@@ -1432,7 +1432,7 @@ export function GuestList() {
                   {/* Sticky footer — Submit is always visible */}
                   <div
                     className="flex-shrink-0 space-y-2 border-t px-4 pb-4 pt-3 sm:px-6 sm:pb-5 md:px-7"
-                    style={{ borderColor: HAIRLINE, background: "color-mix(in srgb, var(--color-motif-medium) 10%, white)" }}
+                    style={{ borderColor: HAIRLINE, background: "color-mix(in srgb, var(--color-motif-medium) 10%, #FAF6EE)" }}
                   >
                     {error && !success && (
                       <div className="rounded-lg border px-2.5 py-1.5" style={noticeStyle}>

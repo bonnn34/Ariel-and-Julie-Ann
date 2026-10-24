@@ -52,7 +52,7 @@ const C = {
 const sectionBg = "var(--color-bg-pattern-base)"
 
 // Soft white edge so text stays crisp over the circles
-const onBgGlow = "0 1px 0 rgb(255 255 255 / 85%), 0 0 12px rgb(255 255 255 / 70%)"
+const onBgGlow = "0 1px 0 rgb(250 246 238 / 85%), 0 0 12px rgb(250 246 238 / 70%)"
 
 // Warm-gray hairlines either side of a dusty-rose heart (same as the love story divider)
 const lineRight = {
@@ -528,9 +528,9 @@ export function Gallery() {
                 className={`${cinzel.className} inline-flex items-center justify-center rounded-full border px-8 py-3 text-[0.625rem] font-semibold uppercase tracking-[0.18em] transition-all duration-300 hover:scale-[1.03] hover:brightness-110 active:scale-[0.98] sm:text-[0.6875rem] sm:tracking-[0.22em]`}
                 style={{
                   background: C.blue,
-                  borderColor: "rgb(255 255 255 / 70%)",
-                  color: "#FFFFFF",
-                  boxShadow: "0 0 0 4px rgb(255 255 255 / 35%), 0 10px 22px -10px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
+                  borderColor: "rgb(250 246 238 / 70%)",
+                  color: "#FAF6EE",
+                  boxShadow: "0 0 0 4px rgb(250 246 238 / 35%), 0 10px 22px -10px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
                 }}
               >
                 {gallery.buttonText}
@@ -555,7 +555,7 @@ export function Gallery() {
       {isMounted && selectedImage && createPortal(
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center p-3 backdrop-blur-sm animate-in fade-in duration-200 sm:p-6"
-          style={{ background: "color-mix(in srgb, var(--color-welcome-navy) 35%, black 65%)" }}
+          style={{ background: "color-mix(in srgb, var(--color-welcome-navy) 35%, #101D3A 65%)" }}
           role="dialog"
           aria-modal="true"
           aria-label="Gallery lightbox"
@@ -638,10 +638,10 @@ export function Gallery() {
                   e.stopPropagation()
                   closeLightbox()
                 }}
-                className="pointer-events-auto rounded-full border border-white/20 bg-black/40 p-2 backdrop-blur-md transition-all duration-200 hover:border-white/40 hover:bg-black/60 sm:p-3"
+                className="pointer-events-auto rounded-full border border-background/20 bg-primary/40 p-2 backdrop-blur-md transition-all duration-200 hover:border-background/40 hover:bg-primary/60 sm:p-3"
                 aria-label="Close lightbox"
               >
-                <X size={20} className="text-white sm:h-6 sm:w-6" />
+                <X size={20} className="text-background sm:h-6 sm:w-6" />
               </button>
             </div>
 
@@ -653,10 +653,10 @@ export function Gallery() {
                     e.stopPropagation()
                     navigateImage("prev")
                   }}
-                  className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur-md transition-all duration-200 hover:border-white/40 hover:bg-black/60 sm:left-4 sm:p-4"
+                  className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-background/20 bg-primary/40 p-3 backdrop-blur-md transition-all duration-200 hover:border-background/40 hover:bg-primary/60 sm:left-4 sm:p-4"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft size={24} className="text-white sm:h-7 sm:w-7" />
+                  <ChevronLeft size={24} className="text-background sm:h-7 sm:w-7" />
                 </button>
                 <button
                   type="button"
@@ -664,10 +664,10 @@ export function Gallery() {
                     e.stopPropagation()
                     navigateImage("next")
                   }}
-                  className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/40 p-3 backdrop-blur-md transition-all duration-200 hover:border-white/40 hover:bg-black/60 sm:right-4 sm:p-4"
+                  className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-background/20 bg-primary/40 p-3 backdrop-blur-md transition-all duration-200 hover:border-background/40 hover:bg-primary/60 sm:right-4 sm:p-4"
                   aria-label="Next image"
                 >
-                  <ChevronRight size={24} className="text-white sm:h-7 sm:w-7" />
+                  <ChevronRight size={24} className="text-background sm:h-7 sm:w-7" />
                 </button>
               </>
             )}
@@ -696,7 +696,7 @@ export function Gallery() {
                     e.stopPropagation()
                     resetZoom()
                   }}
-                  className="absolute bottom-3 right-3 rounded-full border border-white/20 bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md transition-all duration-200 hover:bg-black/80"
+                  className="absolute bottom-3 right-3 rounded-full border border-background/20 bg-primary/60 px-3 py-1.5 text-xs font-medium text-background backdrop-blur-md transition-all duration-200 hover:bg-primary/80"
                 >
                   {gallery.resetZoomText}
                 </button>
@@ -705,7 +705,7 @@ export function Gallery() {
 
             {galleryItems.length > 1 && (
               <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 -translate-x-1/2 sm:hidden">
-                <p className="rounded-full border border-white/10 bg-black/40 px-3 py-1.5 text-xs text-white/70 backdrop-blur-sm">
+                <p className="rounded-full border border-background/10 bg-primary/40 px-3 py-1.5 text-xs text-background/70 backdrop-blur-sm">
                   {gallery.lightboxSwipeHint}
                 </p>
               </div>

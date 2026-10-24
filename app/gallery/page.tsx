@@ -35,7 +35,7 @@ const BODY = "var(--color-welcome-text)"
 const SUN = "var(--color-motif-accent)"
 
 // Soft white edge so text stays crisp over the circle pattern
-const onBgGlow = "0 1px 0 rgb(255 255 255 / 85%), 0 0 12px rgb(255 255 255 / 70%)"
+const onBgGlow = "0 1px 0 rgb(250 246 238 / 85%), 0 0 12px rgb(250 246 238 / 70%)"
 
 // Warm-gray hairlines (same as the love story divider)
 const sageDividerStyle = {
@@ -137,7 +137,7 @@ export default async function GalleryPage() {
           <span
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[120%] w-[min(40rem,110%)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
-            style={{ background: "radial-gradient(ellipse at center, rgb(255 255 255 / 75%) 0%, rgb(255 255 255 / 30%) 50%, transparent 72%)" }}
+            style={{ background: "radial-gradient(ellipse at center, rgb(250 246 238 / 75%) 0%, rgb(250 246 238 / 30%) 50%, transparent 72%)" }}
           />
           {decos.headerOrnament ? (
             <TintedDeco src={decos.headerOrnament} className="mx-auto mb-3 block h-auto w-24 select-none sm:mb-4 sm:w-32 md:w-40" />

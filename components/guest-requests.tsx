@@ -53,26 +53,26 @@ type RsvpKey = "Yes" | "No" | "Maybe" | ""
 const RSVP_STYLES: Record<RsvpKey, { label: string; badge: string; active: string; icon: ReactNode }> = {
   Yes: {
     label: "Will attend",
-    badge: "bg-green-50 text-green-700 border-green-200",
-    active: "border-green-300 bg-green-50 text-green-700",
+    badge: "bg-card text-floral-leaves border-border",
+    active: "border-border bg-card text-floral-leaves",
     icon: <CheckCircle className="h-3.5 w-3.5" />,
   },
   No: {
     label: "Can't attend",
-    badge: "bg-red-50 text-red-700 border-red-200",
-    active: "border-red-200 bg-red-50 text-red-700",
+    badge: "bg-card text-foreground border-border",
+    active: "border-border bg-card text-foreground",
     icon: <XCircle className="h-3.5 w-3.5" />,
   },
   Maybe: {
     label: "Maybe",
-    badge: "bg-amber-50 text-amber-700 border-amber-200",
-    active: "border-amber-300 bg-amber-50 text-amber-700",
+    badge: "bg-card text-foreground border-border",
+    active: "border-border bg-card text-foreground",
     icon: <HelpCircle className="h-3.5 w-3.5" />,
   },
   "": {
     label: "No answer",
-    badge: "bg-gray-50 text-gray-600 border-gray-200",
-    active: "border-gray-300 bg-gray-50 text-gray-700",
+    badge: "bg-floral-soft text-floral-leaves border-border",
+    active: "border-border bg-floral-soft text-floral-leaves",
     icon: <Clock className="h-3.5 w-3.5" />,
   },
 }
@@ -82,7 +82,7 @@ const seatsOf = (request: GuestRequest) => Math.max(MIN_SEATS, parseInt(request.
 const emailOf = (request: GuestRequest) => (request.Email && request.Email !== "Pending" ? request.Email : "")
 
 const FIELD =
-  "w-full rounded-xl border border-dash-border bg-dash-bg px-3 py-2.5 outline-none transition-colors focus:border-dash-focus focus:bg-white focus:ring-2 focus:ring-dash-focus/40"
+  "w-full rounded-xl border border-dash-border bg-dash-bg px-3 py-2.5 outline-none transition-colors focus:border-dash-focus focus:bg-card focus:ring-2 focus:ring-dash-focus/40"
 
 function FieldLabel({ htmlFor, children, required = false }: { htmlFor?: string; children: ReactNode; required?: boolean }) {
   return (
@@ -91,7 +91,7 @@ function FieldLabel({ htmlFor, children, required = false }: { htmlFor?: string;
       {required ? (
         <span className="rounded-full bg-dash-tint px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-dash-primary">Required</span>
       ) : (
-        <span className="text-[10px] font-medium uppercase tracking-wide text-gray-400">Optional</span>
+        <span className="text-[10px] font-medium uppercase tracking-wide text-floral-leaves">Optional</span>
       )}
     </label>
   )
@@ -134,7 +134,7 @@ function DialogShell({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="px-6 pt-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] text-center sm:pt-7 sm:pb-6">
-          <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-gray-300/70 sm:hidden" aria-hidden />
+          <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-floral-soft/70 sm:hidden" aria-hidden />
           {children}
         </div>
       </div>
@@ -145,9 +145,9 @@ function DialogShell({
 function RequestSummary({ request }: { request: GuestRequest }) {
   const seats = seatsOf(request)
   return (
-    <div className="mx-auto mt-4 max-w-[17rem] rounded-2xl border border-dash-border bg-white px-4 py-3">
+    <div className="mx-auto mt-4 max-w-[17rem] rounded-2xl border border-dash-border bg-card px-4 py-3">
       <p className={`${playfair.className} text-base font-semibold text-dash-ink [overflow-wrap:anywhere]`}>{request.Name}</p>
-      <p className="mt-0.5 text-xs text-gray-500">
+      <p className="mt-0.5 text-xs text-floral-leaves">
         {seats} {seats === 1 ? "seat" : "seats"} · {RSVP_STYLES[rsvpKey(request.RSVP)].label}
       </p>
     </div>
@@ -292,7 +292,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
           type="button"
           onClick={onRefresh}
           disabled={isLoading}
-          className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-white px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-card px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface disabled:opacity-50"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? "animate-spin" : ""}`} />
           Refresh
@@ -300,7 +300,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
       </div>
 
       {error && (
-        <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700" role="alert">
+        <div className="flex items-center gap-2 rounded-xl border border-border bg-card p-3 text-sm text-foreground" role="alert">
           <AlertCircle className="h-4 w-4 shrink-0" />
           <span className="flex-1">{error}</span>
           <button onClick={() => setError(null)} aria-label="Dismiss">
@@ -312,21 +312,21 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
       {/* Stats */}
       <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
         {[
-          { label: "Requests", value: stats.total, tone: "border-dash-border bg-white text-dash-primary" },
-          { label: "Will attend", value: stats.attending, tone: "border-green-200 bg-green-50 text-green-700" },
-          { label: "Maybe / no answer", value: stats.undecided, tone: "border-amber-200 bg-amber-50 text-amber-700" },
-          { label: "Seats requested", value: stats.seats, tone: "border-blue-200 bg-blue-50 text-blue-700" },
+          { label: "Requests", value: stats.total, tone: "border-dash-border bg-card text-dash-primary" },
+          { label: "Will attend", value: stats.attending, tone: "border-border bg-card text-floral-leaves" },
+          { label: "Maybe / no answer", value: stats.undecided, tone: "border-border bg-card text-foreground" },
+          { label: "Seats requested", value: stats.seats, tone: "border-border bg-card text-foreground" },
         ].map((stat) => (
           <div key={stat.label} className={`rounded-lg border p-3 shadow-sm sm:p-4 ${stat.tone}`}>
             <div className="text-xl font-bold sm:text-2xl">{stat.value}</div>
-            <div className="text-[10px] uppercase tracking-wide text-gray-600 sm:text-xs">{stat.label}</div>
+            <div className="text-[10px] uppercase tracking-wide text-floral-leaves sm:text-xs">{stat.label}</div>
           </div>
         ))}
       </div>
 
       {/* Explainer */}
       <div className="flex gap-3 rounded-xl border border-dash-border bg-dash-surface p-3 sm:p-4">
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-dash-primary shadow-sm ring-1 ring-dash-border">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-card text-dash-primary shadow-sm ring-1 ring-dash-border">
           <UserPlus className="h-4 w-4" />
         </span>
         <p className="text-xs leading-relaxed text-dash-text sm:text-sm">
@@ -337,25 +337,25 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
 
       {/* Search */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+        <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-floral-leaves" />
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search by name, email or phone..."
-          className="w-full rounded-lg border border-dash-border bg-white py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-dash-focus"
+          className="w-full rounded-lg border border-dash-border bg-card py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-dash-focus"
         />
       </div>
 
       {filteredRequests.length === 0 ? (
-        <div className="rounded-xl border border-dash-border bg-white px-6 py-12 text-center">
+        <div className="rounded-xl border border-dash-border bg-card px-6 py-12 text-center">
           <span className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-dash-surface">
             <UserPlus className="h-7 w-7 text-dash-line" />
           </span>
           <h3 className={`${playfair.className} text-lg font-semibold text-dash-ink`}>
             {searchQuery ? "No matching requests" : "No join requests"}
           </h3>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-floral-leaves">
             {isLoading
               ? "Loading requests..."
               : searchQuery
@@ -371,26 +371,26 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
               const email = emailOf(request)
               const count = seatsOf(request)
               return (
-                <div key={`${request.Name}-${index}`} className="rounded-xl border border-dash-border bg-white p-4 shadow-sm">
+                <div key={`${request.Name}-${index}`} className="rounded-xl border border-dash-border bg-card p-4 shadow-sm">
                   <div className="flex items-start justify-between gap-3">
-                    <p className="min-w-0 flex-1 font-semibold text-gray-900 [overflow-wrap:anywhere]">{request.Name}</p>
+                    <p className="min-w-0 flex-1 font-semibold text-floral-leaves [overflow-wrap:anywhere]">{request.Name}</p>
                     <RsvpBadge value={request.RSVP} />
                   </div>
 
                   <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
                     <div className="rounded-lg bg-dash-surface px-3 py-2">
-                      <p className="text-[10px] uppercase tracking-wide text-gray-500">Seats</p>
+                      <p className="text-[10px] uppercase tracking-wide text-floral-leaves">Seats</p>
                       <p className="mt-0.5 font-semibold text-dash-primary">{count}</p>
                     </div>
                     <div className="min-w-0 rounded-lg bg-dash-surface px-3 py-2">
-                      <p className="text-[10px] uppercase tracking-wide text-gray-500">Phone</p>
-                      <p className="mt-0.5 truncate font-semibold text-gray-700">{request.Phone || "—"}</p>
+                      <p className="text-[10px] uppercase tracking-wide text-floral-leaves">Phone</p>
+                      <p className="mt-0.5 truncate font-semibold text-floral-leaves">{request.Phone || "—"}</p>
                     </div>
                   </div>
 
-                  {email && <p className="mt-2.5 text-xs text-gray-600 [overflow-wrap:anywhere]">{email}</p>}
+                  {email && <p className="mt-2.5 text-xs text-floral-leaves [overflow-wrap:anywhere]">{email}</p>}
                   {request.Message && (
-                    <p className="mt-2.5 rounded-lg border border-dash-tint bg-dash-bg px-3 py-2 text-xs italic leading-relaxed text-gray-600 [overflow-wrap:anywhere]">
+                    <p className="mt-2.5 rounded-lg border border-dash-tint bg-dash-bg px-3 py-2 text-xs italic leading-relaxed text-floral-leaves [overflow-wrap:anywhere]">
                       &ldquo;{request.Message}&rdquo;
                     </p>
                   )}
@@ -398,7 +398,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                   <div className="mt-3 flex gap-2 border-t border-dash-tint pt-3">
                     <button
                       onClick={() => setConfirm({ kind: "approve", request })}
-                      className={`${actionBtn} border-transparent bg-dash-primary font-semibold text-white active:brightness-110`}
+                      className={`${actionBtn} border-transparent bg-dash-primary font-semibold text-background active:brightness-110`}
                     >
                       <Check className="h-4 w-4" /> Approve
                     </button>
@@ -412,7 +412,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                     <button
                       onClick={() => setConfirm({ kind: "delete", request })}
                       aria-label={`Delete ${request.Name}`}
-                      className={`${actionBtn} max-w-[3rem] border-red-100 text-red-600 active:bg-red-50`}
+                      className={`${actionBtn} max-w-[3rem] border-border text-foreground active:bg-card`}
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -423,7 +423,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
           </div>
 
           {/* Table (tablet & desktop) */}
-          <div className="hidden overflow-hidden rounded-xl border border-dash-border bg-white shadow-sm md:block">
+          <div className="hidden overflow-hidden rounded-xl border border-dash-border bg-card shadow-sm md:block">
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead className="bg-dash-border text-dash-ink">
@@ -440,35 +440,35 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                   {filteredRequests.map((request, index) => {
                     const email = emailOf(request)
                     return (
-                      <tr key={`${request.Name}-${index}`} className="transition-colors hover:bg-gray-50">
+                      <tr key={`${request.Name}-${index}`} className="transition-colors hover:bg-floral-soft">
                         <td className="px-4 py-4 lg:px-6">
-                          <span className="font-medium text-gray-800">{request.Name}</span>
+                          <span className="font-medium text-floral-leaves">{request.Name}</span>
                         </td>
                         <td className="px-4 py-4 text-xs lg:px-6">
                           {request.Phone && (
-                            <div className="flex items-center gap-1.5 text-gray-600">
+                            <div className="flex items-center gap-1.5 text-floral-leaves">
                               <Phone className="h-3 w-3" />
                               {request.Phone}
                             </div>
                           )}
                           {email && (
-                            <div className="mt-0.5 flex items-center gap-1.5 text-gray-500">
+                            <div className="mt-0.5 flex items-center gap-1.5 text-floral-leaves">
                               <Mail className="h-3 w-3" />
                               <span className="max-w-[12rem] truncate">{email}</span>
                             </div>
                           )}
-                          {!request.Phone && !email && <span className="text-gray-400">—</span>}
+                          {!request.Phone && !email && <span className="text-floral-leaves">—</span>}
                         </td>
                         <td className="px-4 py-4 text-center lg:px-6">
                           <span className="text-sm font-semibold text-dash-primary">{seatsOf(request)}</span>
                         </td>
                         <td className="px-4 py-4 lg:px-6">
                           {request.Message ? (
-                            <p className="line-clamp-2 max-w-xs text-xs italic text-gray-600" title={request.Message}>
+                            <p className="line-clamp-2 max-w-xs text-xs italic text-floral-leaves" title={request.Message}>
                               &ldquo;{request.Message}&rdquo;
                             </p>
                           ) : (
-                            <span className="text-xs text-gray-400">—</span>
+                            <span className="text-xs text-floral-leaves">—</span>
                           )}
                         </td>
                         <td className="px-4 py-4 text-center lg:px-6">
@@ -478,21 +478,21 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                           <div className="flex items-center justify-end gap-2">
                             <button
                               onClick={() => setConfirm({ kind: "approve", request })}
-                              className="inline-flex items-center gap-1.5 rounded-full bg-dash-primary px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition-all hover:brightness-110"
+                              className="inline-flex items-center gap-1.5 rounded-full bg-dash-primary px-3.5 py-1.5 text-xs font-semibold text-background shadow-sm transition-all hover:brightness-110"
                             >
                               <Check className="h-3.5 w-3.5" />
                               Approve
                             </button>
                             <button
                               onClick={() => handleEditClick(request)}
-                              className="text-blue-500 transition-colors hover:text-blue-700"
+                              className="text-foreground transition-colors hover:text-foreground"
                               title="Edit request"
                             >
                               <Edit2 className="h-4 w-4" />
                             </button>
                             <button
                               onClick={() => setConfirm({ kind: "delete", request })}
-                              className="text-red-500 transition-colors hover:text-red-700"
+                              className="text-foreground transition-colors hover:text-foreground"
                               title="Delete request"
                             >
                               <Trash2 className="h-4 w-4" />
@@ -511,18 +511,18 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
 
       {/* ── Edit request ─────────────────────────────────────────────────── */}
       {editingRequest && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-0 sm:items-center sm:p-4">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-primary/50 p-0 sm:items-center sm:p-4">
           <form
             onSubmit={handleUpdateRequest}
-            className="dash-sheet relative max-h-[94dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-white shadow-2xl sm:max-h-[90vh] sm:rounded-2xl"
+            className="dash-sheet relative max-h-[94dvh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-card shadow-2xl sm:max-h-[90vh] sm:rounded-2xl"
           >
             <div className="sticky top-0 z-20 border-b border-dash-border bg-dash-bg/95 px-4 pt-3 pb-4 backdrop-blur-sm sm:px-6 sm:py-5">
-              <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-gray-300/70 sm:hidden" aria-hidden />
+              <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-floral-soft/70 sm:hidden" aria-hidden />
               <button
                 type="button"
                 onClick={closeEdit}
                 aria-label="Close"
-                className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-dash-border bg-white text-gray-500 shadow-sm transition-colors hover:text-dash-ink sm:right-5 sm:top-5"
+                className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-dash-border bg-card text-floral-leaves shadow-sm transition-colors hover:text-dash-ink sm:right-5 sm:top-5"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -531,7 +531,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                 <h2 className={`${playfair.className} mt-1 text-[1.45rem] font-semibold leading-tight text-dash-ink sm:text-2xl`}>
                   Edit Request
                 </h2>
-                <p className="mx-auto mt-1.5 max-w-xs text-[11px] leading-relaxed text-gray-500 sm:mx-0 sm:max-w-none sm:text-xs">
+                <p className="mx-auto mt-1.5 max-w-xs text-[11px] leading-relaxed text-floral-leaves sm:mx-0 sm:max-w-none sm:text-xs">
                   Correct the details before approving this guest.
                 </p>
               </div>
@@ -540,7 +540,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
             <div className="space-y-4 px-4 pt-4 sm:p-6">
               <div className="space-y-1">
                 <FieldLabel htmlFor="req-name">Name</FieldLabel>
-                <input id="req-name" value={formData.Name} readOnly className={`${FIELD} cursor-not-allowed bg-gray-50 text-gray-600`} />
+                <input id="req-name" value={formData.Name} readOnly className={`${FIELD} cursor-not-allowed bg-floral-soft text-floral-leaves`} />
               </div>
 
               <div className="space-y-1">
@@ -557,7 +557,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                         aria-checked={active}
                         onClick={() => setFormData((f) => ({ ...f, RSVP: value }))}
                         className={`rounded-xl border px-2 py-2.5 text-xs font-semibold transition-colors sm:text-sm ${
-                          active ? style.active : "border-dash-border bg-white text-gray-500 hover:text-dash-ink"
+                          active ? style.active : "border-dash-border bg-card text-floral-leaves hover:text-dash-ink"
                         }`}
                       >
                         {style.label}
@@ -575,7 +575,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                     onClick={() => setSeats(seats - 1)}
                     disabled={seats <= MIN_SEATS}
                     aria-label="Fewer seats"
-                    className="flex w-12 shrink-0 items-center justify-center border-r border-dash-border text-dash-primary transition-colors hover:bg-dash-tint disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-transparent"
+                    className="flex w-12 shrink-0 items-center justify-center border-r border-dash-border text-dash-primary transition-colors hover:bg-dash-tint disabled:cursor-not-allowed disabled:text-floral-leaves disabled:hover:bg-transparent"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
@@ -590,7 +590,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                       onChange={(e) => setSeats(parseInt(e.target.value) || MIN_SEATS)}
                       className="dash-stepper-input w-16 bg-transparent text-center text-xl font-bold leading-none text-dash-ink outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                     />
-                    <span className="mt-0.5 text-[10px] font-medium uppercase tracking-wide text-gray-400">
+                    <span className="mt-0.5 text-[10px] font-medium uppercase tracking-wide text-floral-leaves">
                       {seats === 1 ? "guest" : "guests"}
                     </span>
                   </div>
@@ -599,7 +599,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                     onClick={() => setSeats(seats + 1)}
                     disabled={seats >= MAX_SEATS}
                     aria-label="More seats"
-                    className="flex w-12 shrink-0 items-center justify-center border-l border-dash-border text-dash-primary transition-colors hover:bg-dash-tint disabled:cursor-not-allowed disabled:text-gray-300 disabled:hover:bg-transparent"
+                    className="flex w-12 shrink-0 items-center justify-center border-l border-dash-border text-dash-primary transition-colors hover:bg-dash-tint disabled:cursor-not-allowed disabled:text-floral-leaves disabled:hover:bg-transparent"
                   >
                     <Plus className="h-4 w-4" />
                   </button>
@@ -643,20 +643,20 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                 />
               </div>
 
-              <div className="sticky bottom-0 z-10 -mx-4 flex flex-col-reverse gap-2 border-t border-dash-border bg-white px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:static sm:mx-0 sm:flex-row sm:justify-end sm:gap-3 sm:px-0 sm:pt-5 sm:pb-0">
+              <div className="sticky bottom-0 z-10 -mx-4 flex flex-col-reverse gap-2 border-t border-dash-border bg-card px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:static sm:mx-0 sm:flex-row sm:justify-end sm:gap-3 sm:px-0 sm:pt-5 sm:pb-0">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={closeEdit}
                   disabled={busy === "update"}
-                  className="h-11 w-full rounded-full border-dash-border px-7 text-sm font-medium text-gray-600 hover:bg-dash-surface hover:text-dash-ink sm:w-auto"
+                  className="h-11 w-full rounded-full border-dash-border px-7 text-sm font-medium text-floral-leaves hover:bg-dash-surface hover:text-dash-ink sm:w-auto"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
                   disabled={busy === "update"}
-                  className="h-11 w-full rounded-full bg-dash-primary px-8 text-sm font-semibold tracking-wide text-white shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99] disabled:opacity-50 sm:w-auto"
+                  className="h-11 w-full rounded-full bg-dash-primary px-8 text-sm font-semibold tracking-wide text-background shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99] disabled:opacity-50 sm:w-auto"
                 >
                   {busy === "update" ? (
                     <span className="flex items-center gap-2">
@@ -689,7 +689,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                 Add to your guest list?
               </h3>
               <RequestSummary request={confirm.request} />
-              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-gray-600">
+              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-floral-leaves">
                 They&apos;ll be able to find their name on your invitation and RSVP. The request will be cleared from this list.
               </p>
             </>
@@ -703,7 +703,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                 Delete this request?
               </h3>
               <RequestSummary request={confirm.request} />
-              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-gray-600">
+              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-floral-leaves">
                 The request will be removed and they won&apos;t be added to your guest list. This can&apos;t be undone.
               </p>
             </>
@@ -715,14 +715,14 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
               variant="outline"
               autoFocus
               onClick={() => setConfirm(null)}
-              className="h-11 w-full rounded-full border-dash-border bg-white text-sm font-medium text-dash-ink hover:bg-dash-surface sm:flex-1"
+              className="h-11 w-full rounded-full border-dash-border bg-card text-sm font-medium text-dash-ink hover:bg-dash-surface sm:flex-1"
             >
               {confirm.kind === "approve" ? "Not Yet" : "Keep Request"}
             </Button>
             <Button
               type="button"
               onClick={() => void runConfirm()}
-              className={`h-11 w-full rounded-full text-sm font-semibold text-white transition-all hover:brightness-110 active:scale-[0.99] sm:flex-1 ${
+              className={`h-11 w-full rounded-full text-sm font-semibold text-background transition-all hover:brightness-110 active:scale-[0.99] sm:flex-1 ${
                 confirm.kind === "approve"
                   ? "bg-dash-primary shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)]"
                   : "bg-dash-danger shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-danger)_70%,transparent)]"
@@ -752,7 +752,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
             <h3 className={`${playfair.className} text-lg font-semibold text-dash-ink`}>
               {busy === "approve" ? "Adding to guest list…" : "Deleting request…"}
             </h3>
-            <p className="mt-1 text-xs text-gray-500">This only takes a moment.</p>
+            <p className="mt-1 text-xs text-floral-leaves">This only takes a moment.</p>
           </div>
         </div>
       )}
@@ -767,17 +767,17 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
         >
           <div className="dash-pop relative w-full max-w-sm overflow-hidden rounded-3xl border border-dash-border bg-dash-bg shadow-[0_30px_60px_-25px_color-mix(in_srgb,var(--color-dash-ink-strong)_55%,transparent)]">
             <div className="relative overflow-hidden bg-dash-primary px-6 pt-7 pb-12 text-center">
-              <span className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full bg-white/10" aria-hidden />
-              <span className="pointer-events-none absolute -right-8 top-6 h-20 w-20 rounded-full bg-white/10" aria-hidden />
-              <p className={`${cinzel.className} relative text-[10px] font-semibold uppercase tracking-[0.3em] text-white/75`}>
+              <span className="pointer-events-none absolute -left-10 -top-10 h-32 w-32 rounded-full bg-card/10" aria-hidden />
+              <span className="pointer-events-none absolute -right-8 top-6 h-20 w-20 rounded-full bg-card/10" aria-hidden />
+              <p className={`${cinzel.className} relative text-[10px] font-semibold uppercase tracking-[0.3em] text-background/75`}>
                 {done.kind === "approved" ? "Guest list updated" : done.kind === "updated" ? "Request updated" : "Requests updated"}
               </p>
-              <h3 id="req-done-title" className={`${playfair.className} relative mt-1.5 text-[1.6rem] font-semibold leading-tight text-white`}>
+              <h3 id="req-done-title" className={`${playfair.className} relative mt-1.5 text-[1.6rem] font-semibold leading-tight text-background`}>
                 {done.kind === "approved" ? "Request Approved" : done.kind === "updated" ? "Changes Saved" : "Request Deleted"}
               </h3>
             </div>
             <div className="relative -mt-9 flex justify-center">
-              <span className="dash-pop-badge flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border-4 border-dash-bg bg-white shadow-lg">
+              <span className="dash-pop-badge flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border-4 border-dash-bg bg-card shadow-lg">
                 <span
                   className={`flex h-12 w-12 items-center justify-center rounded-full ${
                     done.kind === "deleted" ? "bg-dash-danger-soft text-dash-danger-text" : "bg-dash-tint text-dash-primary"
@@ -800,7 +800,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
                 <span className="h-1 w-1 rotate-45 bg-dash-accent" />
                 <span className="h-px flex-1 bg-dash-line" />
               </div>
-              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-gray-600">
+              <p className="mx-auto mt-3 max-w-[17rem] text-sm leading-relaxed text-floral-leaves">
                 {done.kind === "approved"
                   ? "is now on your guest list and can find their name on your invitation to RSVP."
                   : done.kind === "updated"
@@ -809,7 +809,7 @@ export function GuestRequests({ requests, onRefresh, onApproveRequest, isLoading
               </p>
               <Button
                 onClick={() => setDone(null)}
-                className="mt-6 h-11 w-full rounded-full bg-dash-primary text-sm font-semibold tracking-wide text-white shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99]"
+                className="mt-6 h-11 w-full rounded-full bg-dash-primary text-sm font-semibold tracking-wide text-background shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99]"
               >
                 Done
               </Button>

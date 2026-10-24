@@ -111,8 +111,8 @@ const dividerLineStyle = {
 const primaryBtnStyle: CSSProperties = {
   background:
     "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)",
-  borderColor: "rgb(255 255 255 / 70%)",
-  color: "#FFFFFF",
+  borderColor: "rgb(250 246 238 / 70%)",
+  color: "#FAF6EE",
   boxShadow:
     "0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent), 0 12px 24px -12px var(--invite-shadow)",
 }
@@ -120,7 +120,7 @@ const primaryBtnStyle: CSSProperties = {
 // White pill with a sky border and navy text
 const secondaryBtnStyle: CSSProperties = {
   color: INK,
-  backgroundColor: "#FFFFFF",
+  backgroundColor: "#FAF6EE",
   borderColor: "color-mix(in srgb, var(--color-motif-medium) 75%, transparent)",
 }
 
@@ -363,9 +363,9 @@ function ProposalCard({ children }: { children: ReactNode }) {
         style={{
           ...archRadius(),
           // Slightly see-through paper so the photo strip behind reads softly at the edges
-          background: `radial-gradient(90% 30% at 50% 0%, #FFFFFF 0%, transparent 70%), linear-gradient(175deg, rgb(255 255 255 / 96%) 0%, color-mix(in srgb, ${IVORY} 94%, transparent) 55%, color-mix(in srgb, ${INNER_SURFACE} 94%, transparent) 100%)`,
+          background: `radial-gradient(90% 30% at 50% 0%, #FAF6EE 0%, transparent 70%), linear-gradient(175deg, rgb(250 246 238 / 96%) 0%, color-mix(in srgb, ${IVORY} 94%, transparent) 55%, color-mix(in srgb, ${INNER_SURFACE} 94%, transparent) 100%)`,
           borderColor: "color-mix(in srgb, var(--color-motif-medium) 70%, transparent)",
-          boxShadow: "0 30px 70px -36px var(--invite-shadow), inset 0 1px 0 rgb(255 255 255 / 85%)",
+          boxShadow: "0 30px 70px -36px var(--invite-shadow), inset 0 1px 0 rgb(250 246 238 / 85%)",
         }}
       >
         {/* Double hairline frame following the arch, a heart at the top and bottom */}
@@ -374,10 +374,10 @@ function ProposalCard({ children }: { children: ReactNode }) {
           style={{ ...archRadius("var(--frame-1)"), border: `1px solid ${GOLD_BORDER_SOFT}` }}
           aria-hidden
         >
-          <span className="absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-0.5">
+          <span className="absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-1/2 rounded-full bg-card p-0.5">
             <HeartMark className="h-3 w-3" />
           </span>
-          <span className="absolute bottom-0 left-1/2 flex -translate-x-1/2 translate-y-1/2 rounded-full bg-white p-0.5">
+          <span className="absolute bottom-0 left-1/2 flex -translate-x-1/2 translate-y-1/2 rounded-full bg-card p-0.5">
             <HeartMark className="h-3 w-3" />
           </span>
         </div>
@@ -898,7 +898,7 @@ function ProposalPageInner({ role }: ProposalPageProps) {
                     value={preferredName}
                     onChange={(e) => setPreferredName(e.target.value)}
                     // 16px text on phones so iOS doesn't zoom in while typing
-                    className="font-goudy-italic w-full select-text rounded-full px-5 py-3 text-base transition-all focus:outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-motif-medium)_45%,transparent)] placeholder:text-[color-mix(in_srgb,var(--color-welcome-text)_55%,white)] focus:border-[var(--color-welcome-heading)]"
+                    className="font-goudy-italic w-full select-text rounded-full px-5 py-3 text-base transition-all focus:outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-motif-medium)_45%,transparent)] placeholder:text-[color-mix(in_srgb,var(--color-welcome-text)_55%,#FAF6EE)] focus:border-[var(--color-welcome-heading)]"
                     style={{
                       color: INK,
                       backgroundColor: IVORY,

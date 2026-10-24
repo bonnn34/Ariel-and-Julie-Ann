@@ -31,7 +31,7 @@ export interface StaggeredMenuProps {
 // Colors sourced from globals.css @theme inline — edit there to update everywhere
 const HERO_ACCENT = 'var(--color-motif-accent)';
 const MENU_PANEL_BG =
-  'linear-gradient(170deg, #FFFFFF 0%, var(--color-motif-soft) 45%, color-mix(in srgb, var(--color-motif-medium) 22%, white) 100%)';
+  'linear-gradient(170deg, #FAF6EE 0%, var(--color-motif-soft) 45%, color-mix(in srgb, var(--color-motif-medium) 22%, #FAF6EE) 100%)';
 const MENU_TEXT = 'var(--color-welcome-navy)';
 const MENU_TEXT_MUTED = 'var(--color-welcome-heading)';
 
@@ -510,7 +510,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-icon { position: relative; width: 22px; height: 16px; flex: 0 0 22px; display: inline-flex; align-items: center; justify-content: center; will-change: transform; }
 .sm-scope .sm-panel-itemWrap { position: relative; overflow: hidden; line-height: 1; }
 .sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform, opacity; }
-.sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: linear-gradient(170deg, #FFFFFF 0%, var(--color-motif-soft) 45%, color-mix(in srgb, var(--color-motif-medium) 22%, white) 100%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 6.5em 2.25em 2.25em 2.25em; overflow-y: auto; z-index: 10; border-left: 1px solid color-mix(in srgb, var(--color-motif-medium) 55%, transparent); }
+.sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: linear-gradient(170deg, #FAF6EE 0%, var(--color-motif-soft) 45%, color-mix(in srgb, var(--color-motif-medium) 22%, #FAF6EE) 100%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 6.5em 2.25em 2.25em 2.25em; overflow-y: auto; z-index: 10; border-left: 1px solid color-mix(in srgb, var(--color-motif-medium) 55%, transparent); }
 .sm-scope [data-position='left'] .staggered-menu-panel { border-left: none; border-right: 1px solid color-mix(in srgb, var(--color-motif-medium) 55%, transparent); }
 .sm-scope [data-position='left'] .staggered-menu-panel { right: auto; left: 0; }
 .sm-scope .sm-prelayers { position: absolute; top: 0; right: 0; bottom: 0; width: clamp(260px, 38vw, 420px); pointer-events: none; z-index: 5; }

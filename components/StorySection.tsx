@@ -189,12 +189,12 @@ function PlainOpenChapter({
 
       {showDivider && !isLast && (
         <div className="story-open-divider flex items-center justify-center gap-2" aria-hidden>
-          <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to right, transparent, #D4B47C)" }} />
+          <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to right, transparent, #D7A041)" }} />
           {/* Deep slate heart — the one accent between chapters */}
-          <svg viewBox="0 0 24 24" className="h-3 w-3 sm:h-3.5 sm:w-3.5" fill="#C58F9D">
+          <svg viewBox="0 0 24 24" className="h-3 w-3 sm:h-3.5 sm:w-3.5" fill="#E8D36A">
             <path d={HEART_PATH} />
           </svg>
-          <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to left, transparent, #D4B47C)" }} />
+          <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to left, transparent, #D7A041)" }} />
         </div>
       )}
     </div>
@@ -255,7 +255,7 @@ export const StorySection: React.FC<StorySectionProps> = ({
         background: "var(--color-welcome-bg-soft)",
         border: "1px solid color-mix(in srgb, var(--color-motif-deep) 10%, transparent)",
         boxShadow:
-          "0 8px 24px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, white 70%, transparent)",
+          "0 8px 24px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, #FAF6EE 70%, transparent)",
       }
 
   const rotation = layout === "image-left" ? "rotate-1 md:rotate-2" : "-rotate-1 md:-rotate-2"
@@ -348,7 +348,7 @@ export const StorySection: React.FC<StorySectionProps> = ({
                       priority={chapterIndex < 2}
                     />
                     {isDark && (
-                      <div className="pointer-events-none absolute inset-0 z-10 bg-black/5 mix-blend-multiply" />
+                      <div className="pointer-events-none absolute inset-0 z-10 bg-primary/5 mix-blend-multiply" />
                     )}
                   </div>
                 </div>

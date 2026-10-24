@@ -1273,7 +1273,7 @@ type FoldGeo = {
   scale: number;
 };
 
-const FOLD_SHADE = '#2E2A2B';
+const FOLD_SHADE = '#101D3A';
 
 /** A paper fold: a crisp dark crease with light catching the edge just below it */
 function FoldCrease({ d }: { d: string }) {
@@ -1298,8 +1298,8 @@ function FoldDefs({ id, scale }: { id: string; scale: number }) {
         <stop offset="1" stopColor={FOLD_SHADE} stopOpacity="0" />
       </linearGradient>
       <linearGradient id={`${id}-bottom`} x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stopColor="#FFFFFF" stopOpacity="0.2" />
-        <stop offset="0.55" stopColor="#FFFFFF" stopOpacity="0.06" />
+        <stop offset="0" stopColor="#FAF6EE" stopOpacity="0.2" />
+        <stop offset="0.55" stopColor="#FAF6EE" stopOpacity="0.06" />
         <stop offset="1" stopColor={FOLD_SHADE} stopOpacity="0.06" />
       </linearGradient>
       <filter id={`${id}-soft`} x="-20%" y="-20%" width="140%" height="140%">

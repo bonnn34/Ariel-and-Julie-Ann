@@ -47,7 +47,7 @@ const cardStyle = {
   borderStyle: "solid",
   borderColor: "color-mix(in srgb, var(--color-motif-deep) 14%, transparent)",
   boxShadow:
-    "0 8px 28px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, white 70%, transparent)",
+    "0 8px 28px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, #FAF6EE 70%, transparent)",
 } as const
 
 function OutsideDivider() {
@@ -142,7 +142,7 @@ export function VideoMessage() {
           style={cardStyle}
         >
           <div
-            className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-br from-white/35 via-white/8 to-transparent"
+            className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-br from-card/35 via-card/8 to-transparent"
             aria-hidden
           />
 

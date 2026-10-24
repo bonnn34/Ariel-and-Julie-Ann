@@ -40,12 +40,12 @@ const aboveTheBeyond = localFont({
 // Motif colors (app/globals.css) — no yellow for text (hard to read):
 // navy titles, dusty-blue labels, body-blue text, deep sage green for your name,
 // dusty-blue buttons; sunshine only as a tiny ornament.
-const IVORY = "#FFFFFF"
+const IVORY = "#FAF6EE"
 const GOLD = "var(--color-welcome-heading)" // accent labels & icons (dusty blue)
 const NAVY = "var(--color-welcome-navy)"
 const SCRIPT = "var(--color-welcome-heading)"
 const BODY = "var(--color-welcome-text)"
-const LEAF = "color-mix(in srgb, var(--color-motif-yellow) 70%, #2C3619)" // deep sage green
+const LEAF = "color-mix(in srgb, var(--color-motif-yellow) 70%, #101D3A)" // deep sage green
 const SUN = "var(--color-motif-accent)"
 const NAV_GOLD =
   "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)"
@@ -54,7 +54,7 @@ const GOLD_BORDER_SOFT = "color-mix(in srgb, var(--color-motif-medium) 35%, tran
 const CHAMPAGNE = "var(--color-motif-medium)" // sky — used for soft highlight tints
 
 // Soft white edge so text stays crisp over the circle pattern
-const textGlow = "0 1px 0 rgb(255 255 255 / 90%), 0 0 12px rgb(255 255 255 / 75%)"
+const textGlow = "0 1px 0 rgb(250 246 238 / 90%), 0 0 12px rgb(250 246 238 / 75%)"
 
 // Sage hairlines
 const goldDividerStyle = {
@@ -67,22 +67,22 @@ const goldDividerStyleLeft = {
 
 const cardStyle = {
   background:
-    "radial-gradient(90% 35% at 50% 0%, rgb(255 255 255 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, color-mix(in srgb, var(--color-motif-medium) 10%, white) 100%)",
+    "radial-gradient(90% 35% at 50% 0%, rgb(250 246 238 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FAF6EE 0%, color-mix(in srgb, var(--color-motif-medium) 10%, #FAF6EE) 100%)",
   borderColor: GOLD_BORDER,
   borderWidth: "1px",
   borderStyle: "solid" as const,
   boxShadow:
-    "0 18px 38px -22px color-mix(in srgb, var(--color-welcome-navy) 50%, transparent), inset 0 1px 0 rgb(255 255 255 / 80%)",
+    "0 18px 38px -22px color-mix(in srgb, var(--color-welcome-navy) 50%, transparent), inset 0 1px 0 rgb(250 246 238 / 80%)",
 } as const
 
 const innerSurfaceStyle = {
-  background: "color-mix(in srgb, var(--color-motif-medium) 12%, white)",
+  background: "color-mix(in srgb, var(--color-motif-medium) 12%, #FAF6EE)",
   borderColor: GOLD_BORDER_SOFT,
 } as const
 
 const primaryButtonStyle = {
   background: NAV_GOLD,
-  borderColor: "rgb(255 255 255 / 70%)",
+  borderColor: "rgb(250 246 238 / 70%)",
   color: IVORY,
   boxShadow:
     "0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent), 0 10px 22px -10px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
@@ -284,17 +284,17 @@ function RsvpBadge({ status, compact = false }: { status: RsvpStatus; compact?: 
           : "px-2 py-0.5 text-[0.55rem] sm:px-2.5 sm:text-[0.625rem]"
       }`}
       style={{
-        color: isConfirmed ? LEAF : isDeclined ? "color-mix(in srgb, var(--color-welcome-text) 65%, white)" : GOLD,
+        color: isConfirmed ? LEAF : isDeclined ? "color-mix(in srgb, var(--color-welcome-text) 65%, #FAF6EE)" : GOLD,
         borderColor: isConfirmed
           ? "color-mix(in srgb, var(--color-motif-yellow) 70%, transparent)"
           : isDeclined
             ? "color-mix(in srgb, var(--color-welcome-text) 25%, transparent)"
             : GOLD_BORDER,
         backgroundColor: isConfirmed
-          ? "color-mix(in srgb, var(--color-motif-yellow) 16%, white)"
+          ? "color-mix(in srgb, var(--color-motif-yellow) 16%, #FAF6EE)"
           : isDeclined
-            ? "color-mix(in srgb, var(--color-welcome-text) 6%, white)"
-            : "color-mix(in srgb, var(--color-motif-medium) 14%, white)",
+            ? "color-mix(in srgb, var(--color-welcome-text) 6%, #FAF6EE)"
+            : "color-mix(in srgb, var(--color-motif-medium) 14%, #FAF6EE)",
       }}
     >
       <Icon className={compact ? "h-2.5 w-2.5" : "h-3 w-3"} aria-hidden />
@@ -504,7 +504,7 @@ export function TableFinder() {
           <span
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-[38%] -z-10 h-[90%] w-[min(40rem,120%)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
-            style={{ background: "radial-gradient(ellipse at center, rgb(255 255 255 / 75%) 0%, rgb(255 255 255 / 30%) 50%, transparent 72%)" }}
+            style={{ background: "radial-gradient(ellipse at center, rgb(250 246 238 / 75%) 0%, rgb(250 246 238 / 30%) 50%, transparent 72%)" }}
           />
           <div className="mx-auto mb-4 sm:mb-5">
             <OutsideDivider />
@@ -603,13 +603,13 @@ export function TableFinder() {
                   }
                 }}
                 placeholder="Search your name..."
-                className="w-full rounded-full border py-3.5 pl-12 pr-5 font-goudy-italic text-base outline-none transition-shadow duration-300 placeholder:text-[color-mix(in_srgb,var(--color-welcome-text)_55%,white)] focus:border-[var(--color-welcome-heading)] focus:shadow-lg sm:py-4 sm:pl-14"
+                className="w-full rounded-full border py-3.5 pl-12 pr-5 font-goudy-italic text-base outline-none transition-shadow duration-300 placeholder:text-[color-mix(in_srgb,var(--color-welcome-text)_55%,#FAF6EE)] focus:border-[var(--color-welcome-heading)] focus:shadow-lg sm:py-4 sm:pl-14"
                 style={{
                   borderColor: GOLD_BORDER,
                   color: NAVY,
                   backgroundColor: IVORY,
                   boxShadow:
-                    "0 0 0 4px rgb(255 255 255 / 45%), 0 12px 28px -14px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent)",
+                    "0 0 0 4px rgb(250 246 238 / 45%), 0 12px 28px -14px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent)",
                 }}
                 autoComplete="off"
                 autoCorrect="off"
@@ -905,7 +905,7 @@ export function TableFinder() {
                             className="flex items-center justify-between gap-2 rounded-lg px-1.5 py-1.5 sm:px-2"
                             style={{
                               backgroundColor: isSelected
-                                ? "color-mix(in srgb, var(--color-motif-yellow) 18%, white)"
+                                ? "color-mix(in srgb, var(--color-motif-yellow) 18%, #FAF6EE)"
                                 : "transparent",
                             }}
                           >

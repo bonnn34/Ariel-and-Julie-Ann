@@ -104,7 +104,7 @@
   height: 100%;
   width: 82vw;
   overflow: hidden;
-  background: color-mix(in srgb, var(--color-motif-cream) 70%, white);
+  background: color-mix(in srgb, var(--color-motif-cream) 70%, #FAF6EE);
 }
 
 .loading-screen__slide-photo > img {
@@ -148,7 +148,7 @@
 
 .loading-screen--invitation .loading-screen__slide-photo,
 .invite-photo-backdrop .loading-screen__slide-photo {
-  background: color-mix(in srgb, var(--color-motif-cream) 45%, white);
+  background: color-mix(in srgb, var(--color-motif-cream) 45%, #FAF6EE);
   filter: sepia(0.04) saturate(0.92) brightness(1.08) contrast(1.02) hue-rotate(-8deg);
 }
 
@@ -303,7 +303,7 @@
 }
 
 .loading-screen__std-box-label {
-  color: rgb(255 248 240 / 92%);
+  color: rgb(250 246 238 / 92%);
   font-family: var(--font-cinzel, "Cinzel", serif);
   letter-spacing: 0.24em;
   text-shadow: 0 1px 8px color-mix(in srgb, var(--ls-shadow) 60%, transparent);
@@ -436,7 +436,7 @@
   height: 3px;
   border-radius: 999px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--color-motif-silver) 55%, white);
+  background: color-mix(in srgb, var(--color-motif-silver) 55%, #FAF6EE);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-welcome-gold) 22%, transparent);
 }
 
@@ -449,7 +449,7 @@
   animation: ls-std-progress linear forwards;
   background: linear-gradient(
     90deg,
-    color-mix(in srgb, var(--color-motif-yellow) 85%, white) 0%,
+    color-mix(in srgb, var(--color-motif-yellow) 85%, #FAF6EE) 0%,
     var(--color-welcome-gold) 55%,
     color-mix(in srgb, var(--color-motif-blush) 35%, var(--color-welcome-gold)) 100%
   );
@@ -490,7 +490,7 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ls-butter);
-  text-shadow: 0 1px 12px rgb(26 32 18 / 55%);
+  text-shadow: 0 1px 12px rgb(16 29 58 / 55%);
 }
 
 .loading-screen__verse-text {
@@ -508,7 +508,7 @@
   font-size: clamp(1.15rem, 5.2vw, 1.72rem);
   line-height: 1.58;
   color: var(--ls-cream);
-  text-shadow: 0 2px 16px rgb(26 32 18 / 62%);
+  text-shadow: 0 2px 16px rgb(16 29 58 / 62%);
 }
 
 .loading-screen__quote-mark {
@@ -520,7 +520,7 @@
   line-height: 1;
   color: var(--ls-mustard);
   opacity: 0.72;
-  text-shadow: 0 2px 12px rgb(26 32 18 / 45%);
+  text-shadow: 0 2px 12px rgb(16 29 58 / 45%);
   pointer-events: none;
   user-select: none;
 }
@@ -554,7 +554,7 @@
   color: var(--ls-cream);
   opacity: 0.94;
   text-align: center;
-  text-shadow: 0 1px 12px rgb(26 32 18 / 55%);
+  text-shadow: 0 1px 12px rgb(16 29 58 / 55%);
 }
 
 .loading-screen__kicker {
@@ -565,7 +565,7 @@
   text-transform: uppercase;
   color: var(--ls-butter);
   opacity: 0.92;
-  text-shadow: 0 1px 10px rgb(26 32 18 / 50%);
+  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
 }
 
 .loading-screen__names {
@@ -589,7 +589,7 @@
   );
   pointer-events: none;
   user-select: none;
-  filter: drop-shadow(0 4px 18px rgb(26 32 18 / 45%));
+  filter: drop-shadow(0 4px 18px rgb(16 29 58 / 45%));
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -623,7 +623,7 @@
   border-radius: 50%;
   background: var(--ls-mustard);
   transform: translate(-50%, -50%) rotate(45deg);
-  box-shadow: 0 0 0 2px rgb(247 243 233 / 18%);
+  box-shadow: 0 0 0 2px rgb(250 246 238 / 18%);
 }
 
 .loading-screen__date-block {
@@ -640,7 +640,7 @@
   text-transform: uppercase;
   color: var(--ls-cream);
   opacity: 0.82;
-  text-shadow: 0 1px 10px rgb(26 32 18 / 50%);
+  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
 }
 
 .loading-screen__date {
@@ -649,7 +649,7 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ls-cream);
-  text-shadow: 0 1px 12px rgb(26 32 18 / 55%);
+  text-shadow: 0 1px 12px rgb(16 29 58 / 55%);
 }
 
 .loading-screen__ceremony {
@@ -667,7 +667,7 @@
   text-transform: uppercase;
   color: var(--ls-butter);
   opacity: 0.95;
-  text-shadow: 0 1px 10px rgb(26 32 18 / 50%);
+  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
 }
 
 .loading-screen__ceremony-meta {
@@ -677,7 +677,7 @@
   text-transform: uppercase;
   color: var(--ls-cream);
   opacity: 0.9;
-  text-shadow: 0 1px 10px rgb(26 32 18 / 50%);
+  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
 }
 
 .loading-screen__footer {
@@ -697,15 +697,15 @@
   -webkit-mask-image: linear-gradient(
     180deg,
     transparent 0%,
-    #000 18%,
-    #000 82%,
+    #101D3A 18%,
+    #101D3A 82%,
     transparent 100%
   );
   mask-image: linear-gradient(
     180deg,
     transparent 0%,
-    #000 18%,
-    #000 82%,
+    #101D3A 18%,
+    #101D3A 82%,
     transparent 100%
   );
 }
@@ -731,7 +731,7 @@
   text-transform: uppercase;
   color: var(--ls-cream);
   opacity: 0.88;
-  text-shadow: 0 1px 10px rgb(26 32 18 / 50%);
+  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
 }
 
 .loading-screen__track {
@@ -739,8 +739,8 @@
   height: 3px;
   border-radius: 999px;
   overflow: hidden;
-  background: rgb(247 243 233 / 28%);
-  box-shadow: inset 0 0 0 1px rgb(247 243 233 / 12%);
+  background: rgb(250 246 238 / 28%);
+  box-shadow: inset 0 0 0 1px rgb(250 246 238 / 12%);
 }
 
 .loading-screen__bar {
@@ -929,7 +929,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgb(255 255 255 / 48%) 50%,
+      rgb(250 246 238 / 48%) 50%,
       transparent 100%
     );
     transform: translateX(-100%);
@@ -1222,15 +1222,15 @@
   -webkit-mask-image: linear-gradient(
     180deg,
     transparent 0,
-    #000 var(--ls-feather),
-    #000 calc(100% - var(--ls-feather)),
+    #101D3A var(--ls-feather),
+    #101D3A calc(100% - var(--ls-feather)),
     transparent 100%
   );
   mask-image: linear-gradient(
     180deg,
     transparent 0,
-    #000 var(--ls-feather),
-    #000 calc(100% - var(--ls-feather)),
+    #101D3A var(--ls-feather),
+    #101D3A calc(100% - var(--ls-feather)),
     transparent 100%
   );
 }
@@ -1784,7 +1784,7 @@
   --ls-plain-bg: var(--color-welcome-bg);
   --ls-plain-ink: var(--color-welcome-text);
   --ls-plain-accent: var(--color-welcome-gold);
-  --ls-silk-light: color-mix(in srgb, white 70%, var(--ls-plain-bg));
+  --ls-silk-light: color-mix(in srgb, #FAF6EE 70%, var(--ls-plain-bg));
   --ls-silk-shade: color-mix(in srgb, var(--color-welcome-heading) 12%, var(--ls-plain-bg));
   --ls-gold-deep: color-mix(in srgb, var(--ls-plain-accent) 72%, var(--color-welcome-navy));
   --ls-gold-light: color-mix(in srgb, var(--ls-plain-accent) 45%, var(--color-motif-soft));
@@ -1903,9 +1903,9 @@
   background: linear-gradient(
     105deg,
     transparent 38%,
-    rgb(255 255 255 / 0%) 44%,
-    rgb(255 255 255 / 55%) 50%,
-    rgb(255 255 255 / 0%) 56%,
+    rgb(250 246 238 / 0%) 44%,
+    rgb(250 246 238 / 55%) 50%,
+    rgb(250 246 238 / 0%) 56%,
     transparent 62%
   );
   background-size: 250% 100%;
@@ -1980,7 +1980,7 @@
   pointer-events: none;
   border: 1px solid color-mix(in srgb, var(--ls-plain-accent) 50%, transparent);
   border-radius: 2px;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, white 35%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, #FAF6EE 35%, transparent);
 }
 
 .loading-screen__plain-frame::after {
@@ -1993,7 +1993,7 @@
 .loading-screen--plain .loading-screen__std-headline {
   margin-top: clamp(2.25rem, 9vw, 3.75rem);
   color: var(--ls-gold-deep);
-  text-shadow: 0 1px 0 rgb(255 255 255 / 60%);
+  text-shadow: 0 1px 0 rgb(250 246 238 / 60%);
 }
 
 .loading-screen--plain .loading-screen__std-kicker,
@@ -2118,7 +2118,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 70%)) drop-shadow(0 6px 14px color-mix(in srgb, var(--ls-plain-ink) 14%, transparent));
+  filter: drop-shadow(0 1px 0 rgb(250 246 238 / 70%)) drop-shadow(0 6px 14px color-mix(in srgb, var(--ls-plain-ink) 14%, transparent));
 }
 
 .ls-silk-date__day.is-visible {
@@ -2212,8 +2212,8 @@
   border: 1.5px solid color-mix(in srgb, var(--color-motif-medium) 70%, transparent);
   border-radius: 6px;
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, white 45%, transparent),
-    0 0 0 1px color-mix(in srgb, white 30%, transparent);
+    inset 0 0 0 1px color-mix(in srgb, #FAF6EE 45%, transparent),
+    0 0 0 1px color-mix(in srgb, #FAF6EE 30%, transparent);
 }
 
 .loading-screen--plain .loading-screen__plain-frame::after {
@@ -2256,10 +2256,10 @@
   padding: 0 0.25rem;
   border-radius: calc(var(--ls-card-w) / 2) calc(var(--ls-card-w) / 2) 1.75rem 1.75rem;
   background:
-    radial-gradient(90% 45% at 50% 0%, color-mix(in srgb, white 70%, transparent) 0%, transparent 70%),
+    radial-gradient(90% 45% at 50% 0%, color-mix(in srgb, #FAF6EE 70%, transparent) 0%, transparent 70%),
     linear-gradient(180deg, var(--color-motif-soft) 0%, var(--color-welcome-bg-soft) 55%, var(--color-motif-cream) 100%);
   box-shadow:
-    0 1px 0 rgb(255 255 255 / 80%) inset,
+    0 1px 0 rgb(250 246 238 / 80%) inset,
     0 0 0 1px color-mix(in srgb, var(--color-motif-medium) 45%, transparent),
     0 30px 60px -30px color-mix(in srgb, var(--color-welcome-navy) 50%, transparent),
     0 10px 24px -14px color-mix(in srgb, var(--color-welcome-navy) 30%, transparent);
@@ -2306,7 +2306,7 @@
   margin-top: 0;
   color: var(--color-welcome-navy);
   font-size: clamp(2.4rem, 11vw, 4rem);
-  text-shadow: 0 1px 0 rgb(255 255 255 / 70%);
+  text-shadow: 0 1px 0 rgb(250 246 238 / 70%);
 }
 
 .loading-screen--plain .loading-screen__std-kicker {
@@ -2334,7 +2334,7 @@
 
 .loading-screen--plain .loading-screen__std-names {
   width: min(94%, 30rem);
-  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 70%));
+  filter: drop-shadow(0 1px 0 rgb(250 246 238 / 70%));
 }
 
 .loading-screen--plain .ls-silk-date {
@@ -2457,7 +2457,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgb(255 255 255 / 75%) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgb(250 246 238 / 75%) 50%, transparent 100%);
   background-size: 40% 100%;
   background-repeat: no-repeat;
   animation: ls-plain-sheen 1.8s ease-in-out infinite;
@@ -2515,7 +2515,7 @@
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(55% 42% at 50% 46%, color-mix(in srgb, white 70%, transparent) 0%, transparent 70%),
+    radial-gradient(55% 42% at 50% 46%, color-mix(in srgb, #FAF6EE 70%, transparent) 0%, transparent 70%),
     radial-gradient(80% 60% at 50% 110%, color-mix(in srgb, var(--color-motif-medium) 35%, transparent) 0%, transparent 70%);
   animation: ls-plain-breathe 9s ease-in-out infinite alternate;
 }
@@ -2609,7 +2609,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 70%)) drop-shadow(0 6px 14px color-mix(in srgb, var(--color-welcome-navy) 18%, transparent));
+  filter: drop-shadow(0 1px 0 rgb(250 246 238 / 70%)) drop-shadow(0 6px 14px color-mix(in srgb, var(--color-welcome-navy) 18%, transparent));
 }
 
 
@@ -2650,14 +2650,14 @@
 /* Glow tinted warm at the top, cool at the bottom */
 .loading-screen--plain .ls-plain-glow {
   background:
-    radial-gradient(55% 42% at 50% 46%, color-mix(in srgb, white 65%, transparent) 0%, transparent 70%),
+    radial-gradient(55% 42% at 50% 46%, color-mix(in srgb, #FAF6EE 65%, transparent) 0%, transparent 70%),
     radial-gradient(60% 40% at 50% -5%, color-mix(in srgb, var(--ls-c-peach) 40%, transparent) 0%, transparent 70%),
     radial-gradient(80% 60% at 50% 110%, color-mix(in srgb, var(--ls-c-aqua) 45%, transparent) 0%, transparent 70%);
 }
 
 /* Multi-colored motes; every third one is a tumbling petal */
 .loading-screen--plain .ls-plain-mote {
-  background: radial-gradient(circle, color-mix(in srgb, white 70%, var(--c)) 0%, var(--c) 75%);
+  background: radial-gradient(circle, color-mix(in srgb, #FAF6EE 70%, var(--c)) 0%, var(--c) 75%);
   box-shadow: 0 0 10px color-mix(in srgb, var(--c) 70%, transparent);
   animation-name: ls-plain-mote-rise-spin;
 }
@@ -2666,7 +2666,7 @@
   width: calc(var(--size) * 1.6);
   height: calc(var(--size) * 2.2);
   border-radius: 80% 0 80% 0;
-  background: linear-gradient(135deg, color-mix(in srgb, white 45%, var(--c)) 0%, var(--c) 100%);
+  background: linear-gradient(135deg, color-mix(in srgb, #FAF6EE 45%, var(--c)) 0%, var(--c) 100%);
   box-shadow: none;
 }
 
@@ -2681,12 +2681,12 @@
 .loading-screen--plain .loading-screen__save-date {
   border: 2px solid transparent;
   background:
-    radial-gradient(90% 45% at 50% 0%, color-mix(in srgb, white 75%, transparent) 0%, transparent 70%) padding-box,
+    radial-gradient(90% 45% at 50% 0%, color-mix(in srgb, #FAF6EE 75%, transparent) 0%, transparent 70%) padding-box,
     radial-gradient(70% 30% at 50% 100%, color-mix(in srgb, var(--ls-c-peach) 22%, transparent) 0%, transparent 75%) padding-box,
     linear-gradient(180deg, var(--color-motif-soft) 0%, color-mix(in srgb, var(--ls-c-sky) 16%, var(--color-motif-soft)) 55%, color-mix(in srgb, var(--ls-c-coral) 14%, var(--color-motif-soft)) 100%) padding-box,
     conic-gradient(from var(--ls-hue-angle), var(--ls-spectrum)) border-box;
   box-shadow:
-    0 1px 0 rgb(255 255 255 / 80%) inset,
+    0 1px 0 rgb(250 246 238 / 80%) inset,
     0 30px 60px -30px color-mix(in srgb, var(--ls-c-coral) 55%, transparent),
     0 10px 30px -14px color-mix(in srgb, var(--ls-c-teal) 45%, transparent);
   animation:
@@ -2755,7 +2755,7 @@
   background-clip: text;
   color: transparent;
   filter:
-    drop-shadow(0 1px 0 rgb(255 255 255 / 75%))
+    drop-shadow(0 1px 0 rgb(250 246 238 / 75%))
     drop-shadow(0 6px 14px color-mix(in srgb, var(--ls-c-coral) 28%, transparent));
 }
 
@@ -2837,7 +2837,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 80%));
+  filter: drop-shadow(0 1px 0 rgb(250 246 238 / 80%));
   opacity: 0;
   transform-origin: 50% 100%;
   animation: ls-letter-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--ls-delay, 0ms) forwards;
@@ -2856,7 +2856,7 @@
   100% {
     opacity: 1;
     transform: none;
-    filter: drop-shadow(0 1px 0 rgb(255 255 255 / 80%));
+    filter: drop-shadow(0 1px 0 rgb(250 246 238 / 80%));
   }
 }
 
@@ -2927,7 +2927,7 @@
     105deg,
     var(--ls-date-ink) 0%,
     var(--ls-date-ink) 42%,
-    color-mix(in srgb, var(--ls-date-ink) 35%, white) 50%,
+    color-mix(in srgb, var(--ls-date-ink) 35%, #FAF6EE) 50%,
     var(--ls-date-ink) 58%,
     var(--ls-date-ink) 100%
   );
@@ -3105,7 +3105,7 @@
 }
 
 .loading-screen--plain .ls-silk-date__day {
-  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 80%));
+  filter: drop-shadow(0 1px 0 rgb(250 246 238 / 80%));
 }
 
 /* Headline sits lower in the arch, with breathing room under the ornament */
@@ -3168,7 +3168,7 @@
 
 /* Soften the light behind the card so the pattern reads cleanly */
 .loading-screen--plain .ls-plain-glow {
-  background: radial-gradient(50% 40% at 50% 48%, color-mix(in srgb, white 35%, transparent) 0%, transparent 70%);
+  background: radial-gradient(50% 40% at 50% 48%, color-mix(in srgb, #FAF6EE 35%, transparent) 0%, transparent 70%);
 }
 
 
@@ -3451,13 +3451,13 @@
    Sunshine yellow is used once — the glowing dot on the progress bar.
    ========================================================================== */
 .loading-screen--plain {
-  --ls-sky: var(--color-motif-medium);          /* #9A9294 */
-  --ls-blue: var(--color-welcome-heading);      /* #4F6578 */
-  --ls-navy: var(--color-welcome-navy);         /* #2E2A2B */
-  --ls-ink: var(--color-welcome-text);          /* #4A4546 */
-  --ls-leaf: var(--color-motif-yellow);         /* #9A9294 sage */
-  --ls-leaf-ink: color-mix(in srgb, var(--color-motif-yellow) 78%, #3C4424);
-  --ls-sun: var(--color-motif-accent);          /* #4F6578 */
+  --ls-sky: var(--color-motif-medium);          /* #ABAEB0 */
+  --ls-blue: var(--color-welcome-heading);      /* #4F6373 */
+  --ls-navy: var(--color-welcome-navy);         /* #101D3A */
+  --ls-ink: var(--color-welcome-text);          /* #101D3A */
+  --ls-leaf: var(--color-motif-yellow);         /* #ABAEB0 sage */
+  --ls-leaf-ink: color-mix(in srgb, var(--color-motif-yellow) 78%, #4F6373);
+  --ls-sun: var(--color-motif-accent);          /* #4F6373 */
 
   --ls-text-dark: var(--ls-ink);
   --ls-text-accent-dark: var(--ls-blue);
@@ -3470,16 +3470,16 @@
 .loading-screen--plain .loading-screen__save-date {
   border: 1.5px solid transparent;
   background:
-    radial-gradient(85% 38% at 50% 0%, rgb(255 255 255 / 95%) 0%, transparent 72%) padding-box,
+    radial-gradient(85% 38% at 50% 0%, rgb(250 246 238 / 95%) 0%, transparent 72%) padding-box,
     linear-gradient(
       180deg,
-      #FFFFFF 0%,
+      #FAF6EE 0%,
       var(--color-motif-soft) 48%,
-      color-mix(in srgb, var(--ls-sky) 20%, white) 100%
+      color-mix(in srgb, var(--ls-sky) 20%, #FAF6EE) 100%
     ) padding-box,
-    linear-gradient(180deg, rgb(255 255 255 / 95%) 0%, color-mix(in srgb, var(--ls-sky) 75%, white) 100%) border-box;
+    linear-gradient(180deg, rgb(250 246 238 / 95%) 0%, color-mix(in srgb, var(--ls-sky) 75%, #FAF6EE) 100%) border-box;
   box-shadow:
-    0 0 0 6px rgb(255 255 255 / 35%),
+    0 0 0 6px rgb(250 246 238 / 35%),
     0 30px 60px -28px color-mix(in srgb, var(--ls-navy) 45%, transparent),
     0 12px 28px -16px color-mix(in srgb, var(--ls-blue) 35%, transparent);
   animation: ls-plain-card-in 1.3s cubic-bezier(0.22, 1, 0.36, 1) backwards;
@@ -3548,13 +3548,13 @@
 .loading-screen--plain .ls-plain-progress-glow {
   background: var(--ls-sun);
   box-shadow:
-    0 0 0 3px rgb(255 255 255 / 90%),
+    0 0 0 3px rgb(250 246 238 / 90%),
     0 0 14px 3px color-mix(in srgb, var(--ls-sun) 55%, transparent);
 }
 
 /* Soft white light behind the card so it lifts off the video */
 .loading-screen--plain .ls-plain-glow {
-  background: radial-gradient(55% 45% at 50% 50%, rgb(255 255 255 / 45%) 0%, transparent 70%);
+  background: radial-gradient(55% 45% at 50% 50%, rgb(250 246 238 / 45%) 0%, transparent 70%);
 }
 
 
@@ -3565,17 +3565,17 @@
    holds up over bright frames. Sage + sunshine appear only as accents.
    ========================================================================== */
 .home-hero--plain {
-  --hh-navy: var(--color-welcome-navy);       /* #2E2A2B */
-  --hh-blue: var(--color-welcome-heading);    /* #4F6578 */
-  --hh-ink: var(--color-welcome-text);        /* #4A4546 */
-  --hh-sky: var(--color-motif-medium);        /* #9A9294 */
-  --hh-leaf: var(--color-motif-yellow);       /* #9A9294 */
-  --hh-butter: var(--color-motif-silver);     /* #EBCBCF */
+  --hh-navy: var(--color-welcome-navy);       /* #101D3A */
+  --hh-blue: var(--color-welcome-heading);    /* #4F6373 */
+  --hh-ink: var(--color-welcome-text);        /* #101D3A */
+  --hh-sky: var(--color-motif-medium);        /* #ABAEB0 */
+  --hh-leaf: var(--color-motif-yellow);       /* #ABAEB0 */
+  --hh-butter: #A87922;
   /* Tight white edge: keeps thin strokes crisp instead of washing them out */
   --hh-edge:
-    0 0 1px rgb(255 255 255 / 100%),
-    0 0 4px rgb(255 255 255 / 90%),
-    0 0 14px rgb(255 255 255 / 60%);
+    0 0 1px rgb(250 246 238 / 100%),
+    0 0 4px rgb(250 246 238 / 90%),
+    0 0 14px rgb(250 246 238 / 60%);
 }
 
 /* Strong white halo behind the whole title block */
@@ -3585,9 +3585,9 @@
   top: 70%;
   background: radial-gradient(
     ellipse at center,
-    rgb(255 255 255 / 88%) 0%,
-    rgb(255 255 255 / 70%) 38%,
-    rgb(255 255 255 / 30%) 58%,
+    rgb(250 246 238 / 88%) 0%,
+    rgb(250 246 238 / 70%) 38%,
+    rgb(250 246 238 / 30%) 58%,
     transparent 74%
   );
   filter: blur(10px);
@@ -3600,7 +3600,7 @@
 }
 
 .home-hero--plain .home-hero-title-script {
-  color: var(--hh-blue);
+  color: var(--hh-butter);
   text-shadow: var(--hh-edge);
 }
 
@@ -3668,12 +3668,12 @@
 }
 
 .home-hero--plain .home-hero-countdown-heading {
-  color: #F8F3F1;
+  color: #FAF6EE;
   text-shadow: 0 1px 8px color-mix(in srgb, var(--hh-navy) 70%, transparent);
 }
 
 .home-hero--plain .home-hero-countdown-value {
-  color: #F8F3F1;
+  color: #FAF6EE;
   text-shadow: 0 2px 10px color-mix(in srgb, var(--hh-navy) 65%, transparent);
 }
 
@@ -3696,9 +3696,9 @@
   transform: translate(-50%, -50%);
   background: radial-gradient(
     ellipse at center,
-    rgb(248 243 241 / 62%) 0%,
-    rgb(248 243 241 / 45%) 40%,
-    rgb(248 243 241 / 15%) 60%,
+    rgb(250 246 238 / 62%) 0%,
+    rgb(250 246 238 / 45%) 40%,
+    rgb(250 246 238 / 15%) 60%,
     transparent 74%
   );
 }
@@ -3725,7 +3725,7 @@
   align-items: center;
   gap: 0.9em;
   padding-left: 0.42em; /* balance trailing letter-spacing */
-  color: var(--hh-blue);
+  color: var(--hh-butter);
   text-shadow: var(--hh-edge);
 }
 
@@ -3746,7 +3746,7 @@
   padding: 0.45em 0;
   border-block: 1px solid color-mix(in srgb, var(--hh-leaf) 75%, transparent);
   text-align: center;
-  color: var(--hh-navy);
+  color: var(--hh-butter);
   text-shadow: var(--hh-edge);
 }
 
@@ -3763,12 +3763,12 @@
   color: var(--hh-blue);
   -webkit-text-fill-color: var(--hh-blue);
   -webkit-text-stroke: 0;
-  filter: drop-shadow(0 1px 0 rgb(248 243 241 / 80%));
+  filter: drop-shadow(0 1px 0 rgb(250 246 238 / 80%));
 }
 
 /* Time in spaced small caps, venue in italic serif */
 .home-hero--plain .home-hero-meta-time {
-  color: var(--hh-blue);
+  color: var(--hh-butter);
   text-shadow: var(--hh-edge);
 }
 
@@ -3787,8 +3787,8 @@
 .home-hero--plain .home-hero-mist {
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 70%);
-  mask-image: radial-gradient(ellipse at center, #000 40%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #101D3A 40%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, #101D3A 40%, transparent 70%);
 }
 
 /* Countdown: shorter, lighter band hugging the bottom edge */
@@ -3831,7 +3831,7 @@
 /* ---- Love story: milestone photo inside each plain card ---- */
 .story-plain-photo {
   padding: 0.5rem 0.5rem 1.4rem;
-  background: #FFFFFF;
+  background: #FAF6EE;
   box-shadow:
     0 1px 0 color-mix(in srgb, var(--color-motif-medium) 40%, transparent),
     0 14px 28px -14px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent);
@@ -3860,7 +3860,7 @@
 /* ---- Love story: open layout (no cards) — components/StorySection.tsx → PlainOpenChapter ---- */
 .story-open-photo {
   padding: clamp(0.3rem, 1.2vw, 0.6rem) clamp(0.3rem, 1.2vw, 0.6rem) clamp(0.9rem, 3.5vw, 1.6rem);
-  background: #FFFFFF;
+  background: #FAF6EE;
   box-shadow:
     0 1px 0 color-mix(in srgb, var(--color-motif-medium) 40%, transparent),
     0 18px 34px -16px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent);
@@ -3882,7 +3882,7 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-welcome-navy);
-  text-shadow: 0 1px 0 rgb(255 255 255 / 80%);
+  text-shadow: 0 1px 0 rgb(250 246 238 / 80%);
 }
 
 .story-open-rule {
@@ -3901,7 +3901,7 @@
   font-size: clamp(0.875rem, 1vw + 0.6rem, 0.96875rem);
   line-height: 1.7;
   color: var(--color-welcome-text);
-  text-shadow: 0 0 8px rgb(255 255 255 / 70%);
+  text-shadow: 0 0 8px rgb(250 246 238 / 70%);
 }
 
 .story-open-text p + p {
@@ -3936,7 +3936,7 @@
 }
 
 .story-open-divider svg {
-  filter: drop-shadow(0 1px 0 rgb(248 243 241 / 80%));
+  filter: drop-shadow(0 1px 0 rgb(250 246 238 / 80%));
 }
 
 /* Phones: slightly smaller body so long paragraphs sit comfortably beside the photo */
@@ -3949,18 +3949,18 @@
    dusty rose script, rose-ink small caps, sage hairlines.
    ========================================================================== */
 .loading-screen--plain {
-  --ls-blush: #E9CAD2;
-  --ls-pastel: #F8F3F1;
-  --ls-ivory: #F8F3F1;
-  --ls-burgundy: #172D4E;
-  --ls-rose: #C58F9D;
-  --ls-rose-ink: #C58F9D;
-  --ls-sage: #D4B47C;
+  --ls-blush: #F5EDDF;
+  --ls-pastel: #FAF6EE;
+  --ls-ivory: #FAF6EE;
+  --ls-burgundy: #101D3A;
+  --ls-rose: #A87922;
+  --ls-rose-ink: #A87922;
+  --ls-sage: #D7A041;
 
   --ls-sky: var(--ls-rose);
   --ls-blue: var(--ls-rose-ink);
   --ls-navy: var(--ls-burgundy);
-  --ls-ink: #172D4E;
+  --ls-ink: #101D3A;
   --ls-leaf: var(--ls-sage);
   --ls-leaf-ink: var(--ls-rose);
   --ls-sun: var(--ls-rose);
@@ -3971,11 +3971,11 @@
 
 .loading-screen--plain .loading-screen__save-date {
   background:
-    radial-gradient(85% 38% at 50% 0%, rgb(248 243 241 / 90%) 0%, transparent 72%) padding-box,
+    radial-gradient(85% 38% at 50% 0%, rgb(250 246 238 / 90%) 0%, transparent 72%) padding-box,
     linear-gradient(180deg, var(--ls-ivory) 0%, var(--ls-ivory) 55%, color-mix(in srgb, var(--ls-blush) 55%, var(--ls-ivory)) 100%) padding-box,
-    linear-gradient(180deg, rgb(248 243 241 / 95%) 0%, color-mix(in srgb, var(--ls-rose) 45%, #F8F3F1) 100%) border-box;
+    linear-gradient(180deg, rgb(250 246 238 / 95%) 0%, color-mix(in srgb, var(--ls-rose) 45%, #FAF6EE) 100%) border-box;
   box-shadow:
-    0 0 0 6px rgb(248 243 241 / 45%),
+    0 0 0 6px rgb(250 246 238 / 45%),
     0 30px 60px -30px color-mix(in srgb, var(--ls-burgundy) 22%, transparent),
     0 10px 24px -16px color-mix(in srgb, var(--ls-rose) 40%, transparent);
 }
@@ -3990,6 +3990,12 @@
 
 .loading-screen--plain .ls-headline__script,
 .loading-screen--plain .ls-names__and {
+  color: var(--ls-rose);
+  -webkit-text-fill-color: var(--ls-rose);
+}
+
+.loading-screen--plain .ls-silk-date__day,
+.loading-screen--plain .ls-silk-date__digit-inner {
   color: var(--ls-rose);
   -webkit-text-fill-color: var(--ls-rose);
 }
@@ -4012,7 +4018,7 @@
 }
 
 .loading-screen--plain .ls-plain-glow {
-  background: radial-gradient(55% 45% at 50% 50%, rgb(248 243 241 / 55%) 0%, transparent 70%);
+  background: radial-gradient(55% 45% at 50% 50%, rgb(250 246 238 / 55%) 0%, transparent 70%);
 }
 
 /* Petals: fewer, softer */
@@ -4028,14 +4034,14 @@
    Desktop: photo left, wording right.
    ========================================================================== */
 .home-hero--plain {
-  --hh-navy: #172D4E;
-  --hh-blue: #C58F9D;
-  --hh-ink: #172D4E;
-  --hh-sky: #E9CAD2;
-  --hh-leaf: #D4B47C;
-  --hh-butter: #E9CAD2;
+  --hh-navy: #101D3A;
+  --hh-blue: #A87922;
+  --hh-ink: #101D3A;
+  --hh-sky: #F5EDDF;
+  --hh-leaf: #D7A041;
+  --hh-butter: #A87922;
   --hh-edge: none;
-  background: #F8F3F1;
+  background: #FAF6EE;
 }
 
 .home-hero--plain .home-hero-title-main,
@@ -4046,8 +4052,8 @@
 }
 
 .home-hero--plain .home-hero-title-script {
-  color: #C58F9D;
-  -webkit-text-fill-color: #C58F9D;
+  color: #A87922;
+  -webkit-text-fill-color: #A87922;
   text-shadow: none;
 }
 
@@ -4095,7 +4101,7 @@
   aspect-ratio: 3 / 4;
   width: calc(100% + 18px);
   border-radius: 999px 999px 22px 22px;
-  border: 1px solid color-mix(in srgb, #D4B47C 55%, transparent);
+  border: 1px solid color-mix(in srgb, #D7A041 55%, transparent);
   pointer-events: none;
 }
 
@@ -4105,12 +4111,12 @@
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 999px 999px 16px 16px;
-  background: #E9CAD2;
-  border: 5px solid #F8F3F1;
+  background: #F5EDDF;
+  border: 5px solid #FAF6EE;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, #D4B47C 35%, transparent),
-    0 30px 55px -30px color-mix(in srgb, #172D4E 40%, transparent),
-    0 10px 24px -14px color-mix(in srgb, #D4B47C 45%, transparent);
+    0 0 0 1px color-mix(in srgb, #D7A041 35%, transparent),
+    0 30px 55px -30px color-mix(in srgb, #101D3A 40%, transparent),
+    0 10px 24px -14px color-mix(in srgb, #D7A041 45%, transparent);
 }
 
 /* Soft blush vignette at the base so the photo melts into the frame */
@@ -4120,7 +4126,7 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 72%, color-mix(in srgb, #F8F3F1 35%, transparent) 100%);
+  background: linear-gradient(180deg, transparent 72%, color-mix(in srgb, #FAF6EE 35%, transparent) 100%);
 }
 
 /* Natural colour, only the faintest warm lift — no heavy filter */
@@ -4140,7 +4146,7 @@
   aspect-ratio: 2170 / 725;
   margin: -1.6rem auto 0;
   background: url("/deco/new-deco/small-center.png") center / contain no-repeat;
-  filter: drop-shadow(0 4px 6px color-mix(in srgb, #172D4E 15%, transparent));
+  filter: drop-shadow(0 4px 6px color-mix(in srgb, #101D3A 15%, transparent));
 }
 
 @media (min-width: 768px) {
@@ -4177,8 +4183,8 @@
 }
 
 .loading-screen--plain .ls-headline__letter {
-  color: #172D4E;
-  -webkit-text-fill-color: #172D4E;
+  color: #101D3A;
+  -webkit-text-fill-color: #101D3A;
 }
 
 .ls-headline__break {
@@ -4228,14 +4234,14 @@
   /* Translucent light white-warm-gray wash: the circle pattern (PlainBubbles)
      behind the section shows through softly */
   background:
-    radial-gradient(90% 16% at 50% 0%, rgb(248 243 241 / 65%) 0%, transparent 70%),
-    radial-gradient(60% 14% at 0% 30%, color-mix(in srgb, #E9CAD2 30%, transparent) 0%, transparent 70%),
-    radial-gradient(60% 14% at 100% 62%, color-mix(in srgb, #E9CAD2 26%, transparent) 0%, transparent 70%),
+    radial-gradient(90% 16% at 50% 0%, rgb(250 246 238 / 65%) 0%, transparent 70%),
+    radial-gradient(60% 14% at 0% 30%, color-mix(in srgb, #F5EDDF 30%, transparent) 0%, transparent 70%),
+    radial-gradient(60% 14% at 100% 62%, color-mix(in srgb, #F5EDDF 26%, transparent) 0%, transparent 70%),
     linear-gradient(
       180deg,
-      rgb(248 243 241 / 58%) 0%,
-      color-mix(in srgb, #F8F3F1 52%, transparent) 50%,
-      rgb(248 243 241 / 50%) 100%
+      rgb(250 246 238 / 58%) 0%,
+      color-mix(in srgb, #FAF6EE 52%, transparent) 50%,
+      rgb(250 246 238 / 50%) 100%
     );
 }
 
@@ -4260,8 +4266,8 @@
   border: 1.5px solid color-mix(in srgb, var(--color-motif-medium) 70%, transparent);
   border-radius: 6px;
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, #F8F3F1 45%, transparent),
-    0 0 0 1px color-mix(in srgb, #F8F3F1 30%, transparent);
+    inset 0 0 0 1px color-mix(in srgb, #FAF6EE 45%, transparent),
+    0 0 0 1px color-mix(in srgb, #FAF6EE 30%, transparent);
 }
 
 .love-story-frame::after {
@@ -4296,7 +4302,7 @@
   font-size: clamp(0.95rem, 1vw + 0.7rem, 1.1rem);
   line-height: 1.7;
   color: var(--color-welcome-text);
-  text-shadow: 0 0 8px rgb(248 243 241 / 75%);
+  text-shadow: 0 0 8px rgb(250 246 238 / 75%);
 }
 
 /* blush-pink wash behind each chapter on the photo's side */
@@ -4314,43 +4320,43 @@
 
 .story-open-wash--left {
   left: -18%;
-  background: radial-gradient(closest-side, color-mix(in srgb, #C58F9D 30%, transparent) 0%, color-mix(in srgb, #E9CAD2 50%, transparent) 55%, transparent 100%);
+  background: radial-gradient(closest-side, color-mix(in srgb, #E8D36A 30%, transparent) 0%, color-mix(in srgb, #F5EDDF 50%, transparent) 55%, transparent 100%);
 }
 
 .story-open-wash--right {
   right: -18%;
-  background: radial-gradient(closest-side, color-mix(in srgb, #C58F9D 30%, transparent) 0%, color-mix(in srgb, #E9CAD2 50%, transparent) 55%, transparent 100%);
+  background: radial-gradient(closest-side, color-mix(in srgb, #E8D36A 30%, transparent) 0%, color-mix(in srgb, #F5EDDF 50%, transparent) 55%, transparent 100%);
 }
 
 /* Text colors (loading screen palette): charcoal title, slate details, warm-gray rule */
 .story-open-date {
-  color: #C58F9D;
+  color: #E8D36A;
 }
 
 .story-open-title {
-  color: #172D4E;
-  text-shadow: 0 1px 0 rgb(248 243 241 / 85%);
+  color: #101D3A;
+  text-shadow: 0 1px 0 rgb(250 246 238 / 85%);
 }
 
 .story-open-rule {
-  background: #D4B47C;
+  background: #D7A041;
 }
 
 .story-open-text {
-  color: #172D4E;
-  text-shadow: 0 0 8px rgb(248 243 241 / 75%);
+  color: #101D3A;
+  text-shadow: 0 0 8px rgb(250 246 238 / 75%);
 }
 
 .story-open-number {
-  color: color-mix(in srgb, #E9CAD2 30%, transparent);
+  color: color-mix(in srgb, #F5EDDF 30%, transparent);
 }
 
 /* Photo frame: light paper mat with a warm-gray edge */
 .story-open-photo {
-  background: #F8F3F1;
+  background: #FAF6EE;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, #D4B47C 35%, transparent),
-    0 18px 34px -16px color-mix(in srgb, #172D4E 32%, transparent);
+    0 0 0 1px color-mix(in srgb, #D7A041 35%, transparent),
+    0 18px 34px -16px color-mix(in srgb, #101D3A 32%, transparent);
 }
 
 
@@ -4393,8 +4399,8 @@
   border: 1.5px solid color-mix(in srgb, var(--color-motif-medium) 70%, transparent);
   border-radius: 6px;
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, white 45%, transparent),
-    0 0 0 1px color-mix(in srgb, white 30%, transparent);
+    inset 0 0 0 1px color-mix(in srgb, #FAF6EE 45%, transparent),
+    0 0 0 1px color-mix(in srgb, #FAF6EE 30%, transparent);
 }
 
 .home-hero-plain-frame::after {
@@ -4421,7 +4427,7 @@
   margin: -1.9rem auto 0;
   user-select: none;
   pointer-events: none;
-  filter: drop-shadow(0 4px 6px color-mix(in srgb, #4A4546 15%, transparent));
+  filter: drop-shadow(0 4px 6px color-mix(in srgb, #101D3A 15%, transparent));
 }
 
 
@@ -4442,5 +4448,5 @@
   letter-spacing: 0.22em;
   line-height: 1.3;
   text-transform: uppercase;
-  color: #be6174;
+  color: #4F6373;
 }

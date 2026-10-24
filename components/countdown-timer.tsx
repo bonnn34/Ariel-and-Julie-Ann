@@ -29,7 +29,7 @@ function getTimeLeft(targetDate: string): TimeLeft {
 function Unit({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center gap-1.5">
-      <div className="min-w-[56px] rounded-xl border border-motif-accent/25 bg-white/50 px-3 py-2.5 text-center sm:min-w-[60px]">
+      <div className="min-w-[56px] rounded-xl border border-motif-accent/25 bg-card/50 px-3 py-2.5 text-center sm:min-w-[60px]">
         <span
           className="font-mono text-xl font-bold sm:text-2xl"
           style={{ color: "var(--color-motif-deep)" }}
@@ -39,7 +39,7 @@ function Unit({ value, label }: { value: number; label: string }) {
       </div>
       <span
         className="text-[9px] uppercase tracking-widest"
-        style={{ color: "var(--color-motif-medium)" }}
+        style={{ color: "var(--color-motif-teal)" }}
       >
         {label}
       </span>

@@ -30,8 +30,8 @@ const aboveTheBeyond = localFont({
 
 // Header + closing text sit on the dusty-blue page backdrop: white (script in butter)
 // with a soft navy shadow.
-const OUTSIDE_TEXT = "#FFFFFF"
-const OUTSIDE_TEXT_MUTED = "rgba(255, 255, 255, 0.92)"
+const OUTSIDE_TEXT = "#FAF6EE"
+const OUTSIDE_TEXT_MUTED = "rgba(250, 246, 238, 0.92)"
 const OUTSIDE_SCRIPT = "var(--color-motif-silver)"
 const OUTSIDE_TITLE_SHADOW =
   "0 1px 0 color-mix(in srgb, var(--color-welcome-navy) 45%, transparent), 0 2px 10px color-mix(in srgb, var(--color-welcome-navy) 40%, transparent), 0 8px 28px color-mix(in srgb, var(--color-welcome-navy) 30%, transparent)"
@@ -43,10 +43,10 @@ const TEAL = "var(--color-welcome-navy)"
 const BUTTON =
   "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)"
 const BLUE = "var(--color-welcome-heading)"
-const IVORY = "#FFFFFF"
+const IVORY = "#FAF6EE"
 const HAIRLINE = "color-mix(in srgb, var(--color-motif-medium) 60%, transparent)"
-const PALE = "color-mix(in srgb, var(--color-motif-medium) 16%, white)"
-const TEAL_SOFT = "color-mix(in srgb, var(--color-welcome-text) 75%, white)"
+const PALE = "color-mix(in srgb, var(--color-motif-medium) 16%, #FAF6EE)"
+const TEAL_SOFT = "color-mix(in srgb, var(--color-welcome-text) 75%, #FAF6EE)"
 const BUTTON_SHADOW =
   "0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent), 0 12px 24px -12px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)"
 
@@ -58,7 +58,7 @@ const palette = {
 } as const
 
 const outsideDividerLineStyle = {
-  background: "linear-gradient(to right, transparent, rgba(255, 255, 255, 0.75), transparent)",
+  background: "linear-gradient(to right, transparent, rgba(250, 246, 238, 0.75), transparent)",
 } as const
 
 const insideDividerLineStyle = {
@@ -75,10 +75,10 @@ const ct = {
 
 const cardStyle = {
   background:
-    "radial-gradient(90% 35% at 50% 0%, rgb(255 255 255 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, color-mix(in srgb, var(--color-motif-medium) 10%, white) 100%)",
+    "radial-gradient(90% 35% at 50% 0%, rgb(250 246 238 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FAF6EE 0%, color-mix(in srgb, var(--color-motif-medium) 10%, #FAF6EE) 100%)",
   border: `1px solid ${HAIRLINE}`,
   boxShadow:
-    "0 0 0 5px rgb(255 255 255 / 25%), 0 24px 50px -28px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
+    "0 0 0 5px rgb(250 246 238 / 25%), 0 24px 50px -28px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
 } as const
 
 
@@ -162,7 +162,7 @@ function PrimaryButton({
       className={`${cinzel.className} inline-flex items-center justify-center gap-1.5 rounded-full border px-5 py-2.5 font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)] sm:px-6 ${ct.btn}`}
       style={{
         background: active ? TEAL : BUTTON,
-        borderColor: "rgb(255 255 255 / 70%)",
+        borderColor: "rgb(250 246 238 / 70%)",
         color: IVORY,
         boxShadow: BUTTON_SHADOW,
       }}
@@ -253,7 +253,7 @@ export function SnapShare() {
       className="mx-auto flex w-full max-w-[240px] flex-col items-center rounded-2xl p-3 sm:p-4"
       style={{ background: IVORY, boxShadow: `0 0 0 1px ${HAIRLINE}, 0 0 0 5px color-mix(in srgb, var(--color-motif-medium) 12%, transparent), 0 14px 28px -20px color-mix(in srgb, var(--color-welcome-navy) 50%, transparent)` }}
     >
-      <div className="flex w-full max-w-full justify-center overflow-hidden rounded-xl bg-white">
+      <div className="flex w-full max-w-full justify-center overflow-hidden rounded-xl bg-card">
         <QRCodeCanvas
           id={id}
           value={value}
@@ -329,7 +329,7 @@ export function SnapShare() {
               </span>
               <span
                 className={`${cinzel.className} flex flex-shrink-0 items-center gap-1 whitespace-nowrap ${sectionType.label} font-semibold uppercase tracking-wider`}
-                style={{ color: isCopied ? "color-mix(in srgb, var(--color-motif-yellow) 70%, #2C3619)" : BLUE }}
+                style={{ color: isCopied ? "color-mix(in srgb, var(--color-motif-yellow) 70%, #101D3A)" : BLUE }}
               >
                 {isCopied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
                 {isCopied ? content.hashtags.copied : content.hashtags.copy}
@@ -426,7 +426,7 @@ export function SnapShare() {
           target="_blank"
           rel="noopener noreferrer"
           className={`${cinzel.className} inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 sm:px-6 ${ct.btn}`}
-          style={{ background: BUTTON, color: IVORY, boxShadow: BUTTON_SHADOW, border: "1px solid rgb(255 255 255 / 70%)" }}
+          style={{ background: BUTTON, color: IVORY, boxShadow: BUTTON_SHADOW, border: "1px solid rgb(250 246 238 / 70%)" }}
         >
           <Share2 className="h-3.5 w-3.5 flex-shrink-0 sm:h-4 sm:w-4" />
           {content.upload.uploadButton}

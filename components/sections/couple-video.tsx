@@ -35,7 +35,7 @@ const videoFrameStyle = {
 } as const
 
 // Soft white edge so text stays crisp over the circles and hearts (matches the gallery)
-const onBgGlow = "0 1px 0 rgb(255 255 255 / 85%), 0 0 12px rgb(255 255 255 / 70%)"
+const onBgGlow = "0 1px 0 rgb(250 246 238 / 85%), 0 0 12px rgb(250 246 238 / 70%)"
 
 declare global {
   interface Window {
@@ -351,13 +351,13 @@ export function CoupleVideo({ skyBackdrop = true }: { skyBackdrop?: boolean } = 
           >
             <div
               ref={frameRef}
-              className="relative overflow-hidden rounded-lg border bg-black sm:rounded-xl md:rounded-2xl"
+              className="relative overflow-hidden rounded-lg border bg-primary sm:rounded-xl md:rounded-2xl"
               style={videoFrameStyle}
             >
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                 {/* Video layer */}
                 {started && (
-                  <div className="absolute inset-0 overflow-hidden bg-black">
+                  <div className="absolute inset-0 overflow-hidden bg-primary">
                     {player.useNative ? (
                       <video
                         ref={player.nativeRef}
@@ -421,16 +421,16 @@ export function CoupleVideo({ skyBackdrop = true }: { skyBackdrop?: boolean } = 
                         className="relative flex h-16 w-16 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20 md:h-24 md:w-24"
                         style={{
                           backgroundColor: "color-mix(in srgb, var(--color-welcome-heading) 92%, transparent)",
-                          border: "2px solid rgb(255 255 255 / 85%)",
+                          border: "2px solid rgb(250 246 238 / 85%)",
                           boxShadow:
-                            "0 0 0 6px rgb(255 255 255 / 25%), 0 10px 26px color-mix(in srgb, var(--color-welcome-navy) 35%, transparent)",
+                            "0 0 0 6px rgb(250 246 238 / 25%), 0 10px 26px color-mix(in srgb, var(--color-welcome-navy) 35%, transparent)",
                         }}
                       >
                         {started && player.playing ? (
                           // Playing but YouTube's title is still on screen: gentle loading pulse
-                          <span className="h-3 w-3 animate-ping rounded-full bg-white" aria-hidden />
+                          <span className="h-3 w-3 animate-ping rounded-full bg-card" aria-hidden />
                         ) : (
-                          <Play className="ml-1 h-8 w-8 fill-current text-white sm:h-10 sm:w-10 md:h-12 md:w-12" />
+                          <Play className="ml-1 h-8 w-8 fill-current text-background sm:h-10 sm:w-10 md:h-12 md:w-12" />
                         )}
                       </span>
                     </span>
@@ -451,13 +451,13 @@ export function CoupleVideo({ skyBackdrop = true }: { skyBackdrop?: boolean } = 
                     <button
                       type="button"
                       onClick={handleStart}
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white hover:bg-white/15"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-background hover:bg-card/15"
                       aria-label={player.playing ? "Pause" : "Play"}
                     >
                       {player.playing ? <Pause className="h-4 w-4 fill-current" /> : <Play className="ml-0.5 h-4 w-4 fill-current" />}
                     </button>
                     <div
-                      className="relative h-1 flex-1 cursor-pointer rounded-full bg-white/30"
+                      className="relative h-1 flex-1 cursor-pointer rounded-full bg-card/30"
                       role="slider"
                       aria-label="Seek"
                       aria-valuemin={0}
@@ -484,7 +484,7 @@ export function CoupleVideo({ skyBackdrop = true }: { skyBackdrop?: boolean } = 
                       />
                     </div>
                     <span
-                      className="shrink-0 text-[0.62rem] tracking-[0.12em] text-white/90 tabular-nums"
+                      className="shrink-0 text-[0.62rem] tracking-[0.12em] text-background/90 tabular-nums"
                       style={{ fontFamily: "var(--font-cinzel), serif" }}
                     >
                       {formatTime(player.time)} / {formatTime(player.duration)}
@@ -492,7 +492,7 @@ export function CoupleVideo({ skyBackdrop = true }: { skyBackdrop?: boolean } = 
                     <button
                       type="button"
                       onClick={player.toggleMute}
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white hover:bg-white/15"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-background hover:bg-card/15"
                       aria-label={player.muted ? "Unmute" : "Mute"}
                     >
                       {player.muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
@@ -500,7 +500,7 @@ export function CoupleVideo({ skyBackdrop = true }: { skyBackdrop?: boolean } = 
                     <button
                       type="button"
                       onClick={goFullscreen}
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white hover:bg-white/15"
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-background hover:bg-card/15"
                       aria-label="Full screen"
                     >
                       <Maximize className="h-4 w-4" />

@@ -20,10 +20,10 @@ const cinzel = Cinzel({
 const TEAL = "var(--color-welcome-navy)"
 const BLUE = "var(--color-welcome-heading)"
 const BUTTON = "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)"
-const BUTTON_EDGE = "rgb(255 255 255 / 70%)"
+const BUTTON_EDGE = "rgb(250 246 238 / 70%)"
 const SUN = "var(--color-motif-accent)"
-const PAPER = "#FFFFFF"
-const IVORY = "#FFFFFF"
+const PAPER = "#FAF6EE"
+const IVORY = "#FAF6EE"
 const NAVY = TEAL
 const BODY = "var(--color-welcome-text)"
 const ACCENT = BLUE
@@ -46,7 +46,7 @@ const messageCardStyle = {
 const HAIRLINE = "color-mix(in srgb, var(--color-motif-yellow) 40%, transparent)"
 
 const freshShadow =
-  "0 18px 36px -18px color-mix(in srgb, var(--color-welcome-navy) 80%, transparent), inset 0 1px 0 rgb(255 255 255 / 80%)"
+  "0 18px 36px -18px color-mix(in srgb, var(--color-welcome-navy) 80%, transparent), inset 0 1px 0 rgb(250 246 238 / 80%)"
 
 const skeletonBg = "color-mix(in srgb, var(--color-welcome-navy) 12%, transparent)"
 
@@ -279,7 +279,7 @@ function MessageCard({
                 <span
                   aria-hidden
                   className="relative flex h-5 w-5 items-center justify-center rounded-full sm:h-6 sm:w-6"
-                  style={{ background: "rgb(255 255 255 / 22%)" }}
+                  style={{ background: "rgb(250 246 238 / 22%)" }}
                 >
                   <BookOpen className="h-2.5 w-2.5 sm:h-3 sm:w-3" style={{ color: IVORY }} />
                 </span>
@@ -469,7 +469,7 @@ export default function MessageWallDisplay({ messages, loading, freshKey = null 
                 className="h-1.5 rounded-full transition-all duration-500"
                 style={{
                   width: isActive ? "1.5rem" : "0.375rem",
-                  background: isActive ? "var(--color-motif-silver)" : "rgb(255 255 255 / 50%)",
+                  background: isActive ? "var(--color-motif-silver)" : "rgb(250 246 238 / 50%)",
                 }}
                 aria-label={`Show messages page ${idx + 1} of ${pageCount}`}
                 aria-current={isActive ? "true" : undefined}

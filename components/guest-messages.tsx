@@ -72,17 +72,17 @@ function MessageCard({ msg }: { msg: Message }) {
   }
 
   return (
-    <article className="group relative flex flex-col rounded-2xl border border-dash-border bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5">
+    <article className="group relative flex flex-col rounded-2xl border border-dash-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5">
       <header className="flex items-start gap-3">
         <span
-          className={`${cinzel.className} flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-dash-primary text-sm font-semibold text-white shadow-sm`}
+          className={`${cinzel.className} flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-dash-primary text-sm font-semibold text-background shadow-sm`}
           aria-hidden
         >
           {initials(name)}
         </span>
         <div className="min-w-0 flex-1">
           <h3 className={`${playfair.className} truncate text-base font-semibold text-dash-ink sm:text-lg`}>{name}</h3>
-          <p className="mt-0.5 flex items-center gap-1 text-[11px] text-gray-500 sm:text-xs" title={formatFullDate(msg.timestamp)}>
+          <p className="mt-0.5 flex items-center gap-1 text-[11px] text-floral-leaves sm:text-xs" title={formatFullDate(msg.timestamp)}>
             <Clock className="h-3 w-3 shrink-0" />
             {formatRelative(msg.timestamp)}
           </p>
@@ -93,8 +93,8 @@ function MessageCard({ msg }: { msg: Message }) {
           aria-label={copied ? "Copied" : `Copy message from ${name}`}
           className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-colors ${
             copied
-              ? "border-dash-accent bg-dash-accent text-white"
-              : "border-dash-border bg-white text-gray-400 hover:text-dash-primary sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
+              ? "border-dash-accent bg-dash-accent text-foreground"
+              : "border-dash-border bg-card text-floral-leaves hover:text-dash-primary sm:opacity-0 sm:group-hover:opacity-100 sm:focus:opacity-100"
           }`}
         >
           {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
@@ -175,7 +175,7 @@ export function GuestMessages({ messages, onRefresh, isLoading = false }: GuestM
           type="button"
           onClick={() => void handleRefresh()}
           disabled={busy}
-          className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-white px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-card px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface disabled:opacity-50"
         >
           <RefreshCw className={`h-3.5 w-3.5 ${busy ? "animate-spin" : ""}`} />
           Refresh
@@ -183,7 +183,7 @@ export function GuestMessages({ messages, onRefresh, isLoading = false }: GuestM
       </div>
 
       {error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700" role="alert">
+        <div className="rounded-xl border border-border bg-card p-3 text-sm text-foreground" role="alert">
           {error}
         </div>
       )}
@@ -191,21 +191,21 @@ export function GuestMessages({ messages, onRefresh, isLoading = false }: GuestM
       {/* Stats */}
       <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
         {[
-          { label: "Messages", value: stats.total, tone: "border-dash-border bg-white text-dash-primary" },
-          { label: "From guests", value: stats.guests, tone: "border-green-200 bg-green-50 text-green-700" },
-          { label: "This week", value: stats.thisWeek, tone: "border-amber-200 bg-amber-50 text-amber-700" },
-          { label: "Heartfelt (100+ chars)", value: stats.long, tone: "border-purple-200 bg-purple-50 text-purple-700" },
+          { label: "Messages", value: stats.total, tone: "border-dash-border bg-card text-dash-primary" },
+          { label: "From guests", value: stats.guests, tone: "border-border bg-card text-floral-leaves" },
+          { label: "This week", value: stats.thisWeek, tone: "border-border bg-card text-foreground" },
+          { label: "Heartfelt (100+ chars)", value: stats.long, tone: "border-border bg-card text-foreground" },
         ].map((stat) => (
           <div key={stat.label} className={`rounded-lg border p-3 shadow-sm sm:p-4 ${stat.tone}`}>
             <div className="text-xl font-bold sm:text-2xl">{stat.value}</div>
-            <div className="text-[10px] uppercase tracking-wide text-gray-600 sm:text-xs">{stat.label}</div>
+            <div className="text-[10px] uppercase tracking-wide text-floral-leaves sm:text-xs">{stat.label}</div>
           </div>
         ))}
       </div>
 
       {/* Explainer */}
       <div className="flex gap-3 rounded-xl border border-dash-border bg-dash-surface p-3 sm:p-4">
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-dash-primary shadow-sm ring-1 ring-dash-border">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-card text-dash-primary shadow-sm ring-1 ring-dash-border">
           <Heart className="h-4 w-4" />
         </span>
         <p className="text-xs leading-relaxed text-dash-text sm:text-sm">
@@ -216,19 +216,19 @@ export function GuestMessages({ messages, onRefresh, isLoading = false }: GuestM
       {/* Search + sort */}
       <div className="flex gap-2">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-floral-leaves" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by guest or words..."
-            className="w-full rounded-lg border border-dash-border bg-white py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-dash-focus"
+            className="w-full rounded-lg border border-dash-border bg-card py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-dash-focus"
           />
         </div>
         <button
           type="button"
           onClick={() => setNewestFirst((v) => !v)}
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-dash-border bg-white px-3 text-xs font-medium text-dash-ink transition-colors hover:bg-dash-surface sm:text-sm"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-dash-border bg-card px-3 text-xs font-medium text-dash-ink transition-colors hover:bg-dash-surface sm:text-sm"
           aria-label={`Sort: ${newestFirst ? "newest first" : "oldest first"}`}
         >
           <ArrowDownUp className="h-4 w-4 text-dash-accent" />
@@ -237,27 +237,27 @@ export function GuestMessages({ messages, onRefresh, isLoading = false }: GuestM
       </div>
 
       {searchQuery.trim() && visibleMessages.length > 0 && (
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-floral-leaves">
           {visibleMessages.length} of {messages.length} messages
         </p>
       )}
 
       {/* List */}
       {busy && messages.length === 0 ? (
-        <div className="rounded-xl border border-dash-border bg-white px-6 py-12 text-center">
+        <div className="rounded-xl border border-dash-border bg-card px-6 py-12 text-center">
           <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-dash-border border-t-dash-primary" />
           <h3 className={`${playfair.className} text-lg font-semibold text-dash-ink`}>Loading messages…</h3>
-          <p className="mt-1 text-sm text-gray-500">Gathering your guests&apos; well wishes.</p>
+          <p className="mt-1 text-sm text-floral-leaves">Gathering your guests&apos; well wishes.</p>
         </div>
       ) : visibleMessages.length === 0 ? (
-        <div className="rounded-xl border border-dash-border bg-white px-6 py-12 text-center">
+        <div className="rounded-xl border border-dash-border bg-card px-6 py-12 text-center">
           <span className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-dash-surface">
             <MessageSquare className="h-7 w-7 text-dash-line" />
           </span>
           <h3 className={`${playfair.className} text-lg font-semibold text-dash-ink`}>
             {searchQuery ? "No matching messages" : "No messages yet"}
           </h3>
-          <p className="mt-1 text-sm text-gray-500">
+          <p className="mt-1 text-sm text-floral-leaves">
             {searchQuery
               ? "Try a different name or word."
               : "When guests leave a message on your invitation, it will appear here."}

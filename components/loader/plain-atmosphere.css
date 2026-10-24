@@ -80,7 +80,7 @@
   height: min(40vw, 220px);
   left: 42%;
   top: 38%;
-  background: color-mix(in srgb, var(--color-motif-silver) 80%, white);
+  background: color-mix(in srgb, var(--color-motif-silver) 80%, #FAF6EE);
   opacity: 0.45;
   filter: blur(38px);
   animation: invite-plain-blob-drift-e 20s ease-in-out infinite alternate;
@@ -106,7 +106,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse 88% 72% at 50% 42%,
-    color-mix(in srgb, white 28%, transparent) 0%,
+    color-mix(in srgb, #FAF6EE 28%, transparent) 0%,
     transparent 58%
   );
   opacity: 0.85;

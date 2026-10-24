@@ -34,16 +34,16 @@ const aboveTheBeyond = localFont({
 // dusty-blue hairlines and a slate-blue diamond for ornaments.
 const TEAL = "var(--color-welcome-navy)"
 const BUTTON = "var(--color-welcome-heading)" // dusty blue — open question number
-const IVORY = "#FFFFFF"
+const IVORY = "#FAF6EE"
 const BODY = "var(--color-welcome-text)"
 const ACCENT = "var(--color-welcome-heading)"
-const SKY_TINT = (pct: number) => `color-mix(in srgb, var(--color-motif-medium) ${pct}%, white)`
+const SKY_TINT = (pct: number) => `color-mix(in srgb, var(--color-motif-medium) ${pct}%, #FAF6EE)`
 
 // Same circle pattern as the gallery (PlainBubbles paints the base)
 const sectionBg = "var(--color-bg-pattern-base)"
 
 // Text sitting directly on the circle pattern: navy (or dusty blue) with a soft white edge
-const textGlow = "0 1px 0 rgb(255 255 255 / 90%), 0 0 12px rgb(255 255 255 / 75%)"
+const textGlow = "0 1px 0 rgb(250 246 238 / 90%), 0 0 12px rgb(250 246 238 / 75%)"
 const onBg = {
   color: "var(--color-welcome-navy)",
   textShadow: textGlow,
@@ -52,10 +52,10 @@ const onBgBlue = { color: "var(--color-welcome-heading)", textShadow: textGlow }
 
 const cardStyle = {
   background:
-    "radial-gradient(90% 30% at 50% 0%, rgb(255 255 255 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, color-mix(in srgb, var(--color-motif-medium) 10%, white) 100%)",
+    "radial-gradient(90% 30% at 50% 0%, rgb(250 246 238 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FAF6EE 0%, color-mix(in srgb, var(--color-motif-medium) 10%, #FAF6EE) 100%)",
   border: "1px solid color-mix(in srgb, var(--color-motif-medium) 70%, transparent)",
   boxShadow:
-    "0 0 0 6px rgb(255 255 255 / 45%), 0 26px 56px -30px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
+    "0 0 0 6px rgb(250 246 238 / 45%), 0 26px 56px -30px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
 } as const
 
 const dividerLineStyle = {
@@ -248,7 +248,7 @@ export function FAQ({ background = true }: { background?: boolean } = {}) {
           <span
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[120%] w-[min(40rem,110%)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
-            style={{ background: "radial-gradient(ellipse at center, rgb(255 255 255 / 70%) 0%, rgb(255 255 255 / 30%) 50%, transparent 72%)" }}
+            style={{ background: "radial-gradient(ellipse at center, rgb(250 246 238 / 70%) 0%, rgb(250 246 238 / 30%) 50%, transparent 72%)" }}
           />
           <DecoImg
             src={decos.headerOrnament}
@@ -326,10 +326,10 @@ export function FAQ({ background = true }: { background?: boolean } = {}) {
                                 background:
                                   "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)",
                                 color: IVORY,
-                                boxShadow: "0 0 0 2px #FFFFFF, 0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 70%, transparent)",
+                                boxShadow: "0 0 0 2px #FAF6EE, 0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 70%, transparent)",
                               }
                             : {
-                                background: "#FFFFFF",
+                                background: "#FAF6EE",
                                 color: TEAL,
                                 boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--color-motif-yellow) 70%, transparent)",
                               }

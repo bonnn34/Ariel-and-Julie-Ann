@@ -17,19 +17,19 @@ const cinzel = Cinzel({
 })
 
 // Guest information color palette
-const GUEST_LIGHT = "#C1AC94"   // light beige/nude
-const GUEST_MEDIUM = "#624630"   // medium brown
-const GUEST_DARK = "#3E2914"    // dark brown
-const GUEST_BG = "#F8F4EE"      // very light beige container background
+const GUEST_LIGHT = "#ABAEB0"   // light beige/nude
+const GUEST_MEDIUM = "#4F6373"   // medium brown
+const GUEST_DARK = "#101D3A"    // dark brown
+const GUEST_BG = "#FAF6EE"      // very light beige container background
 
 // Guest attire motif palette (swatches shown in Wedding Attire)
 const GUEST_ATTIRE_PALETTE = [
-  "#A85D23",
-  "#BA7438",
-  "#543634",
-  "#7D5740",
-  "#C78537",
-  "#792C18",
+  "#D7A041",
+  "#D7A041",
+  "#101D3A",
+  "#4F6373",
+  "#D7A041",
+  "#101D3A",
 ]
 
 export function GuestInformation() {
@@ -38,7 +38,7 @@ export function GuestInformation() {
   return (
     <Section
       id="guest-information"
-      className="relative py-8 sm:py-12 md:py-16 lg:py-20 overflow-hidden bg-white"
+      className="relative py-8 sm:py-12 md:py-16 lg:py-20 overflow-hidden bg-card"
     >
       {/* Header - tighter on iPhone SE */}
       <div className="relative z-30 text-center mb-4 sm:mb-6 md:mb-9 lg:mb-12 px-4 sm:px-4 max-w-[100vw]">
@@ -132,7 +132,7 @@ export function GuestInformation() {
                   {GUEST_ATTIRE_PALETTE.map((color) => (
                     <div
                       key={color}
-                      className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full flex-shrink-0 border border-white/50 shadow-sm"
+                      className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 rounded-full flex-shrink-0 border border-background/50 shadow-sm"
                       style={{ backgroundColor: color }}
                     />
                   ))}
@@ -219,7 +219,7 @@ export function GuestInformation() {
             <div className="space-y-2.5 sm:space-y-3 relative z-10">
               <div className="rounded-lg sm:rounded-xl p-2.5 sm:p-3 border-2 shadow-sm min-w-0" style={{ borderColor: `${GUEST_LIGHT}99`, backgroundColor: GUEST_BG }}>
                 <div className="flex items-start gap-2.5 sm:gap-3">
-                  <div className="p-1.5 sm:p-2 rounded-lg text-white flex-shrink-0" style={{ backgroundColor: GUEST_DARK }}>
+                  <div className="p-1.5 sm:p-2 rounded-lg text-background flex-shrink-0" style={{ backgroundColor: GUEST_DARK }}>
                     <Car className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -233,7 +233,7 @@ export function GuestInformation() {
 
               <div className="rounded-lg sm:rounded-xl p-2.5 sm:p-3 border-2 shadow-sm min-w-0" style={{ borderColor: `${GUEST_LIGHT}99`, backgroundColor: GUEST_BG }}>
                 <div className="flex items-start gap-2.5 sm:gap-3">
-                  <div className="p-1.5 sm:p-2 rounded-lg text-white flex-shrink-0" style={{ backgroundColor: GUEST_DARK }}>
+                  <div className="p-1.5 sm:p-2 rounded-lg text-background flex-shrink-0" style={{ backgroundColor: GUEST_DARK }}>
                     <Navigation className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -247,7 +247,7 @@ export function GuestInformation() {
 
               <div className="rounded-lg sm:rounded-xl p-2.5 sm:p-3 border-2 min-w-0" style={{ borderColor: `${GUEST_LIGHT}99`, backgroundColor: GUEST_BG }}>
                 <p className={`${cormorant.className} text-xs sm:text-sm md:text-base font-semibold mb-1.5 sm:mb-2 flex items-center gap-2`} style={{ color: GUEST_DARK }}>
-                  <span className="inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full flex-shrink-0" style={{ backgroundColor: "rgba(62, 41, 20, 0.12)", color: GUEST_DARK }}>
+                  <span className="inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full flex-shrink-0" style={{ backgroundColor: "rgba(16, 29, 58, 0.12)", color: GUEST_DARK }}>
                     <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </span>
                   Quick Tips

@@ -27,19 +27,19 @@ const aboveTheBeyond = localFont({
   variable: "--font-above-beyond",
 })
 
-const IVORY = "#fffaf4"
+const IVORY = "#FAF6EE"
 const entryEase = [0.22, 1, 0.36, 1] as const
 
 const titleSize = "clamp(2.85rem, 13.5vw, 6.75rem)"
 const photoTitleShadow =
-  "0 1px 0 rgb(255 250 244 / 28%), 0 2px 18px rgb(42 34 28 / 55%), 0 12px 36px rgb(42 34 28 / 40%)"
+  "0 1px 0 rgb(250 246 238 / 28%), 0 2px 18px rgb(16 29 58 / 55%), 0 12px 36px rgb(16 29 58 / 40%)"
 
 // Plain background = same circle pattern as the gallery (PlainBubbles paints the base)
 const plainBg = "var(--color-bg-pattern-base)"
 
 // Text sitting directly on the background: deep slate title, slate-blue eyebrow / script,
 // with a soft white edge (matches the gallery)
-const onBgGlow = "0 1px 0 rgb(255 255 255 / 85%), 0 0 12px rgb(255 255 255 / 70%)"
+const onBgGlow = "0 1px 0 rgb(250 246 238 / 85%), 0 0 12px rgb(250 246 238 / 70%)"
 const onBg = { color: "var(--color-welcome-navy)", textShadow: onBgGlow } as const
 const onBgBlue = { color: "var(--color-welcome-heading)", textShadow: onBgGlow } as const
 const onBgBody = { color: "var(--color-welcome-text)", textShadow: onBgGlow } as const
@@ -184,7 +184,7 @@ function PhotoSeeYouThere() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgb(20 16 12 / 38%) 0%, rgb(20 16 12 / 18%) 38%, rgb(20 16 12 / 12%) 58%, rgb(20 16 12 / 42%) 100%)",
+              "linear-gradient(180deg, rgb(16 29 58 / 38%) 0%, rgb(16 29 58 / 18%) 38%, rgb(16 29 58 / 12%) 58%, rgb(16 29 58 / 42%) 100%)",
           }}
           aria-hidden
         />

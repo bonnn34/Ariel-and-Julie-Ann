@@ -28,9 +28,9 @@ const aboveTheBeyond = localFont({
 const FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSfeGlEl4CMXWefdvCw6AOPHFS1ROku_rs-Gbofa2LkVJ0sLGQ/viewform"
 
-const forest = "#5d6f47"
-const heading = "#FFFFFF"
-const body = "#F8F5EC"
+const forest = "#4F6373"
+const heading = "#FAF6EE"
+const body = "#FAF6EE"
 
 function TrialTitle() {
   return (
@@ -104,14 +104,14 @@ export function VideoMessageTrial() {
             }}
           >
             <div
-              className="pointer-events-none absolute inset-3 z-30 rounded-t-full border border-white sm:inset-4 md:inset-5"
+              className="pointer-events-none absolute inset-3 z-30 rounded-t-full border border-background sm:inset-4 md:inset-5"
               aria-hidden
             />
 
             <div className="relative z-20 flex flex-col items-center px-6 pb-10 pt-[22%] text-center sm:px-10 sm:pb-12 md:px-14 md:pb-14">
               <div
-                className="mb-5 rounded-2xl border bg-white p-3 shadow-sm sm:mb-6 sm:p-4"
-                style={{ borderColor: "rgba(255, 255, 255, 0.45)" }}
+                className="mb-5 rounded-2xl border bg-card p-3 shadow-sm sm:mb-6 sm:p-4"
+                style={{ borderColor: "rgba(250, 246, 238, 0.45)" }}
               >
                 <QRCodeSVG
                   value={FORM_URL}
@@ -131,7 +131,7 @@ export function VideoMessageTrial() {
 
               <Video
                 className="mb-3 h-5 w-5 sm:h-6 sm:w-6"
-                style={{ color: "#f4dd97" }}
+                style={{ color: "#F2D087" }}
                 aria-hidden
               />
               <h3
@@ -153,10 +153,10 @@ export function VideoMessageTrial() {
                 rel="noopener noreferrer"
                 className={`${cinzel.className} mt-6 inline-flex items-center justify-center rounded-full border px-7 py-3 ${sectionType.label} font-semibold uppercase tracking-[0.18em] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] sm:mt-7 sm:px-9 sm:py-3.5 sm:tracking-[0.22em]`}
                 style={{
-                  backgroundColor: "#f4dd97",
-                  borderColor: "rgba(255, 255, 255, 0.35)",
+                  backgroundColor: "#F2D087",
+                  borderColor: "rgba(250, 246, 238, 0.35)",
                   color: forest,
-                  boxShadow: "0 8px 22px color-mix(in srgb, #f4dd97 35%, transparent)",
+                  boxShadow: "0 8px 22px color-mix(in srgb, #F2D087 35%, transparent)",
                 }}
               >
                 Open upload form

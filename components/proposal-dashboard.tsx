@@ -254,7 +254,7 @@ ${groom} & ${bride}`
 
   const greetingWord = selectedInviteRole && PLAYFUL_ROLE_IDS.has(selectedInviteRole.id) ? "Hi" : "Dear"
   const FIELD =
-    "w-full rounded-xl border border-dash-border bg-dash-bg px-3 py-2.5 outline-none transition-colors focus:border-dash-focus focus:bg-white focus:ring-2 focus:ring-dash-focus/40"
+    "w-full rounded-xl border border-dash-border bg-dash-bg px-3 py-2.5 outline-none transition-colors focus:border-dash-focus focus:bg-card focus:ring-2 focus:ring-dash-focus/40"
 
   return (
     <div className="space-y-4 sm:space-y-6">
@@ -266,7 +266,7 @@ ${groom} & ${bride}`
             type="button"
             onClick={() => void fetchSheetCounts()}
             disabled={isCountsLoading}
-            className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-white px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-card px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface disabled:opacity-50"
           >
             <RefreshCw className={`h-3.5 w-3.5 ${isCountsLoading ? "animate-spin" : ""}`} />
             Refresh
@@ -274,7 +274,7 @@ ${groom} & ${bride}`
           <Link
             href="/"
             target="_blank"
-            className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-white px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface"
+            className="inline-flex items-center gap-1.5 rounded-full border border-dash-border bg-card px-3 py-1.5 text-xs font-medium text-dash-primary transition-colors hover:bg-dash-surface"
           >
             <ExternalLink className="h-3.5 w-3.5" />
             Preview Site
@@ -285,22 +285,22 @@ ${groom} & ${bride}`
       {/* Stats */}
       <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
         {[
-          { label: "Entourage roles", value: PROPOSAL_ENTOURAGE_ROLE_SLOTS, tone: "border-dash-border bg-white text-dash-primary" },
-          { label: "Sponsor roles", value: PROPOSAL_SPONSOR_ROLE_SLOTS, tone: "border-amber-200 bg-amber-50 text-amber-700" },
+          { label: "Entourage roles", value: PROPOSAL_ENTOURAGE_ROLE_SLOTS, tone: "border-dash-border bg-card text-dash-primary" },
+          { label: "Sponsor roles", value: PROPOSAL_SPONSOR_ROLE_SLOTS, tone: "border-border bg-card text-foreground" },
           {
             label: "Entourage names",
             value: isCountsLoading ? "…" : filledEntourageCount,
-            tone: "border-green-200 bg-green-50 text-green-700",
+            tone: "border-border bg-card text-floral-leaves",
           },
           {
             label: "Sponsor names",
             value: isCountsLoading ? "…" : filledSponsorCount,
-            tone: "border-purple-200 bg-purple-50 text-purple-700",
+            tone: "border-border bg-card text-foreground",
           },
         ].map((stat) => (
           <div key={stat.label} className={`rounded-lg border p-3 shadow-sm sm:p-4 ${stat.tone}`}>
             <div className="text-xl font-bold sm:text-2xl">{stat.value}</div>
-            <div className="text-[10px] uppercase tracking-wide text-gray-600 sm:text-xs">{stat.label}</div>
+            <div className="text-[10px] uppercase tracking-wide text-floral-leaves sm:text-xs">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -314,11 +314,11 @@ ${groom} & ${bride}`
           aria-controls="proposal-how-it-works"
           className="flex w-full items-center gap-2 px-3 py-2.5 text-left sm:px-4"
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-dash-primary shadow-sm ring-1 ring-dash-border">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-card text-dash-primary shadow-sm ring-1 ring-dash-border">
             <Info className="h-3.5 w-3.5" />
           </span>
           <span className={`${cinzel.className} flex-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-dash-primary`}>How it works</span>
-          <span className="text-[11px] font-medium text-gray-500">{showHowItWorks ? "Hide" : "Show"}</span>
+          <span className="text-[11px] font-medium text-floral-leaves">{showHowItWorks ? "Hide" : "Show"}</span>
           <ChevronDown className={`h-4 w-4 text-dash-accent transition-transform ${showHowItWorks ? "rotate-180" : ""}`} />
         </button>
         {showHowItWorks && (
@@ -329,8 +329,8 @@ ${groom} & ${bride}`
                 { n: 2, title: "Send", text: "Copy or share the message by Messenger, Viber or text." },
                 { n: 3, title: "They say yes", text: "Their name fills the next open slot for that role." },
               ].map((step) => (
-                <li key={step.n} className="flex gap-2.5 rounded-lg bg-white/70 px-3 py-2.5 ring-1 ring-dash-border">
-                  <span className={`${cinzel.className} flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-dash-accent text-[11px] font-semibold text-white`}>
+                <li key={step.n} className="flex gap-2.5 rounded-lg bg-card/70 px-3 py-2.5 ring-1 ring-dash-border">
+                  <span className={`${cinzel.className} flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-dash-accent text-[11px] font-semibold text-background`}>
                     {step.n}
                   </span>
                   <span className="text-xs leading-relaxed text-dash-text sm:text-[13px]">
@@ -353,35 +353,35 @@ ${groom} & ${bride}`
                 key={tab}
                 onClick={() => setCategoryTab(tab)}
                 className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-                  active ? "border-dash-accent bg-dash-accent text-white" : "border-dash-border bg-white text-gray-600 hover:text-dash-ink"
+                  active ? "border-dash-accent bg-dash-accent text-foreground" : "border-dash-border bg-card text-floral-leaves hover:text-dash-ink"
                 }`}
               >
                 {tab === "all" ? "All roles" : tab}{" "}
-                <span className={active ? "text-white/80" : "text-gray-400"}>{categoryCounts[tab]}</span>
+                <span className={active ? "text-foreground/80" : "text-floral-leaves"}>{categoryCounts[tab]}</span>
               </button>
             )
           })}
         </div>
         <div className="relative w-full sm:max-w-xs">
-          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-floral-leaves" />
           <input
             type="text"
             placeholder="Search roles..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-lg border border-dash-border bg-white py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-dash-focus"
+            className="w-full rounded-lg border border-dash-border bg-card py-2.5 pl-10 pr-4 outline-none focus:ring-2 focus:ring-dash-focus"
           />
         </div>
       </div>
 
       {/* Role cards */}
       {filteredRoles.length === 0 ? (
-        <div className="rounded-xl border border-dash-border bg-white px-6 py-12 text-center">
+        <div className="rounded-xl border border-dash-border bg-card px-6 py-12 text-center">
           <span className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-dash-surface">
             <Search className="h-7 w-7 text-dash-line" />
           </span>
           <h3 className={`${playfair.className} text-lg font-semibold text-dash-ink`}>No matching roles</h3>
-          <p className="mt-1 text-sm text-gray-500">Try a different filter or search term.</p>
+          <p className="mt-1 text-sm text-floral-leaves">Try a different filter or search term.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -391,35 +391,35 @@ ${groom} & ${bride}`
             return (
               <div
                 key={role.id}
-                className="group flex flex-col rounded-2xl border border-dash-border bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5"
+                className="group flex flex-col rounded-2xl border border-dash-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5"
               >
                 <div className="flex items-start gap-3">
                   <span
                     className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${
-                      isSponsor ? "bg-purple-50 text-purple-600" : "bg-dash-tint text-dash-primary"
+                      isSponsor ? "bg-card text-foreground" : "bg-dash-tint text-dash-primary"
                     }`}
                   >
                     {isSponsor ? <Crown className="h-5 w-5" /> : <Users className="h-5 w-5" />}
                   </span>
                   <div className="min-w-0 flex-1">
                     <h4 className={`${playfair.className} text-lg font-semibold leading-tight text-dash-ink`}>{role.title}</h4>
-                    <p className="mt-0.5 text-xs text-gray-500">{role.roleCategory}</p>
+                    <p className="mt-0.5 text-xs text-floral-leaves">{role.roleCategory}</p>
                   </div>
                   <span
                     className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
-                      isSponsor ? "bg-purple-50 text-purple-700" : "bg-dash-bg-deep text-dash-primary"
+                      isSponsor ? "bg-card text-foreground" : "bg-dash-bg-deep text-dash-primary"
                     }`}
                   >
                     {isSponsor ? "Sponsor" : "Entourage"}
                   </span>
                 </div>
 
-                <p className="mt-3 line-clamp-2 flex-1 text-xs leading-relaxed text-gray-600 sm:text-[13px]">{role.description}</p>
+                <p className="mt-3 line-clamp-2 flex-1 text-xs leading-relaxed text-floral-leaves sm:text-[13px]">{role.description}</p>
 
                 <div className="mt-4 flex items-center gap-2 border-t border-dash-tint pt-3">
                   <button
                     onClick={() => openInviteModal(role)}
-                    className="flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-full bg-dash-primary px-3 text-sm font-semibold text-white shadow-sm transition-all hover:brightness-110"
+                    className="flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-full bg-dash-primary px-3 text-sm font-semibold text-background shadow-sm transition-all hover:brightness-110"
                   >
                     <Send className="h-4 w-4" />
                     Personalize & Send
@@ -429,7 +429,7 @@ ${groom} & ${bride}`
                     aria-label={isCopied ? "Link copied" : `Copy ${role.title} link`}
                     title="Copy general link"
                     className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors ${
-                      isCopied ? "border-dash-accent bg-dash-accent text-white" : "border-dash-border bg-white text-dash-primary hover:bg-dash-surface"
+                      isCopied ? "border-dash-accent bg-dash-accent text-foreground" : "border-dash-border bg-card text-dash-primary hover:bg-dash-surface"
                     }`}
                   >
                     {isCopied ? <Check className="h-4 w-4" /> : <Link2 className="h-4 w-4" />}
@@ -439,7 +439,7 @@ ${groom} & ${bride}`
                     target="_blank"
                     aria-label={`Preview ${role.title} proposal page`}
                     title="Preview proposal page"
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-dash-border bg-white text-dash-primary transition-colors hover:bg-dash-surface"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-dash-border bg-card text-dash-primary transition-colors hover:bg-dash-surface"
                   >
                     <ExternalLink className="h-4 w-4" />
                   </Link>
@@ -456,7 +456,7 @@ ${groom} & ${bride}`
           type="button"
           onClick={() => setShowSetupNote((v) => !v)}
           aria-expanded={showSetupNote}
-          className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left text-xs font-medium text-gray-500"
+          className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left text-xs font-medium text-floral-leaves"
         >
           <span className="flex items-center gap-1.5">
             <Info className="h-3.5 w-3.5" />
@@ -465,21 +465,21 @@ ${groom} & ${bride}`
           <ChevronDown className={`h-4 w-4 transition-transform ${showSetupNote ? "rotate-180" : ""}`} />
         </button>
         {showSetupNote && (
-          <p className="border-t border-dash-border px-4 py-3 text-xs leading-relaxed text-gray-500">
+          <p className="border-t border-dash-border px-4 py-3 text-xs leading-relaxed text-floral-leaves">
             Confirmed responses fill the bottom-most empty row in{" "}
-            <span className="font-mono text-gray-600">googleAPI.entourage</span> or{" "}
-            <span className="font-mono text-gray-600">googleAPI.sponsors</span> for the matching role (Name + RoleCategory).
-            Redeploy the Apps Script after updating <span className="font-mono text-gray-600">entourage-management.js</span> and{" "}
-            <span className="font-mono text-gray-600">principal-sponsor-management.js</span>.
+            <span className="font-mono text-floral-leaves">googleAPI.entourage</span> or{" "}
+            <span className="font-mono text-floral-leaves">googleAPI.sponsors</span> for the matching role (Name + RoleCategory).
+            Redeploy the Apps Script after updating <span className="font-mono text-floral-leaves">entourage-management.js</span> and{" "}
+            <span className="font-mono text-floral-leaves">principal-sponsor-management.js</span>.
           </p>
         )}
       </div>
 
       {/* ── Personalize & send sheet ──────────────────────────────────── */}
       {selectedInviteRole && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-0 sm:items-center sm:p-4" onClick={closeInviteModal}>
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-primary/50 p-0 sm:items-center sm:p-4" onClick={closeInviteModal}>
           <div
-            className="dash-sheet relative flex max-h-[94dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-2xl bg-white shadow-2xl sm:max-h-[90vh] sm:rounded-2xl"
+            className="dash-sheet relative flex max-h-[94dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-2xl bg-card shadow-2xl sm:max-h-[90vh] sm:rounded-2xl"
             role="dialog"
             aria-modal="true"
             aria-labelledby="invite-title"
@@ -487,14 +487,14 @@ ${groom} & ${bride}`
           >
             {/* Header */}
             <div className="relative shrink-0 border-b border-dash-border bg-dash-bg px-4 pt-3 pb-4 sm:px-6 sm:py-5">
-              <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-gray-300/70 sm:hidden" aria-hidden />
+              <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-floral-soft/70 sm:hidden" aria-hidden />
               <button
                 type="button"
                 onClick={() => setShowInviteHelp((v) => !v)}
                 aria-label="How this works"
                 aria-expanded={showInviteHelp}
                 className={`absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border shadow-sm transition-colors sm:left-auto sm:right-16 sm:top-5 ${
-                  showInviteHelp ? "border-dash-accent bg-dash-accent text-white" : "border-dash-border bg-white text-dash-primary hover:bg-dash-tint"
+                  showInviteHelp ? "border-dash-accent bg-dash-accent text-foreground" : "border-dash-border bg-card text-dash-primary hover:bg-dash-tint"
                 }`}
               >
                 <Info className="h-4 w-4" />
@@ -503,7 +503,7 @@ ${groom} & ${bride}`
                 type="button"
                 onClick={closeInviteModal}
                 aria-label="Close"
-                className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-dash-border bg-white text-gray-500 shadow-sm transition-colors hover:text-dash-ink sm:right-5 sm:top-5"
+                className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-dash-border bg-card text-floral-leaves shadow-sm transition-colors hover:text-dash-ink sm:right-5 sm:top-5"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -512,7 +512,7 @@ ${groom} & ${bride}`
                 <h2 id="invite-title" className={`${playfair.className} mt-1 text-[1.45rem] font-semibold leading-tight text-dash-ink sm:text-2xl`}>
                   <ProposalMixedText text={selectedInviteRole.title} />
                 </h2>
-                <p className="mx-auto mt-1.5 max-w-xs text-[11px] leading-relaxed text-gray-500 sm:mx-0 sm:max-w-none sm:text-xs">
+                <p className="mx-auto mt-1.5 max-w-xs text-[11px] leading-relaxed text-floral-leaves sm:mx-0 sm:max-w-none sm:text-xs">
                   Send a personal link — they&apos;ll only need to answer yes or no.
                 </p>
               </div>
@@ -556,14 +556,14 @@ ${groom} & ${bride}`
                   }}
                   className={`${FIELD} ${proposalMixedTextInter.className}`}
                 />
-                <p className="text-[11px] text-gray-500">
+                <p className="text-[11px] text-floral-leaves">
                   Their page will greet them as{" "}
                   <span className="font-semibold text-dash-primary">
                     &ldquo;{greetingWord} <ProposalMixedText text={inviteeName.trim() || "Name"} />&rdquo;
                   </span>
                 </p>
                 {inviteNameError && (
-                  <p className="text-xs font-medium text-rose-600" role="alert">
+                  <p className="text-xs font-medium text-foreground" role="alert">
                     {inviteNameError}
                   </p>
                 )}
@@ -582,14 +582,14 @@ ${groom} & ${bride}`
 
               <div className="flex items-center gap-2 rounded-xl border border-dash-border bg-dash-bg py-1.5 pl-3 pr-1.5">
                 <Link2 className="h-4 w-4 shrink-0 text-dash-accent" />
-                <p className="min-w-0 flex-1 truncate font-mono text-[11px] text-gray-500">
+                <p className="min-w-0 flex-1 truncate font-mono text-[11px] text-floral-leaves">
                   {getProposalLink(selectedInviteRole.id, inviteeName.trim() || undefined)}
                 </p>
                 <button
                   type="button"
                   onClick={handleCopyPersonalLink}
                   className={`flex h-8 shrink-0 items-center gap-1 rounded-lg px-2.5 text-xs font-semibold transition-colors ${
-                    copiedPersonalLink ? "bg-dash-accent text-white" : "bg-white text-dash-primary ring-1 ring-dash-border hover:bg-dash-surface"
+                    copiedPersonalLink ? "bg-dash-accent text-foreground" : "bg-card text-dash-primary ring-1 ring-dash-border hover:bg-dash-surface"
                   }`}
                 >
                   {copiedPersonalLink ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
@@ -599,12 +599,12 @@ ${groom} & ${bride}`
             </div>
 
             {/* Footer */}
-            <div className="flex shrink-0 flex-col gap-2 border-t border-dash-border bg-white px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:flex-row sm:justify-end sm:px-6 sm:py-4">
+            <div className="flex shrink-0 flex-col gap-2 border-t border-dash-border bg-card px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:flex-row sm:justify-end sm:px-6 sm:py-4">
               {canShare && (
                 <button
                   type="button"
                   onClick={() => void handleShareInvite()}
-                  className="flex h-11 items-center justify-center gap-2 rounded-full bg-dash-primary px-6 text-sm font-semibold text-white shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99] sm:order-2"
+                  className="flex h-11 items-center justify-center gap-2 rounded-full bg-dash-primary px-6 text-sm font-semibold text-background shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] transition-all hover:brightness-110 active:scale-[0.99] sm:order-2"
                 >
                   <Share2 className="h-4 w-4" />
                   Share Invite
@@ -616,11 +616,11 @@ ${groom} & ${bride}`
                 className={`flex h-11 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-all active:scale-[0.99] sm:order-1 ${
                   canShare
                     ? copiedInviteText
-                      ? "border border-dash-accent bg-dash-accent text-white"
-                      : "border border-dash-border bg-white text-dash-ink hover:bg-dash-surface"
+                      ? "border border-dash-accent bg-dash-accent text-foreground"
+                      : "border border-dash-border bg-card text-dash-ink hover:bg-dash-surface"
                     : copiedInviteText
-                      ? "bg-dash-accent text-white"
-                      : "bg-dash-primary text-white shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] hover:brightness-110"
+                      ? "bg-dash-accent text-foreground"
+                      : "bg-dash-primary text-background shadow-[0_10px_22px_-10px_color-mix(in_srgb,var(--color-dash-ink)_70%,transparent)] hover:brightness-110"
                 }`}
               >
                 {copiedInviteText ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}

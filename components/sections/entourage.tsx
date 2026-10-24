@@ -60,7 +60,7 @@ const dividerLineStyle = {
 const cardStyle = {
   background: PAPER,
   boxShadow:
-    "0 26px 56px -30px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent), inset 0 1px 0 rgb(255 255 255 / 80%)",
+    "0 26px 56px -30px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent), inset 0 1px 0 rgb(250 246 238 / 80%)",
 } as const
 
 const palette = {

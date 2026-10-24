@@ -42,7 +42,7 @@ const cardStyle = {
   borderStyle: "solid",
   borderColor: "color-mix(in srgb, var(--color-motif-deep) 14%, transparent)",
   boxShadow:
-    "0 8px 28px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, white 70%, transparent)",
+    "0 8px 28px color-mix(in srgb, var(--color-motif-deep) 7%, transparent), inset 0 1px 0 color-mix(in srgb, #FAF6EE 70%, transparent)",
 } as const
 
 const softPanelStyle = {
@@ -178,7 +178,7 @@ export function MessageVideo() {
                 style={softPanelStyle}
               >
                 <div
-                  className="rounded-xl border bg-white p-2.5 shadow-sm sm:p-3"
+                  className="rounded-xl border bg-card p-2.5 shadow-sm sm:p-3"
                   style={{
                     borderColor: "color-mix(in srgb, var(--color-motif-deep) 14%, transparent)",
                   }}

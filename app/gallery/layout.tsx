@@ -20,7 +20,7 @@ const aboveTheBeyond = localFont({
 
 // Top bar: white → blush pink, charcoal lettering, warm-gray / blush hairline
 const BAR_BG =
-  "linear-gradient(180deg, rgb(255 255 255 / 94%) 0%, color-mix(in srgb, var(--color-motif-blush) 55%, white) 100%)"
+  "linear-gradient(180deg, rgb(250 246 238 / 94%) 0%, color-mix(in srgb, var(--color-motif-blush) 55%, #FAF6EE) 100%)"
 
 export default function GalleryLayout({ children }: { children: React.ReactNode }) {
   const { couple, gallery } = useSiteConfig()

@@ -33,13 +33,13 @@ const aboveTheBeyond = localFont({
 // Palette lives in globals.css → motif / welcome tokens. No yellow for text (hard to read):
 // deep slate headings, slate body text, slate-blue buttons and guest names.
 const TEAL = "var(--color-welcome-navy)"
-const IVORY = "#FFFFFF"
-const PAPER = "#FFFFFF"
+const IVORY = "#FAF6EE"
+const PAPER = "#FAF6EE"
 const NAVY = TEAL
 const BODY = "var(--color-welcome-text)"
 const ACCENT = "var(--color-welcome-heading)"
 const HAIRLINE = "color-mix(in srgb, var(--color-motif-medium) 60%, transparent)"
-const TEAL_SOFT = "color-mix(in srgb, var(--color-welcome-text) 70%, white)"
+const TEAL_SOFT = "color-mix(in srgb, var(--color-welcome-text) 70%, #FAF6EE)"
 // Slate blue — guest names
 const LEAF = "var(--color-motif-accent)"
 const DEEP_GRADIENT =
@@ -52,7 +52,7 @@ const SAGE_GRADIENT =
 const sectionBg = "var(--color-bg-pattern-base)"
 
 // Text sitting directly on the circle pattern: navy (or dusty blue) with a soft white edge
-const textGlow = "0 1px 0 rgb(255 255 255 / 90%), 0 0 12px rgb(255 255 255 / 75%)"
+const textGlow = "0 1px 0 rgb(250 246 238 / 90%), 0 0 12px rgb(250 246 238 / 75%)"
 const onBg = {
   color: "var(--color-welcome-navy)",
   textShadow: textGlow,
@@ -68,14 +68,14 @@ const palette = {
 
 const cardStyle = {
   background:
-    "radial-gradient(90% 40% at 50% 0%, rgb(255 255 255 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, color-mix(in srgb, var(--color-motif-medium) 10%, white) 100%)",
+    "radial-gradient(90% 40% at 50% 0%, rgb(250 246 238 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FAF6EE 0%, color-mix(in srgb, var(--color-motif-medium) 10%, #FAF6EE) 100%)",
   border: "1px solid color-mix(in srgb, var(--color-motif-medium) 65%, transparent)",
   boxShadow:
     "0 22px 48px -26px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
 } as const
 
 const refreshButtonStyle = {
-  borderColor: "rgb(255 255 255 / 70%)",
+  borderColor: "rgb(250 246 238 / 70%)",
   background: DEEP_GRADIENT,
   boxShadow: "0 4px 14px -4px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent)",
 } as const
@@ -83,7 +83,7 @@ const refreshButtonStyle = {
 const chipPrimaryStyle = {
   color: NAVY,
   borderColor: "color-mix(in srgb, var(--color-welcome-heading) 45%, transparent)",
-  backgroundColor: "color-mix(in srgb, var(--color-motif-medium) 20%, white)",
+  backgroundColor: "color-mix(in srgb, var(--color-motif-medium) 20%, #FAF6EE)",
 } as const
 
 const chipSecondaryStyle = {
@@ -357,7 +357,7 @@ export function BookOfGuests({ background = true }: { background?: boolean } = {
         <span
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[120%] w-[min(40rem,110%)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
-          style={{ background: "radial-gradient(ellipse at center, rgb(255 255 255 / 70%) 0%, rgb(255 255 255 / 30%) 50%, transparent 72%)" }}
+          style={{ background: "radial-gradient(ellipse at center, rgb(250 246 238 / 70%) 0%, rgb(250 246 238 / 30%) 50%, transparent 72%)" }}
         />
         <DecoImg
           src={decos.headerOrnament}
@@ -613,7 +613,7 @@ export function BookOfGuests({ background = true }: { background?: boolean } = {
                         return (
                           <div
                             className="relative z-[1] mt-2.5 rounded-xl px-2.5 pb-2 pt-1.5"
-                            style={{ background: "color-mix(in srgb, var(--color-motif-yellow) 10%, white)", boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--color-motif-yellow) 35%, transparent)" }}
+                            style={{ background: "color-mix(in srgb, var(--color-motif-yellow) 10%, #FAF6EE)", boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--color-motif-yellow) 35%, transparent)" }}
                           >
                             {/* Label row */}
                             <div className="mb-1.5 flex items-center gap-1.5">

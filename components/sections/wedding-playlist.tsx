@@ -109,8 +109,8 @@ const BUTTON =
   "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)"
 const BUTTON_SHADOW =
   "0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent), 0 12px 24px -12px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)"
-const IVORY = "#FFFFFF"
-const PAPER = "#FFFFFF"
+const IVORY = "#FAF6EE"
+const PAPER = "#FAF6EE"
 const NAVY = TEAL
 const BODY = "var(--color-welcome-text)"
 const ACCENT = "var(--color-welcome-heading)"
@@ -120,7 +120,7 @@ const HAIRLINE = "color-mix(in srgb, var(--color-motif-medium) 60%, transparent)
 const sectionBg = "var(--color-bg-pattern-base)"
 
 // Text sitting directly on the circle pattern: navy (or dusty blue) with a soft white edge
-const textGlow = "0 1px 0 rgb(255 255 255 / 90%), 0 0 12px rgb(255 255 255 / 75%)"
+const textGlow = "0 1px 0 rgb(250 246 238 / 90%), 0 0 12px rgb(250 246 238 / 75%)"
 const onBg = {
   color: "var(--color-welcome-navy)",
   textShadow: textGlow,
@@ -129,10 +129,10 @@ const onBgBlue = { color: "var(--color-welcome-heading)", textShadow: textGlow }
 
 const cardStyle = {
   background:
-    "radial-gradient(90% 35% at 50% 0%, rgb(255 255 255 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FFFFFF 0%, color-mix(in srgb, var(--color-motif-medium) 10%, white) 100%)",
+    "radial-gradient(90% 35% at 50% 0%, rgb(250 246 238 / 95%) 0%, transparent 70%), linear-gradient(180deg, #FAF6EE 0%, color-mix(in srgb, var(--color-motif-medium) 10%, #FAF6EE) 100%)",
   border: `1px solid ${HAIRLINE}`,
   boxShadow:
-    "0 0 0 6px rgb(255 255 255 / 40%), 0 28px 60px -32px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
+    "0 0 0 6px rgb(250 246 238 / 40%), 0 28px 60px -32px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
 } as const
 
 const ct = {
@@ -326,7 +326,7 @@ export function WeddingPlaylist() {
             <span
               aria-hidden
               className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[120%] w-[min(40rem,110%)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
-              style={{ background: "radial-gradient(ellipse at center, rgb(255 255 255 / 70%) 0%, rgb(255 255 255 / 30%) 50%, transparent 72%)" }}
+              style={{ background: "radial-gradient(ellipse at center, rgb(250 246 238 / 70%) 0%, rgb(250 246 238 / 30%) 50%, transparent 72%)" }}
             />
             <DecoImg
               src={decos.headerOrnament}
@@ -412,7 +412,7 @@ export function WeddingPlaylist() {
                   className={`${cinzel.className} mt-5 hidden items-center sm:inline-flex justify-center gap-2 rounded-full border px-7 py-2.5 font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)] sm:py-3 md:mt-0 ${ct.btn}`}
                   style={{
                     background: BUTTON,
-                    borderColor: "rgb(255 255 255 / 70%)",
+                    borderColor: "rgb(250 246 238 / 70%)",
                     color: IVORY,
                     boxShadow: BUTTON_SHADOW,
                   }}
@@ -432,14 +432,14 @@ export function WeddingPlaylist() {
                   title={`${playlistName} — Spotify playlist`}
                   aria-label={`${playlistName} — Spotify playlist`}
                   className="h-[352px] w-full overflow-hidden rounded-[12px] [&_iframe]:block [&_iframe]:border-0"
-                  style={{ background: "color-mix(in srgb, var(--color-motif-medium) 14%, white)" }}
+                  style={{ background: "color-mix(in srgb, var(--color-motif-medium) 14%, #FAF6EE)" }}
                 />
                 {/* Placeholder while the Spotify embed loads */}
                 {!playerReady && (
                   <div
                     aria-hidden
                     className="pointer-events-none absolute inset-1 flex flex-col items-center justify-center gap-3 rounded-[12px] sm:inset-2"
-                    style={{ background: "color-mix(in srgb, var(--color-motif-medium) 14%, white)" }}
+                    style={{ background: "color-mix(in srgb, var(--color-motif-medium) 14%, #FAF6EE)" }}
                   >
                     <Disc3
                       className={`h-9 w-9 opacity-60 ${reduceMotion ? "" : "animate-[spin_3s_linear_infinite]"}`}

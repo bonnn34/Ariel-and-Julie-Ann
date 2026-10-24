@@ -111,7 +111,7 @@ function StatTile({ label, value, tone, icon }: { label: string; value: number |
         <div className="text-xl font-bold leading-none sm:text-2xl">{value}</div>
         <span className="opacity-70">{icon}</span>
       </div>
-      <div className="mt-1.5 text-[10px] uppercase leading-snug tracking-wide text-gray-600 sm:text-xs">{label}</div>
+      <div className="mt-1.5 text-[10px] uppercase leading-snug tracking-wide text-floral-leaves sm:text-xs">{label}</div>
     </div>
   )
 }
@@ -133,11 +133,11 @@ export function DashboardOverview({ stats, onNavigate }: DashboardOverviewProps)
       </div>
 
       {/* RSVP progress */}
-      <div className="rounded-2xl border border-dash-border bg-white p-4 shadow-sm sm:p-5">
+      <div className="rounded-2xl border border-dash-border bg-card p-4 shadow-sm sm:p-5">
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
             <p className="text-[13px] font-medium text-dash-ink">RSVP progress</p>
-            <p className="mt-0.5 text-xs text-gray-500">
+            <p className="mt-0.5 text-xs text-floral-leaves">
               {total === 0
                 ? "Add guests to start tracking responses."
                 : `${responded} of ${total} invitations answered`}
@@ -149,24 +149,24 @@ export function DashboardOverview({ stats, onNavigate }: DashboardOverviewProps)
           </p>
         </div>
         <div className="mt-3 flex h-2.5 overflow-hidden rounded-full bg-dash-tint" role="img" aria-label={`${attending} attending, ${declined} declined, ${pending} pending`}>
-          <span className="h-full bg-green-500 transition-all" style={{ width: `${pct(attending)}%` }} />
-          <span className="h-full bg-red-400 transition-all" style={{ width: `${pct(declined)}%` }} />
+          <span className="h-full bg-card0 transition-all" style={{ width: `${pct(attending)}%` }} />
+          <span className="h-full bg-accent transition-all" style={{ width: `${pct(declined)}%` }} />
         </div>
-        <div className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600">
-          <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-green-500" />Attending {attending}</span>
-          <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-red-400" />Declined {declined}</span>
+        <div className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-floral-leaves">
+          <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-card0" />Attending {attending}</span>
+          <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-accent" />Declined {declined}</span>
           <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-dash-border" />Pending {pending}</span>
         </div>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
-        <StatTile label="Invitations" value={stats.guestGroups} tone="border-dash-border bg-white text-dash-primary" icon={<Users className="h-4 w-4" />} />
-        <StatTile label="Seats (pax)" value={stats.confirmedPax} tone="border-blue-200 bg-blue-50 text-blue-700" icon={<UserCheck className="h-4 w-4" />} />
-        <StatTile label="Attending" value={attending} tone="border-green-200 bg-green-50 text-green-700" icon={<CheckCircle className="h-4 w-4" />} />
-        <StatTile label="Not attending" value={declined} tone="border-red-200 bg-red-50 text-red-700" icon={<XCircle className="h-4 w-4" />} />
-        <StatTile label="Pending RSVP" value={pending} tone="border-amber-200 bg-amber-50 text-amber-700" icon={<Clock className="h-4 w-4" />} />
-        <StatTile label="Join requests" value={stats.joinRequests} tone="border-purple-200 bg-purple-50 text-purple-700" icon={<UserPlus className="h-4 w-4" />} />
+        <StatTile label="Invitations" value={stats.guestGroups} tone="border-dash-border bg-card text-dash-primary" icon={<Users className="h-4 w-4" />} />
+        <StatTile label="Seats (pax)" value={stats.confirmedPax} tone="border-border bg-card text-foreground" icon={<UserCheck className="h-4 w-4" />} />
+        <StatTile label="Attending" value={attending} tone="border-border bg-card text-floral-leaves" icon={<CheckCircle className="h-4 w-4" />} />
+        <StatTile label="Not attending" value={declined} tone="border-border bg-card text-foreground" icon={<XCircle className="h-4 w-4" />} />
+        <StatTile label="Pending RSVP" value={pending} tone="border-border bg-card text-foreground" icon={<Clock className="h-4 w-4" />} />
+        <StatTile label="Join requests" value={stats.joinRequests} tone="border-border bg-card text-foreground" icon={<UserPlus className="h-4 w-4" />} />
         <StatTile label="Entourage" value={stats.entourage ?? 0} tone="border-dash-border bg-dash-surface text-dash-primary" icon={<Crown className="h-4 w-4" />} />
         <StatTile label="Principal sponsors" value={stats.principalSponsors ?? 0} tone="border-dash-border bg-dash-surface text-dash-primary" icon={<Heart className="h-4 w-4" />} />
       </div>
@@ -183,18 +183,18 @@ export function DashboardOverview({ stats, onNavigate }: DashboardOverviewProps)
             <h2 id="dashboard-guide-title" className="text-lg font-bold text-dash-ink sm:text-xl">
               Your Dashboard Guide
             </h2>
-            <p className="text-xs text-gray-500 sm:text-sm">What each tab is for and what you can do there.</p>
+            <p className="text-xs text-floral-leaves sm:text-sm">What each tab is for and what you can do there.</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2">
           {GUIDE.map((item) => (
-            <article key={item.tab} className="flex flex-col rounded-2xl border border-dash-border bg-white p-4 shadow-sm sm:p-5">
+            <article key={item.tab} className="flex flex-col rounded-2xl border border-dash-border bg-card p-4 shadow-sm sm:p-5">
               <div className="flex items-start gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-dash-tint text-dash-primary">{item.icon}</span>
                 <h3 className={`${playfair.className} min-w-0 flex-1 self-center text-lg font-semibold leading-tight text-dash-ink`}>{item.title}</h3>
               </div>
-              <p className="mt-3 text-[13px] leading-relaxed text-gray-600">{item.about}</p>
+              <p className="mt-3 text-[13px] leading-relaxed text-floral-leaves">{item.about}</p>
               <ul className="mt-3 flex-1 space-y-1.5">
                 {item.highlights.map((h) => (
                   <li key={h} className="flex gap-2 text-[13px] leading-snug text-dash-text">

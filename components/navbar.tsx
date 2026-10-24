@@ -202,7 +202,7 @@ export function Navbar() {
               socialItems={[]}
               displaySocials={false}
               menuButtonColor="var(--color-motif-deep)"
-              openMenuButtonColor="#FFFFFF"
+              openMenuButtonColor="#FAF6EE"
               changeMenuColorOnOpen={true}
               // One soft sky layer slides in just ahead of the panel
               colors={["var(--color-motif-medium)"]}
