@@ -1273,8 +1273,6 @@ type FoldGeo = {
   scale: number;
 };
 
-const FOLD_SHADE = '#101D3A';
-
 /** A paper fold: a crisp dark crease with light catching the edge just below it */
 function FoldCrease({ d }: { d: string }) {
   return (
@@ -1285,23 +1283,10 @@ function FoldCrease({ d }: { d: string }) {
   );
 }
 
-/** Shared SVG defs: edge shading for side flaps, a lit bottom flap and a soft blur */
+/** Shared SVG defs: a soft blur for the fold shadows */
 function FoldDefs({ id, scale }: { id: string; scale: number }) {
   return (
     <defs>
-      <linearGradient id={`${id}-side-l`} x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stopColor={FOLD_SHADE} stopOpacity="0.14" />
-        <stop offset="1" stopColor={FOLD_SHADE} stopOpacity="0" />
-      </linearGradient>
-      <linearGradient id={`${id}-side-r`} x1="1" y1="0" x2="0" y2="0">
-        <stop offset="0" stopColor={FOLD_SHADE} stopOpacity="0.14" />
-        <stop offset="1" stopColor={FOLD_SHADE} stopOpacity="0" />
-      </linearGradient>
-      <linearGradient id={`${id}-bottom`} x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stopColor="#FAF6EE" stopOpacity="0.2" />
-        <stop offset="0.55" stopColor="#FAF6EE" stopOpacity="0.06" />
-        <stop offset="1" stopColor={FOLD_SHADE} stopOpacity="0.06" />
-      </linearGradient>
       <filter id={`${id}-soft`} x="-20%" y="-20%" width="140%" height="140%">
         <feGaussianBlur stdDeviation={1.1 * scale} />
       </filter>
@@ -1327,8 +1312,6 @@ function EnvelopeClosedFolds({ geo }: { geo: FoldGeo }) {
           <path d={`M0,0 L50,${f} L100,0 V100 H0 Z`} />
         </clipPath>
       </defs>
-      <path d={`M0,0 L50,${f + 2} L0,100 Z`} fill="url(#envc-side-l)" />
-      <path d={`M100,0 L50,${f + 2} L100,100 Z`} fill="url(#envc-side-r)" />
       <g clipPath="url(#envc-above-bottom)">
         <path
           className="env-invite-paper-folds__shadow"
@@ -1338,7 +1321,6 @@ function EnvelopeClosedFolds({ geo }: { geo: FoldGeo }) {
           transform={`translate(0,${-0.8 * k})`}
         />
       </g>
-      <path d={`${bottom} Z`} fill="url(#envc-bottom)" />
       <FoldCrease d={bottom} />
       <g clipPath="url(#envc-below-flap)">
         <path
@@ -1384,8 +1366,6 @@ function EnvelopePocketFolds({ geo }: { geo: FoldGeo }) {
           transform={`translate(0,${-1.2 * k})`}
         />
       </g>
-      <path d={`M0,${sd} L50,${v} L0,100 Z`} fill="url(#envp-side-l)" />
-      <path d={`M100,${sd} L50,${v} L100,100 Z`} fill="url(#envp-side-r)" />
       <FoldCrease d={sides} />
       <g clipPath="url(#envp-above-bottom)">
         <path
@@ -1396,7 +1376,6 @@ function EnvelopePocketFolds({ geo }: { geo: FoldGeo }) {
           transform={`translate(0,${-0.8 * k})`}
         />
       </g>
-      <path d={`${bottom} Z`} fill="url(#envp-bottom)" />
       <FoldCrease d={bottom} />
     </svg>
   );

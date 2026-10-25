@@ -288,13 +288,13 @@ export function InvitationPage({ sponsorsList, showEntourage = true }: Invitatio
               <Registry />
               <WeddingPlaylist /> 
               <SnapShare />
-              {/* One continuous circle pattern behind See You There and the footer — no seam between them */}
+              {/* Full-bleed photos — kept outside the patterned wrapper so its wash and frame don't cover them */}
+              <SeeYouThere />
+              {/* Circle pattern, paper wash + rising hearts (section-backdrop.tsx) and double border behind the footer */}
               <div className="relative isolate" style={{ background: "var(--color-bg-pattern-base)" }}>
                 <PlainBubbles bands={3} />
-                {/* Pink paper wash + rising hearts (section-backdrop.tsx) + one double border around both sections */}
                 <SectionBackdrop />
                 {siteConfig.seeYouThere.plain.showFrame && <div className="deco-frame" aria-hidden="true" />}
-                <SeeYouThere background={false} />
                 <Footer background={false} />
               </div>
               </motion.div>

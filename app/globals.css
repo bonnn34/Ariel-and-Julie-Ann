@@ -1628,3 +1628,54 @@ img[src*="%2Flovestorydeco%2F"] {
 @media (prefers-reduced-motion: reduce) {
   .story-rise { display: none; }
 }
+
+/* Layered slideshow (components/crossfade-images.tsx): the incoming photo fades in
+   over the outgoing one, whose zoom keeps drifting until it is fully covered */
+.crossfade-img {
+  z-index: 0;
+  opacity: 0;
+  transform: scale(1.02);
+  backface-visibility: hidden;
+  transition:
+    opacity 0.6s ease,
+    transform 0s linear 0.7s;
+  will-change: opacity, transform;
+}
+
+.crossfade-img.is-prev {
+  z-index: 1;
+  opacity: 1;
+  transform: scale(1.1);
+  transition:
+    opacity 0.6s ease,
+    transform 9s cubic-bezier(0.33, 0, 0.4, 1);
+}
+
+.crossfade-img.is-active {
+  z-index: 2;
+  opacity: 1;
+  transform: scale(1.1);
+  transition:
+    opacity 2s cubic-bezier(0.45, 0, 0.25, 1),
+    transform 9s cubic-bezier(0.33, 0, 0.4, 1);
+}
+
+.crossfade-img--still,
+.crossfade-img--still.is-prev,
+.crossfade-img--still.is-active {
+  transform: none;
+}
+
+/* See You There triptych: endless slow breathe on each panel */
+.see-you-drift {
+  animation: see-you-drift 16s ease-in-out infinite alternate;
+}
+
+@keyframes see-you-drift {
+  from { transform: scale(1.02) translateY(0); }
+  to { transform: scale(1.1) translateY(-1.5%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .see-you-drift { animation: none; }
+}

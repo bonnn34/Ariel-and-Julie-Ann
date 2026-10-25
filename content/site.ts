@@ -561,46 +561,91 @@ export const siteConfig = {
     // /public/mobile-background. Add, remove or reorder chapters freely — sides alternate on their own.
    chapters: [
       {
-        date: "Lorem Ipsum",
-        title: "Lorem Ipsum Dolor Sit Amet",
+        date: "To Our Parents",
+        title: "Where Our Love First Began",
         image: "/mobile-background/couple (2).webp",
         imageAlt: "{groom} and {bride} together",
         imagePosition: "center 25%",
         paragraphs: [
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Long before we found each other, you were already showing us what love looks like: patient, faithful and generous in a thousand quiet ways.",
+          "Thank you for every sacrifice, every prayer and every lesson. Everything good we bring into this marriage, we first learned from you.",
         ],
       },
       {
-        date: "Consectetur Adipiscing",
-        title: "Sed Do Eiusmod Tempor",
-        image: "/mobile-background/couple (6).webp",
+        date: "To Our Families",
+        title: "The Roots That Hold Us",
+        image: "/mobile-background/couple (4).webp",
         imageAlt: "{groom} and {bride} smiling together",
+        imagePosition: "center 30%",
+        paragraphs: [
+          "To our siblings, grandparents, aunts, uncles and cousins: you are the home we always come back to.",
+          "Thank you for the laughter around the dinner table, the stories, the teasing and the love that never needed a reason. Today our two families become one, and our hearts are fuller for it.",
+        ],
+      },
+      {
+        date: "To Our Elders",
+        title: "With Honor and Respect",
+        image: "/mobile-background/couple (6).webp",
+        imageAlt: "{groom} and {bride} together",
         imagePosition: "center 35%",
         paragraphs: [
-          "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-          "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus, nulla gravida orci a odio.",
+          "To the elders who walked this path before us, thank you for your wisdom, your blessings and the example of lasting love you have set.",
+          "We carry your words with us as we begin our own journey together.",
         ],
       },
       {
-        date: "Dolor Sit Amet",
-        title: "Ut Enim Ad Minim Veniam",
+        date: "To Our Sponsors",
+        title: "Guides on Our Journey",
         image: "/mobile-background/couple (1).webp",
         imageAlt: "{groom} and {bride} together",
         imagePosition: "center 20%",
         paragraphs: [
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam, sed nisi nulla quis sem.",
+          "To our principal sponsors and secondary sponsors, thank you for saying yes to standing beside us.",
+          "Your guidance, counsel and support mean more than we can say, and we are honored to have you as witnesses to our vows and as mentors for the years ahead.",
         ],
       },
       {
-        date: "Magna Aliqua",
-        title: "Excepteur Sint Occaecat",
+        date: "To Our Friends",
+        title: "The Family We Chose",
+        image: "/mobile-background/couple (8).webp",
+        imageAlt: "{groom} and {bride} laughing together",
+        imagePosition: "center 25%",
+        paragraphs: [
+          "To our friends, old and new: thank you for the late-night talks, the road trips, the honest advice and the countless memories that made us who we are.",
+          "You cheered for us from the very beginning, and we cannot imagine celebrating this day without you.",
+        ],
+      },
+      {
+        date: "To Those Who Prayed",
+        title: "Lifted in Faith",
+        image: "/mobile-background/couple (11).webp",
+        imageAlt: "{groom} and {bride} together",
+        imagePosition: "center 30%",
+        paragraphs: [
+          "To our church family, mentors and everyone who kept us in their prayers: thank you for lifting us up when we needed it most.",
+          "Above all, we thank God, who brought our paths together and has been faithful to us every step of the way.",
+        ],
+      },
+      {
+        date: "To Everyone Who Helped",
+        title: "Every Little Act of Love",
+        image: "/mobile-background/couple (9).webp",
+        imageAlt: "{groom} and {bride} together",
+        imagePosition: "center 25%",
+        paragraphs: [
+          "To everyone who offered a helping hand, from the planning and the errands to the encouraging messages and the gifts of time and talent:",
+          "This celebration was built by many hands and many hearts. Thank you for making it possible.",
+        ],
+      },
+      {
+        date: "To You",
+        title: "Come Celebrate With Us",
         image: "/mobile-background/couple (10).webp",
         imageAlt: "{groom} and {bride} together",
         imagePosition: "center 25%",
         paragraphs: [
-          "Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.",
-          "Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.",
+          "Our story is woven from every one of you, and the most beautiful day of our lives would not be complete without you there.",
+          "With joyful and grateful hearts, {groom} and {bride} warmly invite you to celebrate our wedding with us: to witness our vows, share our joy and begin this new chapter together.",
         ],
       },
     ] as StoryChapter[],
@@ -1662,7 +1707,16 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   seeYouThere: {
     titleLine1: "See you",
     titleLine2: "there!",
-    // Photos mode
+    eyebrow: "Until we meet",
+    script: "with love, {couple}",
+    message: "We can't wait to celebrate this beautiful day with you.",
+    // Three side-by-side panels on desktop, a cross-fading full-screen photo on mobile.
+    // Portrait (9:16) photos fit best.
+    photos: [
+      "/mobile-background/couple (8).webp",
+      "/mobile-background/couple (2).webp",
+      "/mobile-background/couple (4).webp",
+    ],
     photo: COUPLE_PHOTOS[4],
     photoAlt: "{couple}",
     // Plain mode
@@ -1749,7 +1803,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   // Snap & Share (components/sections/snap-share.tsx). {couple} → "Groom & Bride" nicknames.
   snapShare: {
     googleDriveLink:
-      "https://drive.google.com/drive/folders/1_LvIc5I1fW7CaHJKs9Z46EZXpfTHvJ79?usp=sharing",
+      "https://drive.google.com/drive/folders/1nKNjPjQ7F_HLQZmJgw4hzFHIDJ-k52jC?usp=sharing",
     albumQR: "/QR/AlbumQR.png",
     hashtag: HASHTAGS,
     instructions: "Please scan this QR Code and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
@@ -1809,6 +1863,22 @@ Now, as they prepare to say yes before God and the people they love most, Cather
        "/desktop-background/couple (2).webp",
       ],
       intervalMs: 5000, // time each photo stays before fading to the next
+    },
+    // Bible verse panel at the bottom; photos cross-fade behind the verses
+    verses: {
+      show: true,
+      eyebrow: "Words We Hold Dear",
+      images: [
+        "/desktop-background/couple (1).webp",
+        "/desktop-background/couple (2).webp",
+      ],
+      quotes: [
+        { text: "Love is patient, love is kind. It always protects, always trusts, always hopes, always perseveres.", reference: "1 Corinthians 13:4, 7" },
+        { text: "Therefore what God has joined together, let no one separate.", reference: "Mark 10:9" },
+        { text: "A cord of three strands is not quickly broken.", reference: "Ecclesiastes 4:12" },
+        { text: "And over all these virtues put on love, which binds them all together in perfect unity.", reference: "Colossians 3:14" },
+        { text: "We love because He first loved us.", reference: "1 John 4:19" },
+      ],
     },
   },
   accommodation: {

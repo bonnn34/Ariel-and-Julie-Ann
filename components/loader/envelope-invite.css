@@ -3837,3 +3837,39 @@
     transition: none;
   }
 }
+
+/* ==========================================================================
+   Plain-color envelope — kept last so it wins.
+   One flat navy for every panel: no grain, crumple, gradients or liner
+   pattern. Only the fold lines remain so it still reads as an envelope.
+   ========================================================================== */
+.env-invite-screen--plain .env-invite-envelope {
+  --env-plain-paper: #101D3A;
+  --env-highlight: var(--env-plain-paper);
+  --env-base: var(--env-plain-paper);
+  --env-fold: var(--env-plain-paper);
+  --env-shadow: var(--env-plain-paper);
+  --env-envelope: var(--env-plain-paper);
+  --env-paper-surface: var(--env-plain-paper);
+}
+
+.env-invite-screen--plain .env-invite-front-closed,
+.env-invite-screen--plain .env-invite-back,
+.env-invite-screen--plain[data-phase] .env-invite-back,
+.env-invite-screen--plain .env-invite-flap,
+.env-invite-screen--plain .env-invite-pocket-front,
+.env-invite-screen--plain .env-invite-pocket-left,
+.env-invite-screen--plain .env-invite-pocket-right {
+  background: var(--env-plain-paper);
+  background-size: auto;
+}
+
+.env-invite-screen--plain .env-invite-flap::after {
+  background: none;
+}
+
+/* Inside of the flap: the same flat navy, a shade lighter so the open flap reads */
+.env-invite-flap-liner {
+  background: color-mix(in srgb, #101D3A 90%, #FAF6EE);
+  box-shadow: none;
+}

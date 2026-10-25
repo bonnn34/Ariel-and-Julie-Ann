@@ -107,21 +107,22 @@ const dividerLineStyle = {
   background: "linear-gradient(to right, transparent, var(--invite-line), transparent)",
 } as const
 
-// Dusty blue → navy pill with white text (matches the rest of the invitation)
+// Deep navy pill: a soft sheen on top, an engraved ivory hairline inside, a fine gold ring outside
 const primaryBtnStyle: CSSProperties = {
   background:
-    "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)",
-  borderColor: "rgb(250 246 238 / 70%)",
+    "linear-gradient(180deg, color-mix(in srgb, var(--color-welcome-navy) 82%, #FAF6EE) 0%, var(--color-welcome-navy) 55%, color-mix(in srgb, var(--color-welcome-navy) 92%, black) 100%)",
+  borderColor: "color-mix(in srgb, #D7A041 60%, transparent)",
   color: "#FAF6EE",
   boxShadow:
-    "0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent), 0 12px 24px -12px var(--invite-shadow)",
+    "inset 0 0 0 3px var(--color-welcome-navy), inset 0 0 0 4px rgb(250 246 238 / 22%), 0 0 0 3px rgb(250 246 238 / 70%), 0 14px 26px -14px var(--invite-shadow)",
 }
 
-// White pill with a sky border and navy text
+// Ivory pill with a fine gold hairline and navy text
 const secondaryBtnStyle: CSSProperties = {
   color: INK,
-  backgroundColor: "#FAF6EE",
-  borderColor: "color-mix(in srgb, var(--color-motif-medium) 75%, transparent)",
+  backgroundColor: "rgb(255 253 248 / 85%)",
+  borderColor: "color-mix(in srgb, #D7A041 45%, transparent)",
+  boxShadow: "inset 0 1px 0 #FFFFFF, 0 6px 16px -12px var(--invite-shadow)",
 }
 
 const primaryBtnClass =
@@ -346,56 +347,106 @@ function archRadius(inset = "0px"): CSSProperties {
   }
 }
 
+// Champagne-gold edge: deep gold at the shoulders fading to pale light across the middle
+const GILT_EDGE =
+  "linear-gradient(165deg, color-mix(in srgb, #D7A041 85%, #FAF6EE) 0%, color-mix(in srgb, #E8D36A 35%, #FAF6EE) 28%, #FAF6EE 50%, color-mix(in srgb, #E8D36A 35%, #FAF6EE) 72%, color-mix(in srgb, #D7A041 85%, #FAF6EE) 100%)"
+const FINE_GOLD = "color-mix(in srgb, #D7A041 55%, transparent)"
+const FINE_GOLD_SOFT = "color-mix(in srgb, #D7A041 28%, transparent)"
+// Very fine paper grain (tiled SVG noise)
+const PAPER_GRAIN =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.11 0 0 0 0 0.23 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
+
+/** Keystone at the crown of the arch: a small medallion with a heart, flanked by diamonds. */
+function ArchKeystone() {
+  return (
+    <span className="absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5" aria-hidden>
+      <span className="h-1 w-1 rotate-45" style={{ background: FINE_GOLD }} />
+      <span
+        className="flex h-6 w-6 items-center justify-center rounded-full"
+        style={{ background: "#FAF6EE", boxShadow: `0 0 0 1px ${FINE_GOLD}, 0 0 0 3px #FAF6EE, 0 0 0 4px ${FINE_GOLD_SOFT}` }}
+      >
+        <HeartMark className="h-2.5 w-2.5" />
+      </span>
+      <span className="h-1 w-1 rotate-45" style={{ background: FINE_GOLD }} />
+    </span>
+  )
+}
+
+/** Fine L-shaped bracket tucked into a bottom corner of the inner frame. */
+function CornerBracket({ side }: { side: "left" | "right" }) {
+  const isLeft = side === "left"
+  return (
+    <span
+      className={`pointer-events-none absolute bottom-[calc(var(--frame-2)+0.5rem)] h-5 w-5 sm:h-7 sm:w-7 ${isLeft ? "left-[calc(var(--frame-2)+0.5rem)]" : "right-[calc(var(--frame-2)+0.5rem)]"}`}
+      style={{
+        borderBottom: `1px solid ${FINE_GOLD}`,
+        [isLeft ? "borderLeft" : "borderRight"]: `1px solid ${FINE_GOLD}`,
+        [isLeft ? "borderBottomLeftRadius" : "borderBottomRightRadius"]: "0.4rem",
+      }}
+      aria-hidden
+    />
+  )
+}
+
 function ProposalCard({ children }: { children: ReactNode }) {
   return (
-    // Container query: --arch-h follows this card's width (cqi)
+    // Container query: --arch-h follows this card's width (cqi). 50cqi makes the crown a true
+    // semicircle — a classic chapel window — capped on wide screens so it stays graceful.
     <div
-      className="relative mx-auto w-full max-w-2xl [container-type:inline-size] [--arch-foot:1.4rem] [--frame-1:7px] [--frame-2:12px] sm:[--arch-foot:2rem] sm:[--frame-1:16px] sm:[--frame-2:23px]"
-      style={{ "--arch-h": "min(30cqi, 15rem)" } as CSSProperties}
+      className="relative mx-auto w-full max-w-2xl [container-type:inline-size] [--arch-foot:1.1rem] [--frame-1:8px] [--frame-2:13px] sm:[--arch-foot:1.6rem] sm:[--frame-1:14px] sm:[--frame-2:21px]"
+      style={{ "--arch-h": "min(50cqi, 14rem)" } as CSSProperties}
     >
       <div
-        className="pointer-events-none absolute -inset-2 opacity-70 blur-2xl sm:-inset-4"
+        className="pointer-events-none absolute -inset-3 opacity-80 blur-2xl sm:-inset-5"
         style={{ ...ambientGlowStyle, ...archRadius() }}
         aria-hidden
       />
+      {/* Gilt edge: the gradient shows through a 1.5px gap around the paper */}
       <div
-        className="relative overflow-hidden border"
+        className="relative p-[1.5px]"
         style={{
           ...archRadius(),
-          // Slightly see-through paper so the photo strip behind reads softly at the edges
-          background: `radial-gradient(90% 30% at 50% 0%, #FAF6EE 0%, transparent 70%), linear-gradient(175deg, rgb(250 246 238 / 96%) 0%, color-mix(in srgb, ${IVORY} 94%, transparent) 55%, color-mix(in srgb, ${INNER_SURFACE} 94%, transparent) 100%)`,
-          borderColor: "color-mix(in srgb, var(--color-motif-medium) 70%, transparent)",
-          boxShadow: "0 30px 70px -36px var(--invite-shadow), inset 0 1px 0 rgb(250 246 238 / 85%)",
+          background: GILT_EDGE,
+          boxShadow:
+            "0 2px 4px -2px var(--invite-shadow), 0 18px 36px -24px var(--invite-shadow), 0 44px 90px -48px var(--invite-shadow)",
         }}
       >
-        {/* Double hairline frame following the arch, a heart at the top and bottom */}
         <div
-          className="pointer-events-none absolute inset-[var(--frame-1)]"
-          style={{ ...archRadius("var(--frame-1)"), border: `1px solid ${GOLD_BORDER_SOFT}` }}
-          aria-hidden
-        >
-          <span className="absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-1/2 rounded-full bg-card p-0.5">
-            <HeartMark className="h-3 w-3" />
-          </span>
-          <span className="absolute bottom-0 left-1/2 flex -translate-x-1/2 translate-y-1/2 rounded-full bg-card p-0.5">
-            <HeartMark className="h-3 w-3" />
-          </span>
-        </div>
-        <div
-          className="pointer-events-none absolute inset-[var(--frame-2)]"
+          className="relative overflow-hidden"
           style={{
-            ...archRadius("var(--frame-2)"),
-            border: "1px solid color-mix(in srgb, var(--color-motif-medium) 40%, transparent)",
+            ...archRadius("1.5px"),
+            // Slightly see-through paper so the photo strip behind reads softly at the edges
+            background: `${PAPER_GRAIN}, radial-gradient(80% 26% at 50% 0%, #FFFDF8 0%, transparent 72%), radial-gradient(120% 60% at 50% 110%, color-mix(in srgb, ${INNER_SURFACE} 90%, transparent) 0%, transparent 70%), linear-gradient(178deg, rgb(255 253 248 / 97%) 0%, color-mix(in srgb, ${IVORY} 95%, transparent) 60%, color-mix(in srgb, ${INNER_SURFACE} 95%, transparent) 100%)`,
+            boxShadow: "inset 0 1px 0 rgb(255 255 255 / 90%), inset 0 -18px 40px -30px var(--invite-shadow)",
           }}
-          aria-hidden
-        />
-
-        {/* Top padding clears the dome: a little more than a third of its height */}
-        <div
-          className="relative z-20 px-4 pb-10 text-center min-[400px]:px-5 sm:px-14 sm:pb-16 md:px-16"
-          style={{ paddingTop: "max(2.75rem, calc(var(--arch-h) * 0.42))" }}
         >
-          {children}
+          {/* Double hairline frame following the arch: keystone at the crown, diamond at the foot */}
+          <div
+            className="pointer-events-none absolute inset-[var(--frame-1)]"
+            style={{ ...archRadius("var(--frame-1)"), border: `1px solid ${FINE_GOLD}` }}
+            aria-hidden
+          >
+            <ArchKeystone />
+            <span
+              className="absolute bottom-0 left-1/2 h-2 w-2 -translate-x-1/2 translate-y-1/2 rotate-45"
+              style={{ background: "#FAF6EE", boxShadow: `0 0 0 1px ${FINE_GOLD}` }}
+            />
+          </div>
+          <div
+            className="pointer-events-none absolute inset-[var(--frame-2)]"
+            style={{ ...archRadius("var(--frame-2)"), border: `0.5px solid ${FINE_GOLD_SOFT}` }}
+            aria-hidden
+          />
+          <CornerBracket side="left" />
+          <CornerBracket side="right" />
+
+          {/* Top padding clears the dome */}
+          <div
+            className="relative z-20 px-5 pb-12 text-center min-[400px]:px-6 sm:px-14 sm:pb-16 md:px-16"
+            style={{ paddingTop: "max(3rem, calc(var(--arch-h) * 0.4))" }}
+          >
+            {children}
+          </div>
         </div>
       </div>
     </div>
@@ -501,20 +552,45 @@ function ProposalDirectAsk({
         </motion.div>
       ) : null}
 
-      <motion.div variants={headerItem}>
+      <motion.div variants={headerItem} className="flex items-center justify-center gap-3">
+        <DividerLine className="hidden w-8 shrink-0 min-[380px]:block sm:w-12" />
         <DirectTitle as="h1" eyebrow={labels.headerEyebrow} title={fill(labels.headline ?? "")} />
+        <DividerLine className="hidden w-8 shrink-0 min-[380px]:block sm:w-12" />
       </motion.div>
 
-      {/* Wedding party illustration (site.ts → proposal.coupleImage) — shown as is, no frame */}
+      {/* Couple illustration (site.ts → proposal.coupleImage): a portrait cut-out kept small and
+          centered, standing in a soft arched glow with a faint shadow at its feet */}
       {coupleImage ? (
-        <motion.div variants={headerItem} className="relative -mx-2 mt-4 sm:mx-0 sm:mt-6">
+        <motion.div variants={headerItem} className="relative mx-auto mt-5 w-[56%] max-w-[13.5rem] sm:mt-6 sm:max-w-[15.5rem]">
+          {/* Double arched window echoing the card's crown */}
+          <span
+            className="pointer-events-none absolute inset-x-[-14%] bottom-[4%] top-[6%]"
+            style={{
+              borderRadius: "999px 999px 0.9rem 0.9rem",
+              background:
+                "radial-gradient(70% 55% at 50% 36%, #FFFDF8 0%, color-mix(in srgb, #E8D36A 10%, #FAF6EE) 55%, color-mix(in srgb, var(--color-motif-medium) 14%, transparent) 100%)",
+              border: `1px solid ${FINE_GOLD}`,
+              boxShadow: "inset 0 -24px 40px -30px var(--invite-shadow)",
+            }}
+            aria-hidden
+          />
+          <span
+            className="pointer-events-none absolute inset-x-[-18%] bottom-[2.5%] top-[3%]"
+            style={{ borderRadius: "999px 999px 1.1rem 1.1rem", border: `0.5px solid ${FINE_GOLD_SOFT}` }}
+            aria-hidden
+          />
+          <span
+            className="pointer-events-none absolute bottom-[1%] left-1/2 h-4 w-[78%] -translate-x-1/2 rounded-[50%] blur-md"
+            style={{ background: "color-mix(in srgb, var(--invite-ink) 22%, transparent)" }}
+            aria-hidden
+          />
           <Image
             src={encodeURI(coupleImage)}
-            alt="Our wedding party"
-            width={1536}
-            height={1024}
-            sizes="(max-width: 640px) 92vw, 512px"
-            className="block h-auto w-full select-none"
+            alt={`${groom} and ${bride}`}
+            width={1046}
+            height={1504}
+            sizes="(max-width: 640px) 56vw, 248px"
+            className="relative block h-auto w-full select-none"
             draggable={false}
             priority
           />
@@ -524,9 +600,13 @@ function ProposalDirectAsk({
       <motion.div variants={headerItem} className="mt-6 sm:mt-7">
         <DirectTitle eyebrow={labels.placeEyebrow ?? ""} title={fill(labels.placeTitle ?? "")} />
         {detailsLine ? (
-          <SmallCaps className="mt-2 text-[0.58rem] tracking-[0.22em] sm:text-[0.64rem]" color={palette.bodySoft}>
-            <T text={detailsLine} />
-          </SmallCaps>
+          <div className="mx-auto mt-2 flex max-w-sm items-center justify-center gap-2.5 sm:gap-3">
+            <DividerLine className="w-6 shrink-0 sm:w-10" />
+            <SmallCaps className="text-[0.58rem] tracking-[0.22em] sm:text-[0.64rem]" color={palette.bodySoft}>
+              <T text={detailsLine} />
+            </SmallCaps>
+            <DividerLine className="w-6 shrink-0 sm:w-10" />
+          </div>
         ) : null}
       </motion.div>
 
@@ -574,7 +654,15 @@ function ProposalDirectAsk({
         </p>
       </motion.div>
 
-      <motion.div variants={headerItem} className="mx-auto mt-7 flex w-full max-w-sm flex-col gap-3 sm:mt-8">
+      <motion.div variants={headerItem} className="mx-auto mt-6 flex max-w-[9rem] items-center justify-center gap-2 sm:mt-7" aria-hidden>
+        <span className="h-px flex-1" style={{ background: `linear-gradient(to right, transparent, ${FINE_GOLD})` }} />
+        <span className="h-1 w-1 rotate-45" style={{ background: FINE_GOLD }} />
+        <span className="h-1.5 w-1.5 rotate-45" style={{ background: "var(--color-motif-accent)" }} />
+        <span className="h-1 w-1 rotate-45" style={{ background: FINE_GOLD }} />
+        <span className="h-px flex-1" style={{ background: `linear-gradient(to left, transparent, ${FINE_GOLD})` }} />
+      </motion.div>
+
+      <motion.div variants={headerItem} className="mx-auto mt-6 flex w-full max-w-sm flex-col gap-3 sm:mt-7">
         <button type="button" disabled={submitting} onClick={onYes} className={primaryBtnClass} style={primaryBtnStyle}>
           {submitting ? labels.saving : <T text={fill(copy.yesButton)} />}
         </button>
