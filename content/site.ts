@@ -93,8 +93,8 @@ const CEREMONY_VENUE = {
 }
 const RECEPTION_VENUE = {
   name: " Asador Alfonso",
-  address: "Esperanza Ilaya, Alfonso, 4100 Cavite, Philippines"",
-  map: "https://maps.app.goo.gl/buRWssEcVn2vuJxf7",
+  address: "Esperanza Ilaya, Alfonso, 4100 Cavite, Philippines",
+  map: "https://maps.app.goo.gl/kiQB1FKqLHaQWYQA8",
   photos: ["/Details/reception (4).jpg", "/Details/reception (5).jpg", "/Details/reception (6).jpg"],
 }
 
