@@ -28,41 +28,44 @@ const OG_IMAGE_TYPE = /\.png$/i.test(desktopHero)
     : "image/jpeg"
 
 const coupleNames = `${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname}`
-const eventTitle = `${coupleNames} - Wedding Invitation`
-const eventDescription = `Celebrate the wedding of ${siteConfig.couple.groomNickname} and ${siteConfig.couple.brideNickname} on ${siteConfig.wedding.date} at ${siteConfig.ceremony.venue}. RSVP, explore their story, and find everything you need to join the celebration.`
+const weddingDay = siteConfig.ceremony.day ? `${siteConfig.ceremony.day}, ` : ""
+const arrivalTime = siteConfig.ceremony.guestsTime || siteConfig.ceremony.time
+const venueName = siteConfig.ceremony.location
+
+// Link preview copy (Messenger, Viber, WhatsApp, Facebook, X …): chat apps show the title in
+// bold and cut the description after ~2 lines, so the date, time and place come first.
+const eventTitle = `You're Invited to ${coupleNames}'s Wedding`
+const previewTitle = `💌 You're Invited — ${coupleNames}'s Wedding`
+const eventDescription = `${weddingDay}${siteConfig.wedding.date} · ${arrivalTime} · ${venueName}. Open your invitation for the details and kindly RSVP.`
+
+// "January 31, 2027" + "5:00 PM" → "2027-01-31T17:00:00+08:00" (Philippine time)
+function toIsoPh(date: string, time: string) {
+  const d = new Date(date)
+  if (Number.isNaN(d.getTime())) return undefined
+  const m = time.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i)
+  let hour = m ? Number(m[1]) % 12 : 0
+  if (m && m[3].toUpperCase() === "PM") hour += 12
+  const pad = (n: number) => String(n).padStart(2, "0")
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(hour)}:${m ? m[2] : "00"}:00+08:00`
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Event",
-  name: `${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname} Wedding`,
-  startDate: "2026-12-06T16:00:00+08:00",
-  endDate: "2026-12-06T23:00:00+08:00",
+  name: `${coupleNames} Wedding`,
+  startDate: toIsoPh(siteConfig.ceremony.date, arrivalTime),
+  endDate: toIsoPh(siteConfig.ceremony.date, "9:30 PM"),
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  location: [
-    {
-      "@type": "Place",
-      name: siteConfig.ceremony.venue,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: siteConfig.ceremony.venue,
-        addressLocality: siteConfig.ceremony.location,
-        addressRegion: siteConfig.ceremony.location,
-        addressCountry: "PH",
-      },
+  location: {
+    "@type": "Place",
+    name: venueName,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.ceremony.venue,
+      addressCountry: "PH",
     },
-    {
-      "@type": "Place",
-      name: siteConfig.reception.venue,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: siteConfig.reception.location,
-        addressLocality: siteConfig.reception.location,
-        addressRegion: siteConfig.reception.location,
-        addressCountry: "PH",
-      },
-    },
-  ],
+  },
   image: [OG_IMAGE_FALLBACK],
   description:
     `You're invited to celebrate the wedding of ${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname}. Discover ceremony and reception details, RSVP, and explore their story.`,
@@ -128,9 +131,8 @@ export const metadata: Metadata = {
   },
   manifest: "/favicon_io/site.webmanifest",
   openGraph: {
-    title: `${coupleNames} | ${siteConfig.wedding.date}`,
-    description:
-      `Celebrate the union of ${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname} on ${siteConfig.wedding.date}. Discover their story, RSVP, and find important details for the ceremony and reception.`,
+    title: previewTitle,
+    description: eventDescription,
     url: canonicalUrl,
     siteName: `${coupleNames} Wedding`,
     locale: "en_PH",
@@ -148,9 +150,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${coupleNames} Wedding Invitation`,
-    description:
-      `You're invited to the wedding of ${siteConfig.couple.groomNickname} & ${siteConfig.couple.brideNickname} on ${siteConfig.wedding.date}. RSVP, explore their story, and get all the details for the big day! #${siteConfig.couple.groomNickname}And${siteConfig.couple.brideNickname}SayIDo`,
+    title: previewTitle,
+    description: eventDescription,
     images: [eventImageUrl],
     creator: `@${siteConfig.couple.groomNickname}And${siteConfig.couple.brideNickname}`,
     site: `@${siteConfig.couple.groomNickname}And${siteConfig.couple.brideNickname}`,
