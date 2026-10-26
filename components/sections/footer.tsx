@@ -307,8 +307,8 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
       {background && <SectionBackdrop />}
       {background && content.showFrame && <div className="deco-frame" aria-hidden="true" />}
 
-      {/* Corner florals (content/site.ts → footer.decos) — bottom only; See You There sits above */}
-      <DecoCorners decos={{ bottomLeft: decos.bottomLeft, bottomRight: decos.bottomRight }} />
+      {/* Corner florals at all four corners (content/site.ts → footer.decos; "" hides one) */}
+      <DecoCorners decos={decos} />
 
       <footer className="relative z-20 pt-14 pb-10 sm:pt-16 sm:pb-12 md:pt-20 md:pb-14">
         {/* Header: monogram + couple */}
@@ -379,6 +379,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
         </motion.div>
 
         <div className="relative z-10 mx-auto flex max-w-6xl min-w-0 flex-col px-4 @container/footer sm:px-6 md:px-8">
+          {content.showCards && (
           <motion.div
             className="mb-8 grid grid-cols-1 items-start gap-5 sm:mb-10 sm:gap-6 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-7"
             variants={stagger}
@@ -603,6 +604,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
               </FooterCard>
             </motion.div>
           </motion.div>
+          )}
 
           {/* Bottom bar */}
           <div className="pt-6 sm:pt-8">

@@ -651,6 +651,9 @@ export function SnapShare() {
               {uploadCard}
             </div>
           </div>
+        ) : !websiteCard && !hashtagsCard && !socialCard ? (
+          // Only the upload card left: one centered column
+          uploadCard && <div className="mx-auto mt-6 w-full max-w-xl sm:mt-8 md:mt-10">{uploadCard}</div>
         ) : (
           // Without the photo card, the remaining cards share a balanced two-column grid
           <div className="mt-6 grid grid-cols-1 items-start gap-5 sm:mt-8 sm:gap-6 md:mt-10 lg:grid-cols-2 lg:gap-8">

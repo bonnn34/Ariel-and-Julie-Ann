@@ -270,11 +270,11 @@ export function InvitationPage({ sponsorsList, showEntourage = true }: Invitatio
               <Countdown />
               <Gallery />
               {/* <MessageVideo /> */}
-              <Messages />
+            {/* <  <Messages /> */}
               <Details />
               <WeddingTimeline />
-              {showEntourage && <Entourage sponsorsList={sponsorsList} />}
-              <GuestList />
+              {/* {showEntourage && <Entourage sponsorsList={sponsorsList} />} */}
+              {/* <GuestList /> */}
               {/* One continuous circle pattern behind Book of Guests and FAQ — no seam between them */}
               <div className="relative isolate" style={{ background: "var(--color-bg-pattern-base)" }}>
                 {/* Pattern repeated down the height so circles stay dense across both sections */}
@@ -282,11 +282,11 @@ export function InvitationPage({ sponsorsList, showEntourage = true }: Invitatio
                 {/* Pink paper wash + rising hearts (section-backdrop.tsx) + one double border around both sections */}
                 <SectionBackdrop />
                 {siteConfig.bookOfGuests.showFrame && <div className="deco-frame" aria-hidden="true" />}
-                <BookOfGuests background={false} />
+                {/* <BookOfGuests background={false} /> */}
                 <FAQ background={false} />
               </div>
-              <Registry />
-              <WeddingPlaylist /> 
+              {/* <Registry /> */}
+              {/* <WeddingPlaylist />  */}
               <SnapShare />
               {/* Full-bleed photos — kept outside the patterned wrapper so its wash and frame don't cover them */}
               <SeeYouThere />

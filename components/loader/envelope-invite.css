@@ -3873,3 +3873,76 @@
   background: color-mix(in srgb, #101D3A 90%, #FAF6EE);
   box-shadow: none;
 }
+
+/* ==========================================================================
+   Woven navy envelope — kept last so it wins.
+   Deep blue-navy cloth paper with a fine diagonal twill weave and grain
+   (matches the navy linen swatch). The same texture covers every panel,
+   so the envelope looks identical closed and open.
+   ========================================================================== */
+.env-invite-screen--plain .env-invite-envelope {
+  --env-plain-paper: #0E1D4A; /* deeper blue */
+  --env-butter: #F5E3A1;
+  /* Herringbone weave like the cloth swatch: tiny chevron ribs (lit thread +
+     shadow thread), a fine vertical warp, and a slow cloudy variation */
+  --env-weave:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cg fill='none' stroke-width='1.1' stroke-linecap='square'%3E%3Cpath d='M0 4 L4 0 M0 8 L4 4 M4 0 L8 4 M4 4 L8 8' stroke='%23A9B8E6' stroke-opacity='0.2'/%3E%3Cpath d='M0 5 L4 1 M0 9 L4 5 M4 1 L8 5 M4 5 L8 9' stroke='%23050B22' stroke-opacity='0.45'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 6px 6px,
+    repeating-linear-gradient(90deg, transparent 0 2px, rgb(5 11 34 / 18%) 2px 3px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.62 0 0 0 0 0.85 0 0 0 0.16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E") 0 0 / 300px 300px;
+  --env-paper-surface: var(--env-paper-grain), var(--env-weave), var(--env-plain-paper);
+}
+
+.env-invite-screen--plain .env-invite-front-closed,
+.env-invite-screen--plain .env-invite-back,
+.env-invite-screen--plain[data-phase] .env-invite-back,
+.env-invite-screen--plain .env-invite-flap,
+.env-invite-screen--plain .env-invite-pocket-front,
+.env-invite-screen--plain .env-invite-pocket-left,
+.env-invite-screen--plain .env-invite-pocket-right {
+  background: var(--env-paper-surface);
+  background-size: auto;
+}
+
+/* Inside the envelope: butter-yellow liner with a small deep-blue lattice
+   (diamonds + dots), on the flap's inside and the back panel once open */
+.env-invite-envelope {
+  --env-liner:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M12 0 L24 12 L12 24 L0 12Z' fill='none' stroke='%230E1D4A' stroke-opacity='0.22' stroke-width='0.8'/%3E%3Cpath d='M12 8.5 l1.6 3.5 -1.6 3.5 -1.6 -3.5z' fill='%230E1D4A' fill-opacity='0.4'/%3E%3Ccircle cx='0' cy='0' r='1.3' fill='%23C9A23A' fill-opacity='0.7'/%3E%3Ccircle cx='24' cy='0' r='1.3' fill='%23C9A23A' fill-opacity='0.7'/%3E%3Ccircle cx='0' cy='24' r='1.3' fill='%23C9A23A' fill-opacity='0.7'/%3E%3Ccircle cx='24' cy='24' r='1.3' fill='%23C9A23A' fill-opacity='0.7'/%3E%3C/svg%3E") 0 0 / 24px 24px,
+    var(--env-paper-grain),
+    var(--env-butter, #F5E3A1);
+}
+
+.env-invite-flap-liner {
+  background: var(--env-liner);
+  /* thin deep-blue border, like a liner set inside the envelope edge */
+  box-shadow: inset 0 0 0 3px var(--env-plain-paper, #0E1D4A);
+}
+
+.env-invite-screen--plain[data-phase="flap-open"] .env-invite-back,
+.env-invite-screen--plain[data-phase="rising"] .env-invite-back,
+.env-invite-screen--plain[data-phase="photos"] .env-invite-back,
+.env-invite-screen--plain[data-phase="revealed"] .env-invite-back,
+.env-invite-screen--plain[data-phase="cta"] .env-invite-back {
+  background:
+    linear-gradient(180deg, rgb(14 29 74 / 28%) 0%, rgb(14 29 74 / 6%) 22%, transparent 45%),
+    var(--env-liner);
+  box-shadow: inset 0 0 0 4px var(--env-plain-paper, #0E1D4A);
+}
+
+/* Fold lines: soft light edge on the navy cloth */
+.env-invite-paper-folds__crease {
+  stroke: rgb(8 12 28 / 55%);
+}
+
+.env-invite-paper-folds__edge,
+.env-invite-flap-edge polyline {
+  stroke: rgb(200 210 236 / 28%);
+}
+
+/* Wax seal: no glow — no gold halo, no pulsing, just a small contact shadow */
+.env-invite-seal-btn,
+.env-invite-screen--plain .env-invite-seal-btn,
+.env-invite-screen[data-phase="idle"] .env-invite-seal-btn {
+  animation: none;
+  filter: drop-shadow(0 3px 5px rgb(8 12 28 / 35%));
+}

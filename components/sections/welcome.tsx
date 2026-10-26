@@ -128,27 +128,6 @@ export function Welcome() {
               <OrnamentalDivider compact />
             </header>
 
-            <figure className="mx-auto max-w-[36rem] text-center">
-              <blockquote>
-                <p
-                  className={`font-goudy-italic ${sectionType.textSnug}`}
-                  style={{ color: "var(--color-welcome-navy)" }}
-                >
-                  &ldquo;He hath made every thing beautiful in his time: also he hath set the world in
-                  their heart, so that no man can find out the work that God maketh from the beginning to
-                  the end.&rdquo;
-                </p>
-                <figcaption className="mt-2 sm:mt-2.5">
-                  <cite
-                    className={`${cinzel.className} ${sectionType.label} not-italic uppercase tracking-[0.2em] sm:tracking-[0.24em]`}
-                    style={{ color: "var(--color-welcome-navy)" }}
-                  >
-                    Ecclesiastes 3:11
-                  </cite>
-                </figcaption>
-              </blockquote>
-            </figure>
-
             {/* Body: Crimson Text (upright book serif), same reading style as the love story */}
             <div
               className="mx-auto max-w-[36rem] space-y-3 text-center text-[clamp(0.875rem,1vw+0.6rem,0.96875rem)] leading-[1.7] sm:space-y-3.5 md:space-y-4"
@@ -157,19 +136,22 @@ export function Welcome() {
                 fontFamily: '"Crimson Text", "Cormorant Garamond", Georgia, serif',
               }}
             >
+              <p>Dear family and friends,</p>
               <p>
-                Dear family and friends, we are overjoyed to begin this new chapter together and
-                grateful to God for every step that led us here. What began as a simple story has
-                grown into a love we cherish deeply — and we cannot imagine celebrating without you.
+                We are overjoyed to begin this new chapter together and grateful for every moment and
+                every little twist of fate that led us here. What began as a simple story has grown
+                into a love we cherish deeply, and we cannot imagine celebrating this milestone
+                without you.
               </p>
               <p>
                 This invitation holds everything you may need for our wedding day: the schedule,
                 venue details, and a few gentle reminders along the way. Whether near or far, your
-                presence, prayers, and warm wishes will mean more to us than words can say.
+                presence, love, and warm wishes will mean more to us than words can say.
               </p>
               <p>
-                Thank you for being part of our journey. We look forward to sharing this beautiful
-                day with the people who have shaped our lives and our hearts.
+                Thank you for being part of our journey and for the many ways you have touched our
+                lives. We look forward to sharing this beautiful day with the people who have shaped
+                our lives and our hearts.
               </p>
             </div>
 

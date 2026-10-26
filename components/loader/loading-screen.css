@@ -4450,3 +4450,100 @@
   text-transform: uppercase;
   color: #4F6373;
 }
+
+
+/* ==========================================================================
+   Home hero (plain) — readability pass over the moving photos. Kept last.
+   No card or box: a stronger, edge-less ivory mist sits behind the wording,
+   every line gets a soft ivory halo, small gold text uses a deeper gold,
+   and the countdown fades up from a deeper navy at the bottom edge.
+   ========================================================================== */
+.home-hero--plain {
+  --hh-gold-ink: #8A6118; /* deeper gold for small caps over the mist */
+  --hh-gold-light: #E3C27F; /* light gold for labels over navy */
+  --hh-halo:
+    0 0 2px rgb(250 246 238 / 100%),
+    0 0 8px rgb(250 246 238 / 90%),
+    0 0 18px rgb(250 246 238 / 70%);
+}
+
+/* Mist: denser in the middle, still fading to nothing at the edges */
+.home-hero--plain .home-hero-mist {
+  width: min(44rem, 130vw);
+  height: min(40rem, 165vw);
+  background: radial-gradient(
+    ellipse at center,
+    rgb(250 246 238 / 86%) 0%,
+    rgb(250 246 238 / 74%) 42%,
+    rgb(250 246 238 / 35%) 62%,
+    transparent 76%
+  );
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 45%, transparent 74%);
+  mask-image: radial-gradient(ellipse at center, #000 45%, transparent 74%);
+}
+
+.home-hero--plain .home-hero-title-main,
+.home-hero--plain .home-hero-eyebrow,
+.home-hero--plain .home-hero-meta-venue,
+.home-hero--plain .home-hero-date-weekday,
+.home-hero--plain .home-hero-date-side,
+.home-hero--plain .home-hero-meta-time,
+.home-hero--plain .home-hero-title-script {
+  text-shadow: var(--hh-halo);
+}
+
+.home-hero--plain .home-hero-date-day {
+  filter:
+    drop-shadow(0 0 2px rgb(250 246 238 / 100%))
+    drop-shadow(0 0 10px rgb(250 246 238 / 80%));
+}
+
+.home-hero--plain .home-hero-title-script {
+  color: #9A6B1C;
+  -webkit-text-fill-color: #9A6B1C;
+}
+
+.home-hero--plain .home-hero-date-weekday,
+.home-hero--plain .home-hero-date-side,
+.home-hero--plain .home-hero-meta-time {
+  color: var(--hh-gold-ink);
+  -webkit-text-fill-color: var(--hh-gold-ink);
+}
+
+.home-hero--plain .home-hero-date-side {
+  border-block-color: color-mix(in srgb, #D7A041 85%, transparent);
+}
+
+.home-hero--plain .home-hero-eyebrow,
+.home-hero--plain .home-hero-meta-venue {
+  color: var(--hh-navy);
+  font-weight: 500;
+}
+
+/* Countdown: deeper navy fade at the bottom edge (no card) */
+.home-hero--plain .home-hero-countdown-bar {
+  padding-top: clamp(2.5rem, 8vh, 4rem);
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, #101D3A 92%, transparent) 0%,
+    color-mix(in srgb, #101D3A 78%, transparent) 45%,
+    color-mix(in srgb, #101D3A 35%, transparent) 75%,
+    transparent 100%
+  );
+}
+
+.home-hero--plain .home-hero-countdown-heading,
+.home-hero--plain .home-hero-countdown-value {
+  color: #FAF6EE;
+  text-shadow:
+    0 1px 2px rgb(16 29 58 / 90%),
+    0 2px 12px rgb(16 29 58 / 80%);
+}
+
+.home-hero--plain .home-hero-countdown-heading,
+.home-hero--plain .home-hero-countdown-label {
+  color: var(--hh-gold-light);
+  text-shadow: 0 1px 3px rgb(16 29 58 / 90%);
+}

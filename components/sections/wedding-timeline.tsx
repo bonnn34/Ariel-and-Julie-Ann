@@ -257,6 +257,53 @@ export function WeddingTimeline() {
         </TimelineSpine>
       </div>
 
+      {content.note ? (
+        <motion.div
+          className="relative z-20 mx-auto mt-8 max-w-xl px-4 text-center sm:mt-10 md:mt-12"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.8, ease: entryEase }}
+        >
+          <OutsideDivider />
+          {content.noteTitle ? (
+            <h3
+              className={`${theSeasons.className} mt-4 text-[clamp(1.5rem,7vw,2.25rem)] uppercase leading-none tracking-[0.1em] sm:mt-5`}
+              style={{ color: INK, textShadow: titleShadow }}
+            >
+              {content.noteTitle}
+            </h3>
+          ) : null}
+          {content.noteSubtitle ? (
+            <p
+              className={`${aboveTheBeyond.className} mt-1.5 text-[clamp(1.1rem,5vw,1.6rem)] leading-tight sm:mt-2`}
+              style={{ color: SCRIPT, textShadow: titleShadow }}
+            >
+              {content.noteSubtitle}
+            </p>
+          ) : null}
+          <p
+            className={`font-goudy-italic mx-auto mt-4 max-w-md sm:mt-5 ${timelineType.textRelaxed}`}
+            style={{ color: BODY, textShadow }}
+          >
+            {content.note}
+          </p>
+          {content.noteClosing ? (
+            // Closing line framed by hairlines, like a sign-off
+            <div className="mt-5 flex items-center justify-center gap-3 sm:mt-6">
+              <span className="h-px w-8 sm:w-12" style={lineRight} aria-hidden />
+              <p
+                className={`${cinzel.className} ${timelineType.label} font-semibold uppercase tracking-[0.28em]`}
+                style={{ color: ROSE, textShadow }}
+              >
+                {content.noteClosing}
+              </p>
+              <span className="h-px w-8 sm:w-12" style={lineLeft} aria-hidden />
+            </div>
+          ) : null}
+        </motion.div>
+      ) : null}
+
       {content.quote ? (
         <div className="relative z-20 mx-auto mt-8 max-w-xl px-3 text-center sm:mt-10 md:mt-12">
           <div className="mb-5 flex items-center justify-center sm:mb-6">

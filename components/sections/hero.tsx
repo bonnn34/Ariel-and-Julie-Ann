@@ -58,7 +58,7 @@ function formatCeremonyTimePhrase(raw: string) {
   if (meridiem === "AM" && hour24 === 12) hour24 = 0
 
   const period =
-    hour24 >= 17 ? "IN THE EVENING" : hour24 >= 12 ? "IN THE AFTERNOON" : "IN THE MORNING"
+    hour24 >= 18 ? "IN THE EVENING" : hour24 >= 12 ? "IN THE AFTERNOON" : "IN THE MORNING"
 
   let displayHour = hour24 % 12
   if (displayHour === 0) displayHour = 12
@@ -167,7 +167,7 @@ function CountdownUnit({
         {display}
       </span>
       <span
-        className={`${cinzel.className} home-hero-countdown-label mt-1.5 text-[0.48rem] font-medium uppercase tracking-[0.16em] sm:mt-2 sm:text-[0.54rem]`}
+        className={`${cinzel.className} home-hero-countdown-label mt-1.5 text-[0.56rem] font-semibold uppercase tracking-[0.14em] sm:mt-2 sm:text-[0.62rem]`}
       >
         {label}
       </span>
@@ -182,7 +182,7 @@ function HeroCountdown() {
   return (
     <div className="relative z-10 w-full px-4 py-4 sm:px-6 sm:py-5">
       <p
-        className={`${cinzel.className} home-hero-countdown-heading text-center text-[0.58rem] font-semibold uppercase tracking-[0.22em] sm:text-[0.64rem] sm:tracking-[0.26em]`}
+        className={`${cinzel.className} home-hero-countdown-heading text-center text-[0.62rem] font-semibold uppercase tracking-[0.22em] sm:text-[0.64rem] sm:tracking-[0.26em]`}
       >
         Time left til we say I do
       </p>

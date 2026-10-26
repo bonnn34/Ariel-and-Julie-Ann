@@ -80,7 +80,7 @@ const TIMES = {
   entourageCall: "1:00 PM", // entourage assembly
   guestArrival: "5:00 PM", // guests arrival / assembly (shown in Event Details + reminders)
   ceremony: "5:00 PM",
-  reception: "6:30 PM", // start of program
+  reception: "5:30 PM", // start of program
 }
 
 // ── Venues ──────────────────────────────────────────────────────────────────
@@ -168,7 +168,6 @@ const DRESS_CODE_PALETTE: AttireColor[] = [
   { name: "Sage Green", hex: "#D7E2CD" },
   { name: "Blush", hex: "#FCE5D8" },
   { name: "Powder Blue", hex: "#D8E5ED" },
-  { name: "Black", hex: "#000000" },
 ];
 
 // Attire groups shown in the Details section (components/sections/details.tsx).
@@ -281,7 +280,7 @@ const ATTIRE = {
   ladies: {
     label: "Ladies",
     details:
-      "Elegant floor-length formal gowns in Lilac/Lavender (#DCD5E5), Sage Green, Blush, or Powder Blue. Soft, flowing fabrics such as chiffon, satin, or tulle are encouraged. Please avoid short or midi dresses, bright or neon colors, busy prints, earthy or dark tones, white, black, and butter yellow.",
+      "Elegant floor-length formal gowns in Lilac/Lavender, Sage Green, Blush, or Powder Blue. Soft, flowing fabrics such as chiffon, satin, or tulle are encouraged. Please avoid short or midi dresses, bright or neon colors, busy prints, earthy or dark tones, white, black, and butter yellow.",
     highlight: "Floor-Length Pastel Gowns",
     roles: [] as { role: string; attire: string }[],
   },
@@ -315,7 +314,7 @@ const DISPLAY_MODE = "plain" as "photos" | "plain"
 const BRAND = {
   monogram: "/monogram/monogram.png", // monogram (loader, envelope, closing)
   coupleNameImage: "/Details/newcoupelNames.png", // couple-name lettering (loader, envelope)
-  seal: "/monogram/seal.png", // envelope wax seal
+  seal: "/monogram/new-seal.png", // envelope wax seal
   backgroundMusic: "/background_music/Turning Page (Instrumental).mp3",
 }
 
@@ -530,7 +529,7 @@ export const siteConfig = {
     subtitle: "to the people we love",
     // Short opening line under the title ("" hides it)
     intro:
-      "Before we say “I do,” we want to say “thank you.” To our families, our friends and everyone who has loved, guided and prayed for us: this day is as much yours as it is ours, and we would be so happy to celebrate it with you.",
+      "To our families, our friends and everyone who has loved, guided and prayed for us: this day is as much yours as it is ours, and we would be so happy to celebrate it with you.",
     // Small sprig above the title ("" hides it)
     headerOrnament: DECOR.headerOrnament,
     // Shown above a chapter's title when it has no date, e.g. "Chapter 03"
@@ -545,8 +544,8 @@ export const siteConfig = {
     closingEyebrow: "", // large word on top (was "Puhon") — "" hides it
     closingHashtag: "", // hashtag under it (was HASHTAGS[0]) — "" hides it
     closingQuoteLead: "", // bold first line ("" for none)
-    closingQuote: "“He has made everything beautiful in its time.”",
-    closingCitation: "Ecclesiastes 3:11",
+    closingQuote: "", // "" hides the verse block
+    closingCitation: "",
     // Four corner florals framing the section, sized per corner like the loader ("" hides a corner)
     decos: { ...CORNER_DECOS },
     // Thin double border around the section, under the corner florals (false hides it)
@@ -594,14 +593,14 @@ export const siteConfig = {
         ],
       },
       {
-        date: "To Our Sponsors",
-        title: "Guides on Our Journey",
+        date: "To Our Wedding Entourage",
+        title: "By Our Side",
         image: "/mobile-background/couple (1).webp",
         imageAlt: "{groom} and {bride} together",
         imagePosition: "center 20%",
         paragraphs: [
-          "To our principal sponsors and secondary sponsors, thank you for saying yes to standing beside us.",
-          "Your guidance, counsel and support mean more than we can say, and we are honored to have you as witnesses to our vows and as mentors for the years ahead.",
+          "Thank you for being part of this special chapter in our lives. Having you by our side makes this celebration all the more meaningful.",
+          "We are grateful for your love, support, and the memories we share, and we look forward to celebrating this milestone with you.",
         ],
       },
       {
@@ -613,17 +612,6 @@ export const siteConfig = {
         paragraphs: [
           "To our friends, old and new: thank you for the late-night talks, the road trips, the honest advice and the countless memories that made us who we are.",
           "You cheered for us from the very beginning, and we cannot imagine celebrating this day without you.",
-        ],
-      },
-      {
-        date: "To Those Who Prayed",
-        title: "Lifted in Faith",
-        image: "/mobile-background/couple (11).webp",
-        imageAlt: "{groom} and {bride} together",
-        imagePosition: "center 30%",
-        paragraphs: [
-          "To our church family, mentors and everyone who kept us in their prayers: thank you for lifting us up when we needed it most.",
-          "Above all, we thank God, who brought our paths together and has been faithful to us every step of the way.",
         ],
       },
       {
@@ -695,8 +683,8 @@ export const siteConfig = {
     subtitle: "our special day",
     description: "Everything you need to know about our special day.",
     // Verse under the description — "" hides it
-    verse: "And now abideth faith, hope, charity, these three; but the greatest of these is charity.",
-    verseCitation: "1 Corinthians 13:13",
+    verse: "",
+    verseCitation: "",
     decos: { ...SECTION_DECOS },
     // Thin double border around the section (false hides it)
     showFrame: true,
@@ -788,7 +776,7 @@ export const siteConfig = {
           variant: "accent" as "accent" | "soft",
           showPalette: true,
           paragraphs: [
-            "Guests, kindly come in semi-formal attire in shades of dusty pink or gray from our palette.",
+            "Guests, kindly come in formal attire in shades of sage green, lilac, blush, or powder blue from our palette.",
             "Please avoid casual clothes and all-white outfits.",
           ],
         },
@@ -818,7 +806,13 @@ export const siteConfig = {
     subtitle: "our wedding day",
     description:
       "From the first arrival to the last farewell, here is how we will spend this day together.",
-    // "" hides the verse — Ecclesiastes 3:11 is already shown in the Love Story
+    // Note under the timeline: header, script sub-header, message and closing line
+    // ("" hides any line; note: "" hides the whole block)
+    noteTitle: "More to Come",
+    noteSubtitle: "the full program is on its way",
+    note: "We are still putting the finishing touches on our celebration. The complete program, along with a few special surprises in between, will be shared here very soon.",
+    noteClosing: "Stay tuned!",
+    // "" hides the verse
     quote: "",
     quoteCitation: "",
     // Optional corner decorations — leave "" to hide
@@ -850,14 +844,14 @@ export const siteConfig = {
       {
         show: true,
         time: TIMES.guestArrival,
-        title: "Guests Arrive",
+        title: "Guest Arrival",
         description: "Kindly be seated before the ceremony begins.",
         location: "{ceremony}",
         image: "/weddingtimeline/Elegant Wedding Guests Arrive Sign.png",
         icon: "guests" as TimelineIconName,
       },
       {
-        show: true,
+        show: false,
         time: TIMES.ceremony, //TIMES.ceremony
         title: "Wedding Ceremony",
         description: "We exchange our vows before God, family and friends.",
@@ -867,7 +861,16 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "5:30 PM",
+        time: TIMES.reception,
+        title: "Start of Program Proper",
+        description: "",
+        location: "{reception}",
+        image: "/weddingtimeline/reception welcom.png",
+        icon: "fireworks" as TimelineIconName,
+      },
+      {
+        show: false,
+        time: "6:00 PM",
         title: "Photo Session",
         description: "Join us for pictures with the newlyweds.",
         location: "{ceremony}",
@@ -875,8 +878,8 @@ export const siteConfig = {
         icon: "rings" as TimelineIconName,
       },
       {
-        show: true,
-        time: "6:00 PM",
+        show: false,
+        time: "6:30 PM",
         title: "Cocktail Hour",
         description: "Refreshments while we make our way to the reception.",
         location: "{reception}",
@@ -884,17 +887,8 @@ export const siteConfig = {
         icon: "cocktail" as TimelineIconName,
       },
       {
-        show: true,
-        time: TIMES.reception,
-        title: "Start of Program",
-        description: "",
-        location: "{reception}",
-        image: "/weddingtimeline/reception welcom.png",
-        icon: "fireworks" as TimelineIconName,
-      },
-      {
-        show: true,
-        time: "7:30 PM",
+        show: false,
+        time: "7:00 PM",
         title: "Grand Entrance",
         description: "Welcome the newlyweds as husband and wife.",
         location: "{reception}",
@@ -902,8 +896,8 @@ export const siteConfig = {
         icon: "fireworks" as TimelineIconName,
       },
       {
-        show: true,
-        time: "8:00 PM",
+        show: false,
+        time: "7:30 PM",
         title: "Wedding Feast",
         description: "Let's share a meal and celebrate together.",
         location: "{reception}",
@@ -911,8 +905,8 @@ export const siteConfig = {
         icon: "cocktail" as TimelineIconName,
       },
       {
-        show: true,
-        time: "9:30 PM",
+        show: false,
+        time: "8:30 PM",
         title: "Cake Cutting",
         description: "",
         location: "{reception}",
@@ -920,8 +914,8 @@ export const siteConfig = {
         icon: "fireworks" as TimelineIconName,
       },
       {
-        show: true,
-        time: "5:40 PM",
+        show: false,
+        time: "9:00 PM",
         title: "First Dance",
         description: "Our first dance as husband and wife.",
         location: "{reception}",
@@ -930,8 +924,8 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "6:30 PM",
-        title: "Send-off",
+        time: "9:30 PM",
+        title: "Closing Moments",
         description: "Thank you for celebrating with us!",
         location: "{reception}",
         image: "/weddingtimeline/SendOff.png",
@@ -1175,21 +1169,11 @@ export const siteConfig = {
     items: [
       {
         question: "When and where is the wedding?",
-        answer: `Our wedding will be on ${WEDDING_DAY}, ${WEDDING_DATE}. The ceremony begins at ${TIMES.ceremony}, followed by the reception at ${TIMES.reception}.\n\nBoth the ceremony and the reception will be held at ${CEREMONY_VENUE.name}, ${CEREMONY_VENUE.address}, so there is no need to travel between venues. [Open in Google Maps](${CEREMONY_VENUE.map})`,
+        answer: `Our wedding will be on ${WEDDING_DAY}, ${WEDDING_DATE}. Guests are expected to be at the venue at exactly ${TIMES.guestArrival}.\n\nBoth the ceremony and the reception will be held at ${CEREMONY_VENUE.name}, ${CEREMONY_VENUE.address}, so there is no need to travel between venues. [Open in Google Maps](${CEREMONY_VENUE.map})`,
       },
       {
         question: "What time should I arrive?",
-        answer: `Please arrive by ${TIMES.guestArrival} so you have time to park, find your seat and settle in. The ceremony will begin promptly at ${TIMES.ceremony}.\n\nEntourage members are kindly requested to be at the venue by ${TIMES.entourageCall}.`,
-      },
-      {
-        question: "How do I RSVP?",
-        answer:
-          "Please RSVP through the [guest list](#guest-list) on this invitation: search for your name and confirm your attendance.\n\nKindly respond by {deadline}.\n\nFor questions, please reach out to {coordinator}{contact}.",
-      },
-      {
-        question: 'Do we still need to RSVP if we already said "Yes" to the couple?',
-        answer:
-          "Yes, please. Your formal RSVP helps us finalize the headcount for catering and seating, so every guest has a place prepared for them.",
+        answer: `Please arrive by ${TIMES.guestArrival} so you have time to park, find your seat and settle in. The ceremony will begin promptly at ${TIMES.ceremony}.`,
       },
       {
         question: "What if I RSVP'd but can no longer attend?",
@@ -1212,11 +1196,6 @@ export const siteConfig = {
           "We love your little ones, but apart from the children in our entourage, our celebration is adults-only. We hope this gives you a relaxing evening off to celebrate with us!",
       },
       {
-        question: "What should I wear?",
-        answer:
-          "Please follow the [attire guide](#details) in Event Details.\n\n• Guests: semi-formal in shades of dusty pink or gray. Ladies may wear a short or long dress; gentlemen may wear a polo or long-sleeve shirt with pants.\n• Principal sponsors: Ninang in a formal dress or long gown in cream or beige; Ninong in a long-sleeve barong with black pants.\n• Entourage: dusty pink gowns for the bridesmaids and flower girls; gray suits for the groomsmen and bearers.\n\nKindly avoid casual clothes and all-white outfits.",
-      },
-      {
         question: "May we choose our own seats at the reception?",
         answer:
           "We kindly ask that you take the seat reserved for you. Each table has been arranged with care so you can share the evening with the people we hoped you would sit with.",
@@ -1237,16 +1216,6 @@ export const siteConfig = {
           "Absolutely! Capture all the joy you can. We would love to see your snaps, so please upload them through [Snap and Share](#snap-share).",
       },
       {
-        question: "What if I have dietary restrictions or allergies?",
-        answer:
-          "Please let us know about any dietary restrictions or allergies when you RSVP so we can make sure you enjoy the celebration comfortably.",
-      },
-      {
-        question: "What gift should we give?",
-        answer:
-          "Your presence and prayers are the greatest gifts of all. Should you wish to bless us further, please see our [gift guide](#registry).",
-      },
-      {
         question: "Can I share the invitation online?",
         answer:
           "Please keep this one just between us! Kindly refrain from posting our invitation on social media.",
@@ -1260,11 +1229,6 @@ export const siteConfig = {
         question: "When is the best time to take our leave?",
         answer:
           "It would mean so much if you could stay with us until the end of the program. We have prepared the evening with love, and we hope you will laugh, take photos and celebrate with us until the very last dance.",
-      },
-      {
-        question: "How can I help make the day special?",
-        answer:
-          "• Pray with us for good weather and the Lord's continued blessings as we begin this new chapter as husband and wife.\n• RSVP as soon as your schedule is cleared.\n• Dress according to the attire guide and color palette.\n• Arrive on time.\n• Follow the seating arrangement at the reception.\n• Stay until the end of the program.\n• Join the activities and enjoy!",
       },
     ],
   },
@@ -1734,6 +1698,8 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   // {couple} → "Groom & Bride" nicknames, {year} → current year. Date comes from ceremony, deadline from details.rsvp.
   footer: {
     showMonogram: true, // couple.monogram, tinted to the motif
+    // Row of cards (A Note From Us · Wedding Date & RSVP · Follow Us & Quick Links) — false hides it
+    showCards: false,
     dateLabel: "Wedding Date",
     // Ceremony & reception at a glance (times and places come from ceremony / reception)
     summary: {
@@ -1744,7 +1710,6 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     noteTitle: "A Note From Us",
     // Typed out one after another
     quotes: [
-      '"I have found the one whom my soul loves." – Song of Solomon 3:4',
       "Welcome to our wedding website! We've found a love that's a true blessing, and we give thanks to God for writing the beautiful story of our journey together.",
       "Thank you for your love, prayers, and support. We can't wait to celebrate this joyful day together!",
     ],
@@ -1820,7 +1785,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
       images: COUPLE_PHOTOS.slice(0, 3),
     },
     website: {
-      show: true,
+      show: false,
       title: "Share Our Wedding Website",
       description:
         "Spread the word about {couple}'s celebration. Share this QR code so friends and family can join us.",
@@ -1828,7 +1793,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
       note: "Scan with any camera app to open the full invitation and schedule.",
     },
     hashtags: {
-      show: true,
+      show: false,
       title: "Wedding Hashtags",
       copy: "Copy",
       copied: "Copied",
@@ -1836,7 +1801,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
       allCopied: "All Copied!",
     },
     social: {
-      show: true,
+      show: false,
       title: "Share on Social Media",
       description: "Help spread the word about {couple}'s wedding across your favorite platforms.",
       // Remove any you don't want: "instagram" | "facebook" | "tiktok" | "twitter"
@@ -1866,7 +1831,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     },
     // Bible verse panel at the bottom; photos cross-fade behind the verses
     verses: {
-      show: true,
+      show: false,
       eyebrow: "Words We Hold Dear",
       images: [
         "/desktop-background/couple (1).webp",
