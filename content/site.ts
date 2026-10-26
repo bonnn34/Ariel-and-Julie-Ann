@@ -1193,7 +1193,7 @@ export const siteConfig = {
       {
         question: "Are children invited?",
         answer:
-          "We love your little ones, but apart from the children in our entourage, our celebration is adults-only. We hope this gives you a relaxing evening off to celebrate with us!",
+          "We love your little ones, but our celebration is adults-only. We hope this gives you a relaxing evening off to celebrate with us!",
       },
       {
         question: "May we choose our own seats at the reception?",
