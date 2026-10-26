@@ -92,8 +92,8 @@ const CEREMONY_VENUE = {
   photos: ["/Details/new-reception (1).jpg", "/Details/new-reception (2).jpg","/Details/new-reception (1).webp"],
 }
 const RECEPTION_VENUE = {
-  name: " Sheperds Palace, Dalayap, Candaba, Pampanga",
-  address: "brgy Candaba, Pampanga, Philippines",
+  name: " Asador Alfonso",
+  address: "Esperanza Ilaya, Alfonso, 4100 Cavite, Philippines"",
   map: "https://maps.app.goo.gl/buRWssEcVn2vuJxf7",
   photos: ["/Details/reception (4).jpg", "/Details/reception (5).jpg", "/Details/reception (6).jpg"],
 }
@@ -312,7 +312,7 @@ const DISPLAY_MODE = "plain" as "photos" | "plain"
 
 // ── Shared images ───────────────────────────────────────────────────────────
 const BRAND = {
-  monogram: "/monogram/monogram.png", // monogram (loader, envelope, closing)
+  monogram: "/monogram/monogram-new.png", // monogram (loader, envelope, closing)
   coupleNameImage: "/Details/newcoupelNames.png", // couple-name lettering (loader, envelope)
   seal: "/monogram/new-seal.png", // envelope wax seal
   backgroundMusic: "/background_music/Turning Page (Instrumental).mp3",
