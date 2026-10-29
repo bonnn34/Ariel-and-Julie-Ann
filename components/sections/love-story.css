@@ -1,9 +1,9 @@
 /* Love story — scrapbook roadmap */
 
 .love-story-section {
-  --ls-forest: var(--color-motif-deep, #4F6373);
+  --ls-forest: var(--color-motif-deep, #739ACD);
   --ls-cream: var(--color-motif-cream, #FAF6EE);
-  --ls-ink: var(--color-welcome-text, #101D3A);
+  --ls-ink: var(--color-welcome-text, #172C4C);
 }
 
 .love-story-timeline__track {
@@ -80,7 +80,7 @@
   position: relative;
   aspect-ratio: 1;
   overflow: hidden;
-  background: #F5EDDF;
+  background: #F2F6FB;
 }
 
 .love-story-polaroid__caption-wrap {
@@ -111,15 +111,15 @@
   transform: translateX(-50%);
   box-shadow:
     inset 0 1px 2px rgba(250, 246, 238, 0.5),
-    0 2px 5px rgba(16, 29, 58, 0.24);
+    0 2px 5px rgba(23, 44, 76, 0.24);
 }
 
 .love-story-pin--red {
-  background: radial-gradient(circle at 35% 28%, #D7A041, #101D3A);
+  background: radial-gradient(circle at 35% 28%, #9AADE0, #172C4C);
 }
 
 .love-story-pin--white {
-  background: radial-gradient(circle at 35% 28%, #FAF6EE, #ABAEB0);
+  background: radial-gradient(circle at 35% 28%, #FAF6EE, #9AADE0);
 }
 
 .love-story-tape {
@@ -130,8 +130,8 @@
   width: 3.75rem;
   height: 1.15rem;
   transform: translateX(-50%) rotate(-5deg);
-  background: color-mix(in srgb, #F2D087 78%, transparent);
-  border: 1px solid color-mix(in srgb, #ABAEB0 30%, transparent);
+  background: color-mix(in srgb, #9CC5E5 78%, transparent);
+  border: 1px solid color-mix(in srgb, #9AADE0 30%, transparent);
   opacity: 0.9;
 }
 

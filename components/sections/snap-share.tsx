@@ -40,7 +40,7 @@ const READABLE_SHADOW =
   "0 1px 2px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent), 0 2px 10px color-mix(in srgb, var(--color-welcome-navy) 40%, transparent)"
 // Text over the moving verse photos: tighter dark edge + wide halo
 const PHOTO_TEXT_SHADOW =
-  "0 1px 1px rgb(8 14 24 / 95%), 0 1px 4px rgb(8 14 24 / 85%), 0 3px 12px rgb(8 14 24 / 70%), 0 8px 30px rgb(8 14 24 / 55%)"
+  "0 1px 1px rgb(23 44 76 / 95%), 0 1px 4px rgb(23 44 76 / 85%), 0 3px 12px rgb(23 44 76 / 70%), 0 8px 30px rgb(23 44 76 / 55%)"
 // Verse accents (icon, quote marks, reference): a warm light tone that holds up on the dark glass
 const VERSE_ACCENT = "color-mix(in srgb, var(--color-motif-silver) 55%, #FFFFFF)"
 
@@ -242,7 +242,7 @@ function VersePanel({ eyebrow, images, quotes }: { eyebrow: string; images: stri
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgb(24 46 76 / 55%) 0%, rgb(20 40 68 / 72%) 30%, rgb(20 40 68 / 76%) 60%, rgb(24 46 76 / 58%) 100%)",
+              "linear-gradient(180deg, rgb(23 44 76 / 55%) 0%, rgb(23 44 76 / 72%) 30%, rgb(23 44 76 / 76%) 60%, rgb(23 44 76 / 58%) 100%)",
           }}
         />
       </div>
@@ -253,8 +253,8 @@ function VersePanel({ eyebrow, images, quotes }: { eyebrow: string; images: stri
           <span
             className="flex h-10 w-10 items-center justify-center rounded-full sm:h-11 sm:w-11"
             style={{
-              background: "rgb(16 28 44 / 45%)",
-              boxShadow: "inset 0 0 0 1px rgb(255 255 255 / 60%), 0 4px 14px rgb(8 14 24 / 45%)",
+              background: "rgb(23 44 76 / 45%)",
+              boxShadow: "inset 0 0 0 1px rgb(255 255 255 / 60%), 0 4px 14px rgb(23 44 76 / 45%)",
             }}
           >
             <BookOpen className="h-[18px] w-[18px] sm:h-5 sm:w-5" style={{ color: VERSE_ACCENT }} aria-hidden />
@@ -493,7 +493,7 @@ export function SnapShare() {
               </span>
               <span
                 className={`${cinzel.className} flex flex-shrink-0 items-center gap-1 whitespace-nowrap ${sectionType.label} font-semibold uppercase tracking-wider`}
-                style={{ color: isCopied ? "color-mix(in srgb, var(--color-motif-yellow) 70%, #2C3619)" : BLUE }}
+                style={{ color: isCopied ? "color-mix(in srgb, var(--color-motif-yellow) 70%, #172C4C)" : BLUE }}
               >
                 {isCopied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
                 {isCopied ? content.hashtags.copied : content.hashtags.copy}

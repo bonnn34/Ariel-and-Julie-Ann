@@ -245,7 +245,7 @@ function DressCodePaletteSwatches({ palette }: { palette: readonly PaletteColor[
                 textOrientation: "mixed",
                 ...(isLightHex(color.hex)
                   ? { color: "var(--color-motif-deep)", textShadow: "0 1px 0 rgb(250 246 238 / 60%)" }
-                  : { color: "#FAF6EE", textShadow: "0 1px 2px rgb(16 29 58 / 45%), 0 0 6px rgb(16 29 58 / 25%)" }),
+                  : { color: "#FAF6EE", textShadow: "0 1px 2px rgb(23 44 76 / 45%), 0 0 6px rgb(23 44 76 / 25%)" }),
               }}
             >
               {color.name}

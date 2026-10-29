@@ -221,7 +221,7 @@ export default function MasonryGallery({ images }: { images: ImageItem[] }) {
       {lightboxIdx != null && images[lightboxIdx] && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 backdrop-blur-sm"
-          style={{ background: "color-mix(in srgb, var(--color-welcome-navy) 40%, #101D3A 60%)" }}
+          style={{ background: "color-mix(in srgb, var(--color-welcome-navy) 40%, #172C4C 60%)" }}
           onClick={() => setLightboxIdx(null)}
         >
           <div

@@ -5,13 +5,13 @@ import Image from "next/image"
 export function GalleryQRSection() {
   return (
     <div className="mt-8 sm:mt-12 md:mt-16 text-center max-w-2xl mx-auto">
-      <div className="bg-[#F2D087]/40 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border-2 border-[#D7A041]/30 shadow-xl hover:shadow-2xl transition-all duration-300">
+      <div className="bg-[#9CC5E5]/40 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border-2 border-[#9AADE0]/30 shadow-xl hover:shadow-2xl transition-all duration-300">
         <div className="relative">
           {/* Corner accents - hidden on mobile */}
-          <div className="hidden sm:block absolute -top-7 -left-7 w-4 h-4 border-t-2 border-l-2 border-[#D7A041] rounded-tl-lg" />
-          <div className="hidden sm:block absolute -top-7 -right-7 w-4 h-4 border-t-2 border-r-2 border-[#D7A041] rounded-tr-lg" />
-          <div className="hidden sm:block absolute -bottom-7 -left-7 w-4 h-4 border-b-2 border-l-2 border-[#D7A041] rounded-bl-lg" />
-          <div className="hidden sm:block absolute -bottom-7 -right-7 w-4 h-4 border-b-2 border-r-2 border-[#D7A041] rounded-br-lg" />
+          <div className="hidden sm:block absolute -top-7 -left-7 w-4 h-4 border-t-2 border-l-2 border-[#9AADE0] rounded-tl-lg" />
+          <div className="hidden sm:block absolute -top-7 -right-7 w-4 h-4 border-t-2 border-r-2 border-[#9AADE0] rounded-tr-lg" />
+          <div className="hidden sm:block absolute -bottom-7 -left-7 w-4 h-4 border-b-2 border-l-2 border-[#9AADE0] rounded-bl-lg" />
+          <div className="hidden sm:block absolute -bottom-7 -right-7 w-4 h-4 border-b-2 border-r-2 border-[#9AADE0] rounded-br-lg" />
 
           {/* Capture the Love Image */}
           <div className="relative w-full rounded-xl overflow-hidden shadow-lg">

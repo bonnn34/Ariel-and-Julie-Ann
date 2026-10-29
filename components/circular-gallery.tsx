@@ -38,7 +38,7 @@ function createTextTexture(gl, text, font = "bold 48px Figtree", color = "#FAF6E
   context.clearRect(0, 0, canvas.width, canvas.height)
 
   // Add semi-transparent dark background for contrast
-  context.fillStyle = "rgba(16, 29, 58, 0.4)"
+  context.fillStyle = "rgba(23, 44, 76, 0.4)"
   context.fillRect(0, 0, canvas.width, canvas.height)
 
   // Draw text with shadow and outline for better readability
@@ -47,7 +47,7 @@ function createTextTexture(gl, text, font = "bold 48px Figtree", color = "#FAF6E
   context.textAlign = "center"
 
   // Text shadow
-  context.fillStyle = "rgba(16, 29, 58, 0.6)"
+  context.fillStyle = "rgba(23, 44, 76, 0.6)"
   context.fillText(text, canvas.width / 2 + 2, canvas.height / 2 + 2)
 
   // Main text
@@ -160,7 +160,7 @@ class Media {
     placeholder.width = 2
     placeholder.height = 2
     const phx = placeholder.getContext("2d")
-    phx.fillStyle = "#101D3A"
+    phx.fillStyle = "#172C4C"
     phx.fillRect(0, 0, 2, 2)
     texture.image = placeholder
     this.program = new Program(this.gl, {

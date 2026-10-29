@@ -189,12 +189,12 @@ function PlainOpenChapter({
 
       {showDivider && !isLast && (
         <div className="story-open-divider flex items-center justify-center gap-2" aria-hidden>
-          <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to right, transparent, #D7A041)" }} />
+          <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to right, transparent, #9AADE0)" }} />
           {/* Deep slate heart — the one accent between chapters */}
-          <svg viewBox="0 0 24 24" className="h-3 w-3 sm:h-3.5 sm:w-3.5" fill="#E8D36A">
+          <svg viewBox="0 0 24 24" className="h-3 w-3 sm:h-3.5 sm:w-3.5" fill="#739ACD">
             <path d={HEART_PATH} />
           </svg>
-          <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to left, transparent, #D7A041)" }} />
+          <span className="h-px w-12 sm:w-20" style={{ background: "linear-gradient(to left, transparent, #9AADE0)" }} />
         </div>
       )}
     </div>

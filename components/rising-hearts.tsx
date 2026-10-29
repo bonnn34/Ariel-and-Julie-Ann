@@ -8,7 +8,7 @@ import { useReducedMotion } from "motion/react"
 const RISE_COLORS = [
   "var(--color-motif-blush)",
   "var(--color-highlight-deep)",
-  "#F2D087",
+  "#9CC5E5",
   "color-mix(in srgb, var(--color-highlight-deep) 55%, #FAF6EE)",
 ] as const
 

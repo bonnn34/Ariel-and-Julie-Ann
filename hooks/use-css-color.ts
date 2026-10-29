@@ -26,7 +26,7 @@ export function useCssColor(variable: string, fallback: string) {
   return color
 }
 
-export const QR_FG_FALLBACK = "#4F6373"
+export const QR_FG_FALLBACK = "#172C4C"
 export const QR_BG_FALLBACK = "#FAF6EE"
 
 export function useQrColors() {

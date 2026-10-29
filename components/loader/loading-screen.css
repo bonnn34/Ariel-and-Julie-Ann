@@ -490,7 +490,7 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ls-butter);
-  text-shadow: 0 1px 12px rgb(16 29 58 / 55%);
+  text-shadow: 0 1px 12px rgb(23 44 76 / 55%);
 }
 
 .loading-screen__verse-text {
@@ -508,7 +508,7 @@
   font-size: clamp(1.15rem, 5.2vw, 1.72rem);
   line-height: 1.58;
   color: var(--ls-cream);
-  text-shadow: 0 2px 16px rgb(16 29 58 / 62%);
+  text-shadow: 0 2px 16px rgb(23 44 76 / 62%);
 }
 
 .loading-screen__quote-mark {
@@ -520,7 +520,7 @@
   line-height: 1;
   color: var(--ls-mustard);
   opacity: 0.72;
-  text-shadow: 0 2px 12px rgb(16 29 58 / 45%);
+  text-shadow: 0 2px 12px rgb(23 44 76 / 45%);
   pointer-events: none;
   user-select: none;
 }
@@ -554,7 +554,7 @@
   color: var(--ls-cream);
   opacity: 0.94;
   text-align: center;
-  text-shadow: 0 1px 12px rgb(16 29 58 / 55%);
+  text-shadow: 0 1px 12px rgb(23 44 76 / 55%);
 }
 
 .loading-screen__kicker {
@@ -565,7 +565,7 @@
   text-transform: uppercase;
   color: var(--ls-butter);
   opacity: 0.92;
-  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
+  text-shadow: 0 1px 10px rgb(23 44 76 / 50%);
 }
 
 .loading-screen__names {
@@ -589,7 +589,7 @@
   );
   pointer-events: none;
   user-select: none;
-  filter: drop-shadow(0 4px 18px rgb(16 29 58 / 45%));
+  filter: drop-shadow(0 4px 18px rgb(23 44 76 / 45%));
   -webkit-mask-size: contain;
   mask-size: contain;
   -webkit-mask-repeat: no-repeat;
@@ -640,7 +640,7 @@
   text-transform: uppercase;
   color: var(--ls-cream);
   opacity: 0.82;
-  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
+  text-shadow: 0 1px 10px rgb(23 44 76 / 50%);
 }
 
 .loading-screen__date {
@@ -649,7 +649,7 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ls-cream);
-  text-shadow: 0 1px 12px rgb(16 29 58 / 55%);
+  text-shadow: 0 1px 12px rgb(23 44 76 / 55%);
 }
 
 .loading-screen__ceremony {
@@ -667,7 +667,7 @@
   text-transform: uppercase;
   color: var(--ls-butter);
   opacity: 0.95;
-  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
+  text-shadow: 0 1px 10px rgb(23 44 76 / 50%);
 }
 
 .loading-screen__ceremony-meta {
@@ -677,7 +677,7 @@
   text-transform: uppercase;
   color: var(--ls-cream);
   opacity: 0.9;
-  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
+  text-shadow: 0 1px 10px rgb(23 44 76 / 50%);
 }
 
 .loading-screen__footer {
@@ -697,15 +697,15 @@
   -webkit-mask-image: linear-gradient(
     180deg,
     transparent 0%,
-    #101D3A 18%,
-    #101D3A 82%,
+    #172C4C 18%,
+    #172C4C 82%,
     transparent 100%
   );
   mask-image: linear-gradient(
     180deg,
     transparent 0%,
-    #101D3A 18%,
-    #101D3A 82%,
+    #172C4C 18%,
+    #172C4C 82%,
     transparent 100%
   );
 }
@@ -731,7 +731,7 @@
   text-transform: uppercase;
   color: var(--ls-cream);
   opacity: 0.88;
-  text-shadow: 0 1px 10px rgb(16 29 58 / 50%);
+  text-shadow: 0 1px 10px rgb(23 44 76 / 50%);
 }
 
 .loading-screen__track {
@@ -1222,15 +1222,15 @@
   -webkit-mask-image: linear-gradient(
     180deg,
     transparent 0,
-    #101D3A var(--ls-feather),
-    #101D3A calc(100% - var(--ls-feather)),
+    #172C4C var(--ls-feather),
+    #172C4C calc(100% - var(--ls-feather)),
     transparent 100%
   );
   mask-image: linear-gradient(
     180deg,
     transparent 0,
-    #101D3A var(--ls-feather),
-    #101D3A calc(100% - var(--ls-feather)),
+    #172C4C var(--ls-feather),
+    #172C4C calc(100% - var(--ls-feather)),
     transparent 100%
   );
 }
@@ -3451,13 +3451,13 @@
    Sunshine yellow is used once — the glowing dot on the progress bar.
    ========================================================================== */
 .loading-screen--plain {
-  --ls-sky: var(--color-motif-medium);          /* #ABAEB0 */
-  --ls-blue: var(--color-welcome-heading);      /* #4F6373 */
-  --ls-navy: var(--color-welcome-navy);         /* #101D3A */
-  --ls-ink: var(--color-welcome-text);          /* #101D3A */
-  --ls-leaf: var(--color-motif-yellow);         /* #ABAEB0 sage */
-  --ls-leaf-ink: color-mix(in srgb, var(--color-motif-yellow) 78%, #4F6373);
-  --ls-sun: var(--color-motif-accent);          /* #4F6373 */
+  --ls-sky: var(--color-motif-medium);          /* #9AADE0 */
+  --ls-blue: var(--color-welcome-heading);      /* #739ACD */
+  --ls-navy: var(--color-welcome-navy);         /* #172C4C */
+  --ls-ink: var(--color-welcome-text);          /* #172C4C */
+  --ls-leaf: var(--color-motif-yellow);         /* #9AADE0 sage */
+  --ls-leaf-ink: color-mix(in srgb, var(--color-motif-yellow) 78%, #739ACD);
+  --ls-sun: var(--color-motif-accent);          /* #739ACD */
 
   --ls-text-dark: var(--ls-ink);
   --ls-text-accent-dark: var(--ls-blue);
@@ -3565,12 +3565,12 @@
    holds up over bright frames. Sage + sunshine appear only as accents.
    ========================================================================== */
 .home-hero--plain {
-  --hh-navy: var(--color-welcome-navy);       /* #101D3A */
-  --hh-blue: var(--color-welcome-heading);    /* #4F6373 */
-  --hh-ink: var(--color-welcome-text);        /* #101D3A */
-  --hh-sky: var(--color-motif-medium);        /* #ABAEB0 */
-  --hh-leaf: var(--color-motif-yellow);       /* #ABAEB0 */
-  --hh-butter: #A87922;
+  --hh-navy: var(--color-welcome-navy);       /* #172C4C */
+  --hh-blue: var(--color-welcome-heading);    /* #739ACD */
+  --hh-ink: var(--color-welcome-text);        /* #172C4C */
+  --hh-sky: var(--color-motif-medium);        /* #9AADE0 */
+  --hh-leaf: var(--color-motif-yellow);       /* #9AADE0 */
+  --hh-butter: #739ACD;
   /* Tight white edge: keeps thin strokes crisp instead of washing them out */
   --hh-edge:
     0 0 1px rgb(250 246 238 / 100%),
@@ -3787,8 +3787,8 @@
 .home-hero--plain .home-hero-mist {
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  -webkit-mask-image: radial-gradient(ellipse at center, #101D3A 40%, transparent 70%);
-  mask-image: radial-gradient(ellipse at center, #101D3A 40%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #172C4C 40%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, #172C4C 40%, transparent 70%);
 }
 
 /* Countdown: shorter, lighter band hugging the bottom edge */
@@ -3949,22 +3949,22 @@
    dusty rose script, rose-ink small caps, sage hairlines.
    ========================================================================== */
 .loading-screen--plain {
-  --ls-blush: #F5EDDF;
+  --ls-blush: #F2F6FB;
   --ls-pastel: #FAF6EE;
   --ls-ivory: #FAF6EE;
-  --ls-burgundy: #101D3A;
-  --ls-rose: #A87922;
-  --ls-rose-ink: #A87922;
-  --ls-sage: #D7A041;
+  --ls-burgundy: #172C4C;
+  --ls-rose: #739ACD;
+  --ls-rose-ink: #172C4C;
+  --ls-sage: #9AADE0;
 
   --ls-sky: var(--ls-rose);
   --ls-blue: var(--ls-rose-ink);
   --ls-navy: var(--ls-burgundy);
-  --ls-ink: #101D3A;
+  --ls-ink: #172C4C;
   --ls-leaf: var(--ls-sage);
-  --ls-leaf-ink: var(--ls-rose);
+  --ls-leaf-ink: var(--ls-rose-ink);
   --ls-sun: var(--ls-rose);
-  --ls-text-highlight: var(--ls-rose);
+  --ls-text-highlight: var(--ls-rose-ink);
   --ls-date-line: color-mix(in srgb, var(--ls-sage) 60%, transparent);
   background: var(--ls-pastel);
 }
@@ -3990,14 +3990,14 @@
 
 .loading-screen--plain .ls-headline__script,
 .loading-screen--plain .ls-names__and {
-  color: var(--ls-rose);
-  -webkit-text-fill-color: var(--ls-rose);
+  color: var(--ls-rose-ink);
+  -webkit-text-fill-color: var(--ls-rose-ink);
 }
 
 .loading-screen--plain .ls-silk-date__day,
 .loading-screen--plain .ls-silk-date__digit-inner {
-  color: var(--ls-rose);
-  -webkit-text-fill-color: var(--ls-rose);
+  color: var(--ls-rose-ink);
+  -webkit-text-fill-color: var(--ls-rose-ink);
 }
 
 .loading-screen--plain .loading-screen__plain-line,
@@ -4034,12 +4034,12 @@
    Desktop: photo left, wording right.
    ========================================================================== */
 .home-hero--plain {
-  --hh-navy: #101D3A;
-  --hh-blue: #A87922;
-  --hh-ink: #101D3A;
-  --hh-sky: #F5EDDF;
-  --hh-leaf: #D7A041;
-  --hh-butter: #A87922;
+  --hh-navy: #172C4C;
+  --hh-blue: #172C4C;
+  --hh-ink: #172C4C;
+  --hh-sky: #F2F6FB;
+  --hh-leaf: #9AADE0;
+  --hh-butter: #172C4C;
   --hh-edge: none;
   background: #FAF6EE;
 }
@@ -4052,8 +4052,8 @@
 }
 
 .home-hero--plain .home-hero-title-script {
-  color: #A87922;
-  -webkit-text-fill-color: #A87922;
+  color: #172C4C;
+  -webkit-text-fill-color: #172C4C;
   text-shadow: none;
 }
 
@@ -4101,7 +4101,7 @@
   aspect-ratio: 3 / 4;
   width: calc(100% + 18px);
   border-radius: 999px 999px 22px 22px;
-  border: 1px solid color-mix(in srgb, #D7A041 55%, transparent);
+  border: 1px solid color-mix(in srgb, #9AADE0 55%, transparent);
   pointer-events: none;
 }
 
@@ -4111,12 +4111,12 @@
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 999px 999px 16px 16px;
-  background: #F5EDDF;
+  background: #F2F6FB;
   border: 5px solid #FAF6EE;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, #D7A041 35%, transparent),
-    0 30px 55px -30px color-mix(in srgb, #101D3A 40%, transparent),
-    0 10px 24px -14px color-mix(in srgb, #D7A041 45%, transparent);
+    0 0 0 1px color-mix(in srgb, #9AADE0 35%, transparent),
+    0 30px 55px -30px color-mix(in srgb, #172C4C 40%, transparent),
+    0 10px 24px -14px color-mix(in srgb, #9AADE0 45%, transparent);
 }
 
 /* Soft blush vignette at the base so the photo melts into the frame */
@@ -4146,7 +4146,7 @@
   aspect-ratio: 2170 / 725;
   margin: -1.6rem auto 0;
   background: url("/deco/new-deco/small-center.png") center / contain no-repeat;
-  filter: drop-shadow(0 4px 6px color-mix(in srgb, #101D3A 15%, transparent));
+  filter: drop-shadow(0 4px 6px color-mix(in srgb, #172C4C 15%, transparent));
 }
 
 @media (min-width: 768px) {
@@ -4183,8 +4183,8 @@
 }
 
 .loading-screen--plain .ls-headline__letter {
-  color: #101D3A;
-  -webkit-text-fill-color: #101D3A;
+  color: #172C4C;
+  -webkit-text-fill-color: #172C4C;
 }
 
 .ls-headline__break {
@@ -4235,8 +4235,8 @@
      behind the section shows through softly */
   background:
     radial-gradient(90% 16% at 50% 0%, rgb(250 246 238 / 65%) 0%, transparent 70%),
-    radial-gradient(60% 14% at 0% 30%, color-mix(in srgb, #F5EDDF 30%, transparent) 0%, transparent 70%),
-    radial-gradient(60% 14% at 100% 62%, color-mix(in srgb, #F5EDDF 26%, transparent) 0%, transparent 70%),
+    radial-gradient(60% 14% at 0% 30%, color-mix(in srgb, #F2F6FB 30%, transparent) 0%, transparent 70%),
+    radial-gradient(60% 14% at 100% 62%, color-mix(in srgb, #F2F6FB 26%, transparent) 0%, transparent 70%),
     linear-gradient(
       180deg,
       rgb(250 246 238 / 58%) 0%,
@@ -4250,7 +4250,7 @@
   position: absolute;
   inset: 0;
   opacity: 0.55;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.18 0 0 0 0 0.31 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.173 0 0 0 0 0.298 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
 /* Double border — same as the loading screen frame (replaces the old hairline) */
@@ -4320,43 +4320,43 @@
 
 .story-open-wash--left {
   left: -18%;
-  background: radial-gradient(closest-side, color-mix(in srgb, #E8D36A 30%, transparent) 0%, color-mix(in srgb, #F5EDDF 50%, transparent) 55%, transparent 100%);
+  background: radial-gradient(closest-side, color-mix(in srgb, #739ACD 30%, transparent) 0%, color-mix(in srgb, #F2F6FB 50%, transparent) 55%, transparent 100%);
 }
 
 .story-open-wash--right {
   right: -18%;
-  background: radial-gradient(closest-side, color-mix(in srgb, #E8D36A 30%, transparent) 0%, color-mix(in srgb, #F5EDDF 50%, transparent) 55%, transparent 100%);
+  background: radial-gradient(closest-side, color-mix(in srgb, #739ACD 30%, transparent) 0%, color-mix(in srgb, #F2F6FB 50%, transparent) 55%, transparent 100%);
 }
 
 /* Text colors (loading screen palette): charcoal title, slate details, warm-gray rule */
 .story-open-date {
-  color: #E8D36A;
+  color: #172C4C;
 }
 
 .story-open-title {
-  color: #101D3A;
+  color: #172C4C;
   text-shadow: 0 1px 0 rgb(250 246 238 / 85%);
 }
 
 .story-open-rule {
-  background: #D7A041;
+  background: #9AADE0;
 }
 
 .story-open-text {
-  color: #101D3A;
+  color: #172C4C;
   text-shadow: 0 0 8px rgb(250 246 238 / 75%);
 }
 
 .story-open-number {
-  color: color-mix(in srgb, #F5EDDF 30%, transparent);
+  color: color-mix(in srgb, #F2F6FB 30%, transparent);
 }
 
 /* Photo frame: light paper mat with a warm-gray edge */
 .story-open-photo {
   background: #FAF6EE;
   box-shadow:
-    0 0 0 1px color-mix(in srgb, #D7A041 35%, transparent),
-    0 18px 34px -16px color-mix(in srgb, #101D3A 32%, transparent);
+    0 0 0 1px color-mix(in srgb, #9AADE0 35%, transparent),
+    0 18px 34px -16px color-mix(in srgb, #172C4C 32%, transparent);
 }
 
 
@@ -4427,7 +4427,7 @@
   margin: -1.9rem auto 0;
   user-select: none;
   pointer-events: none;
-  filter: drop-shadow(0 4px 6px color-mix(in srgb, #101D3A 15%, transparent));
+  filter: drop-shadow(0 4px 6px color-mix(in srgb, #172C4C 15%, transparent));
 }
 
 
@@ -4448,7 +4448,7 @@
   letter-spacing: 0.22em;
   line-height: 1.3;
   text-transform: uppercase;
-  color: #4F6373;
+  color: #172C4C;
 }
 
 
@@ -4459,8 +4459,8 @@
    and the countdown fades up from a deeper navy at the bottom edge.
    ========================================================================== */
 .home-hero--plain {
-  --hh-gold-ink: #8A6118; /* deeper gold for small caps over the mist */
-  --hh-gold-light: #E3C27F; /* light gold for labels over navy */
+  --hh-gold-ink: #172C4C; /* deeper gold for small caps over the mist */
+  --hh-gold-light: #9CC5E5; /* light gold for labels over navy */
   --hh-halo:
     0 0 2px rgb(250 246 238 / 100%),
     0 0 8px rgb(250 246 238 / 90%),
@@ -4501,8 +4501,8 @@
 }
 
 .home-hero--plain .home-hero-title-script {
-  color: #9A6B1C;
-  -webkit-text-fill-color: #9A6B1C;
+  color: #172C4C;
+  -webkit-text-fill-color: #172C4C;
 }
 
 .home-hero--plain .home-hero-date-weekday,
@@ -4513,7 +4513,7 @@
 }
 
 .home-hero--plain .home-hero-date-side {
-  border-block-color: color-mix(in srgb, #D7A041 85%, transparent);
+  border-block-color: color-mix(in srgb, #9AADE0 85%, transparent);
 }
 
 .home-hero--plain .home-hero-eyebrow,
@@ -4527,9 +4527,9 @@
   padding-top: clamp(2.5rem, 8vh, 4rem);
   background: linear-gradient(
     to top,
-    color-mix(in srgb, #101D3A 92%, transparent) 0%,
-    color-mix(in srgb, #101D3A 78%, transparent) 45%,
-    color-mix(in srgb, #101D3A 35%, transparent) 75%,
+    color-mix(in srgb, #172C4C 92%, transparent) 0%,
+    color-mix(in srgb, #172C4C 78%, transparent) 45%,
+    color-mix(in srgb, #172C4C 35%, transparent) 75%,
     transparent 100%
   );
 }
@@ -4538,12 +4538,12 @@
 .home-hero--plain .home-hero-countdown-value {
   color: #FAF6EE;
   text-shadow:
-    0 1px 2px rgb(16 29 58 / 90%),
-    0 2px 12px rgb(16 29 58 / 80%);
+    0 1px 2px rgb(23 44 76 / 90%),
+    0 2px 12px rgb(23 44 76 / 80%);
 }
 
 .home-hero--plain .home-hero-countdown-heading,
 .home-hero--plain .home-hero-countdown-label {
   color: var(--hh-gold-light);
-  text-shadow: 0 1px 3px rgb(16 29 58 / 90%);
+  text-shadow: 0 1px 3px rgb(23 44 76 / 90%);
 }

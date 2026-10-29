@@ -20,9 +20,9 @@ const theSeasons = localFont({
 })
 
 const BURGUNDY = "var(--color-welcome-navy)"
-const ROSE = "#E8D36A"
-const INK = "#101D3A" // soft cocoa for the long verse line — gentler than burgundy, still high contrast
-const QUOTE_MARK = "color-mix(in srgb, #F5EDDF 70%, transparent)"
+const ROSE = "#739ACD"
+const INK = "#172C4C" // soft cocoa for the long verse line — gentler than burgundy, still high contrast
+const QUOTE_MARK = "color-mix(in srgb, #F2F6FB 70%, transparent)"
 // Soft ivory edge keeps burgundy text crisp over pink or photos
 const glow = "0 1px 0 rgb(250 246 238 / 90%), 0 0 14px rgb(250 246 238 / 85%)"
 
@@ -34,19 +34,19 @@ const TONES = {
     lead: BURGUNDY,
     body: INK,
     mark: QUOTE_MARK,
-    rule: "#D7A041",
+    rule: "#9AADE0",
     shadow: glow,
   },
   light: {
     title: "#FAF6EE",
-    accent: "#F5EDDF",
+    accent: "#F2F6FB",
     lead: "#FAF6EE",
     body: "rgb(250 246 238 / 94%)",
-    mark: "rgb(245 237 223 / 75%)",
-    rule: "rgb(245 237 223 / 85%)",
+    mark: "rgb(242 246 251 / 75%)",
+    rule: "rgb(242 246 251 / 85%)",
     // Layered burgundy shadow: crisp edge plus a soft halo so ivory reads on any photo
     shadow:
-      "0 1px 2px rgb(16 29 58 / 85%), 0 2px 8px rgb(16 29 58 / 60%), 0 0 22px rgb(16 29 58 / 45%)",
+      "0 1px 2px rgb(23 44 76 / 85%), 0 2px 8px rgb(23 44 76 / 60%), 0 0 22px rgb(23 44 76 / 45%)",
   },
 } as const
 
@@ -143,7 +143,7 @@ export function PuhonBanner() {
       className="relative isolate overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]"
       style={{
         boxShadow:
-          "0 0 0 1px color-mix(in srgb, #ABAEB0 45%, transparent), 0 0 0 6px rgb(250 246 238 / 35%), 0 26px 50px -28px color-mix(in srgb, #101D3A 45%, transparent)",
+          "0 0 0 1px color-mix(in srgb, #9AADE0 45%, transparent), 0 0 0 6px rgb(250 246 238 / 35%), 0 26px 50px -28px color-mix(in srgb, #172C4C 45%, transparent)",
       }}
     >
       {images.map((src, i) => (
@@ -174,7 +174,7 @@ export function PuhonBanner() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(85% 70% at 50% 50%, rgb(16 29 58 / 52%) 0%, rgb(16 29 58 / 34%) 60%, rgb(16 29 58 / 22%) 100%), linear-gradient(180deg, rgb(16 29 58 / 10%) 0%, rgb(16 29 58 / 25%) 100%)",
+            "radial-gradient(85% 70% at 50% 50%, rgb(23 44 76 / 52%) 0%, rgb(23 44 76 / 34%) 60%, rgb(23 44 76 / 22%) 100%), linear-gradient(180deg, rgb(23 44 76 / 10%) 0%, rgb(23 44 76 / 25%) 100%)",
         }}
       />
       <PuhonText tone="light" className="px-5 py-14 sm:px-10 sm:py-20 md:py-24" />

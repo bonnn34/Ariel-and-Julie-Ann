@@ -97,7 +97,7 @@ export default function Counter({
   counterStyle,
   digitStyle,
   gradientHeight = 16,
-  gradientFrom = '#101D3A',
+  gradientFrom = '#172C4C',
   gradientTo = 'transparent',
   topGradientStyle,
   bottomGradientStyle

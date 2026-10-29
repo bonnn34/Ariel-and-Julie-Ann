@@ -55,11 +55,11 @@ const BUTTON = "var(--color-welcome-heading)"
 const IVORY = "#FAF6EE"
 const PAPER = "#FAF6EE"
 // Deep sage green (motif leaves) — guest names and avatars
-const LEAF = "color-mix(in srgb, var(--color-motif-yellow) 70%, #101D3A)"
+const LEAF = "color-mix(in srgb, var(--color-motif-yellow) 70%, #172C4C)"
 const DEEP_GRADIENT =
   "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)"
 const SAGE_GRADIENT =
-  "linear-gradient(180deg, var(--color-motif-yellow) 0%, color-mix(in srgb, var(--color-motif-yellow) 70%, #101D3A) 100%)"
+  "linear-gradient(180deg, var(--color-motif-yellow) 0%, color-mix(in srgb, var(--color-motif-yellow) 70%, #172C4C) 100%)"
 const HAIRLINE = "color-mix(in srgb, var(--color-motif-medium) 60%, transparent)"
 // Secondary text / unselected options (muted blue, still readable)
 const TEAL_SOFT = "color-mix(in srgb, var(--color-welcome-text) 75%, #FAF6EE)"

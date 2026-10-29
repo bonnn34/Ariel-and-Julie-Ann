@@ -67,35 +67,35 @@ export type AttireColor = string | { name: string; hex: string }
 
 // ── The couple ──────────────────────────────────────────────────────────────
 const COUPLE = {
-  bride: "Trizha De Ocampo",
-  brideNickname: "Trizha",
-  groom: "Wei Hung",
-  groomNickname: "Wei",
+  bride: "Julie Ann L. Lelis",
+  brideNickname: "Julie Ann",
+  groom: "Ariel J. Arivara",
+  groomNickname: "Ariel",
 }
 
 // ── Date & times ────────────────────────────────────────────────────────────
-const WEDDING_DATE = "January 31, 2027" // e.g. "June 5, 2027"
-const WEDDING_DAY = "Sunday" // 
+const WEDDING_DATE = "January 22, 2027" // e.g. "June 5, 2027"
+const WEDDING_DAY = "Friday" // 
 const TIMES = {
-  entourageCall: "1:00 PM", // entourage assembly
-  guestArrival: "5:00 PM", // guests arrival / assembly (shown in Event Details + reminders)
-  ceremony: "5:00 PM",
-  reception: "5:30 PM", // start of program
+  entourageCall: "11:00 AM", // entourage assembly
+  guestArrival: "11:30 PM", // guests arrival / assembly (shown in Event Details + reminders)
+  ceremony: "12:15 PM",
+  reception: "2:30 PM", // start of program
 }
 
 // ── Venues ──────────────────────────────────────────────────────────────────
 
 const CEREMONY_VENUE = {
-  name: "Asador Alfonso",
-  address: "Esperanza Ilaya, Alfonso, 4100 Cavite, Philippines",
-  map: "https://maps.app.goo.gl/kiQB1FKqLHaQWYQA8",
-  photos: ["/Details/new-reception (1).jpg", "/Details/new-reception (2).jpg","/Details/new-reception (1).webp"],
+  name: "Transfiguration Parish Chruch",
+  address: "Manuel L. Quezon Ext, Nayong Silangan, Antipolo, 1870 Rizal",
+  map: "https://maps.app.goo.gl/EV7uZbVBgauFiTot5",
+  photos: ["/Details/ceremony-new (1).jpg", "/Details/ceremony-new (2).jpg","/Details/ceremony-new (3).jpg"],
 }
 const RECEPTION_VENUE = {
-  name: " Asador Alfonso",
-  address: "Esperanza Ilaya, Alfonso, 4100 Cavite, Philippines",
-  map: "https://maps.app.goo.gl/kiQB1FKqLHaQWYQA8",
-  photos: ["/Details/reception (4).jpg", "/Details/reception (5).jpg", "/Details/reception (6).jpg"],
+  name: "The Garden Hive Events Place",
+  address: "Manuel L. Quezon Ext, Antipolo, Rizal",
+  map: "https://maps.app.goo.gl/zwnLXxEsfJE7LyL1A",
+  photos: ["/Details/reception-new (1).jpg", "/Details/reception-new (1).webp", "/Details/reception-new (2).jpg"],
 }
 
 // ── Venue cards (Event Details section) ─────────────────────────────────────
@@ -108,7 +108,7 @@ const RECEPTION_VENUE = {
 // showDate     = show the big Month / Day / Year
 // showArrival  = show "Arrival: <guest arrival time>" (otherwise "At <time>")
 const VENUE_CARDS = {
-  layout: "combined" as "separate" | "combined",
+  layout: "separate" as "separate" | "combined",
   // Used when layout is "combined"
   combined: {
     badge: "Ceremony & Reception",
@@ -140,7 +140,7 @@ const VENUE_CARDS = {
 
 // ── RSVP & contact ──────────────────────────────────────────────────────────
 const RSVP = {
-  deadline: " November 30, 2026",
+  deadline: " December 10, 2026",
   coordinator: "{groom} / {bride}", // {groom} / {bride} → couple nicknames
   phone: "to be announced",
 }
@@ -164,10 +164,10 @@ const HASHTAGS = ["#TrizhaFoundHerWei"] // ⚠ check — looks like it's from a 
 //     highlight: phrase inside details shown bold + underlined ("" for none)
 // Guest dress code colors — also shown in the "Dress Code" gentle reminder
 const DRESS_CODE_PALETTE: AttireColor[] = [
-  { name: "Lilac / Lavender", hex: "#DCD5E5" },
-  { name: "Sage Green", hex: "#D7E2CD" },
-  { name: "Blush", hex: "#FCE5D8" },
-  { name: "Powder Blue", hex: "#D8E5ED" },
+  { name: "Soft Periwinkle Blue", hex: "#9AADE0" },
+  { name: "Cornflower Blue", hex: "#739ACD" },
+  { name: "Pastel Sky Blue", hex: "#9CC5E5" },
+  { name: "Deep Navy Blue", hex: "#172C4C" },
 ];
 
 // Attire groups shown in the Details section (components/sections/details.tsx).
@@ -269,27 +269,28 @@ const ATTIRE = {
   },
 },
 
-  guests: {
+guests: {
   title: "Wedding Guests",
   image: "/Details/guest.png",
   dressCode: "Formal Attire",
   palette: DRESS_CODE_PALETTE,
 
-  note: "Celebrate with us in elegant formal attire. Ladies are kindly requested to wear floor-length gowns in lilac, sage green, blush, or powder blue. Gentlemen are requested to wear classic black suits with white dress shirts and black neckties. We kindly ask everyone to follow our wedding dress code for a beautifully coordinated celebration.",
+  note:
+    "Celebrate with us in elegant shades of blue. Ladies are kindly requested to wear floor-length gowns in soft periwinkle blue, muted cornflower blue, pastel sky blue, or deep navy blue. Gentlemen are requested to wear cream Barong Tagalog with formal trousers and dress shoes. Thank you for following our dress code and helping create a beautifully coordinated celebration.",
 
   ladies: {
     label: "Ladies",
     details:
-      "Elegant floor-length formal gowns in Lilac/Lavender, Sage Green, Blush, or Powder Blue. Soft, flowing fabrics such as chiffon, satin, or tulle are encouraged. Please avoid short or midi dresses, bright or neon colors, busy prints, earthy or dark tones, white, black, and butter yellow.",
-    highlight: "Floor-Length Pastel Gowns",
+      "Elegant floor-length gowns in soft periwinkle blue, muted cornflower blue, pastel sky blue, or deep navy blue. Flowing chiffon, satin, or silk fabrics are encouraged. Kindly avoid white, ivory, cream, and other shades traditionally reserved for the bride and groom. Please also avoid short or midi dresses, busy prints, and colors outside our blue palette.",
+    highlight: "Floor-Length Gowns in Shades of Blue",
     roles: [] as { role: string; attire: string }[],
   },
 
   gentlemen: {
     label: "Gentlemen",
     details:
-      "Classic black formal suit jacket with matching black trousers, a solid black necktie, a white formal dress shirt, and polished black dress shoes. Please avoid bow ties, colored neckties, printed shirts, patterned suits, and suits in colors other than black.",
-    highlight: "Black Formal Suit with Black Necktie",
+      "Elegant cream Barong Tagalog, either traditional long-sleeved or modern short-sleeved, with subtle embroidery. Wear it untucked with tailored deep navy formal trousers and polished dress shoes. Please avoid suits, tuxedos, casual shirts, jeans, shorts, and sneakers.",
+    highlight: "Cream Barong Tagalog with Formal Trousers",
     roles: [] as { role: string; attire: string }[],
   },
 },
@@ -312,35 +313,35 @@ const DISPLAY_MODE = "plain" as "photos" | "plain"
 
 // ── Shared images ───────────────────────────────────────────────────────────
 const BRAND = {
-  monogram: "/monogram/monogram-new.png", // monogram (loader, envelope, closing)
+  monogram: "/monogram/new-monogram.png", // monogram (loader, envelope, closing)
   coupleNameImage: "/Details/newcoupelNames.png", // couple-name lettering (loader, envelope)
   seal: "/monogram/new-seal.png", // envelope wax seal
-  backgroundMusic: "/background_music/Turning Page (Instrumental).mp3",
+  backgroundMusic: "/background_music/kay-tagal-kitang-hinintay-spongecola-piano-cover-by-gerard-chua_b8pL0ElX.mp3",
 }
 
 // Couple photos reused across the site (gallery, loader, reminders, snap & share, closing)
 // — every portrait in /public/mobile-background
 const COUPLE_PHOTOS = Array.from(
-  { length: 11 },
+  { length: 13 },
   (_, i) => `/mobile-background/couple (${i + 1}).webp`,
 )
 
 // Portraits for the envelope reveal + the main cover photo (soft natural light, no heavy filters)
 const COUPLE_PORTRAITS = {
-  groom: "/mobile-background/couple (8).webp", // left photo in the envelope
-  bride: "/mobile-background/couple (4).webp", // right photo in the envelope
-  cover: "/mobile-background/couple (2).webp", // photo pulled out of the envelope + home hero cover photo
+  groom: "/mobile-background/couple (5).webp", // left photo in the envelope
+  bride: "/mobile-background/couple (2).webp", // right photo in the envelope
+  cover: "/mobile-background/couple (11).webp", // photo pulled out of the envelope + home hero cover photo
 }
 
 // Sliding photo marquee behind the loader and envelope.
 // Phones use the portrait shots in /public/mobile-background, desktop the landscape
 // shots in /public/desktop-background — update the counts when files are added/removed.
-const MARQUEE_PHOTO_COUNT = 11
+const MARQUEE_PHOTO_COUNT = 13
 const MARQUEE_PHOTOS = Array.from(
   { length: MARQUEE_PHOTO_COUNT },
   (_, i) => `/mobile-background/couple (${i + 1}).webp`,
 )
-const MARQUEE_PHOTO_COUNT_DESKTOP = 2
+const MARQUEE_PHOTO_COUNT_DESKTOP = 19
 const MARQUEE_PHOTOS_DESKTOP = Array.from(
   { length: MARQUEE_PHOTO_COUNT_DESKTOP },
   (_, i) => `/desktop-background/couple (${i + 1}).webp`,
@@ -350,13 +351,13 @@ const MARQUEE_PHOTOS_DESKTOP = Array.from(
 // Change a path here to swap it on every section at once.
 // To change ONE section only, override it there, e.g. decos: { ...SECTION_DECOS, footerVine: "" }
 const DECOR = {
-  cornerTopLeft: "/deco/new-deco/top-left.png", // floral corner tucked under the top vines (loader + envelope)
-  cornerTopRight: "/deco/new-deco/top-right.png",
-  cornerBottomLeft: "/deco/new-deco/bottom-left.png",
-  cornerBottomRight: "/deco/new-deco/bottom-right.png",
+  cornerTopLeft: "/deco/new-corner-left.png", // floral corner tucked under the top vines (loader + envelope)
+  cornerTopRight: "/deco/new-corner-right.png",
+  cornerBottomLeft: "/deco/new-bottom-left.png",
+  cornerBottomRight: "/deco/new-bottom-right.png",
   cornerOverlayTopLeft: "/deco/overlay-left.png", // floral corner layered over the top vines (loader + envelope)
   cornerOverlayTopRight: "/deco/overlay-right.png",
-  headerOrnament: "/deco/new-deco/header-ornament.png", // small sprig above titles
+  headerOrnament: "/deco/middle-ornament.png", // small sprig above titles
   footerVine: "/deco/footerVine.png", // long vine at section ends
   sideLeft: "/deco/lovestorydeco/Elegant-Eucalyptus-Left.png", // love story side sprigs
   sideRight: "/deco/lovestorydeco/Elegant-Eucalyptus-Right.png",
@@ -560,83 +561,61 @@ export const siteConfig = {
     // /public/mobile-background. Add, remove or reorder chapters freely — sides alternate on their own.
    chapters: [
       {
-        date: "To Our Parents",
-        title: "Where Our Love First Began",
+        date: "2021",
+        title: "It Started With a Conversation",
         image: "/mobile-background/couple (2).webp",
         imageAlt: "{groom} and {bride} together",
         imagePosition: "center 25%",
         paragraphs: [
-          "Long before we found each other, you were already showing us what love looks like: patient, faithful and generous in a thousand quiet ways.",
-          "Thank you for every sacrifice, every prayer and every lesson. Everything good we bring into this marriage, we first learned from you.",
+          "Our story began in 2021 with simple conversations between two chat mates. What started as casual messages slowly became something we both looked forward to.",
+          "As we got to know each other, our connection deepened, and those everyday conversations became the beginning of a beautiful love story.",
         ],
       },
       {
-        date: "To Our Families",
-        title: "The Roots That Hold Us",
+        date: "2022",
+        title: "The Beginning of Us",
         image: "/mobile-background/couple (4).webp",
         imageAlt: "{groom} and {bride} smiling together",
         imagePosition: "center 30%",
         paragraphs: [
-          "To our siblings, grandparents, aunts, uncles and cousins: you are the home we always come back to.",
-          "Thank you for the laughter around the dinner table, the stories, the teasing and the love that never needed a reason. Today our two families become one, and our hearts are fuller for it.",
+          "In 2022, we took a special step forward and officially became a couple. A connection that began through conversations had grown into a love we were ready to share.",
+          "Together, we began creating memories and discovering the joy of having each other by our side.",
         ],
       },
       {
-        date: "To Our Elders",
-        title: "With Honor and Respect",
-        image: "/mobile-background/couple (6).webp",
-        imageAlt: "{groom} and {bride} together",
+        date: "Our Adventures Together",
+        title: "Finding Joy Along the Way",
+        image: "/mobile-background/couple (5).webp",
+        imageAlt: "{groom} and {bride} enjoying an adventure together",
         imagePosition: "center 35%",
         paragraphs: [
-          "To the elders who walked this path before us, thank you for your wisdom, your blessings and the example of lasting love you have set.",
-          "We carry your words with us as we begin our own journey together.",
+          "Through the years, we explored different places, discovered new adventures, and found happiness in the little moments we shared.",
+          "Every trip, every laugh, and every experience brought us closer. Wherever we went, being together was always the best part.",
         ],
       },
       {
-        date: "To Our Wedding Entourage",
-        title: "By Our Side",
-        image: "/mobile-background/couple (1).webp",
-        imageAlt: "{groom} and {bride} together",
-        imagePosition: "center 20%",
-        paragraphs: [
-          "Thank you for being part of this special chapter in our lives. Having you by our side makes this celebration all the more meaningful.",
-          "We are grateful for your love, support, and the memories we share, and we look forward to celebrating this milestone with you.",
-        ],
-      },
-      {
-        date: "To Our Friends",
-        title: "The Family We Chose",
-        image: "/mobile-background/couple (8).webp",
-        imageAlt: "{groom} and {bride} laughing together",
+        date: "May 8, 2025",
+        title: "A Question, a Yes, and Forever",
+        image: "/mobile-background/couple (12).webp",
+        imageAlt: "{groom} and {bride} celebrating their engagement",
         imagePosition: "center 25%",
         paragraphs: [
-          "To our friends, old and new: thank you for the late-night talks, the road trips, the honest advice and the countless memories that made us who we are.",
-          "You cheered for us from the very beginning, and we cannot imagine celebrating this day without you.",
+          "During our travels in Legazpi, Albay, our journey reached an unforgettable milestone. On May 8, 2025, Ariel asked the question that would begin our next chapter, and Julie Ann said yes.",
+          "What began with simple chats had grown into a promise of forever, making that adventure one we would always hold close to our hearts.",
         ],
       },
       {
-        date: "To Everyone Who Helped",
-        title: "Every Little Act of Love",
-        image: "/mobile-background/couple (9).webp",
-        imageAlt: "{groom} and {bride} together",
-        imagePosition: "center 25%",
-        paragraphs: [
-          "To everyone who offered a helping hand, from the planning and the errands to the encouraging messages and the gifts of time and talent:",
-          "This celebration was built by many hands and many hearts. Thank you for making it possible.",
-        ],
-      },
-      {
-        date: "To You",
-        title: "Come Celebrate With Us",
+        date: "Our Next Chapter",
+        title: "From a Conversation to Forever",
         image: "/mobile-background/couple (10).webp",
-        imageAlt: "{groom} and {bride} together",
+        imageAlt: "{groom} and {bride} looking forward to their future together",
         imagePosition: "center 25%",
         paragraphs: [
-          "Our story is woven from every one of you, and the most beautiful day of our lives would not be complete without you there.",
-          "With joyful and grateful hearts, {groom} and {bride} warmly invite you to celebrate our wedding with us: to witness our vows, share our joy and begin this new chapter together.",
+          "Now, with hearts full of love and dreams for our future, we are ready to begin our next chapter as husband and wife.",
+          "As we look forward to a lifetime of love, laughter, and adventures, we carry with us the story that brought us here. We cannot wait to celebrate this new beginning with you.",
         ],
       },
-    ] as StoryChapter[],
+    ]as StoryChapter[],
   },
   // Gallery section (components/sections/gallery.tsx)
   gallery: {
@@ -724,9 +703,9 @@ export const siteConfig = {
       description: "A few thoughtful notes to help everyone enjoy our celebration.",
       // Small photos that take turns above the "Gentle Reminders" title (files in /public/box)
       images: [
-        "/box/box (3).webp",
-        "/box/box (2).webp",
         "/box/box (1).webp",
+        "/box/box (2).webp",
+        "/box/box (3).webp",
         "/box/box (4).webp",
       ],
       // showPalette: shows the dress code palette after the first paragraph
@@ -832,7 +811,7 @@ export const siteConfig = {
     //             "arrival" | "guests" | "rings" | "departure" | "cocktail" | "fireworks" | "dance"
     //   description: not shown on the site (kept only as a note)
     events: [
-     /* {
+      {
         show: true,
         time: TIMES.entourageCall,
         title: "Entourage Call Time",
@@ -840,7 +819,7 @@ export const siteConfig = {
         location: "{ceremony}",
         image: "/weddingtimeline/Wedding Entourage Call Time Logo.png",
         icon: "arrival" as TimelineIconName,
-      },*/
+      },
       {
         show: true,
         time: TIMES.guestArrival,
@@ -851,7 +830,7 @@ export const siteConfig = {
         icon: "guests" as TimelineIconName,
       },
       {
-        show: false,
+        show: true,
         time: TIMES.ceremony, //TIMES.ceremony
         title: "Wedding Ceremony",
         description: "We exchange our vows before God, family and friends.",
@@ -869,8 +848,8 @@ export const siteConfig = {
         icon: "fireworks" as TimelineIconName,
       },
       {
-        show: false,
-        time: "6:00 PM",
+        show: true,
+        time: "3:00 PM",
         title: "Photo Session",
         description: "Join us for pictures with the newlyweds.",
         location: "{ceremony}",
@@ -878,8 +857,8 @@ export const siteConfig = {
         icon: "rings" as TimelineIconName,
       },
       {
-        show: false,
-        time: "6:30 PM",
+        show: true,
+        time: "3:30 PM",
         title: "Cocktail Hour",
         description: "Refreshments while we make our way to the reception.",
         location: "{reception}",
@@ -887,8 +866,8 @@ export const siteConfig = {
         icon: "cocktail" as TimelineIconName,
       },
       {
-        show: false,
-        time: "7:00 PM",
+        show: true,
+        time: "4:00 PM",
         title: "Grand Entrance",
         description: "Welcome the newlyweds as husband and wife.",
         location: "{reception}",
@@ -896,8 +875,8 @@ export const siteConfig = {
         icon: "fireworks" as TimelineIconName,
       },
       {
-        show: false,
-        time: "7:30 PM",
+        show: true,
+        time: "4:30 PM",
         title: "Wedding Feast",
         description: "Let's share a meal and celebrate together.",
         location: "{reception}",
@@ -905,8 +884,8 @@ export const siteConfig = {
         icon: "cocktail" as TimelineIconName,
       },
       {
-        show: false,
-        time: "8:30 PM",
+        show: true,
+        time: "5:00 PM",
         title: "Cake Cutting",
         description: "",
         location: "{reception}",
@@ -914,8 +893,8 @@ export const siteConfig = {
         icon: "fireworks" as TimelineIconName,
       },
       {
-        show: false,
-        time: "9:00 PM",
+        show: true,
+        time: "5:20 PM",
         title: "First Dance",
         description: "Our first dance as husband and wife.",
         location: "{reception}",
@@ -924,7 +903,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "9:30 PM",
+        time: "5:30 PM",
         title: "Closing Moments",
         description: "Thank you for celebrating with us!",
         location: "{reception}",
@@ -1276,8 +1255,8 @@ export const siteConfig = {
     //   /QR/BDO.png → pays the GCash account (G-Xchange, "BR*******E L** A.")
     //   /QR/BPI.png → pays the BDO account (Banco de Oro, "Brei", account ending 8451)
     accounts: [
-      { show: true, label: "GCash", accountName: "NI*A", accountNumber: "0955 087 ****", qr: "/QR/sampleqr.png" },
-      { show: true, label: "GCash", accountName: "AD***N", accountNumber: "0927 170 ****", qr: "/QR/sampleqr.png" },
+      { show: true, label: "GCash", accountName: "ARIEL A.", accountNumber: "0926 666 ****", qr: "/QR/gcash1.png" },
+      { show: true, label: "GOytyme", accountName: "JULIE ANN LELIS", accountNumber: "******** 8202", qr: "/QR/gotyme.png" },
     ] as { show: boolean; label: string; accountName: string; accountNumber: string; qr: string }[],
     // Leave any path "" to hide that decoration
     decos: { ...SECTION_DECOS },
@@ -1661,8 +1640,8 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     showFrame: true,
     embedUrl:
     //https://open.spotify.com/embed/playlist/5sT43YjdM8pJ3xtEkrxyEY?utm_source=generator&si=e5e64aa63fd04356
-      "https://open.spotify.com/embed/playlist/2AYl5erJolhgGutI15YCPc?utm_source=generator&si=1b7073538b334943",
-    spotifyUrl: "https://open.spotify.com/playlist/2AYl5erJolhgGutI15YCPc?si=3ImKQbmSSlGTw9kxtEMclg",
+      "https://open.spotify.com/embed/playlist/6KuJpc2YN65W6dylhTsSAh?utm_source=generator&si=b743117448f84c0e",
+    spotifyUrl: "https://open.spotify.com/playlist/6KuJpc2YN65W6dylhTsSAh?si=R6IO9vQVRG-b9jG5HKXPRQ",
   },
   // Closing "See you there!" section (components/sections/see-you-there.tsx).
   //   photos mode (loadingScreen.display "photos") → full-screen couple photo
@@ -1677,9 +1656,9 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     // Three side-by-side panels on desktop, a cross-fading full-screen photo on mobile.
     // Portrait (9:16) photos fit best.
     photos: [
-      "/mobile-background/couple (8).webp",
-      "/mobile-background/couple (2).webp",
-      "/mobile-background/couple (4).webp",
+      "/mobile-background/couple (12).webp",
+      "/mobile-background/couple (13).webp",
+      "/mobile-background/couple (7).webp",
     ],
     photo: COUPLE_PHOTOS[4],
     photoAlt: "{couple}",

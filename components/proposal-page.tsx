@@ -111,7 +111,7 @@ const dividerLineStyle = {
 const primaryBtnStyle: CSSProperties = {
   background:
     "linear-gradient(180deg, color-mix(in srgb, var(--color-welcome-navy) 82%, #FAF6EE) 0%, var(--color-welcome-navy) 55%, color-mix(in srgb, var(--color-welcome-navy) 92%, black) 100%)",
-  borderColor: "color-mix(in srgb, #D7A041 60%, transparent)",
+  borderColor: "color-mix(in srgb, #9AADE0 60%, transparent)",
   color: "#FAF6EE",
   boxShadow:
     "inset 0 0 0 3px var(--color-welcome-navy), inset 0 0 0 4px rgb(250 246 238 / 22%), 0 0 0 3px rgb(250 246 238 / 70%), 0 14px 26px -14px var(--invite-shadow)",
@@ -120,8 +120,8 @@ const primaryBtnStyle: CSSProperties = {
 // Ivory pill with a fine gold hairline and navy text
 const secondaryBtnStyle: CSSProperties = {
   color: INK,
-  backgroundColor: "rgb(255 253 248 / 85%)",
-  borderColor: "color-mix(in srgb, #D7A041 45%, transparent)",
+  backgroundColor: "rgb(250 246 238 / 85%)",
+  borderColor: "color-mix(in srgb, #9AADE0 45%, transparent)",
   boxShadow: "inset 0 1px 0 #FFFFFF, 0 6px 16px -12px var(--invite-shadow)",
 }
 
@@ -349,9 +349,9 @@ function archRadius(inset = "0px"): CSSProperties {
 
 // Champagne-gold edge: deep gold at the shoulders fading to pale light across the middle
 const GILT_EDGE =
-  "linear-gradient(165deg, color-mix(in srgb, #D7A041 85%, #FAF6EE) 0%, color-mix(in srgb, #E8D36A 35%, #FAF6EE) 28%, #FAF6EE 50%, color-mix(in srgb, #E8D36A 35%, #FAF6EE) 72%, color-mix(in srgb, #D7A041 85%, #FAF6EE) 100%)"
-const FINE_GOLD = "color-mix(in srgb, #D7A041 55%, transparent)"
-const FINE_GOLD_SOFT = "color-mix(in srgb, #D7A041 28%, transparent)"
+  "linear-gradient(165deg, color-mix(in srgb, #9AADE0 85%, #FAF6EE) 0%, color-mix(in srgb, #739ACD 35%, #FAF6EE) 28%, #FAF6EE 50%, color-mix(in srgb, #739ACD 35%, #FAF6EE) 72%, color-mix(in srgb, #9AADE0 85%, #FAF6EE) 100%)"
+const FINE_GOLD = "color-mix(in srgb, #9AADE0 55%, transparent)"
+const FINE_GOLD_SOFT = "color-mix(in srgb, #9AADE0 28%, transparent)"
 // Very fine paper grain (tiled SVG noise)
 const PAPER_GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.06 0 0 0 0 0.11 0 0 0 0 0.23 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
@@ -416,7 +416,7 @@ function ProposalCard({ children }: { children: ReactNode }) {
           style={{
             ...archRadius("1.5px"),
             // Slightly see-through paper so the photo strip behind reads softly at the edges
-            background: `${PAPER_GRAIN}, radial-gradient(80% 26% at 50% 0%, #FFFDF8 0%, transparent 72%), radial-gradient(120% 60% at 50% 110%, color-mix(in srgb, ${INNER_SURFACE} 90%, transparent) 0%, transparent 70%), linear-gradient(178deg, rgb(255 253 248 / 97%) 0%, color-mix(in srgb, ${IVORY} 95%, transparent) 60%, color-mix(in srgb, ${INNER_SURFACE} 95%, transparent) 100%)`,
+            background: `${PAPER_GRAIN}, radial-gradient(80% 26% at 50% 0%, #FAF6EE 0%, transparent 72%), radial-gradient(120% 60% at 50% 110%, color-mix(in srgb, ${INNER_SURFACE} 90%, transparent) 0%, transparent 70%), linear-gradient(178deg, rgb(250 246 238 / 97%) 0%, color-mix(in srgb, ${IVORY} 95%, transparent) 60%, color-mix(in srgb, ${INNER_SURFACE} 95%, transparent) 100%)`,
             boxShadow: "inset 0 1px 0 rgb(255 255 255 / 90%), inset 0 -18px 40px -30px var(--invite-shadow)",
           }}
         >
@@ -568,7 +568,7 @@ function ProposalDirectAsk({
             style={{
               borderRadius: "999px 999px 0.9rem 0.9rem",
               background:
-                "radial-gradient(70% 55% at 50% 36%, #FFFDF8 0%, color-mix(in srgb, #E8D36A 10%, #FAF6EE) 55%, color-mix(in srgb, var(--color-motif-medium) 14%, transparent) 100%)",
+                "radial-gradient(70% 55% at 50% 36%, #FAF6EE 0%, color-mix(in srgb, #739ACD 10%, #FAF6EE) 55%, color-mix(in srgb, var(--color-motif-medium) 14%, transparent) 100%)",
               border: `1px solid ${FINE_GOLD}`,
               boxShadow: "inset 0 -24px 40px -30px var(--invite-shadow)",
             }}

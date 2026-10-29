@@ -322,7 +322,7 @@
       var(--env-envelope) 0%,
       color-mix(in srgb, var(--env-envelope) 82%, var(--env-seal-deep)) 100%
     );
-  box-shadow: inset 0 0 80px rgba(16, 29, 58, 0.22);
+  box-shadow: inset 0 0 80px rgba(23, 44, 76, 0.22);
 }
 
 .env-invite-exit-curtain--left {
@@ -392,7 +392,7 @@
   width: 78%;
   height: 34px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse, rgba(79, 99, 115, 0.28) 0%, transparent 72%);
+  background: radial-gradient(ellipse, rgba(115, 154, 205, 0.28) 0%, transparent 72%);
   filter: blur(14px);
   pointer-events: none;
   z-index: 0;
@@ -405,7 +405,7 @@
   width: 62%;
   height: 10px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse, rgba(79, 99, 115, 0.2) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(115, 154, 205, 0.2) 0%, transparent 70%);
   filter: blur(4px);
   pointer-events: none;
   z-index: 0;
@@ -424,8 +424,8 @@
   perspective: 1400px;
   overflow: hidden;
   filter:
-    drop-shadow(0 22px 40px rgba(79, 99, 115, 0.18))
-    drop-shadow(0 8px 16px rgba(79, 99, 115, 0.1));
+    drop-shadow(0 22px 40px rgba(115, 154, 205, 0.18))
+    drop-shadow(0 8px 16px rgba(115, 154, 205, 0.1));
   transform: none;
   border-radius: 8px;
 }
@@ -459,7 +459,7 @@
   border: 1px solid var(--env-border);
   box-shadow:
     0 1px 0 rgba(250, 246, 238, 0.1) inset,
-    0 -1px 0 rgba(16, 29, 58, 0.15) inset;
+    0 -1px 0 rgba(23, 44, 76, 0.15) inset;
 }
 
 .env-invite-back::before {
@@ -472,12 +472,12 @@
     repeating-linear-gradient(
       90deg,
       transparent 0 2px,
-      rgba(215, 160, 65, 0.045) 2px 3px
+      rgba(154, 173, 224, 0.045) 2px 3px
     ),
     repeating-linear-gradient(
       0deg,
       transparent 0 3px,
-      rgba(79, 99, 115, 0.03) 3px 4px
+      rgba(115, 154, 205, 0.03) 3px 4px
     );
   pointer-events: none;
 }
@@ -499,8 +499,8 @@
   top: 10%;
   bottom: calc(var(--pocket-cover) + 2%);
   z-index: calc(var(--z-back) + 1);
-  background: linear-gradient(180deg, rgba(16, 29, 58, 0.28) 0%, rgba(16, 29, 58, 0.1) 100%);
-  box-shadow: inset 0 14px 28px rgba(16, 29, 58, 0.32);
+  background: linear-gradient(180deg, rgba(23, 44, 76, 0.28) 0%, rgba(23, 44, 76, 0.1) 100%);
+  box-shadow: inset 0 14px 28px rgba(23, 44, 76, 0.32);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -634,8 +634,8 @@
   );
   border: 1px solid color-mix(in srgb, var(--env-border) 55%, transparent);
   box-shadow:
-    0 12px 32px rgba(79, 99, 115, 0.16),
-    0 4px 10px rgba(79, 99, 115, 0.08),
+    0 12px 32px rgba(115, 154, 205, 0.16),
+    0 4px 10px rgba(115, 154, 205, 0.08),
     inset 0 0 0 1px rgba(250, 246, 238, 0.45),
     inset 0 -18px 24px color-mix(in srgb, var(--env-ui-accent) 6%, transparent);
   overflow: hidden;
@@ -799,8 +799,8 @@
     linear-gradient(145deg, rgba(250, 246, 238, 0.55) 0%, transparent 42%),
     linear-gradient(180deg, var(--color-motif-silver) 0%, var(--color-motif-soft) 52%, var(--color-motif-cream) 100%);
   box-shadow:
-    0 16px 30px rgba(79, 99, 115, 0.14),
-    0 5px 12px rgba(79, 99, 115, 0.06),
+    0 16px 30px rgba(115, 154, 205, 0.14),
+    0 5px 12px rgba(115, 154, 205, 0.06),
     inset 0 1px 0 rgba(250, 246, 238, 0.72),
     inset 0 -2px 4px color-mix(in srgb, var(--env-ui-brand) 6%, transparent);
   transform-origin: bottom center;
@@ -819,8 +819,8 @@
 .env-invite-polaroid:hover:not(:disabled),
 .env-invite-polaroid.is-lifted {
   box-shadow:
-    0 22px 38px rgba(79, 99, 115, 0.2),
-    0 10px 18px rgba(79, 99, 115, 0.1),
+    0 22px 38px rgba(115, 154, 205, 0.2),
+    0 10px 18px rgba(115, 154, 205, 0.1),
     inset 0 1px 0 rgba(250, 246, 238, 0.78),
     inset 0 -2px 4px color-mix(in srgb, var(--env-ui-brand) 6%, transparent);
 }
@@ -848,12 +848,12 @@
     repeating-linear-gradient(
       0deg,
       transparent 0 3px,
-      rgba(171, 174, 176, 0.025) 3px 4px
+      rgba(154, 173, 224, 0.025) 3px 4px
     ),
     repeating-linear-gradient(
       90deg,
       transparent 0 4px,
-      rgba(171, 174, 176, 0.018) 4px 5px
+      rgba(154, 173, 224, 0.018) 4px 5px
     );
   pointer-events: none;
 }
@@ -948,8 +948,8 @@
     radial-gradient(ellipse 70% 55% at 18% 22%, color-mix(in srgb, var(--env-highlight) 55%, transparent) 0%, transparent 58%),
     radial-gradient(ellipse 60% 50% at 82% 18%, color-mix(in srgb, var(--env-base) 40%, transparent) 0%, transparent 55%),
     radial-gradient(ellipse 85% 60% at 50% 0%, rgba(250, 246, 238, 0.32) 0%, transparent 52%),
-    radial-gradient(ellipse 55% 45% at 82% 92%, rgba(79, 99, 115, 0.1) 0%, transparent 52%),
-    radial-gradient(ellipse 40% 35% at 18% 78%, rgba(79, 99, 115, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 45% at 82% 92%, rgba(115, 154, 205, 0.1) 0%, transparent 52%),
+    radial-gradient(ellipse 40% 35% at 18% 78%, rgba(115, 154, 205, 0.06) 0%, transparent 50%),
     linear-gradient(175deg, var(--env-highlight) 0%, var(--env-base) 36%, var(--env-fold) 70%, var(--env-shadow) 100%);
   transition: opacity 0.45s ease 0.15s;
   opacity: 1;
@@ -964,12 +964,12 @@
     repeating-linear-gradient(
       90deg,
       transparent 0 2px,
-      rgba(215, 160, 65, 0.05) 2px 3px
+      rgba(154, 173, 224, 0.05) 2px 3px
     ),
     repeating-linear-gradient(
       0deg,
       transparent 0 3px,
-      rgba(79, 99, 115, 0.035) 3px 4px
+      rgba(115, 154, 205, 0.035) 3px 4px
     );
   pointer-events: none;
 }
@@ -1002,22 +1002,22 @@
 
 .env-invite-fold--tl {
   clip-path: polygon(-2px -2px, calc(100% + 2px) -2px, 50% var(--env-flap-h));
-  background: linear-gradient(180deg, rgba(250, 246, 238, 0.06) 0%, rgba(16, 29, 58, 0.08) 100%);
+  background: linear-gradient(180deg, rgba(250, 246, 238, 0.06) 0%, rgba(23, 44, 76, 0.08) 100%);
 }
 
 .env-invite-fold--bl {
   clip-path: polygon(-3px -2px, -3px calc(100% + 2px), 50% var(--env-flap-h));
-  background: linear-gradient(125deg, rgba(16, 29, 58, 0.12) 0%, rgba(16, 29, 58, 0.02) 65%);
+  background: linear-gradient(125deg, rgba(23, 44, 76, 0.12) 0%, rgba(23, 44, 76, 0.02) 65%);
 }
 
 .env-invite-fold--br {
   clip-path: polygon(calc(100% + 2px) -2px, calc(100% + 2px) calc(100% + 2px), 50% var(--env-flap-h));
-  background: linear-gradient(235deg, rgba(16, 29, 58, 0.12) 0%, rgba(16, 29, 58, 0.02) 65%);
+  background: linear-gradient(235deg, rgba(23, 44, 76, 0.12) 0%, rgba(23, 44, 76, 0.02) 65%);
 }
 
 .env-invite-fold--b {
   clip-path: polygon(-2px calc(100% + 2px), 50% var(--env-flap-h), calc(100% + 2px) calc(100% + 2px));
-  background: linear-gradient(0deg, rgba(16, 29, 58, 0.1) 0%, transparent 70%);
+  background: linear-gradient(0deg, rgba(23, 44, 76, 0.1) 0%, transparent 70%);
 }
 
 .env-invite-creases {
@@ -1078,25 +1078,25 @@
   background:
     radial-gradient(ellipse 90% 40% at 50% 0%, rgba(250, 246, 238, 0.12) 0%, transparent 55%),
     linear-gradient(180deg, var(--env-highlight) 0%, var(--env-base) 42%, var(--env-fold) 100%);
-  box-shadow: inset 0 8px 16px rgba(16, 29, 58, 0.08);
+  box-shadow: inset 0 8px 16px rgba(23, 44, 76, 0.08);
 }
 
 /* Left diagonal fold */
 .env-invite-pocket-left {
   clip-path: polygon(-3px var(--pocket-side), -3px calc(100% + 2px), 50% var(--pocket-v));
   background:
-    linear-gradient(125deg, rgba(16, 29, 58, 0.06) 0%, transparent 58%),
+    linear-gradient(125deg, rgba(23, 44, 76, 0.06) 0%, transparent 58%),
     linear-gradient(160deg, var(--env-highlight) 0%, var(--env-base) 55%, var(--env-fold) 100%);
-  box-shadow: inset -4px 0 10px rgba(16, 29, 58, 0.06);
+  box-shadow: inset -4px 0 10px rgba(23, 44, 76, 0.06);
 }
 
 /* Right diagonal fold */
 .env-invite-pocket-right {
   clip-path: polygon(calc(100% + 2px) var(--pocket-side), calc(100% + 2px) calc(100% + 2px), 50% var(--pocket-v));
   background:
-    linear-gradient(235deg, rgba(16, 29, 58, 0.06) 0%, transparent 58%),
+    linear-gradient(235deg, rgba(23, 44, 76, 0.06) 0%, transparent 58%),
     linear-gradient(200deg, var(--env-highlight) 0%, var(--env-base) 55%, var(--env-fold) 100%);
-  box-shadow: inset 4px 0 10px rgba(16, 29, 58, 0.06);
+  box-shadow: inset 4px 0 10px rgba(23, 44, 76, 0.06);
 }
 
 /* Soft crease lines on pocket */
@@ -1108,7 +1108,7 @@
   background: linear-gradient(
     to bottom right,
     transparent 48%,
-    rgba(16, 29, 58, 0.12) 49.5%,
+    rgba(23, 44, 76, 0.12) 49.5%,
     rgba(250, 246, 238, 0.04) 50.5%,
     transparent 52%
   );
@@ -1119,7 +1119,7 @@
   background: linear-gradient(
     to bottom left,
     transparent 48%,
-    rgba(16, 29, 58, 0.12) 49.5%,
+    rgba(23, 44, 76, 0.12) 49.5%,
     rgba(250, 246, 238, 0.04) 50.5%,
     transparent 52%
   );
@@ -1133,7 +1133,7 @@
   width: 100%;
   height: var(--env-flap-h, 46%);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  background: linear-gradient(160deg, rgba(16, 29, 58, 0.12), rgba(16, 29, 58, 0));
+  background: linear-gradient(160deg, rgba(23, 44, 76, 0.12), rgba(23, 44, 76, 0));
   z-index: calc(var(--z-flap-closed) - 1);
   pointer-events: none;
 }
@@ -1160,7 +1160,7 @@
     linear-gradient(160deg, var(--env-highlight) 0%, var(--env-base) 55%, var(--env-fold) 100%);
   border-bottom: none;
   box-shadow:
-    inset 0 -12px 20px rgba(16, 29, 58, 0.14),
+    inset 0 -12px 20px rgba(23, 44, 76, 0.14),
     inset 0 2px 0 rgba(250, 246, 238, 0.06);
   pointer-events: none;
 }
@@ -1170,7 +1170,7 @@
   position: absolute;
   inset: 0;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  background: linear-gradient(180deg, transparent 55%, rgba(16, 29, 58, 0.1) 100%);
+  background: linear-gradient(180deg, transparent 55%, rgba(23, 44, 76, 0.1) 100%);
   pointer-events: none;
 }
 
@@ -1198,7 +1198,7 @@
 .env-invite-screen[data-phase="cta"] .env-invite-flap {
   z-index: var(--z-flap-open);
   border-bottom-color: transparent;
-  box-shadow: inset 0 8px 14px rgba(16, 29, 58, 0.05);
+  box-shadow: inset 0 8px 14px rgba(23, 44, 76, 0.05);
 }
 
 .env-invite-screen[data-phase="flap-open"] .env-invite-flap::after,
@@ -1241,8 +1241,8 @@
   box-shadow: none;
   -webkit-tap-highlight-color: transparent;
   overflow: visible;
-  filter: drop-shadow(0 8px 16px rgba(79, 99, 115, 0.22))
-    drop-shadow(0 2px 5px rgba(215, 160, 65, 0.28));
+  filter: drop-shadow(0 8px 16px rgba(115, 154, 205, 0.22))
+    drop-shadow(0 2px 5px rgba(154, 173, 224, 0.28));
 }
 
 .env-invite-seal-img {
@@ -1258,7 +1258,7 @@
   font-weight: 500;
   font-style: normal;
   paint-order: stroke fill;
-  stroke: rgba(79, 99, 115, 0.25);
+  stroke: rgba(115, 154, 205, 0.25);
   stroke-width: 0.35px;
   filter: drop-shadow(0 0.5px 0 rgba(250, 246, 238, 0.15));
 }
@@ -1280,12 +1280,12 @@
 @keyframes env-seal-breathe {
   0%,
   100% {
-    filter: drop-shadow(0 8px 16px rgba(79, 99, 115, 0.22))
-      drop-shadow(0 2px 5px rgba(215, 160, 65, 0.28));
+    filter: drop-shadow(0 8px 16px rgba(115, 154, 205, 0.22))
+      drop-shadow(0 2px 5px rgba(154, 173, 224, 0.28));
   }
   50% {
-    filter: drop-shadow(0 12px 22px rgba(215, 160, 65, 0.38))
-      drop-shadow(0 4px 10px rgba(79, 99, 115, 0.22));
+    filter: drop-shadow(0 12px 22px rgba(154, 173, 224, 0.38))
+      drop-shadow(0 4px 10px rgba(115, 154, 205, 0.22));
   }
 }
 
@@ -2094,8 +2094,8 @@
     height: var(--env-letter-h);
     overflow: visible;
     box-shadow:
-      0 22px 48px rgba(79, 99, 115, 0.16),
-      0 8px 18px rgba(79, 99, 115, 0.08),
+      0 22px 48px rgba(115, 154, 205, 0.16),
+      0 8px 18px rgba(115, 154, 205, 0.08),
       inset 0 0 0 1px rgba(250, 246, 238, 0.5),
       inset 0 -18px 24px color-mix(in srgb, var(--env-ui-accent) 6%, transparent);
   }
@@ -2181,7 +2181,7 @@
     clip-path: polygon(-2% 102%, 50% var(--pocket-v), 102% 102%);
     background:
       linear-gradient(180deg, var(--env-highlight) 0%, var(--env-base) 42%, var(--env-fold) 100%);
-    box-shadow: inset 0 12px 20px rgba(16, 29, 58, 0.08);
+    box-shadow: inset 0 12px 20px rgba(23, 44, 76, 0.08);
   }
 
   .env-invite-pocket-left,
@@ -2192,7 +2192,7 @@
   .env-invite-pocket-left {
     clip-path: polygon(-3px var(--pocket-side), -3px calc(100% + 2px), 50% var(--pocket-v));
     background:
-      linear-gradient(125deg, rgba(16, 29, 58, 0.04) 0%, transparent 62%),
+      linear-gradient(125deg, rgba(23, 44, 76, 0.04) 0%, transparent 62%),
       linear-gradient(160deg, var(--env-highlight) 0%, var(--env-base) 70%, var(--env-envelope) 100%);
     box-shadow: none;
   }
@@ -2200,7 +2200,7 @@
   .env-invite-pocket-right {
     clip-path: polygon(calc(100% + 2px) var(--pocket-side), calc(100% + 2px) calc(100% + 2px), 50% var(--pocket-v));
     background:
-      linear-gradient(235deg, rgba(16, 29, 58, 0.04) 0%, transparent 62%),
+      linear-gradient(235deg, rgba(23, 44, 76, 0.04) 0%, transparent 62%),
       linear-gradient(200deg, var(--env-highlight) 0%, var(--env-base) 70%, var(--env-envelope) 100%);
     box-shadow: none;
   }
@@ -2681,7 +2681,7 @@
 
 .env-invite-screen .env-invite-enter-btn:hover {
   color: var(--invite-button-text);
-  background: color-mix(in srgb, var(--invite-ink) 80%, #101D3A);
+  background: color-mix(in srgb, var(--invite-ink) 80%, #172C4C);
   box-shadow: 0 12px 28px color-mix(in srgb, var(--invite-ink) 55%, transparent);
 }
 
@@ -2748,13 +2748,13 @@
    one touch of sunshine (the glow around the wax seal).
    ========================================================================== */
 .env-invite-screen--plain {
-  --env-sky: var(--color-motif-medium);        /* #ABAEB0 */
-  --env-blue: var(--color-welcome-heading);    /* #4F6373 */
-  --env-navy: var(--color-welcome-navy);       /* #101D3A */
-  --env-ink: var(--color-welcome-text);        /* #101D3A */
-  --env-leaf: var(--color-motif-yellow);       /* #ABAEB0 sage */
-  --env-leaf-ink: color-mix(in srgb, var(--color-motif-yellow) 55%, #101D3A);
-  --env-sun: var(--color-motif-blush);         /* #F2D087 — keyboard focus ring */
+  --env-sky: var(--color-motif-medium);        /* #9AADE0 */
+  --env-blue: var(--color-welcome-heading);    /* #739ACD */
+  --env-navy: var(--color-welcome-navy);       /* #172C4C */
+  --env-ink: var(--color-welcome-text);        /* #172C4C */
+  --env-leaf: var(--color-motif-yellow);       /* #9AADE0 sage */
+  --env-leaf-ink: color-mix(in srgb, var(--color-motif-yellow) 55%, #172C4C);
+  --env-sun: var(--color-motif-blush);         /* #9CC5E5 — keyboard focus ring */
   --env-shadow-tint: var(--env-navy);
 }
 
@@ -2797,7 +2797,7 @@
 
 /* Fine peach-beige stitched border inside the envelope front */
 .env-invite-screen--plain .env-invite-front-closed::after {
-  border: 1px dashed rgb(242 208 135 / 60%);
+  border: 1px dashed rgb(156 197 229 / 60%);
   border-radius: 8px;
   box-shadow: none;
 }
@@ -2805,7 +2805,7 @@
 /* Flap: brighter top edge like light catching the paper */
 .env-invite-screen--plain .env-invite-flap {
   background:
-    linear-gradient(145deg, rgb(242 208 135 / 28%) 0%, transparent 42%),
+    linear-gradient(145deg, rgb(156 197 229 / 28%) 0%, transparent 42%),
     linear-gradient(160deg, var(--env-highlight) 0%, var(--env-base) 55%, var(--env-fold) 100%);
   box-shadow:
     inset 0 -10px 18px color-mix(in srgb, var(--env-navy) 14%, transparent),
@@ -2859,7 +2859,7 @@
 }
 
 .env-invite-screen--plain .env-invite-letter-date {
-  color: #A87922;
+  color: #172C4C;
 }
 
 .env-invite-screen--plain .env-invite-letter-invited {
@@ -2920,22 +2920,22 @@
    and one of the bride rise out on either side of the letter.
    ========================================================================== */
 .env-invite-screen--plain {
-  --env-sky: #F5EDDF;
-  --env-blue: #E8D36A;
-  --env-navy: #101D3A;
-  --env-ink: #101D3A;
-  --env-leaf: #D7A041;
-  --env-leaf-ink: #A87922;
-  --env-sun: #D7A041;
-  --env-shadow-tint: #101D3A;
+  --env-sky: #F2F6FB;
+  --env-blue: #172C4C;
+  --env-navy: #172C4C;
+  --env-ink: #172C4C;
+  --env-leaf: #9AADE0;
+  --env-leaf-ink: #172C4C;
+  --env-sun: #9AADE0;
+  --env-shadow-tint: #172C4C;
   --env-plain-bg: #FAF6EE;
-  --env-plain-accent: #D7A041;
+  --env-plain-accent: #9AADE0;
   --env-paper: #FAF6EE;
-  --env-base: color-mix(in srgb, #F5EDDF 88%, #E8D36A);
+  --env-base: color-mix(in srgb, #F2F6FB 88%, #739ACD);
   --env-highlight: #FAF6EE;
-  --env-fold: color-mix(in srgb, #F5EDDF 70%, #E8D36A);
-  --env-envelope: #F5EDDF;
-  --env-border: color-mix(in srgb, #D7A041 45%, transparent);
+  --env-fold: color-mix(in srgb, #F2F6FB 70%, #739ACD);
+  --env-envelope: #F2F6FB;
+  --env-border: color-mix(in srgb, #9AADE0 45%, transparent);
 }
 
 .env-invite-screen--plain::before {
@@ -2944,8 +2944,8 @@
 
 .env-invite-screen--plain .env-invite-envelope {
   filter:
-    drop-shadow(0 26px 40px color-mix(in srgb, #101D3A 14%, transparent))
-    drop-shadow(0 8px 14px color-mix(in srgb, #ABAEB0 22%, transparent));
+    drop-shadow(0 26px 40px color-mix(in srgb, #172C4C 14%, transparent))
+    drop-shadow(0 8px 14px color-mix(in srgb, #9AADE0 22%, transparent));
 }
 
 .env-invite-screen--plain .env-invite-front-closed::after {
@@ -2957,14 +2957,14 @@
     linear-gradient(145deg, rgb(250 246 238 / 55%) 0%, transparent 42%),
     linear-gradient(160deg, var(--env-highlight) 0%, var(--env-base) 55%, var(--env-fold) 100%);
   box-shadow:
-    inset 0 -10px 18px color-mix(in srgb, #ABAEB0 18%, transparent),
+    inset 0 -10px 18px color-mix(in srgb, #9AADE0 18%, transparent),
     inset 0 2px 0 rgb(250 246 238 / 45%);
 }
 
 .env-invite-screen--plain .env-invite-seal-btn {
   filter:
-    drop-shadow(0 8px 14px color-mix(in srgb, #101D3A 22%, transparent))
-    drop-shadow(0 2px 4px color-mix(in srgb, #101D3A 14%, transparent));
+    drop-shadow(0 8px 14px color-mix(in srgb, #172C4C 22%, transparent))
+    drop-shadow(0 2px 4px color-mix(in srgb, #172C4C 14%, transparent));
 }
 
 .env-invite-screen--plain .env-invite-hint {
@@ -2976,20 +2976,20 @@
 .env-invite-screen--plain .env-invite-letter {
   background:
     radial-gradient(85% 35% at 50% 0%, rgb(250 246 238 / 95%) 0%, transparent 72%),
-    linear-gradient(180deg, #FAF6EE 0%, #FAF6EE 60%, color-mix(in srgb, #F5EDDF 55%, #FAF6EE) 100%);
-  border: 1px solid color-mix(in srgb, #D7A041 45%, transparent);
+    linear-gradient(180deg, #FAF6EE 0%, #FAF6EE 60%, color-mix(in srgb, #F2F6FB 55%, #FAF6EE) 100%);
+  border: 1px solid color-mix(in srgb, #9AADE0 45%, transparent);
   box-shadow:
-    0 18px 40px color-mix(in srgb, #101D3A 12%, transparent),
-    0 6px 14px color-mix(in srgb, #E8D36A 16%, transparent),
+    0 18px 40px color-mix(in srgb, #172C4C 12%, transparent),
+    0 6px 14px color-mix(in srgb, #739ACD 16%, transparent),
     inset 0 1px 0 rgb(250 246 238 / 90%);
 }
 
 .env-invite-screen--plain .env-invite-letter-frame {
-  border-color: color-mix(in srgb, #D7A041 45%, transparent);
+  border-color: color-mix(in srgb, #9AADE0 45%, transparent);
 }
 
 .env-invite-screen--plain .env-invite-letter-frame::after {
-  border-color: color-mix(in srgb, #D7A041 40%, transparent);
+  border-color: color-mix(in srgb, #9AADE0 40%, transparent);
 }
 
 .env-invite-screen--plain .env-invite-days-to-go,
@@ -3005,19 +3005,19 @@
 /* "View the invitation": burgundy pill, the one strong accent on screen */
 .env-invite-screen--plain .env-invite-enter-btn {
   color: #FAF6EE;
-  background: #101D3A;
-  border: 1px solid color-mix(in srgb, #D7A041 55%, transparent);
+  background: #172C4C;
+  border: 1px solid color-mix(in srgb, #9AADE0 55%, transparent);
   box-shadow:
     0 0 0 4px rgb(250 246 238 / 60%),
-    0 12px 26px color-mix(in srgb, #101D3A 22%, transparent);
+    0 12px 26px color-mix(in srgb, #172C4C 22%, transparent);
 }
 
 .env-invite-screen--plain .env-invite-enter-btn:hover {
-  background: color-mix(in srgb, #101D3A 88%, #E8D36A);
+  background: color-mix(in srgb, #172C4C 88%, #739ACD);
 }
 
 .env-invite-screen--plain .env-invite-ghost-date {
-  color: #D7A041;
+  color: #9AADE0;
 }
 
 /* Corner florals + double border — identical to the loading screen
@@ -3085,11 +3085,11 @@
   width: var(--env-portrait-w, clamp(92px, calc(var(--env-width) * 0.3), 170px));
   padding: 5px 5px 7px;
   border-radius: 999px 999px 6px 6px;
-  border: 1px solid color-mix(in srgb, #ABAEB0 50%, transparent);
+  border: 1px solid color-mix(in srgb, #9AADE0 50%, transparent);
   background: #FAF6EE;
   box-shadow:
-    0 18px 32px -14px color-mix(in srgb, #101D3A 30%, transparent),
-    0 4px 10px color-mix(in srgb, #ABAEB0 18%, transparent);
+    0 18px 32px -14px color-mix(in srgb, #172C4C 30%, transparent),
+    0 4px 10px color-mix(in srgb, #9AADE0 18%, transparent);
 }
 
 .env-invite-screen--plain .env-invite-photos-emerge--portraits .env-invite-polaroid--envelope-pair::before,
@@ -3102,7 +3102,7 @@
   aspect-ratio: 3 / 4.2;
   border: 0;
   border-radius: 999px 999px 3px 3px;
-  background: #F2D087;
+  background: #9CC5E5;
 }
 
 .env-invite-screen--plain .env-invite-photos-emerge--portraits .env-invite-polaroid-photo::after {
@@ -3153,8 +3153,8 @@
 
 .env-invite-screen--plain .env-invite-letter-label__word {
   background: none;
-  color: #101D3A;
-  -webkit-text-fill-color: #101D3A;
+  color: #172C4C;
+  -webkit-text-fill-color: #172C4C;
 }
 
 /* Mobile: keep both portraits inside the screen, a little higher above the pocket */
@@ -3204,11 +3204,11 @@
   width: var(--env-portrait-w, calc(var(--env-letter-w) * 0.46));
   padding: 6px;
   border-radius: 3px;
-  border: 1px solid color-mix(in srgb, #ABAEB0 40%, transparent);
+  border: 1px solid color-mix(in srgb, #9AADE0 40%, transparent);
   background: #FAF6EE;
   box-shadow:
-    0 14px 26px -12px color-mix(in srgb, #101D3A 28%, transparent),
-    0 3px 8px color-mix(in srgb, #ABAEB0 16%, transparent);
+    0 14px 26px -12px color-mix(in srgb, #172C4C 28%, transparent),
+    0 3px 8px color-mix(in srgb, #9AADE0 16%, transparent);
 }
 
 .env-invite-screen--plain .env-invite-photos-emerge--portraits .env-invite-polaroid-photo {
@@ -3235,7 +3235,7 @@
   width: var(--env-flowers-w);
   max-width: none;
   height: auto;
-  filter: drop-shadow(0 6px 10px color-mix(in srgb, #101D3A 14%, transparent));
+  filter: drop-shadow(0 6px 10px color-mix(in srgb, #172C4C 14%, transparent));
   /* Entrance: hidden inside the pocket until the photos come out */
   opacity: 0;
   transform: translateY(70%);
@@ -3319,30 +3319,30 @@
 
 /* ==========================================================================
    warm gray crumpled-paper envelope (plain). Kept last so it wins.
-   Paper built around warm gray #ABAEB0, deepening toward slate #4F6373 in the
+   Paper built around warm gray #9AADE0, deepening toward slate #739ACD in the
    folds, with a fine grain and a soft crumpled relief (light ridges, slate
    creases) on every panel.
    ========================================================================== */
 .env-invite-screen--plain {
-  --env-paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.18 0 0 0 0 0.31 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-  --env-paper-mottle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='c' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.016 0.022' numOctaves='5' seed='11' stitchTiles='stitch' result='n'/%3E%3CfeDiffuseLighting in='n' surfaceScale='2' lighting-color='%23F8F3F1' result='l'%3E%3CfeDistantLight azimuth='225' elevation='52'/%3E%3C/feDiffuseLighting%3E%3CfeColorMatrix in='l' result='dark' values='0 0 0 0 0.09 0 0 0 0 0.18 0 0 0 0 0.31 -0.75 0 0 0 0.5'/%3E%3CfeColorMatrix in='l' result='lite' values='0 0 0 0 0.97 0 0 0 0 0.95 0 0 0 0 0.95 0.9 0 0 0 -0.72'/%3E%3CfeMerge%3E%3CfeMergeNode in='dark'/%3E%3CfeMergeNode in='lite'/%3E%3C/feMerge%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
-  --env-highlight: color-mix(in srgb, #101D3A 82%, #D7A041);
-  --env-base: #101D3A;
-  --env-fold: color-mix(in srgb, #101D3A 88%, #E8D36A);
-  --env-shadow: color-mix(in srgb, #101D3A 92%, #E8D36A);
-  --env-envelope: #101D3A;
-  --env-border: color-mix(in srgb, #D7A041 40%, transparent);
+  --env-paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.173 0 0 0 0 0.298 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --env-paper-mottle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='c' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.016 0.022' numOctaves='5' seed='11' stitchTiles='stitch' result='n'/%3E%3CfeDiffuseLighting in='n' surfaceScale='2' lighting-color='%23FAF6EE' result='l'%3E%3CfeDistantLight azimuth='225' elevation='52'/%3E%3C/feDiffuseLighting%3E%3CfeColorMatrix in='l' result='dark' values='0 0 0 0 0.09 0 0 0 0 0.173 0 0 0 0 0.298 -0.75 0 0 0 0.5'/%3E%3CfeColorMatrix in='l' result='lite' values='0 0 0 0 0.98 0 0 0 0 0.965 0 0 0 0 0.933 0.9 0 0 0 -0.72'/%3E%3CfeMerge%3E%3CfeMergeNode in='dark'/%3E%3CfeMergeNode in='lite'/%3E%3C/feMerge%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23c)'/%3E%3C/svg%3E");
+  --env-highlight: color-mix(in srgb, #172C4C 82%, #9AADE0);
+  --env-base: #172C4C;
+  --env-fold: color-mix(in srgb, #172C4C 88%, #739ACD);
+  --env-shadow: color-mix(in srgb, #172C4C 92%, #739ACD);
+  --env-envelope: #172C4C;
+  --env-border: color-mix(in srgb, #9AADE0 40%, transparent);
 }
 
 .env-invite-screen--plain .env-invite-envelope {
-  --env-highlight: color-mix(in srgb, #101D3A 82%, #D7A041);
-  --env-base: #101D3A;
-  --env-fold: color-mix(in srgb, #101D3A 88%, #E8D36A);
-  --env-shadow: color-mix(in srgb, #101D3A 92%, #E8D36A);
-  --env-envelope: #101D3A;
+  --env-highlight: color-mix(in srgb, #172C4C 82%, #9AADE0);
+  --env-base: #172C4C;
+  --env-fold: color-mix(in srgb, #172C4C 88%, #739ACD);
+  --env-shadow: color-mix(in srgb, #172C4C 92%, #739ACD);
+  --env-envelope: #172C4C;
   filter:
-    drop-shadow(0 26px 40px color-mix(in srgb, #101D3A 22%, transparent))
-    drop-shadow(0 8px 14px color-mix(in srgb, #E8D36A 22%, transparent));
+    drop-shadow(0 26px 40px color-mix(in srgb, #172C4C 22%, transparent))
+    drop-shadow(0 8px 14px color-mix(in srgb, #739ACD 22%, transparent));
 }
 
 /* One paper surface for every panel (front, inside, flap, pocket) so the
@@ -3372,12 +3372,12 @@
   opacity: 0.7;
   background:
     repeating-linear-gradient(90deg, transparent 0 2px, rgb(250 246 238 / 7%) 2px 3px),
-    repeating-linear-gradient(0deg, transparent 0 3px, rgb(16 29 58 / 4%) 3px 4px);
+    repeating-linear-gradient(0deg, transparent 0 3px, rgb(23 44 76 / 4%) 3px 4px);
 }
 
 /* Ivory stitched border */
 .env-invite-screen--plain .env-invite-front-closed::after {
-  border: 1px dashed color-mix(in srgb, #D7A041 70%, transparent);
+  border: 1px dashed color-mix(in srgb, #9AADE0 70%, transparent);
   box-shadow: none;
 }
 
@@ -3388,25 +3388,25 @@
 /* Depth comes from soft shadows only, never a different paper color */
 .env-invite-screen--plain .env-invite-flap {
   box-shadow:
-    inset 0 -10px 18px color-mix(in srgb, #E8D36A 18%, transparent),
+    inset 0 -10px 18px color-mix(in srgb, #739ACD 18%, transparent),
     inset 0 2px 0 rgb(250 246 238 / 40%);
 }
 
 .env-invite-screen--plain .env-invite-pocket-front {
-  box-shadow: inset 0 10px 16px color-mix(in srgb, #E8D36A 14%, transparent);
+  box-shadow: inset 0 10px 16px color-mix(in srgb, #739ACD 14%, transparent);
 }
 
 .env-invite-screen--plain .env-invite-pocket-left {
-  box-shadow: inset -4px 0 10px color-mix(in srgb, #E8D36A 10%, transparent);
+  box-shadow: inset -4px 0 10px color-mix(in srgb, #739ACD 10%, transparent);
 }
 
 .env-invite-screen--plain .env-invite-pocket-right {
-  box-shadow: inset 4px 0 10px color-mix(in srgb, #E8D36A 10%, transparent);
+  box-shadow: inset 4px 0 10px color-mix(in srgb, #739ACD 10%, transparent);
 }
 
 /* Crease lines: deeper rose so they read on the pink paper */
 .env-invite-screen--plain .env-invite-creases line {
-  stroke: color-mix(in srgb, #D7A041 38%, transparent);
+  stroke: color-mix(in srgb, #9AADE0 38%, transparent);
 }
 
 .env-invite-screen--plain .env-invite-creases line:nth-child(1),
@@ -3442,15 +3442,15 @@
   background: none;
   border: none;
   box-shadow: none;
-  color: #101D3A;
-  -webkit-text-fill-color: #101D3A;
+  color: #172C4C;
+  -webkit-text-fill-color: #172C4C;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
   text-shadow:
     0 0 1px rgb(250 246 238 / 75%),
     0 0 3px rgb(250 246 238 / 60%),
     0 0 9px rgb(250 246 238 / 45%),
-    0 1px 2px rgb(16 29 58 / 12%);
+    0 1px 2px rgb(23 44 76 / 12%);
 }
 
 .env-invite-screen--plain .env-invite-hint {
@@ -3460,8 +3460,8 @@
 }
 
 .env-invite-screen--plain .env-invite-days-to-go {
-  color: #E8D36A;
-  -webkit-text-fill-color: #E8D36A;
+  color: #172C4C;
+  -webkit-text-fill-color: #172C4C;
   font-size: clamp(1.05rem, 4.5vw, 1.42rem);
   letter-spacing: 0.1em;
 }
@@ -3536,10 +3536,10 @@
 .env-invite-exit-card {
   padding: 6px;
   background: #FAF6EE;
-  border: 1px solid color-mix(in srgb, #ABAEB0 45%, transparent);
+  border: 1px solid color-mix(in srgb, #9AADE0 45%, transparent);
   box-shadow:
-    0 18px 36px -14px rgb(16 29 58 / 40%),
-    0 4px 10px rgb(171 174 176 / 25%);
+    0 18px 36px -14px rgb(23 44 76 / 40%),
+    0 4px 10px rgb(154 173 224 / 25%);
 }
 
 /* Out of flow so the letter, portraits and flowers never shift; above them, under the pocket front (z 40) */
@@ -3573,7 +3573,7 @@
   overflow: hidden;
   pointer-events: none;
   background: #FAF6EE;
-  box-shadow: 0 40px 90px -30px rgb(16 29 58 / 55%);
+  box-shadow: 0 40px 90px -30px rgb(23 44 76 / 55%);
   will-change: top, left, width, height;
 }
 
@@ -3587,8 +3587,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(120% 90% at 50% 45%, transparent 55%, rgb(16 29 58 / 24%) 100%),
-    linear-gradient(180deg, rgb(245 237 223 / 12%) 0%, transparent 30%, transparent 70%, rgb(245 237 223 / 18%) 100%);
+    radial-gradient(120% 90% at 50% 45%, transparent 55%, rgb(23 44 76 / 24%) 100%),
+    linear-gradient(180deg, rgb(242 246 251 / 12%) 0%, transparent 30%, transparent 70%, rgb(242 246 251 / 18%) 100%);
 }
 
 /* Blush light that blooms behind the card as it lifts off */
@@ -3597,7 +3597,7 @@
   inset: 0;
   z-index: 69;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 45%, rgb(250 246 238 / 95%) 0%, rgb(242 208 135 / 70%) 30%, transparent 65%);
+  background: radial-gradient(circle at 50% 45%, rgb(250 246 238 / 95%) 0%, rgb(156 197 229 / 70%) 30%, transparent 65%);
 }
 
 .env-invite-exit-preload {
@@ -3622,7 +3622,7 @@
   inset: 0;
   z-index: 68;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 50%, rgb(245 237 223 / 55%) 0%, rgb(16 29 58 / 35%) 100%);
+  background: radial-gradient(circle at 50% 50%, rgb(242 246 251 / 55%) 0%, rgb(23 44 76 / 35%) 100%);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
@@ -3638,9 +3638,9 @@
 .env-invite-screen--plain .env-invite-envelope {
   border-radius: 4px;
   filter:
-    drop-shadow(0 1px 1px rgb(16 29 58 / 22%))
-    drop-shadow(0 6px 10px rgb(16 29 58 / 16%))
-    drop-shadow(0 22px 34px rgb(16 29 58 / 22%));
+    drop-shadow(0 1px 1px rgb(23 44 76 / 22%))
+    drop-shadow(0 6px 10px rgb(23 44 76 / 16%))
+    drop-shadow(0 22px 34px rgb(23 44 76 / 22%));
 }
 
 .env-invite-screen--plain .env-invite-back,
@@ -3652,7 +3652,7 @@
 .env-invite-screen--plain .env-invite-front-closed {
   box-shadow:
     inset 0 1px 0 rgb(250 246 238 / 38%),
-    inset 0 0 0 1px rgb(16 29 58 / 14%);
+    inset 0 0 0 1px rgb(23 44 76 / 14%);
 }
 
 /* One paper for every panel, closed or open: grain + crumple + soft studio
@@ -3665,7 +3665,7 @@
     var(--env-paper-grain),
     var(--env-paper-mottle),
     radial-gradient(120% 90% at 18% 6%, rgb(250 246 238 / 22%) 0%, transparent 55%),
-    radial-gradient(110% 80% at 90% 100%, rgb(16 29 58 / 16%) 0%, transparent 60%),
+    radial-gradient(110% 80% at 90% 100%, rgb(23 44 76 / 16%) 0%, transparent 60%),
     linear-gradient(170deg, var(--env-highlight) 0%, var(--env-base) 45%, var(--env-fold) 100%);
 }
 
@@ -3718,7 +3718,7 @@
   border: none;
   box-shadow:
     inset 0 1px 0 rgb(250 246 238 / 38%),
-    inset 0 0 0 1px rgb(16 29 58 / 14%);
+    inset 0 0 0 1px rgb(23 44 76 / 14%);
 }
 
 /* No stitched border — real envelopes are clean paper */
@@ -3738,7 +3738,7 @@
 
 .env-invite-paper-folds__shadow {
   fill: none;
-  stroke: #101D3A;
+  stroke: #172C4C;
   stroke-opacity: 0.32;
 }
 
@@ -3752,7 +3752,7 @@
 /* Fold lines — same weight closed and open so the envelope's lines never change */
 .env-invite-paper-folds__crease {
   fill: none;
-  stroke: rgb(16 29 58 / 38%);
+  stroke: rgb(23 44 76 / 38%);
   stroke-width: 1.25;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
@@ -3781,8 +3781,8 @@
 
 .env-invite-screen--plain .env-invite-flap::after {
   background:
-    linear-gradient(180deg, transparent 50%, rgb(16 29 58 / 10%) 100%),
-    radial-gradient(60% 40% at 50% 100%, rgb(16 29 58 / 10%) 0%, transparent 70%);
+    linear-gradient(180deg, transparent 50%, rgb(23 44 76 / 10%) 100%),
+    radial-gradient(60% 40% at 50% 100%, rgb(23 44 76 / 10%) 0%, transparent 70%);
 }
 
 /* Liner: navy patterned paper inside the flap. It swaps in at the
@@ -3794,8 +3794,8 @@
   pointer-events: none;
   opacity: 0;
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='7' cy='7' r='1.3' fill='%23172D4E' fill-opacity='0.28'/%3E%3Ccircle cx='21' cy='21' r='1.3' fill='%23172D4E' fill-opacity='0.28'/%3E%3Cpath d='M14 3.5 l1.2 2.3 -1.2 2.3 -1.2 -2.3z M14 17.5 l1.2 2.3 -1.2 2.3 -1.2 -2.3z' fill='%23F8F3F1' fill-opacity='0.55'/%3E%3C/svg%3E"),
-    linear-gradient(0deg, #101D3A 0%, color-mix(in srgb, #101D3A 80%, #FAF6EE) 100%);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='7' cy='7' r='1.3' fill='%23172C4C' fill-opacity='0.28'/%3E%3Ccircle cx='21' cy='21' r='1.3' fill='%23172C4C' fill-opacity='0.28'/%3E%3Cpath d='M14 3.5 l1.2 2.3 -1.2 2.3 -1.2 -2.3z M14 17.5 l1.2 2.3 -1.2 2.3 -1.2 -2.3z' fill='%23FAF6EE' fill-opacity='0.55'/%3E%3C/svg%3E"),
+    linear-gradient(0deg, #172C4C 0%, color-mix(in srgb, #172C4C 80%, #FAF6EE) 100%);
   background-size: 28px 28px, 100% 100%;
   box-shadow: inset 0 0 0 4px var(--env-base);
   transition: opacity 0s linear 0.55s;
@@ -3824,11 +3824,11 @@
 .env-invite-screen--plain[data-phase="revealed"] .env-invite-back,
 .env-invite-screen--plain[data-phase="cta"] .env-invite-back {
   background:
-    linear-gradient(180deg, rgb(16 29 58 / 30%) 0%, rgb(16 29 58 / 8%) 22%, transparent 45%),
+    linear-gradient(180deg, rgb(23 44 76 / 30%) 0%, rgb(23 44 76 / 8%) 22%, transparent 45%),
     var(--env-paper-surface);
   box-shadow:
     inset 0 1px 0 rgb(250 246 238 / 38%),
-    inset 0 0 0 1px rgb(16 29 58 / 14%);
+    inset 0 0 0 1px rgb(23 44 76 / 14%);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3844,7 +3844,7 @@
    pattern. Only the fold lines remain so it still reads as an envelope.
    ========================================================================== */
 .env-invite-screen--plain .env-invite-envelope {
-  --env-plain-paper: #101D3A;
+  --env-plain-paper: #172C4C;
   --env-highlight: var(--env-plain-paper);
   --env-base: var(--env-plain-paper);
   --env-fold: var(--env-plain-paper);
@@ -3870,7 +3870,7 @@
 
 /* Inside of the flap: the same flat navy, a shade lighter so the open flap reads */
 .env-invite-flap-liner {
-  background: color-mix(in srgb, #101D3A 90%, #FAF6EE);
+  background: color-mix(in srgb, #172C4C 90%, #FAF6EE);
   box-shadow: none;
 }
 
@@ -3881,13 +3881,13 @@
    so the envelope looks identical closed and open.
    ========================================================================== */
 .env-invite-screen--plain .env-invite-envelope {
-  --env-plain-paper: #0E1D4A; /* deeper blue */
-  --env-butter: #F5E3A1;
+  --env-plain-paper: #172C4C; /* deeper blue */
+  --env-butter: #9CC5E5;
   /* Herringbone weave like the cloth swatch: tiny chevron ribs (lit thread +
      shadow thread), a fine vertical warp, and a slow cloudy variation */
   --env-weave:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cg fill='none' stroke-width='1.1' stroke-linecap='square'%3E%3Cpath d='M0 4 L4 0 M0 8 L4 4 M4 0 L8 4 M4 4 L8 8' stroke='%23A9B8E6' stroke-opacity='0.2'/%3E%3Cpath d='M0 5 L4 1 M0 9 L4 5 M4 1 L8 5 M4 5 L8 9' stroke='%23050B22' stroke-opacity='0.45'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 6px 6px,
-    repeating-linear-gradient(90deg, transparent 0 2px, rgb(5 11 34 / 18%) 2px 3px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cg fill='none' stroke-width='1.1' stroke-linecap='square'%3E%3Cpath d='M0 4 L4 0 M0 8 L4 4 M4 0 L8 4 M4 4 L8 8' stroke='%239AADE0' stroke-opacity='0.2'/%3E%3Cpath d='M0 5 L4 1 M0 9 L4 5 M4 1 L8 5 M4 5 L8 9' stroke='%23172C4C' stroke-opacity='0.45'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 6px 6px,
+    repeating-linear-gradient(90deg, transparent 0 2px, rgb(23 44 76 / 18%) 2px 3px),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.62 0 0 0 0 0.85 0 0 0 0.16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E") 0 0 / 300px 300px;
   --env-paper-surface: var(--env-paper-grain), var(--env-weave), var(--env-plain-paper);
 }
@@ -3907,15 +3907,15 @@
    (diamonds + dots), on the flap's inside and the back panel once open */
 .env-invite-envelope {
   --env-liner:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M12 0 L24 12 L12 24 L0 12Z' fill='none' stroke='%230E1D4A' stroke-opacity='0.22' stroke-width='0.8'/%3E%3Cpath d='M12 8.5 l1.6 3.5 -1.6 3.5 -1.6 -3.5z' fill='%230E1D4A' fill-opacity='0.4'/%3E%3Ccircle cx='0' cy='0' r='1.3' fill='%23C9A23A' fill-opacity='0.7'/%3E%3Ccircle cx='24' cy='0' r='1.3' fill='%23C9A23A' fill-opacity='0.7'/%3E%3Ccircle cx='0' cy='24' r='1.3' fill='%23C9A23A' fill-opacity='0.7'/%3E%3Ccircle cx='24' cy='24' r='1.3' fill='%23C9A23A' fill-opacity='0.7'/%3E%3C/svg%3E") 0 0 / 24px 24px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M12 0 L24 12 L12 24 L0 12Z' fill='none' stroke='%23172C4C' stroke-opacity='0.22' stroke-width='0.8'/%3E%3Cpath d='M12 8.5 l1.6 3.5 -1.6 3.5 -1.6 -3.5z' fill='%23172C4C' fill-opacity='0.4'/%3E%3Ccircle cx='0' cy='0' r='1.3' fill='%239AADE0' fill-opacity='0.7'/%3E%3Ccircle cx='24' cy='0' r='1.3' fill='%239AADE0' fill-opacity='0.7'/%3E%3Ccircle cx='0' cy='24' r='1.3' fill='%239AADE0' fill-opacity='0.7'/%3E%3Ccircle cx='24' cy='24' r='1.3' fill='%239AADE0' fill-opacity='0.7'/%3E%3C/svg%3E") 0 0 / 24px 24px,
     var(--env-paper-grain),
-    var(--env-butter, #F5E3A1);
+    var(--env-butter, #9CC5E5);
 }
 
 .env-invite-flap-liner {
   background: var(--env-liner);
   /* thin deep-blue border, like a liner set inside the envelope edge */
-  box-shadow: inset 0 0 0 3px var(--env-plain-paper, #0E1D4A);
+  box-shadow: inset 0 0 0 3px var(--env-plain-paper, #172C4C);
 }
 
 .env-invite-screen--plain[data-phase="flap-open"] .env-invite-back,
@@ -3924,19 +3924,19 @@
 .env-invite-screen--plain[data-phase="revealed"] .env-invite-back,
 .env-invite-screen--plain[data-phase="cta"] .env-invite-back {
   background:
-    linear-gradient(180deg, rgb(14 29 74 / 28%) 0%, rgb(14 29 74 / 6%) 22%, transparent 45%),
+    linear-gradient(180deg, rgb(23 44 76 / 28%) 0%, rgb(23 44 76 / 6%) 22%, transparent 45%),
     var(--env-liner);
-  box-shadow: inset 0 0 0 4px var(--env-plain-paper, #0E1D4A);
+  box-shadow: inset 0 0 0 4px var(--env-plain-paper, #172C4C);
 }
 
 /* Fold lines: soft light edge on the navy cloth */
 .env-invite-paper-folds__crease {
-  stroke: rgb(8 12 28 / 55%);
+  stroke: rgb(23 44 76 / 55%);
 }
 
 .env-invite-paper-folds__edge,
 .env-invite-flap-edge polyline {
-  stroke: rgb(200 210 236 / 28%);
+  stroke: rgb(154 173 224 / 28%);
 }
 
 /* Wax seal: no glow — no gold halo, no pulsing, just a small contact shadow */
@@ -3944,5 +3944,5 @@
 .env-invite-screen--plain .env-invite-seal-btn,
 .env-invite-screen[data-phase="idle"] .env-invite-seal-btn {
   animation: none;
-  filter: drop-shadow(0 3px 5px rgb(8 12 28 / 35%));
+  filter: drop-shadow(0 3px 5px rgb(23 44 76 / 35%));
 }

@@ -555,7 +555,7 @@ export function Gallery() {
       {isMounted && selectedImage && createPortal(
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center p-3 backdrop-blur-sm animate-in fade-in duration-200 sm:p-6"
-          style={{ background: "color-mix(in srgb, var(--color-welcome-navy) 35%, #101D3A 65%)" }}
+          style={{ background: "color-mix(in srgb, var(--color-welcome-navy) 35%, #172C4C 65%)" }}
           role="dialog"
           aria-modal="true"
           aria-label="Gallery lightbox"
