@@ -397,7 +397,7 @@ const COUPLE_LABEL = `${COUPLE.groomNickname} & ${COUPLE.brideNickname}`
    ============================================================================ */
 
 // Principal sponsors Google Apps Script — used by the main page and /inviteone
-const SPONSORS_API = "https://script.google.com/macros/s/AKfycbyHhfhyTArNxJSkUMt5gmIXrwKiRMJBg5MLE2LMGiSp_r0KeyWv81TEYTQ5AKrRCwfH/exec"
+const SPONSORS_API = "https://script.google.com/macros/s/AKfycby4CzpWLlngWi8JCTjrWXcZv1MCLSsK9_1x3YflAVuNt28PJIbKuVw69OYeZzg9x8FD_w/exec"
 
 export const siteConfig = {
   siteUrl: SITE_URL,
@@ -408,15 +408,15 @@ export const siteConfig = {
     backgroundMusic: BRAND.backgroundMusic,
   },
   googleAPI:{
-    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLScvajJa0lp4ZwbMa0-wra6O4FuX_-3_eM9RJZlB-Fu_wzimxg/formResponse", //done
-    message: "https://script.google.com/macros/s/AKfycbyGp1pbQNfMPvcI0PdNYkuyuu5PKD4bnTc0qnHc5VRo8DajH-XVqwVR5Y3_gsN7hmDs/exec", //done
-    guestList: "https://script.google.com/macros/s/AKfycbyib3rEL2OPbUEKEkaDzHIwlSyRyoiqW7KwlksqqpzKyv1Rd-VHMIiyXpX8_ffBwC6G/exec",  //done
-    guestRequest: "https://script.google.com/macros/s/AKfycbyNjjQo5CzV9BmrWOMLGfyrkMmXal3pNlSLcwtZBykZvtiFmfutif1ksB1NBewXchF2/exec",  //done
-    entourage: "https://script.google.com/macros/s/AKfycbzpSGXHyWfZnxAjeX7sLo2qNJ8Yhpm10SmIHpr8pJfyaTUuL_yfKpPFFyIDDAZj2-VN/exec",  ///done
+    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSdzrPCtDDo88GCbufuJuzylw6nMx81kMQbK4QL-d9ehxujwKQ/formResponse", //done
+    message: "https://script.google.com/macros/s/AKfycbzCLUHKDlNvaZSEU8HCFeVct8j1lEBDYwl1h1IFSsMOp58vCe5PVnf82jsiO6zSbc2Dbw/exec", //done
+    guestList: "https://script.google.com/macros/s/AKfycbxl0sHoE4MT7SjyggyhL7ObMNo9V7UlCB-MjYc0TUbsaEdyTnBdPHdUTUh9KA1om0P8/exec",  //done
+    guestRequest: "https://script.google.com/macros/s/AKfycbzEbIW_z6uTsfxVeBmkUhYmyPPIvRoAriQwX1wIeXdFnTjYhgsG0-aD0LrpeRaZCts/exec", //done 
+    entourage: "https://script.google.com/macros/s/AKfycbwMjV759DekjYJ92TTrPDQrD-c29NOxhxeGgWgX3UllNXH96fGTHUt1aBVIMWjLSKIYiw/exec",  
     sponsors: SPONSORS_API,  //done 
     // Principal sponsors shown on /inviteone and /invitetwo (entourage section)
     sponsorsInviteOne: SPONSORS_API, // same sheet as sponsors above
-    sponsorsInviteTwo: "https://script.google.com/macros/s/AKfycbyHhfhyTArNxJSkUMt5gmIXrwKiRMJBg5MLE2LMGiSp_r0KeyWv81TEYTQ5AKrRCwfH/exec",
+    sponsorsInviteTwo: "https://script.google.com/macros/s/AKfycby4CzpWLlngWi8JCTjrWXcZv1MCLSsK9_1x3YflAVuNt28PJIbKuVw69OYeZzg9x8FD_w/exec",
 ////google share 
     googleShare: "https://drive.google.com/drive/folders/1nKNjPjQ7F_HLQZmJgw4hzFHIDJ-k52jC?usp=sharing",
     videoMessageForm:
