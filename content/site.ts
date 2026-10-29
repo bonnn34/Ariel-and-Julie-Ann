@@ -412,7 +412,7 @@ export const siteConfig = {
     message: "https://script.google.com/macros/s/AKfycbzCLUHKDlNvaZSEU8HCFeVct8j1lEBDYwl1h1IFSsMOp58vCe5PVnf82jsiO6zSbc2Dbw/exec", //done
     guestList: "https://script.google.com/macros/s/AKfycbxl0sHoE4MT7SjyggyhL7ObMNo9V7UlCB-MjYc0TUbsaEdyTnBdPHdUTUh9KA1om0P8/exec",  //done
     guestRequest: "https://script.google.com/macros/s/AKfycbzEbIW_z6uTsfxVeBmkUhYmyPPIvRoAriQwX1wIeXdFnTjYhgsG0-aD0LrpeRaZCts/exec", //done 
-    entourage: "https://script.google.com/macros/s/AKfycbwMjV759DekjYJ92TTrPDQrD-c29NOxhxeGgWgX3UllNXH96fGTHUt1aBVIMWjLSKIYiw/exec",  
+    entourage: "https://script.google.com/macros/s/AKfycbxxoUMo7ewa44aB8E9zxWCim4IIPLheuUDeBNM6_HEub1xjYXoMqy_sT16PMJcolWMU/exec",  
     sponsors: SPONSORS_API,  //done 
     // Principal sponsors shown on /inviteone and /invitetwo (entourage section)
     sponsorsInviteOne: SPONSORS_API, // same sheet as sponsors above
