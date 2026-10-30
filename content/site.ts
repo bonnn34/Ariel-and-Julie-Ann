@@ -77,8 +77,8 @@ const COUPLE = {
 const WEDDING_DATE = "January 22, 2027" // e.g. "June 5, 2027"
 const WEDDING_DAY = "Friday" // 
 const TIMES = {
-  entourageCall: "11:00 AM", // entourage assembly
-  guestArrival: "11:30 PM", // guests arrival / assembly (shown in Event Details + reminders)
+  entourageCall: "11:30 AM", // entourage assembly
+  guestArrival: "12:15 PM", // guests arrival / assembly (shown in Event Details + reminders)
   ceremony: "12:15 PM",
   reception: "2:30 PM", // start of program
 }
@@ -89,13 +89,13 @@ const CEREMONY_VENUE = {
   name: "Transfiguration Parish Chruch",
   address: "Manuel L. Quezon Ext, Nayong Silangan, Antipolo, 1870 Rizal",
   map: "https://maps.app.goo.gl/EV7uZbVBgauFiTot5",
-  photos: ["/Details/ceremony-new (1).jpg", "/Details/ceremony-new (2).jpg","/Details/ceremony-new (3).jpg"],
+  photos: ["/Details/ceremony-new (1).jpg","/Details/ceremony-new (3).jpg"],
 }
 const RECEPTION_VENUE = {
   name: "The Garden Hive Events Place",
   address: "Manuel L. Quezon Ext, Antipolo, Rizal",
   map: "https://maps.app.goo.gl/zwnLXxEsfJE7LyL1A",
-  photos: ["/Details/reception-new (1).jpg", "/Details/reception-new (1).webp", "/Details/reception-new (2).jpg"],
+  photos: ["/Details/reception-new (1).jpg", "/Details/reception-new (2).jpg"],
 }
 
 // ── Venue cards (Event Details section) ─────────────────────────────────────
@@ -276,12 +276,12 @@ guests: {
   palette: DRESS_CODE_PALETTE,
 
   note:
-    "Celebrate with us in elegant shades of blue. Ladies are kindly requested to wear floor-length gowns in soft periwinkle blue, muted cornflower blue, pastel sky blue, or deep navy blue. Gentlemen are requested to wear cream Barong Tagalog with formal trousers and dress shoes. Thank you for following our dress code and helping create a beautifully coordinated celebration.",
+    "Celebrate with us in elegant shades of blue. Ladies are kindly requested to wear floor-length gowns in periwinkle blue, cornflower blue, sky blue, or navy blue. Gentlemen are requested to wear cream Barong Tagalog with formal trousers and dress shoes. Thank you for following our dress code and helping create a beautifully coordinated celebration.",
 
   ladies: {
     label: "Ladies",
     details:
-      "Elegant floor-length gowns in soft periwinkle blue, muted cornflower blue, pastel sky blue, or deep navy blue. Flowing chiffon, satin, or silk fabrics are encouraged. Kindly avoid white, ivory, cream, and other shades traditionally reserved for the bride and groom. Please also avoid short or midi dresses, busy prints, and colors outside our blue palette.",
+      "Elegant floor-length gowns in periwinkle blue, cornflower blue, sky blue, or navy blue. Flowing chiffon, satin, or silk fabrics are encouraged. Kindly avoid white, ivory, cream, and other shades traditionally reserved for the bride and groom. Please also avoid short or midi dresses, busy prints, and colors outside our blue palette.",
     highlight: "Floor-Length Gowns in Shades of Blue",
     roles: [] as { role: string; attire: string }[],
   },
@@ -831,7 +831,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: TIMES.ceremony, //TIMES.ceremony
+        time: "1:00 PM", //TIMES.ceremony
         title: "Wedding Ceremony",
         description: "We exchange our vows before God, family and friends.",
         location: "{ceremony}",
@@ -1172,7 +1172,7 @@ export const siteConfig = {
       {
         question: "Are children invited?",
         answer:
-          "We love your little ones, but our celebration is adults-only. We hope this gives you a relaxing evening off to celebrate with us!",
+          "We love your little ones, but our celebration is adults-only unless the bride or groom has personally invited your child to attend. Otherwise, we kindly ask that you make childcare arrangements. We hope this gives you a relaxing evening off to celebrate with us!",
       },
       {
         question: "May we choose our own seats at the reception?",
