@@ -164,7 +164,7 @@ const HASHTAGS = ["#TrizhaFoundHerWei"] // ⚠ check — looks like it's from a 
 //     highlight: phrase inside details shown bold + underlined ("" for none)
 // Guest dress code colors — also shown in the "Dress Code" gentle reminder
 const DRESS_CODE_PALETTE: AttireColor[] = [
-  { name: "Soft Periwinkle Blue", hex: "#9AADE0" },
+  { name: "Periwinkle Blue", hex: "#9AADE0" },
   { name: "Cornflower Blue", hex: "#739ACD" },
   { name: "Pastel Sky Blue", hex: "#9CC5E5" },
   { name: "Deep Navy Blue", hex: "#172C4C" },
@@ -322,21 +322,21 @@ const BRAND = {
 // Couple photos reused across the site (gallery, loader, reminders, snap & share, closing)
 // — every portrait in /public/mobile-background
 const COUPLE_PHOTOS = Array.from(
-  { length: 13 },
+  { length: 15 },
   (_, i) => `/mobile-background/couple (${i + 1}).webp`,
 )
 
 // Portraits for the envelope reveal + the main cover photo (soft natural light, no heavy filters)
 const COUPLE_PORTRAITS = {
-  groom: "/mobile-background/couple (5).webp", // left photo in the envelope
-  bride: "/mobile-background/couple (2).webp", // right photo in the envelope
+  groom: "/mobile-background/couple (14).webp", // left photo in the envelope
+  bride: "/mobile-background/couple (15).webp", // right photo in the envelope
   cover: "/mobile-background/couple (11).webp", // photo pulled out of the envelope + home hero cover photo
 }
 
 // Sliding photo marquee behind the loader and envelope.
 // Phones use the portrait shots in /public/mobile-background, desktop the landscape
 // shots in /public/desktop-background — update the counts when files are added/removed.
-const MARQUEE_PHOTO_COUNT = 13
+const MARQUEE_PHOTO_COUNT = 15
 const MARQUEE_PHOTOS = Array.from(
   { length: MARQUEE_PHOTO_COUNT },
   (_, i) => `/mobile-background/couple (${i + 1}).webp`,
@@ -397,7 +397,7 @@ const COUPLE_LABEL = `${COUPLE.groomNickname} & ${COUPLE.brideNickname}`
    ============================================================================ */
 
 // Principal sponsors Google Apps Script — used by the main page and /inviteone
-const SPONSORS_API = "https://script.google.com/macros/s/AKfycby4CzpWLlngWi8JCTjrWXcZv1MCLSsK9_1x3YflAVuNt28PJIbKuVw69OYeZzg9x8FD_w/exec"
+const SPONSORS_API = "https://script.google.com/macros/s/AKfycbx3EBkMjYidXvPynfVmHMTc4BJs_9dlD4CJQh0ZRrsVB2NcrlE3mHGAPMp3K93P-A51Kw/exec"
 
 export const siteConfig = {
   siteUrl: SITE_URL,
@@ -409,16 +409,16 @@ export const siteConfig = {
   },
   googleAPI:{
     messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSdzrPCtDDo88GCbufuJuzylw6nMx81kMQbK4QL-d9ehxujwKQ/formResponse", //done
-    message: "https://script.google.com/macros/s/AKfycbzCLUHKDlNvaZSEU8HCFeVct8j1lEBDYwl1h1IFSsMOp58vCe5PVnf82jsiO6zSbc2Dbw/exec", //done
-    guestList: "https://script.google.com/macros/s/AKfycbxl0sHoE4MT7SjyggyhL7ObMNo9V7UlCB-MjYc0TUbsaEdyTnBdPHdUTUh9KA1om0P8/exec",  //done
-    guestRequest: "https://script.google.com/macros/s/AKfycbzEbIW_z6uTsfxVeBmkUhYmyPPIvRoAriQwX1wIeXdFnTjYhgsG0-aD0LrpeRaZCts/exec", //done 
-    entourage: "https://script.google.com/macros/s/AKfycbxxoUMo7ewa44aB8E9zxWCim4IIPLheuUDeBNM6_HEub1xjYXoMqy_sT16PMJcolWMU/exec",  
+    message: "https://script.google.com/macros/s/AKfycby8lR4ASvKUFfd75yl1k6okrRq29HxH_sP4Ml6vNNkzZPPgqMZkF-xtMqFkAWaUv3MOMQ/exec", //done
+    guestList: "https://script.google.com/macros/s/AKfycbxllHXj_GkXMTdkSmuOOJndZT6V-AjUxnoQErHsQiriLCONTo_4KvXa5gUvbCr07AzjZg/exec",  //done
+    guestRequest: "https://script.google.com/macros/s/AKfycbwmAd__RLWq2RGBeO7i-OQ-XZ1CMxzkX2L8Jm96SoouaN0Rq7EQUG3DCK5iCw1dg8DELQ/exec", //done
+    entourage: "https://script.google.com/macros/s/AKfycbzDxAyNflBLfk9xPERRC_NB9c9hg3eHf5TOjgUKiNT6RSLkKq35PMaPYdiYbcBjeQofQw/exec",  
     sponsors: SPONSORS_API,  //done 
     // Principal sponsors shown on /inviteone and /invitetwo (entourage section)
     sponsorsInviteOne: SPONSORS_API, // same sheet as sponsors above
-    sponsorsInviteTwo: "https://script.google.com/macros/s/AKfycby4CzpWLlngWi8JCTjrWXcZv1MCLSsK9_1x3YflAVuNt28PJIbKuVw69OYeZzg9x8FD_w/exec",
+    sponsorsInviteTwo: "https://script.google.com/macros/s/AKfycbx3EBkMjYidXvPynfVmHMTc4BJs_9dlD4CJQh0ZRrsVB2NcrlE3mHGAPMp3K93P-A51Kw/exec",
 ////google share 
-    googleShare: "https://drive.google.com/drive/folders/1nKNjPjQ7F_HLQZmJgw4hzFHIDJ-k52jC?usp=sharing",
+    googleShare: "https://docs.google.com/spreadsheets/d/1gGX9P2l3yLuay38Sqa9iOcVWjfWuHbqN8LloboZxk7Y/edit?usp=sharing",
     videoMessageForm:
       "https://docs.google.com/forms/d/e/1FAIpQLSfeGlEl4CMXWefdvCw6AOPHFS1ROku_rs-Gbofa2LkVJ0sLGQ/viewform", 
   },
