@@ -486,7 +486,7 @@ export const siteConfig = {
       bride: COUPLE_PORTRAITS.bride,
     },
     // Bouquet tucked inside the open envelope, peeking out on both sides ("" to hide)
-    envelopeFlowers: "/deco/new-deco/bottom-left.png",
+    envelopeFlowers: "/deco/new-bottom-left.png", //SIDE PICTUTE IN THE ENVELOPE
     // Main page cover photo (home hero, plain display) — one natural, candid couple photo
     coverPhoto: COUPLE_PORTRAITS.cover,
     coverPhotoAlt: COUPLE_LABEL,
@@ -1256,7 +1256,7 @@ export const siteConfig = {
     //   /QR/BPI.png → pays the BDO account (Banco de Oro, "Brei", account ending 8451)
     accounts: [
       { show: true, label: "GCash", accountName: "ARIEL A.", accountNumber: "0926 666 ****", qr: "/QR/gcash1.png" },
-      { show: true, label: "GOytyme", accountName: "JULIE ANN LELIS", accountNumber: "******** 8202", qr: "/QR/gotyme.png" },
+      { show: true, label: "GOtyme", accountName: "JULIE ANN LELIS", accountNumber: "******** 8202", qr: "/QR/gotyme.png" },
     ] as { show: boolean; label: string; accountName: string; accountNumber: string; qr: string }[],
     // Leave any path "" to hide that decoration
     decos: { ...SECTION_DECOS },
