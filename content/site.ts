@@ -78,8 +78,8 @@ const WEDDING_DATE = "January 22, 2027" // e.g. "June 5, 2027"
 const WEDDING_DAY = "Friday" // 
 const TIMES = {
   entourageCall: "11:30 AM", // entourage assembly
-  guestArrival: "12:15 PM", // guests arrival / assembly (shown in Event Details + reminders)
-  ceremony: "12:15 PM",
+  guestArrival: "1:00 PM", // guests arrival / assembly (shown in Event Details + reminders)
+  ceremony: "1:30 PM",
   reception: "2:30 PM", // start of program
 }
 
@@ -518,7 +518,7 @@ export const siteConfig = {
     // played directly with no YouTube at all; leave "" to use youtubeId instead.
     videoSrc: "",
     // YouTube video ID — the part after "watch?v=" (or after "youtu.be/")
-    youtubeId: "YPyS5XS-9Ck",
+    youtubeId: "yp1RUYF92gk",
     // Cover image shown before the video plays
     thumbnail: "/desktop-background/couples (20).webp",
     thumbnailAlt: `${COUPLE_LABEL} — video cover`,

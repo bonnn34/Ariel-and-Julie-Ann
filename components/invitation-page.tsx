@@ -264,12 +264,12 @@ export function InvitationPage({ sponsorsList, showEntourage = true }: Invitatio
               {/* One continuous circle pattern behind the video and love story (same as Details) — no seam between them */}
               <div className="relative">
                 <PlainBubbles />
-                {/* <CoupleVideo skyBackdrop={false} /> */}
+                 <CoupleVideo skyBackdrop={false} /> 
                 <LoveStory skyBackdrop={false} />
               </div>
               <Countdown />
               <Gallery />
-              {/* <MessageVideo /> */}
+               <MessageVideo /> 
               <Messages />
               <Details />
               <WeddingTimeline />
