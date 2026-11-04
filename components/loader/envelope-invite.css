@@ -3946,3 +3946,14 @@
   animation: none;
   filter: drop-shadow(0 3px 5px rgb(23 44 76 / 35%));
 }
+
+/* Envelope photo background wash (slideshow itself: invite-cover.css) */
+.env-invite-slideshow__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgb(250 246 238 / 58%) 0%, rgb(250 246 238 / 30%) 55%, rgb(242 246 251 / 10%) 100%),
+    linear-gradient(180deg, rgb(242 246 251 / 40%) 0%, rgb(250 246 238 / 18%) 45%, rgb(242 246 251 / 45%) 100%);
+}

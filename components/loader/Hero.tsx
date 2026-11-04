@@ -22,6 +22,7 @@ import { InviteParticles } from '@/components/loader/InviteParticles';
 import { InvitePhotoBackdrop, PhotoBackground } from '@/components/loader/invite-photo-backdrop';
 import { TintedDeco } from '@/components/tinted-deco';
 import { SectionBackdrop } from '@/components/section-backdrop';
+import { CoverPhotoSlideshow, InviteCover } from '@/components/loader/InviteCover';
 import './envelope-invite.css';
 
 const theSeasons = localFont({
@@ -113,7 +114,19 @@ const photoExpandEase: Transition = { duration: PHOTO_EXPAND_MS / 1000, ease: [0
 
 type FlyRect = { top: number; left: number; width: number; height: number };
 
-export const Hero: React.FC<HeroProps> = ({
+/**
+ * Invitation screen shown after the loader. loadingScreen.inviteStyle picks the look:
+ *   "cover"    — full-screen photo, monogram, "You are invited!" + Open Invitation button (InviteCover.tsx)
+ *   "envelope" — wax-seal envelope that opens to the letter and portraits (below)
+ */
+export const Hero: React.FC<HeroProps> = (props) => {
+  const siteConfig = useSiteConfig();
+  const style =
+    siteConfig.loadingScreen?.inviteStyle ?? defaultSiteConfig.loadingScreen.inviteStyle ?? 'envelope';
+  return style === 'cover' ? <InviteCover {...props} /> : <EnvelopeHero {...props} />;
+};
+
+const EnvelopeHero: React.FC<HeroProps> = ({
   onOpen,
   onTransitionStart,
   visible,
@@ -139,6 +152,7 @@ export const Hero: React.FC<HeroProps> = ({
   const [centerRect, setCenterRect] = useState<FlyRect | null>(null);
   const photoCardRef = useRef<HTMLDivElement>(null);
   const [isMobileViewport, setIsMobileViewport] = useState(false);
+  const [viewportMeasured, setViewportMeasured] = useState(false);
 
   const groomName = siteConfig.couple.groomNickname;
   const brideName = siteConfig.couple.brideNickname;
@@ -176,7 +190,18 @@ export const Hero: React.FC<HeroProps> = ({
     () => (content.backgroundPhotosDesktop ?? []).map((src) => encodeURI(src)),
     [content.backgroundPhotosDesktop],
   );
-  const showPhotoBackdrop = !isPlain && backgroundPhotos.length > 0;
+  // Cross-fading photo background behind the envelope (portrait set on phones, landscape on desktop)
+  const envelopeBgPhotos = useMemo(() => {
+    const mobile = content.envelopeBackgroundPhotos ?? defaultSiteConfig.loadingScreen.envelopeBackgroundPhotos ?? [];
+    const desktop =
+      content.envelopeBackgroundPhotosDesktop ?? defaultSiteConfig.loadingScreen.envelopeBackgroundPhotosDesktop ?? [];
+    return {
+      mobile: mobile.map((src) => encodeURI(src)),
+      desktop: (desktop.length > 0 ? desktop : mobile).map((src) => encodeURI(src)),
+    };
+  }, [content.envelopeBackgroundPhotos, content.envelopeBackgroundPhotosDesktop]);
+  const useEnvelopeSlideshow = envelopeBgPhotos.mobile.length > 0 || envelopeBgPhotos.desktop.length > 0;
+  const showPhotoBackdrop = !isPlain && !useEnvelopeSlideshow && backgroundPhotos.length > 0;
 
   // One portrait of the groom (left) and one of the bride (right), revealed as the envelope opens
   const portraitPair = useMemo(() => {
@@ -252,6 +277,7 @@ export const Hero: React.FC<HeroProps> = ({
     const mediaQuery = window.matchMedia('(max-width: 767px)');
     const updateViewport = () => setIsMobileViewport(mediaQuery.matches);
     updateViewport();
+    setViewportMeasured(true);
     mediaQuery.addEventListener('change', updateViewport);
     return () => mediaQuery.removeEventListener('change', updateViewport);
   }, []);
@@ -633,9 +659,23 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
       )}
 
+      {useEnvelopeSlideshow && viewportMeasured && (
+        <>
+          <CoverPhotoSlideshow
+            key={isMobileViewport ? 'mobile' : 'desktop'}
+            photos={isMobileViewport ? envelopeBgPhotos.mobile : envelopeBgPhotos.desktop}
+            paused={!visible}
+            reduceMotion={reduceMotion}
+          />
+          <div className="env-invite-slideshow__veil" aria-hidden="true" />
+        </>
+      )}
+
       {isPlain && (
         <>
-          <PhotoBackground photos={backgroundPhotos} desktopPhotos={backgroundPhotosDesktop} />
+          {!useEnvelopeSlideshow && (
+            <PhotoBackground photos={backgroundPhotos} desktopPhotos={backgroundPhotosDesktop} />
+          )}
           <div className="env-invite-plain-corners" aria-hidden="true">
             {(
               [

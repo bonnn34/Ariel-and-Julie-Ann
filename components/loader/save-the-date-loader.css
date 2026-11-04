@@ -1,0 +1,406 @@
+/* Save-the-date loader (components/loader/LoadingScreen.tsx)
+   Full-screen couple photo · script headline · three photo date cards · names + progress */
+
+.stl {
+  --stl-ink: #f8e9d4;
+  --stl-ink-soft: rgb(248 233 212 / 82%);
+  --stl-shadow: 20 14 10;
+  --stl-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --stl-pop: cubic-bezier(0.34, 1.32, 0.5, 1);
+  background: #1b1512;
+  color: var(--stl-ink);
+  transition:
+    opacity var(--stl-fade, 900ms) var(--stl-ease),
+    transform var(--stl-fade, 900ms) var(--stl-ease),
+    filter var(--stl-fade, 900ms) var(--stl-ease);
+}
+
+.stl.is-fading {
+  opacity: 0;
+  transform: scale(1.04);
+  filter: blur(6px);
+}
+
+/* ---- Background photo ---- */
+.stl__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.stl__bg-img {
+  object-fit: cover;
+  object-position: center 35%;
+  opacity: 0;
+  transform: scale(1.14);
+  animation:
+    stl-fade-in 900ms var(--stl-ease) forwards,
+    stl-push-in calc(var(--stl-duration, 6500ms) + 1200ms) cubic-bezier(0.25, 0.6, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.stl__bg-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(var(--stl-shadow) / 62%) 0%,
+      rgb(var(--stl-shadow) / 22%) 22%,
+      rgb(var(--stl-shadow) / 8%) 42%,
+      rgb(var(--stl-shadow) / 30%) 62%,
+      rgb(var(--stl-shadow) / 78%) 82%,
+      rgb(var(--stl-shadow) / 90%) 100%
+    );
+}
+
+/* ---- Layout ---- */
+.stl__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding:
+    max(2.25rem, calc(1.25rem + env(safe-area-inset-top, 0px))) 1rem
+    max(1.25rem, calc(0.75rem + env(safe-area-inset-bottom, 0px)));
+  pointer-events: none;
+}
+
+.stl__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stl__spacer {
+  flex: 1 1 auto;
+  min-height: 1rem;
+}
+
+/* ---- Headline: written on with a soft left-to-right wipe ---- */
+.stl__headline {
+  margin: 0;
+  padding: 0 0.4em;
+  font-family: var(--font-brittany), cursive;
+  font-weight: 400;
+  font-size: clamp(2.7rem, 12vw, 4.75rem);
+  line-height: 1.15;
+  color: var(--stl-ink);
+  text-shadow:
+    0 1px 2px rgb(var(--stl-shadow) / 55%),
+    0 8px 24px rgb(var(--stl-shadow) / 45%);
+  clip-path: inset(-20% 100% -20% 0);
+  animation: stl-wipe 1100ms cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0ms) forwards;
+}
+
+.stl__kicker {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-cinzel, "Cinzel", serif);
+  font-size: clamp(0.95rem, 4.6vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--stl-ink);
+  text-shadow: 0 1px 12px rgb(var(--stl-shadow) / 65%);
+  opacity: 0;
+  animation: stl-rise-track 800ms var(--stl-ease) var(--d, 0ms) forwards;
+}
+
+/* ---- Date cards ---- */
+.stl__cards {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: clamp(0.5rem, 2.6vw, 1rem);
+  width: 100%;
+  perspective: 900px;
+}
+
+/* Outer wrapper: gentle idle bob once the card has landed */
+.stl__card-float {
+  flex: 1 1 0;
+  max-width: 180px;
+  animation: stl-bob 4.2s ease-in-out calc(1.6s + var(--i, 0) * 0.35s) infinite;
+}
+
+.stl__card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: clamp(14px, 4.5vw, 22px);
+  border: 1.5px solid rgb(255 245 232 / 55%);
+  box-shadow:
+    0 18px 40px rgb(var(--stl-shadow) / 45%),
+    inset 0 1px 0 rgb(255 255 255 / 35%);
+  background: rgb(255 245 232 / 12%);
+  opacity: 0;
+  transform: translateY(46px) rotateX(-22deg) scale(0.9);
+  transform-origin: 50% 100%;
+  filter: blur(6px);
+  animation: stl-card-in 720ms var(--stl-pop) var(--d, 0ms) forwards;
+  will-change: transform, opacity, filter;
+}
+
+.stl__card-img {
+  object-fit: cover;
+  transform: scale(1.28);
+  animation: stl-card-img 1400ms var(--stl-ease) var(--d, 0ms) forwards;
+}
+
+.stl__card-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(255 245 232 / 6%) 0%,
+    rgb(var(--stl-shadow) / 0%) 40%,
+    rgb(var(--stl-shadow) / 55%) 78%,
+    rgb(var(--stl-shadow) / 72%) 100%
+  );
+}
+
+/* One light sweep across the glass right after the card lands */
+.stl__card-shine {
+  position: absolute;
+  inset: -20% -60%;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgb(255 255 255 / 38%) 50%,
+    transparent 62%
+  );
+  transform: translateX(-70%);
+  animation: stl-shine 900ms ease-out calc(var(--d, 0ms) + 420ms) forwards;
+  mix-blend-mode: soft-light;
+}
+
+.stl__card-text {
+  position: absolute;
+  inset-inline: 0;
+  bottom: clamp(0.55rem, 2.4vw, 0.85rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.stl__card-num-mask {
+  display: block;
+  overflow: hidden;
+  padding: 0.04em 0.1em 0;
+}
+
+.stl__card-num {
+  display: block;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.7rem, 8.6vw, 2.75rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--stl-ink);
+  text-shadow: 0 2px 12px rgb(var(--stl-shadow) / 60%);
+  transform: translateY(105%);
+  animation: stl-num-up 620ms var(--stl-ease) calc(var(--d, 0ms) + 220ms) forwards;
+}
+
+.stl__card-label {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(0.5rem, 2.2vw, 0.62rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--stl-ink-soft);
+  opacity: 0;
+  animation: stl-fade-in 500ms var(--stl-ease) calc(var(--d, 0ms) + 420ms) forwards;
+}
+
+/* ---- Footer ---- */
+.stl__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: clamp(1rem, 4.5vh, 2.25rem);
+  text-align: center;
+}
+
+.stl__eyebrow {
+  margin: 0;
+  font-family: var(--font-cinzel, "Cinzel", serif);
+  font-size: clamp(0.68rem, 3vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--stl-ink-soft);
+  opacity: 0;
+  animation: stl-rise-track 700ms var(--stl-ease) var(--d, 0ms) forwards;
+}
+
+.stl__names {
+  margin: 0.1rem 0 0;
+  padding: 0 0.4em;
+  font-family: var(--font-brittany), cursive;
+  font-weight: 400;
+  font-size: clamp(2.1rem, 9.5vw, 3.4rem);
+  line-height: 1.25;
+  color: var(--stl-ink);
+  text-shadow: 0 2px 18px rgb(var(--stl-shadow) / 60%);
+  clip-path: inset(-25% 100% -25% 0);
+  animation: stl-wipe 1000ms cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0ms) forwards;
+}
+
+.stl__rule {
+  width: 4.5rem;
+  height: 1px;
+  margin: 0.6rem 0 0.9rem;
+  background: linear-gradient(90deg, transparent, rgb(248 233 212 / 70%), transparent);
+  transform: scaleX(0);
+  animation: stl-grow 700ms var(--stl-ease) var(--d, 0ms) forwards;
+}
+
+.stl__progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  opacity: 0;
+  animation: stl-fade-in 600ms var(--stl-ease) var(--d, 0ms) forwards;
+}
+
+.stl__status {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-cinzel, "Cinzel", serif);
+  font-size: clamp(0.56rem, 2.5vw, 0.68rem);
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--stl-ink-soft);
+  animation: stl-status 500ms var(--stl-ease) both;
+}
+
+.stl__track {
+  width: min(62%, 16rem);
+  height: 2px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgb(248 233 212 / 22%);
+}
+
+.stl__bar {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgb(248 233 212 / 55%), var(--stl-ink));
+  box-shadow: 0 0 10px rgb(248 233 212 / 55%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: stl-progress var(--stl-duration, 6500ms) cubic-bezier(0.4, 0.1, 0.3, 1) forwards;
+}
+
+/* Short screens: keep everything on one screen */
+@media (max-height: 640px) {
+  .stl__headline { font-size: clamp(2.2rem, 10vw, 3.6rem); }
+  .stl__card-float { max-width: 120px; }
+  .stl__footer { padding-top: 0.75rem; }
+}
+
+.stl__bg-img--desktop { display: none; }
+
+@media (min-width: 768px) {
+  .stl__bg-img { object-position: center; }
+  .stl__bg-img--mobile { display: none; }
+  .stl__bg-img--desktop { display: block; }
+}
+
+/* ---- Keyframes ---- */
+@keyframes stl-fade-in {
+  to { opacity: 1; }
+}
+
+@keyframes stl-push-in {
+  from { transform: scale(1.14); }
+  to { transform: scale(1.02); }
+}
+
+@keyframes stl-wipe {
+  to { clip-path: inset(-25% -5% -25% 0); }
+}
+
+@keyframes stl-rise-track {
+  from { opacity: 0; transform: translateY(10px); letter-spacing: 0.34em; }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes stl-card-in {
+  60% { opacity: 1; filter: blur(0); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes stl-card-img {
+  to { transform: scale(1.04); }
+}
+
+@keyframes stl-shine {
+  to { transform: translateX(70%); }
+}
+
+@keyframes stl-num-up {
+  to { transform: none; }
+}
+
+@keyframes stl-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes stl-grow {
+  to { transform: scaleX(1); }
+}
+
+@keyframes stl-status {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes stl-progress {
+  to { transform: scaleX(1); }
+}
+
+/* ---- Reduced motion: show everything at once ---- */
+.stl.is-reduced-motion *,
+.stl.is-reduced-motion *::before {
+  animation: none !important;
+}
+.stl.is-reduced-motion .stl__headline,
+.stl.is-reduced-motion .stl__names { clip-path: none; }
+.stl.is-reduced-motion :is(.stl__bg-img, .stl__kicker, .stl__card, .stl__card-label, .stl__eyebrow, .stl__progress) {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+.stl.is-reduced-motion :is(.stl__card-num, .stl__rule, .stl__card-img) { transform: none; }
+.stl.is-reduced-motion .stl__card-shine { display: none; }
+.stl.is-reduced-motion .stl__bar { transform: scaleX(1); }
+.stl.is-reduced-motion.is-fading { transform: none; filter: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stl *,
+  .stl *::before { animation: none !important; }
+  .stl__headline, .stl__names { clip-path: none; }
+  .stl__bg-img, .stl__kicker, .stl__card, .stl__card-label, .stl__eyebrow, .stl__progress {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .stl__card-num, .stl__rule, .stl__card-img { transform: none; }
+  .stl__card-shine { display: none; }
+  .stl__bar { transform: scaleX(1); }
+}

@@ -1,0 +1,302 @@
+/* ==========================================================================
+   "You are invited" cover (components/loader/InviteCover.tsx)
+   Full-screen photo · monogram on top · script + serif title and button below
+   ========================================================================== */
+.invite-cover {
+  --cover-ink: #f8e9c9; /* warm champagne type */
+  --cover-glow: rgb(255 214 150 / 45%);
+  --cover-button: var(--color-motif-accent, #739acd);
+
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  padding:
+    max(2.25rem, env(safe-area-inset-top))
+    1.25rem
+    max(2.75rem, calc(env(safe-area-inset-bottom) + 1.75rem));
+  background: #1d1a17;
+  color: var(--cover-ink);
+  text-align: center;
+}
+
+.invite-cover.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.invite-cover__photos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: transform;
+}
+
+.invite-cover__photos .env-invite-slideshow {
+  background: #1d1a17;
+}
+
+/* Darkens the top behind the monogram and the bottom behind the title */
+.invite-cover__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* Soft dark at the top for the monogram; warm sepia haze over the lower half for the title */
+  background:
+    linear-gradient(180deg, rgb(20 16 12 / 45%) 0%, rgb(20 16 12 / 10%) 22%, transparent 36%),
+    linear-gradient(0deg, rgb(146 112 80 / 62%) 0%, rgb(170 134 100 / 42%) 28%, rgb(190 156 120 / 14%) 48%, transparent 60%);
+}
+
+.invite-cover__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* ── Top: monogram + names ─────────────────────────────────────────────── */
+.invite-cover__top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.invite-cover__monogram {
+  display: block;
+  width: clamp(84px, 24vw, 132px);
+  aspect-ratio: 1;
+  background: #fff;
+  -webkit-mask: var(--monogram-src) center / contain no-repeat;
+  mask: var(--monogram-src) center / contain no-repeat;
+  filter: drop-shadow(0 2px 10px rgb(0 0 0 / 35%));
+}
+
+.invite-cover__names {
+  font-weight: 900; /* Cinzel Black */
+  margin-top: -0.35rem;
+  font-size: clamp(0.62rem, 2.4vw, 0.8rem);
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 6px rgb(0 0 0 / 45%);
+}
+
+.invite-cover__date {
+  font-weight: 900; /* Cinzel Black */
+  font-size: clamp(0.5rem, 1.9vw, 0.64rem);
+  letter-spacing: 0.4em;
+  color: rgb(255 255 255 / 82%);
+  text-shadow: 0 1px 6px rgb(0 0 0 / 45%);
+}
+
+/* ── Bottom: title + button ────────────────────────────────────────────── */
+/* Sits in the lower third (not glued to the bottom edge), like a printed card */
+.invite-cover__bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 26rem;
+  margin-bottom: clamp(1.5rem, 7vh, 4.5rem);
+}
+
+.invite-cover__title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Great Vibes — centred over the caps, rising gently left → right, just kissing the top of INVITED! */
+.invite-cover__script {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin: 0 0 -0.24em;
+  padding: 0 0.2em; /* room for the swashes so they aren't clipped */
+  font-size: clamp(3.8rem, 19vw, 6rem);
+  line-height: 1.1;
+  color: #f8ead0;
+  transform: translateX(0.04em) rotate(-6deg);
+  transform-origin: 50% 70%;
+  text-shadow:
+    0 0 8px rgb(255 240 214 / 55%),
+    0 0 22px rgb(255 226 180 / 35%);
+}
+
+/* Cinzel caps with a champagne-gold sheen */
+.invite-cover__caps {
+  display: block;
+  padding-left: 0.05em; /* balances the trailing letter-spacing */
+  font-size: clamp(2.8rem, 14vw, 4.8rem);
+  font-weight: 700; /* Cinzel Bold */
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #f8ead0;
+  text-shadow:
+    0 0 8px rgb(255 240 214 / 60%),
+    0 0 24px rgb(255 224 176 / 38%),
+    0 1px 2px rgb(110 80 50 / 25%);
+}
+
+.invite-cover__button {
+  margin-top: clamp(1.25rem, 3.2vh, 1.75rem);
+  width: min(76vw, 17.5rem);
+  min-height: 3.3rem;
+  padding: 0.85rem 1.5rem;
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 0.4rem;
+  background: #7aa7d9;
+  color: #fff;
+  font-size: clamp(0.82rem, 3.6vw, 0.95rem);
+  font-weight: 400; /* Cinzel Regular, like the reference */
+  letter-spacing: 0.16em;
+  text-indent: 0.16em; /* centres the letter-spaced text */
+  text-transform: uppercase;
+  box-shadow: 0 6px 18px rgb(60 45 30 / 22%);
+  cursor: pointer;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.invite-cover__button:hover:not(:disabled) {
+  background: #86b1e0;
+  box-shadow: 0 10px 24px rgb(60 45 30 / 28%);
+}
+
+.invite-cover__button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.invite-cover__button:disabled {
+  cursor: default;
+}
+
+/* Short phones: tighten so the title never crowds the monogram */
+@media (max-height: 680px) {
+  .invite-cover__script { font-size: clamp(3.2rem, 16vw, 4.8rem); }
+  .invite-cover__caps { font-size: clamp(2.3rem, 11vw, 3.6rem); }
+  .invite-cover__bottom { margin-bottom: 0.75rem; }
+}
+
+/* Desktop: landscape photos, a little more room */
+@media (min-width: 768px) {
+  .invite-cover {
+    padding-top: 2.75rem;
+    padding-bottom: 3.5rem;
+  }
+  .invite-cover__monogram {
+    width: 140px;
+  }
+  .invite-cover__shade {
+    background:
+      linear-gradient(180deg, rgb(20 16 12 / 42%) 0%, transparent 30%),
+      linear-gradient(0deg, rgb(146 112 80 / 60%) 0%, rgb(170 134 100 / 36%) 30%, transparent 58%);
+  }
+  .invite-cover__bottom {
+    max-width: 34rem;
+    margin-bottom: clamp(1.5rem, 6vh, 4rem);
+  }
+  .invite-cover__script {
+    font-size: 6.75rem;
+  }
+  .invite-cover__caps {
+    font-size: 5rem;
+  }
+  .invite-cover__button {
+    width: 19rem;
+  }
+}
+
+/* ==========================================================================
+   Shared photo slideshow (InviteCover.tsx → CoverPhotoSlideshow)
+   Full-screen couple photos that cross-fade while slowly drifting / zooming.
+   ========================================================================== */
+.env-invite-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--color-motif-soft, #f2f6fb);
+}
+
+.env-invite-slideshow__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+.env-invite-slideshow__slide.is-leaving {
+  opacity: 0;
+  z-index: 1;
+  /* Hold the outgoing photo until the new one has faded in over it */
+  transition-delay: 1.6s;
+}
+
+.env-invite-slideshow__slide.is-active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.env-invite-slideshow__img {
+  transform: scale(1.04);
+  transform-origin: 50% 50%;
+}
+
+/* Same animation name on active + leaving, so the drift carries on through the fade */
+.env-invite-slideshow__slide.is-active .env-invite-slideshow__img,
+.env-invite-slideshow__slide.is-leaving .env-invite-slideshow__img {
+  animation: env-slide-drift var(--slide-life, 12s) linear forwards;
+}
+
+.env-invite-slideshow__slide--drift-1 .env-invite-slideshow__img { transform-origin: 20% 30%; }
+.env-invite-slideshow__slide--drift-2 .env-invite-slideshow__img { transform-origin: 80% 40%; }
+.env-invite-slideshow__slide--drift-3 .env-invite-slideshow__img { transform-origin: 50% 80%; }
+
+@keyframes env-slide-drift {
+  from { transform: scale(1.04); }
+  to { transform: scale(1.16); }
+}
+
+
+/* Mounted early (behind the loader) — hold the drift until the screen is shown */
+.env-invite-slideshow.is-paused .env-invite-slideshow__img {
+  animation-play-state: paused;
+}
+
+.env-invite-slideshow--still .env-invite-slideshow__img {
+  animation: none !important;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .env-invite-slideshow__img {
+    animation: none !important;
+    transform: none;
+  }
+}

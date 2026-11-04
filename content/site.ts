@@ -86,7 +86,7 @@ const TIMES = {
 // ── Venues ──────────────────────────────────────────────────────────────────
 
 const CEREMONY_VENUE = {
-  name: "Transfiguration Parish Chruch",
+  name: "Transfiguration Parish Church",
   address: "Manuel L. Quezon Ext, Nayong Silangan, Antipolo, 1870 Rizal",
   map: "https://maps.app.goo.gl/EV7uZbVBgauFiTot5",
   photos: ["/Details/ceremony-new (1).jpg","/Details/ceremony-new (3).jpg"],
@@ -347,6 +347,15 @@ const MARQUEE_PHOTOS_DESKTOP = Array.from(
   (_, i) => `/desktop-background/couple (${i + 1}).webp`,
 )
 
+// Cross-fading photo background behind the invitation envelope (components/loader/Hero.tsx).
+// Phones use the portrait shots, screens 768px and up the landscape shots — update the counts when files change.
+const ENVELOPE_BG_DIR = "/JULIE ANN LELIS/PRENUP PICTURES/YOU ARE INVITED- OPEN PAGE"
+const ENVELOPE_BG_PHOTOS = Array.from({ length: 3 }, (_, i) => `${ENVELOPE_BG_DIR}/mobile/couple (${i + 1}).JPG`)
+const ENVELOPE_BG_PHOTOS_DESKTOP = Array.from({ length: 13 }, (_, i) => `${ENVELOPE_BG_DIR}/desktop/couple (${i + 1}).JPG`)
+
+// Home hero (main page) photo folder — files listed in homeHero below
+const HOME_HERO_BG_DIR = "/JULIE ANN LELIS/PRENUP PICTURES/YOU ARE INVITED - MAIN PAGE"
+
 // ── Decorations ─────────────────────────────────────────────────────────────
 // Change a path here to swap it on every section at once.
 // To change ONE section only, override it there, e.g. decos: { ...SECTION_DECOS, footerVine: "" }
@@ -455,10 +464,15 @@ export const siteConfig = {
     coupleNameImage: BRAND.coupleNameImage,
     // Shown in the three date cards (Month / Day / Year), left to right (display: "photos")
     photos: [
-      "/frontboxes/couple (1).webp",
-      "/frontboxes/couple (2).webp",
-      "/frontboxes/couple (3).webp",
+      "/box/box (1).webp",
+      "/box/box (2).webp",
+      "/box/box (4).webp",
     ],
+    // Full-screen photo behind the loader (components/loader/LoadingScreen.tsx)
+    mainPhoto: "/JULIE ANN LELIS/PRENUP PICTURES/mobile/couple (13).JPG", // phones (under 768px)
+    mainPhotoDesktop: "/JULIE ANN LELIS/PRENUP PICTURES/dektop/couple (22).JPG", // screens 768px and up
+    // Small line above the couple's names at the bottom of the loader ("" hides it)
+    readyText: "Almost ready for",
     dateLabels: ["Month", "Day", "Year"],
     // Plain mode invitation card — classic invitation wording around the couple's names ("" to hide a line)
     plainInvite: {
@@ -475,8 +489,17 @@ export const siteConfig = {
       "Setting the table for you",
       "Crafting your invitation experience",
     ],
-    durationMs: 10000,
+    durationMs: 6500,
     // Invitation envelope (components/loader/Hero.tsx) — shares display + photos with loader above
+    // Screen after the loader: "cover" = full-screen photo + "You are invited!" + Open Invitation button
+    //                         "envelope" = wax-seal envelope that opens to the letter
+    inviteStyle: "cover" as "cover" | "envelope",
+    coverScriptText: "You are", // script line on the cover
+    coverTitleText: "Invited!", // serif caps line on the cover
+    coverButtonText: "Open Invitation",
+    // Cross-fading photos behind the cover / envelope ([] falls back to the sliding marquee above)
+    envelopeBackgroundPhotos: ENVELOPE_BG_PHOTOS, // phones (under 768px)
+    envelopeBackgroundPhotosDesktop: ENVELOPE_BG_PHOTOS_DESKTOP, // screens 768px and up
     hintText: "Tap the Seal to Open",
     enterButtonText: "View the Invitation",
     sealImage: BRAND.seal,
@@ -507,6 +530,14 @@ export const siteConfig = {
     showFrame: true,
     // Sprig tucked under the bottom of the couple's cover photo ("" hides it)
     coverVine: DECOR.headerOrnament,
+    // Full-screen cross-fading photos behind the home hero (components/sections/hero.tsx)
+    backgroundPhotos: [3, 2, 1].map((n) => `${HOME_HERO_BG_DIR}/mobile/couple (${n}).JPG`), // phones
+    backgroundPhotosDesktop: [1, 2, 3, 4].map((n) => `${HOME_HERO_BG_DIR}/desktop/couple (${n}).JPG`), // 768px and up
+    // Wording around the names ("" hides a line)
+    inviteLine: "Together with our families, we joyfully invite you to witness our union.",
+    closingLine: "Your presence, prayers, and love will mean the world to us.",
+    rsvpButtonText: "RSVP",
+    rsvpHref: "#rsvp",
   },
   // Couple video (components/sections/couple-video.tsx)
   coupleVideo: {
