@@ -1672,8 +1672,8 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     buttonText: "Open in Spotify",
     embedUrl:
     //https://open.spotify.com/embed/playlist/5sT43YjdM8pJ3xtEkrxyEY?utm_source=generator&si=e5e64aa63fd04356
-      "https://open.spotify.com/embed/playlist/6KuJpc2YN65W6dylhTsSAh?utm_source=generator&si=b743117448f84c0e",
-    spotifyUrl: "https://open.spotify.com/playlist/6KuJpc2YN65W6dylhTsSAh?si=R6IO9vQVRG-b9jG5HKXPRQ",
+      "https://open.spotify.com/embed/playlist/2rpy0rsXGopH2NXtpvSz3S?utm_source=generator&si=8231e235fd824458",
+    spotifyUrl: "https://open.spotify.com/playlist/2rpy0rsXGopH2NXtpvSz3S?si=OruYv8w3R-idokE78ny3Lg",
   },
   // Closing "See you there!" section (components/sections/see-you-there.tsx).
   //   photos mode (loadingScreen.display "photos") → full-screen couple photo
