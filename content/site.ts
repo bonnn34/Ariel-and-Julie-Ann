@@ -79,8 +79,8 @@ const WEDDING_DAY = "Friday" //
 // Every time on the invitation is set here, once: hero, venue cards, reminders, timeline and FAQ all read these.
 const TIMES = {
   entourageCall: "11:30 AM", // entourage assembly
-  guestArrival: "1:00 PM", // guests arrival / assembly (shown in Event Details + reminders)
-  ceremony: "1:30 PM",
+  guestArrival: "12:15 PM", // guests arrival / assembly (shown in Event Details + reminders)
+  ceremony: "1:00 PM",
   reception: "2:30 PM", // start of program
   photoSession: "3:00 PM",
   cocktailHour: "3:30 PM",
@@ -148,7 +148,7 @@ const VENUE_CARDS = {
 
 // ── RSVP & contact ──────────────────────────────────────────────────────────
 const RSVP = {
-  deadline: "December 10, 2026",
+  deadline: "December 15, 2026",
   coordinator: "{groom} / {bride}", // {groom} / {bride} → couple nicknames
   phone: "to be announced",
 }
@@ -328,7 +328,7 @@ const BRAND = {
 }
 
 // Couple photos reused across the site — every portrait in PRENUP PICTURES/mobile
-const prenupPhoto = (n: number) => `/JULIE ANN LELIS/PRENUP PICTURES/mobile/couple (${n}).JPG`
+const prenupPhoto = (n: number) => `/JULIE ANN LELIS/PRENUP PICTURES/mobile/couple (${n}).webp`
 const COUPLE_PHOTOS = [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(prenupPhoto)
 
 // Portraits for the envelope reveal + the main cover photo (soft natural light, no heavy filters)
@@ -344,20 +344,20 @@ const MARQUEE_PHOTOS = COUPLE_PHOTOS
 const MARQUEE_PHOTO_COUNT_DESKTOP = 19
 const MARQUEE_PHOTOS_DESKTOP = Array.from(
   { length: MARQUEE_PHOTO_COUNT_DESKTOP },
-  (_, i) => `/JULIE ANN LELIS/PRENUP PICTURES/dektop/couple (${i + 1}).JPG`,
+  (_, i) => `/JULIE ANN LELIS/PRENUP PICTURES/dektop/couple (${i + 1}).webp`,
 )
 
 // Cross-fading photo background behind the invitation envelope (components/loader/Hero.tsx).
 // Phones use the portrait shots, screens 768px and up the landscape shots — update the counts when files change.
 const ENVELOPE_BG_DIR = "/JULIE ANN LELIS/PRENUP PICTURES/YOU ARE INVITED- OPEN PAGE"
-const ENVELOPE_BG_PHOTOS = Array.from({ length: 3 }, (_, i) => `${ENVELOPE_BG_DIR}/mobile/couple (${i + 1}).JPG`)
-const ENVELOPE_BG_PHOTOS_DESKTOP = Array.from({ length: 13 }, (_, i) => `${ENVELOPE_BG_DIR}/desktop/couple (${i + 1}).JPG`)
+const ENVELOPE_BG_PHOTOS = Array.from({ length: 3 }, (_, i) => `${ENVELOPE_BG_DIR}/mobile/couple (${i + 1}).webp`)
+const ENVELOPE_BG_PHOTOS_DESKTOP = Array.from({ length: 13 }, (_, i) => `${ENVELOPE_BG_DIR}/desktop/couple (${i + 1}).webp`)
 
 // Home hero (main page) photo folder — files listed in homeHero below
 const HOME_HERO_BG_DIR = "/JULIE ANN LELIS/PRENUP PICTURES/YOU ARE INVITED - MAIN PAGE"
 const LOVE_STORY_PHOTOS = "/JULIE ANN LELIS/LOVE STORY/mobile"
 const GALLERY_PHOTOS = "/JULIE ANN LELIS/GALLERY/mobile"
-const galleryWide = (n: number) => `/JULIE ANN LELIS/GALLERY/desktop/couple (${n}).JPG`
+const galleryWide = (n: number) => `/JULIE ANN LELIS/GALLERY/desktop/couple (${n}).webp`
 
 // ── Decorations ─────────────────────────────────────────────────────────────
 // Change a path here to swap it on every section at once.
@@ -415,6 +415,11 @@ export const siteConfig = {
   },
   googleAPI:{
     messageForm: "https://docs.google.com/forms/d/e/1FAIpQLSdzrPCtDDo88GCbufuJuzylw6nMx81kMQbK4QL-d9ehxujwKQ/formResponse", //done
+    // These entry IDs belong to the form above; update them together when replacing it.
+    messageFormFields: {
+      name: "entry.1798554185",
+      message: "entry.1750194818",
+    },
     message: "https://script.google.com/macros/s/AKfycby8lR4ASvKUFfd75yl1k6okrRq29HxH_sP4Ml6vNNkzZPPgqMZkF-xtMqFkAWaUv3MOMQ/exec", //done
     guestList: "https://script.google.com/macros/s/AKfycbxllHXj_GkXMTdkSmuOOJndZT6V-AjUxnoQErHsQiriLCONTo_4KvXa5gUvbCr07AzjZg/exec",  //done
     guestRequest: "https://script.google.com/macros/s/AKfycbwmAd__RLWq2RGBeO7i-OQ-XZ1CMxzkX2L8Jm96SoouaN0Rq7EQUG3DCK5iCw1dg8DELQ/exec", //done
@@ -466,8 +471,8 @@ export const siteConfig = {
       "/box/box (4).webp",
     ],
     // Full-screen photo behind the loader (components/loader/LoadingScreen.tsx)
-    mainPhoto: "/JULIE ANN LELIS/PRENUP PICTURES/mobile/couple (13).JPG", // phones (under 768px)
-    mainPhotoDesktop: "/JULIE ANN LELIS/PRENUP PICTURES/dektop/couple (22).JPG", // screens 768px and up
+    mainPhoto: "/JULIE ANN LELIS/PRENUP PICTURES/mobile/couple (13).webp", // phones (under 768px)
+    mainPhotoDesktop: "/JULIE ANN LELIS/PRENUP PICTURES/dektop/couple (22).webp", // screens 768px and up
     // Small line above the couple's names at the bottom of the loader ("" hides it)
     readyText: "Almost ready for",
     dateLabels: ["Month", "Day", "Year"],
@@ -528,8 +533,8 @@ export const siteConfig = {
     // Sprig tucked under the bottom of the couple's cover photo ("" hides it)
     coverVine: DECOR.headerOrnament,
     // Full-screen cross-fading photos behind the home hero (components/sections/hero.tsx)
-    backgroundPhotos: [3, 2, 1].map((n) => `${HOME_HERO_BG_DIR}/mobile/couple (${n}).JPG`), // phones
-    backgroundPhotosDesktop: [1, 2, 3, 4].map((n) => `${HOME_HERO_BG_DIR}/desktop/couple (${n}).JPG`), // 768px and up
+    backgroundPhotos: [3, 2, 1].map((n) => `${HOME_HERO_BG_DIR}/mobile/couple (${n}).webp`), // phones
+    backgroundPhotosDesktop: [1, 2, 3, 4].map((n) => `${HOME_HERO_BG_DIR}/desktop/couple (${n}).webp`), // 768px and up
     // Wording around the names ("" hides a line)
     inviteLine: "Together with our families, we joyfully invite you to witness our union.",
     closingLine: "Your presence, prayers, and love will mean the world to us.",
@@ -548,7 +553,7 @@ export const siteConfig = {
     // YouTube video ID — the part after "watch?v=" (or after "youtu.be/")
     youtubeId: "yp1RUYF92gk",
     // Cover image shown before the video plays
-    thumbnail: "/JULIE ANN LELIS/GALLERY/desktop/couple (5).JPG",
+    thumbnail: "/JULIE ANN LELIS/GALLERY/desktop/couple (5).webp",
     thumbnailAlt: `${COUPLE_LABEL} — video cover`,
     playLabel: "Play our video",
   },
@@ -580,7 +585,7 @@ export const siteConfig = {
       {
         title: "From Chat Mates to First Date",
         subheader: "Where It All Began",
-        image: `${LOVE_STORY_PHOTOS}/ANTIPOLO 2022 - PINTO ART MUSEUM 1ST DATE.JPG`,
+        image: `${LOVE_STORY_PHOTOS}/ANTIPOLO 2022 - PINTO ART MUSEUM 1ST DATE.webp`,
         caption: "Antipolo · Pinto Art Museum · First Date",
         imageAlt: "{groom} and {bride} on their first date at Pinto Art Museum",
         imagePosition: "center 10%",
@@ -592,7 +597,7 @@ export const siteConfig = {
       {
         title: "New Horizons Together",
         subheader: "Countless Memories",
-        image: `${LOVE_STORY_PHOTOS}/ZAMBALES 2023.JPG`,
+        image: `${LOVE_STORY_PHOTOS}/ZAMBALES 2023.webp`,
         caption: "Zambales",
         imageAlt: "{groom} and {bride} on the shore in Zambales with green hills behind them",
         imagePosition: "center 50%",
@@ -601,7 +606,7 @@ export const siteConfig = {
       {
         title: "Above the Clouds",
         subheader: "Exploring Side by Side",
-        image: `${LOVE_STORY_PHOTOS}/SAGADA 2023_1.png`,
+        image: `${LOVE_STORY_PHOTOS}/SAGADA 2023_1.webp`,
         caption: "Sagada",
         imageAlt: "{groom} and {bride} smiling above a sea of clouds in Sagada",
         imagePosition: "center 55%",
@@ -610,7 +615,7 @@ export const siteConfig = {
       {
         title: "Joy in the Little Moments",
         subheader: "The Simple Things",
-        image: `${LOVE_STORY_PHOTOS}/BAGUIO 2024_2.jpg`,
+        image: `${LOVE_STORY_PHOTOS}/BAGUIO 2024_2.webp`,
         caption: "Baguio",
         imageAlt: "{groom} and {bride} sharing coffee and cake at a café in Baguio",
         imagePosition: "center 90%",
@@ -619,7 +624,7 @@ export const siteConfig = {
       {
         title: "Closer With Every Journey",
         subheader: "Every Trip, Every Laugh",
-        image: `${LOVE_STORY_PHOTOS}/TAGAYTAY 2025_2.png`,
+        image: `${LOVE_STORY_PHOTOS}/TAGAYTAY 2025_2.webp`,
         caption: "Tagaytay",
         imageAlt: "{groom} and {bride} smiling in Tagaytay with Taal Lake behind them",
         imagePosition: "center 40%",
@@ -628,7 +633,7 @@ export const siteConfig = {
       {
         title: "Sunny Days by the Water",
         subheader: "Even More Special",
-        image: `${LOVE_STORY_PHOTOS}/SORSOGON 2025_2.png`,
+        image: `${LOVE_STORY_PHOTOS}/SORSOGON 2025_2.webp`,
         caption: "Sorsogon",
         imageAlt: "{groom} and {bride} on a bamboo dock at Juag Lagoon in Sorsogon",
         imagePosition: "center 45%",
@@ -637,7 +642,7 @@ export const siteConfig = {
       {
         title: "An Unforgettable Adventure",
         subheader: "Journey to Legazpi",
-        image: `${LOVE_STORY_PHOTOS}/ALBAY 2025_6.jpg`,
+        image: `${LOVE_STORY_PHOTOS}/ALBAY 2025_6.webp`,
         caption: "Albay",
         imageAlt: "{groom} and {bride} on an ATV in Albay with Mayon Volcano behind them",
         imagePosition: "center 45%",
@@ -648,7 +653,7 @@ export const siteConfig = {
       {
         title: "She Said Yes!",
         subheader: "May 8, 2025",
-        image: `${LOVE_STORY_PHOTOS}/PROPOSAL 2025_1.PNG`,
+        image: `${LOVE_STORY_PHOTOS}/PROPOSAL 2025_1.webp`,
         caption: "Proposal",
         imageAlt: "{groom} on one knee proposing to {bride} in front of a stone church",
         imagePosition: "center 100%",
@@ -660,7 +665,7 @@ export const siteConfig = {
       {
         title: "Hearts Full of Love",
         subheader: "Dreams of a Beautiful Future",
-        image: `${LOVE_STORY_PHOTOS}/LA UNION 2026_2.png`,
+        image: `${LOVE_STORY_PHOTOS}/LA UNION 2026_2.webp`,
         caption: "La Union",
         imageAlt: "{groom} and {bride} smiling at the beach in La Union",
         imagePosition: "center 70%",
@@ -671,7 +676,7 @@ export const siteConfig = {
       {
         title: "A Conversation Turned Forever",
         subheader: "The Next Chapter",
-        image: `${LOVE_STORY_PHOTOS}/PUERTO GALERA 2026_7.png`,
+        image: `${LOVE_STORY_PHOTOS}/PUERTO GALERA 2026_7.webp`,
         caption: "Puerto Galera",
         imageAlt: "{groom} and {bride} sharing a meal at a wooden restaurant in Puerto Galera",
         imagePosition: "center 90%",
@@ -706,14 +711,14 @@ export const siteConfig = {
     // Photos on the invitation page (the full /gallery page lists GALLERY/desktop and GALLERY/mobile on its own).
     // text → the photo's description; position → which part stays in frame (default centered)
     images: [
-      { image: `${GALLERY_PHOTOS}/couple (8).JPG`, text: `${COUPLE_LABEL} embracing in their prenup attire` },
-      { image: `${GALLERY_PHOTOS}/couple (2).jpg`, text: `${COUPLE_LABEL} in front of a small white chapel`, position: "center bottom" },
-      { image: `${GALLERY_PHOTOS}/couple (4).JPG`, text: `${COUPLE_LABEL} facing each other under a garden arch` },
-      { image: `${GALLERY_PHOTOS}/couple (3).jpg`, text: `${COUPLE_LABEL} with arms wide in front of a stone church`, position: "center bottom" },
-      { image: `${GALLERY_PHOTOS}/couple (9).JPG`, text: `${COUPLE_LABEL} hugging beneath a vine-covered arch` },
-      { image: `${GALLERY_PHOTOS}/couple (7).jpg`, text: `${COUPLE_LABEL} on a roadside trip with Mayon Volcano behind them`, position: "center bottom" },
-      { image: `${GALLERY_PHOTOS}/couple (5).JPG`, text: `${COUPLE_LABEL} in a sunlit park at golden hour` },
-      { image: `${GALLERY_PHOTOS}/couple (11).jpg`, text: `${COUPLE_LABEL} sitting together on a bench by a lake` },
+      { image: `${GALLERY_PHOTOS}/couple (8).webp`, text: `${COUPLE_LABEL} embracing in their prenup attire` },
+      { image: `${GALLERY_PHOTOS}/couple (2).webp`, text: `${COUPLE_LABEL} in front of a small white chapel`, position: "center bottom" },
+      { image: `${GALLERY_PHOTOS}/couple (4).webp`, text: `${COUPLE_LABEL} facing each other under a garden arch` },
+      { image: `${GALLERY_PHOTOS}/couple (3).webp`, text: `${COUPLE_LABEL} with arms wide in front of a stone church`, position: "center bottom" },
+      { image: `${GALLERY_PHOTOS}/couple (9).webp`, text: `${COUPLE_LABEL} hugging beneath a vine-covered arch` },
+      { image: `${GALLERY_PHOTOS}/couple (7).webp`, text: `${COUPLE_LABEL} on a roadside trip with Mayon Volcano behind them`, position: "center bottom" },
+      { image: `${GALLERY_PHOTOS}/couple (5).webp`, text: `${COUPLE_LABEL} in a sunlit park at golden hour` },
+      { image: `${GALLERY_PHOTOS}/couple (11).webp`, text: `${COUPLE_LABEL} sitting together on a bench by a lake` },
     ] as { image: string; text: string; position?: string }[],
   },
 

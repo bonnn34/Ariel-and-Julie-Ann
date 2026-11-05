@@ -181,7 +181,7 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
     e.preventDefault()
     const name = nameValue.trim()
     const message = messageValue.trim()
-    if (!name || !message) return
+    if (isSubmitting || !name || !message) return
 
     setIsSubmitting(true)
 
@@ -191,16 +191,9 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
       message,
     }
 
-    onMessageSent?.(sentMessage)
-    setIsSubmitted(true)
-    setNameValue("")
-    setMessageValue("")
-    formRef.current?.reset()
-    window.setTimeout(() => setIsSubmitted(false), 900)
-
     const googleFormData = new FormData()
-    googleFormData.append("entry.405401269", name)
-    googleFormData.append("entry.893740636", message)
+    googleFormData.append(siteConfig.googleAPI.messageFormFields.name, name)
+    googleFormData.append(siteConfig.googleAPI.messageFormFields.message, message)
 
     try {
       await fetch(siteConfig.googleAPI.messageForm, {
@@ -208,6 +201,13 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
         mode: "no-cors",
         body: googleFormData,
       })
+
+      onMessageSent?.(sentMessage)
+      setIsSubmitted(true)
+      setNameValue("")
+      setMessageValue("")
+      formRef.current?.reset()
+      window.setTimeout(() => setIsSubmitted(false), 900)
 
       toast({
         title: "Message sent",
@@ -407,7 +407,7 @@ export function Messages() {
           setLoading(false)
           return
         }
-        const parsed = data.filter((m: Message) => m.name || m.message || m.timestamp).reverse()
+        const parsed = data.filter((m: Message) => m.name.trim() || m.message.trim()).reverse()
         setMessages((prev) => {
           const serverKeys = new Set(parsed.map(messageKey))
           const pending = prev.filter((local) => !serverKeys.has(messageKey(local)))
