@@ -68,7 +68,7 @@ export type AttireColor = string | { name: string; hex: string }
 // ── The couple ──────────────────────────────────────────────────────────────
 const COUPLE = {
   bride: "Julie Ann L. Lelis",
-  brideNickname: "Julie",
+  brideNickname: "Julie Ann",
   groom: "Ariel J. Arivara",
   groomNickname: "Ariel",
 }
@@ -79,7 +79,7 @@ const WEDDING_DAY = "Friday" //
 // Every time on the invitation is set here, once: hero, venue cards, reminders, timeline and FAQ all read these.
 const TIMES = {
   entourageCall: "11:30 AM", // entourage assembly
-  guestArrival: "12:15 PM", // guests arrival / assembly (shown in Event Details + reminders)
+  guestArrival: "1:00 PM", // guests arrival / assembly (shown in Event Details + reminders)
   ceremony: "1:30 PM",
   reception: "2:30 PM", // start of program
   photoSession: "3:00 PM",
@@ -148,7 +148,7 @@ const VENUE_CARDS = {
 
 // ── RSVP & contact ──────────────────────────────────────────────────────────
 const RSVP = {
-  deadline: "December 15, 2026",
+  deadline: "December 10, 2026",
   coordinator: "{groom} / {bride}", // {groom} / {bride} → couple nicknames
   phone: "to be announced",
 }
@@ -309,7 +309,7 @@ guests: {
 const SITE_URL = "https://ariel-and-julie-ann.vercel.app/"
 // Image shown when the link is shared (Facebook, Messenger, Viber, X, …) — 1200×630 JPG in /public
 // Use a NEW filename whenever the image changes — Facebook caches images by URL.
-const LINK_PREVIEW_IMAGE = "/Details/link-preview-ariel-julie.jpg"
+const LINK_PREVIEW_IMAGE = "/Details/LinkPreview.png"
 
 // Site address with env override applied and no trailing slash — no need to edit
 export const canonicalSiteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? SITE_URL).replace(/\/$/, "")
@@ -1213,7 +1213,7 @@ export const siteConfig = {
       {
         question: "Are children invited?",
         answer:
-          "We love your little ones, but our celebration is adults-only. Please bring your child only if the bride or groom has personally told you that you may. If they have not, we kindly ask that you do not bring them and make childcare arrangements for the day. We hope this gives you a relaxing day off to celebrate with us!",
+          "We love your little ones, but our celebration is adults-only unless the bride or groom has personally invited your child to attend. Otherwise, we kindly ask that you make childcare arrangements. We hope this gives you a relaxing day off to celebrate with us!",
       },
       {
         question: "May we choose our own seats at the reception?",
