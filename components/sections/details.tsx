@@ -12,8 +12,6 @@ import { Cinzel } from "next/font/google"
 import { Shirt, Copy, Check, Navigation, Heart, MapPin } from "lucide-react"
 import { motion, useReducedMotion, type Variants } from "motion/react"
 import { PlainBubbles } from "@/components/loader/PlainBubbles"
-import { TintedDeco } from "@/components/tinted-deco"
-import { DecoCorners } from "@/components/deco-corners"
 import { SectionBackdrop } from "@/components/section-backdrop"
 
 const cinzel = Cinzel({
@@ -76,12 +74,6 @@ const softPanelStyle = {
 const primaryButtonBg =
   "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)"
 
-
-
-function DecoImg({ src, className }: { src: string; className: string }) {
-  if (!src) return null
-  return <TintedDeco src={src} className={className} />
-}
 
 // Warm-gray hairlines either side of a round blush-edged icon
 function SectionIconDivider({ icon }: { icon: ReactNode }) {
@@ -206,12 +198,12 @@ function DressCodePaletteHeader({
   )
 }
 
-// Light swatches (cream, blush) get charcoal names; darker ones get white
+// Light swatches get dark names; darker ones get white
 function isLightHex(hex: string) {
   const h = hex.replace("#", "")
   if (h.length !== 6) return false
   const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16))
-  return 0.299 * r + 0.587 * g + 0.114 * b > 186
+  return 0.299 * r + 0.587 * g + 0.114 * b > 160
 }
 
 // Full-width color strip: every color gets an equal share of the card width
@@ -239,7 +231,7 @@ function DressCodePaletteSwatches({ palette }: { palette: readonly PaletteColor[
         >
           {color.name ? (
             <span
-              className="text-[6px] font-semibold uppercase tracking-[0.08em] sm:text-[7px] md:text-[8px] lg:text-[9px]"
+              className="text-[8px] font-semibold uppercase tracking-[0.08em] sm:text-[9px] md:text-[10px] lg:text-[11px]"
               style={{
                 writingMode: "vertical-rl",
                 textOrientation: "mixed",
@@ -624,17 +616,11 @@ function EventVenueCard({
               {badge}
             </span>
             <h3
-              className={`${theSeasons.className} text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-1 sm:mb-1.5 drop-shadow-lg uppercase tracking-[0.12em] leading-tight`}
+              className={`${theSeasons.className} text-base sm:text-lg md:text-xl lg:text-2xl font-semibold drop-shadow-lg uppercase tracking-[0.12em] leading-tight`}
               style={{ color: C.light }}
             >
               <SpecialCharFont text={locationName} />
             </h3>
-            <p
-              className={`${theSeasons.className} text-[10px] sm:text-xs md:text-sm lg:text-base drop-shadow-md tracking-[0.06em] leading-snug`}
-              style={{ color: "var(--color-motif-silver)" }}
-            >
-              <SpecialCharFont text={venueAddress} />
-            </p>
           </div>
         </div>
 
@@ -763,7 +749,7 @@ function EventVenueCard({
 export function Details() {
   const siteConfig = useSiteConfig()
   const content = siteConfig.eventDetails
-  const { decos, venues, labels, attire, reminders } = content
+  const { venues, labels, attire, reminders } = content
   const { ceremony, reception } = siteConfig
 
   const [copiedItems, setCopiedItems] = useState<Set<string>>(new Set())
@@ -826,7 +812,10 @@ export function Details() {
   }
 
   const fillTimes = (text: string) =>
-    text.split("{guestsTime}").join(ceremony.guestsTime).split("{ceremonyTime}").join(ceremony.time)
+    text
+      .split("{guestsTime}").join(ceremony.guestsTime)
+      .split("{ceremonyTime}").join(ceremony.time)
+      .split("{receptionTime}").join(reception.time)
 
   const ceremonyVenue = `${ceremony.location}, ${ceremony.venue}`
   const receptionVenue = `${reception.location}, ${reception.venue}`
@@ -844,16 +833,8 @@ export function Details() {
         id="details"
         className="relative z-10 pt-14 pb-12 sm:pt-16 sm:pb-14 md:pt-20 md:pb-16 lg:pt-24 lg:pb-20 overflow-hidden"
       >
-        {/* Corner florals + double border (content/site.ts → eventDetails.decos / showFrame) */}
-        {content.showFrame && <div className="deco-frame" aria-hidden="true" />}
-        <DecoCorners decos={decos} />
-
         {/* Header */}
         <div className="relative z-20 mb-6 px-6 text-center sm:mb-8 sm:px-10 md:mb-10 md:px-12">
-          <DecoImg
-            src={decos.headerOrnament}
-            className="mx-auto mb-3 block h-auto w-28 select-none sm:mb-4 sm:w-36 md:w-44"
-          />
           <p
             className={`${cinzel.className} mb-2 text-[0.6rem] font-semibold uppercase tracking-[0.34em] min-[400px]:tracking-[0.38em] sm:text-[0.65rem] sm:tracking-[0.44em]`}
             style={onBgLabel}
@@ -935,7 +916,15 @@ export function Details() {
               day={ceremony.day}
               dateString={ceremony.date}
               time={ceremony.time}
-              arrivalTime={venues.ceremony.showArrival ? ceremony.guestsTime : undefined}
+              // Guests need both times: when to arrive and when the ceremony starts
+              schedule={
+                venues.ceremony.showArrival
+                  ? [
+                      { label: labels.arrival, time: ceremony.guestsTime },
+                      { label: venues.ceremony.badge, time: ceremony.time },
+                    ]
+                  : undefined
+              }
               venueSectionLabel={venues.ceremony.sectionLabel}
               mapsLink={ceremony.map}
               copyId="ceremony"
@@ -994,7 +983,7 @@ export function Details() {
             {attireGroups.map((group) => {
               const palette = toPaletteColors(group.palette)
               const hasPalette = palette.length > 0
-              const halves = [group.ladies, group.gentlemen].filter(
+              const halves = [group.gentlemen, group.ladies].filter(
                 (half) => half.details.trim() || half.roles.length > 0,
               )
               return (
@@ -1062,12 +1051,7 @@ export function Details() {
                       currentImageIndex={reminderImageIndex}
                       rotationOffset={rotationOffset}
                     />
-                  ) : (
-                    <DecoImg
-                      src={decos.headerOrnament}
-                      className="mx-auto mb-3 block h-auto w-20 select-none sm:w-24"
-                    />
-                  )}
+                  ) : null}
                   <h3
                     className={`${theSeasons.className} ${ct.sectionTitle} font-semibold uppercase tracking-[0.18em]`}
                     style={{ color: C.heading }}

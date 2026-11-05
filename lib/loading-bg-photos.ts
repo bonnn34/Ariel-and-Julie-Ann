@@ -1,12 +1,7 @@
 import { siteConfig } from "@/content/site";
 
-/** Mobile invitation photo marquee — `public/mobile-background` */
-export const MOBILE_BACKGROUND_PHOTO_COUNT = 11;
-
-export const MOBILE_BACKGROUND_PHOTOS = Array.from(
-  { length: MOBILE_BACKGROUND_PHOTO_COUNT },
-  (_, index) => encodeURI(`/mobile-background/couples (${index + 1}).webp`),
-);
+/** Mobile invitation photo marquee — set in content/site.ts (loadingScreen.backgroundPhotos). */
+export const MOBILE_BACKGROUND_PHOTOS = (siteConfig.loadingScreen.backgroundPhotos ?? []).map((src) => encodeURI(src));
 
 /** Loader background photos for preloading — set in content/site.ts (loadingScreen.backgroundPhotos). */
 export const LOADING_BG_PHOTOS = (siteConfig.loadingScreen.backgroundPhotos ?? []).map((src) => encodeURI(src));

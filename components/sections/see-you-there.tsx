@@ -26,9 +26,15 @@ const aboveTheBeyond = localFont({
 })
 
 const IVORY = "#FAF6EE"
-const BUTTER = "var(--color-motif-silver)"
+// Light periwinkle: reads clearly on navy and over the desktop photos
+const BUTTER = "color-mix(in srgb, var(--color-motif-silver) 55%, #FAF6EE)"
 const entryEase = [0.22, 1, 0.36, 1] as const
 const SLIDE_MS = 5000
+
+// Phones: the photo itself fades out, eased so bright clothing melts away instead of turning grey.
+// (A navy overlay on top left a hairline where the two layers ended.)
+const mobilePhotoFade =
+  "linear-gradient(180deg, #000 0%, #000 60%, rgb(0 0 0 / 82%) 70%, rgb(0 0 0 / 48%) 82%, rgb(0 0 0 / 16%) 92%, transparent 100%)"
 
 const titleSize = "clamp(2.85rem, 13.5vw, 6.75rem)"
 const photoTitleShadow =
@@ -80,6 +86,7 @@ export function SeeYouThere() {
   const fill = (text: string) => text.split("{couple}").join(couple)
   const alt = fill(content.photoAlt)
   const photos = content.photos.map((src) => encodeURI(src))
+  const desktopPhotos = content.desktopPhotos.map((src) => encodeURI(src))
   const [active, setActive] = useState(0)
 
   // Mobile slideshow
@@ -101,41 +108,42 @@ export function SeeYouThere() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        {/* Mobile: one full-screen photo cross-fading through the set */}
-        <div className="absolute inset-0 md:hidden" aria-hidden={photos.length > 1 ? true : undefined}>
+        {/* Mobile: photos cross-fade in the top part of the screen, so the wording below never covers the couple */}
+        <div
+          className="absolute inset-x-0 top-0 h-[68svh] md:hidden"
+          style={{ WebkitMaskImage: mobilePhotoFade, maskImage: mobilePhotoFade }}
+          aria-hidden={photos.length > 1 ? true : undefined}
+        >
           <CrossfadeImages
             images={photos}
             active={active}
             sizes="100vw"
             alt={alt}
-            className="object-cover object-[center_30%]"
+            className="object-cover object-[center_60%]"
             reduceMotion={reduceMotion}
           />
         </div>
 
         {/* md+: portrait triptych */}
         <div className="absolute inset-0 hidden gap-[3px] md:flex">
-          {photos.map((src, i) => (
+          {desktopPhotos.map((src, i) => (
             <motion.div key={src} className="relative h-full flex-1 overflow-hidden" variants={panelReveal} custom={i}>
               <Image
                 src={src}
                 alt={i === 0 ? alt : ""}
                 fill
                 sizes="34vw"
-                className={`object-cover object-[center_30%] ${reduceMotion ? "" : "see-you-drift"}`}
+                className={`object-cover object-[center_60%] ${reduceMotion ? "" : "see-you-drift"}`}
                 style={{ animationDelay: `${i * -2.5}s` }}
               />
             </motion.div>
           ))}
         </div>
 
-        {/* Mobile wash: the type sits low, so the bottom half goes deep navy */}
+        {/* Mobile: soft shade at the very top, behind the navbar */}
         <div
-          className="pointer-events-none absolute inset-0 md:hidden"
-          style={{
-            background:
-              "linear-gradient(180deg, rgb(23 44 76 / 40%) 0%, rgb(23 44 76 / 8%) 26%, rgb(23 44 76 / 28%) 45%, rgb(23 44 76 / 78%) 66%, rgb(23 44 76 / 92%) 100%)",
-          }}
+          className="pointer-events-none absolute inset-x-0 top-0 h-[12svh] md:hidden"
+          style={{ background: "linear-gradient(180deg, rgb(23 44 76 / 30%), rgb(23 44 76 / 0%))" }}
           aria-hidden
         />
         {/* md+ wash: the type is centred, so darken a soft oval behind it */}
@@ -149,7 +157,7 @@ export function SeeYouThere() {
         />
 
         <motion.div
-          className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col items-center justify-end px-6 pb-[12svh] pt-24 text-center md:justify-center md:pb-24"
+          className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col items-center justify-end px-6 pb-[7svh] pt-24 text-center md:justify-center md:pb-24 [@media(max-height:700px)]:pb-[4svh]"
           variants={stagger}
         >
           {content.eyebrow ? (
@@ -199,7 +207,7 @@ export function SeeYouThere() {
 
           {/* Mobile slideshow position */}
           {photos.length > 1 && (
-            <motion.div variants={rise} className="mt-7 flex items-center gap-1.5 md:hidden" aria-hidden>
+            <motion.div variants={rise} className="mt-6 flex items-center gap-1.5 md:hidden [@media(max-height:700px)]:hidden" aria-hidden>
               {photos.map((src, i) => (
                 <span
                   key={src}

@@ -16,14 +16,13 @@ import {
 import { anastasiaScript } from "@/lib/fonts"
 
 const canonicalUrl = canonicalSiteUrl
-const desktopHero = siteConfig.linkPreviewImage
-const mobileHero = siteConfig.linkPreviewImage
-const eventImageUrl = `${canonicalUrl}${desktopHero}`
-const OG_IMAGE_FALLBACK = `${canonicalUrl}${desktopHero}`
+const linkPreviewImage = siteConfig.linkPreviewImage
+const eventImageUrl = `${canonicalUrl}${linkPreviewImage}`
+const OG_IMAGE_FALLBACK = `${canonicalUrl}${linkPreviewImage}`
 // og:image:type must match the real file — Facebook / Messenger drop the image on a mismatch
-const OG_IMAGE_TYPE = /\.png$/i.test(desktopHero)
+const OG_IMAGE_TYPE = /\.png$/i.test(linkPreviewImage)
   ? "image/png"
-  : /\.webp$/i.test(desktopHero)
+  : /\.webp$/i.test(linkPreviewImage)
     ? "image/webp"
     : "image/jpeg"
 
@@ -153,8 +152,6 @@ export const metadata: Metadata = {
     title: previewTitle,
     description: eventDescription,
     images: [eventImageUrl],
-    creator: `@${siteConfig.couple.groomNickname}And${siteConfig.couple.brideNickname}`,
-    site: `@${siteConfig.couple.groomNickname}And${siteConfig.couple.brideNickname}`,
   },
   robots: {
     index: true,
@@ -233,8 +230,6 @@ export default function RootLayout({
             />
           )
         })}
-        <link rel="preload" as="image" href={mobileHero} media="(max-width: 767px)" />
-        <link rel="preload" as="image" href={desktopHero} media="(min-width: 768px)" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body

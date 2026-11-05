@@ -76,7 +76,7 @@ const ct = {
   bodyLg: sectionType.textRelaxed,
   label: sectionType.label,
   cardTitle: `${sectionType.subheader} lg:text-xl`,
-  btn: sectionType.label,
+  btn: "text-xs",
 } as const
 
 const cardStyle = {
@@ -87,6 +87,24 @@ const cardStyle = {
     "0 0 0 5px rgb(255 255 255 / 25%), 0 24px 50px -28px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)",
 } as const
 
+
+// The Seasons has no clean glyphs for symbols / digits — render only those
+// characters (e.g. "#", "&", numbers) in Cinzel, keep letters in The Seasons.
+function SpecialCharFont({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/([^\p{L}\s]+)/u).map((part, i) =>
+        i % 2 === 1 ? (
+          <span key={i} className={`${cinzel.className} tracking-normal`}>
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  )
+}
 
 function OutsideDivider() {
   return (
@@ -347,8 +365,8 @@ export function SnapShare() {
   const { fg: qrFg, bg: qrBg } = useQrColors() // --color-qr-fg / --color-qr-bg in globals.css
   const siteConfig = useSiteConfig()
   const content = siteConfig.snapShare
-  const [copiedHashtagIndex, setCopiedHashtagIndex] = useState<number | null>(null)
-  const [copiedAllHashtags, setCopiedAllHashtags] = useState(false)
+  // Index of the hashtag just copied, or "all" for Copy All
+  const [copiedTag, setCopiedTag] = useState<number | "all" | null>(null)
   const [copiedDriveLink, setCopiedDriveLink] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -356,17 +374,16 @@ export function SnapShare() {
   const coupleDisplayName = `${groomNickname} & ${brideNickname}`
   const fill = (text: string) => text.split("{couple}").join(coupleDisplayName)
 
-  const websiteUrl = typeof window !== "undefined" ? window.location.href : "https://example.com"
+  // The live address, so the QR always opens the invitation (not whichever section this visitor is on)
+  const websiteUrl = siteConfig.siteUrl
   const uploadLink = content.googleDriveLink
-  const hashtags = content.hashtag
-  const allHashtagsText = hashtags.join(" ")
+  const hashtags = content.hashtags.show ? content.hashtag.filter((tag) => tag.trim()) : []
+  const allHashtagsText = content.hashtag.join(" ")
   const sanitizedGroomName = groomNickname.replace(/\s+/g, "")
   const sanitizedBrideName = brideNickname.replace(/\s+/g, "")
   const shareText = `${fill(content.social.shareText)} ${websiteUrl} ${allHashtagsText}`
 
-  // Plain display mode never shows the photo card
-  const isPlain = siteConfig.loadingScreen?.display === "plain"
-  const showMoments = content.moments.show && !isPlain && content.moments.images.length > 0
+  const showMoments = content.moments.show && content.moments.images.length > 0
   const [momentA, momentB, momentC] = content.moments.images
 
   useEffect(() => {
@@ -406,6 +423,12 @@ export function SnapShare() {
       console.error("Failed to copy: ", err)
     }
   }
+
+  const copyTag = (text: string, key: number | "all") =>
+    copyText(text, () => {
+      setCopiedTag(key)
+      setTimeout(() => setCopiedTag((prev) => (prev === key ? null : prev)), 2000)
+    })
 
   const qrFrame = (
     id: string,
@@ -463,66 +486,53 @@ export function SnapShare() {
     </ContentCard>
   )
 
-  const hashtagsCard = content.hashtags.show && hashtags.length > 0 && (
+  // Wedding hashtags — tap one to copy it, or copy them all
+  const hashtagsCard = hashtags.length > 0 && (
     <ContentCard>
-      <CardTitle as="h5">{content.hashtags.title}</CardTitle>
-      <div className="w-full min-w-0 space-y-2">
-        {hashtags.map((hashtag, index) => {
-          const isCopied = copiedHashtagIndex === index
+      <p
+        className={`${cinzel.className} ${ct.label} mx-auto w-full rounded-full px-3 py-1.5 text-center uppercase leading-snug tracking-[0.16em] break-words`}
+        style={{ color: palette.heading, background: PALE, boxShadow: `inset 0 0 0 1px ${HAIRLINE}` }}
+      >
+        {content.hashtags.title}
+      </p>
+      <ul className="flex flex-col gap-2 sm:gap-2.5">
+        {hashtags.map((tag, i) => {
+          const copied = copiedTag === i || copiedTag === "all"
           return (
-            <button
-              key={index}
-              type="button"
-              onClick={() =>
-                copyText(hashtag, () => {
-                  setCopiedHashtagIndex(index)
-                  setTimeout(() => setCopiedHashtagIndex(null), 2000)
-                })
-              }
-              className="flex w-full min-w-0 items-center justify-between gap-2 rounded-xl px-3.5 py-2.5 transition-all duration-200 active:scale-[0.98]"
-              style={{
-                background: isCopied ? PALE : IVORY,
-                boxShadow: `inset 0 0 0 1px ${isCopied ? "color-mix(in srgb, var(--color-motif-yellow) 75%, transparent)" : HAIRLINE}`,
-              }}
-            >
-              <span
-                className={`font-goudy-italic ${ct.body} min-w-0 flex-1 break-all text-left font-semibold`}
-                style={{ color: isCopied ? palette.accent : palette.heading }}
+            <li key={tag}>
+              <button
+                type="button"
+                onClick={() => copyTag(tag, i)}
+                className="group flex min-h-12 w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)] sm:px-4 sm:py-3"
+                style={{ background: IVORY, boxShadow: `0 0 0 1px ${HAIRLINE}, 0 10px 20px -16px color-mix(in srgb, var(--color-welcome-navy) 50%, transparent)` }}
+                aria-label={`${copied ? content.hashtags.copied : content.hashtags.copy} ${tag}`}
               >
-                {hashtag}
-              </span>
-              <span
-                className={`${cinzel.className} flex flex-shrink-0 items-center gap-1 whitespace-nowrap ${sectionType.label} font-semibold uppercase tracking-wider`}
-                style={{ color: isCopied ? "color-mix(in srgb, var(--color-motif-yellow) 70%, #172C4C)" : BLUE }}
-              >
-                {isCopied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
-                {isCopied ? content.hashtags.copied : content.hashtags.copy}
-              </span>
-            </button>
+                <span
+                  className={`${theSeasons.className} min-w-0 flex-1 break-words text-[0.95rem] leading-snug tracking-[0.03em] sm:text-lg`}
+                  style={{ color: palette.heading }}
+                >
+                  <SpecialCharFont text={tag} />
+                </span>
+                <span
+                  className={`${cinzel.className} flex flex-shrink-0 items-center gap-1 text-[0.6875rem] font-semibold uppercase tracking-[0.12em]`}
+                  style={{ color: copied ? TEAL : BLUE }}
+                  aria-hidden
+                >
+                  {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                  <span className="hidden min-[400px]:inline">{copied ? content.hashtags.copied : content.hashtags.copy}</span>
+                </span>
+              </button>
+            </li>
           )
         })}
-      </div>
+      </ul>
       {hashtags.length > 1 && (
-        <button
-          type="button"
-          onClick={() =>
-            copyText(allHashtagsText, () => {
-              setCopiedAllHashtags(true)
-              setTimeout(() => setCopiedAllHashtags(false), 2000)
-            })
-          }
-          className="flex w-full items-center justify-center gap-1.5 rounded-full py-2.5 transition-all duration-200 hover:brightness-110 active:scale-[0.98]"
-          style={
-            copiedAllHashtags
-              ? { background: PALE, color: palette.accent }
-              : { background: BUTTON, color: IVORY, boxShadow: BUTTON_SHADOW }
-          }
-        >
-          {copiedAllHashtags ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-          <span className={`${cinzel.className} ${ct.btn} font-semibold uppercase tracking-[0.12em]`}>
-            {copiedAllHashtags ? content.hashtags.allCopied : content.hashtags.copyAll}
-          </span>
-        </button>
+        <div className="flex justify-center pt-1">
+          <PrimaryButton onClick={() => copyTag(hashtags.join(" "), "all")} active={copiedTag === "all"}>
+            {copiedTag === "all" ? <Check className="h-3.5 w-3.5 flex-shrink-0 sm:h-4 sm:w-4" /> : <Copy className="h-3.5 w-3.5 flex-shrink-0 sm:h-4 sm:w-4" />}
+            {copiedTag === "all" ? content.hashtags.allCopied : content.hashtags.copyAll}
+          </PrimaryButton>
+        </div>
       )}
     </ContentCard>
   )
@@ -625,17 +635,18 @@ export function SnapShare() {
 
         {showMoments ? (
           <div className="mt-6 grid grid-cols-1 items-start gap-5 sm:mt-8 sm:gap-6 md:mt-10 lg:grid-cols-2 lg:gap-8">
+            <div className="w-full min-w-0 space-y-5 sm:space-y-6">
             <ContentCard>
               <CardTitle>{content.moments.title}</CardTitle>
               <div className="grid w-full min-w-0 grid-cols-2 gap-2 sm:gap-3">
                 {[momentA, momentB].filter(Boolean).map((src, i) => (
                   <div key={src} className="relative aspect-square overflow-hidden rounded-xl" style={{ boxShadow: `0 0 0 1px ${HAIRLINE}` }}>
-                    <Image src={src} alt={`Wedding moment ${i + 1}`} fill sizes="(max-width: 1024px) 45vw, 22vw" className="object-cover" />
+                    <Image src={encodeURI(src)} alt={`${coupleDisplayName}, moment ${i + 1}`} fill sizes="(max-width: 1024px) 45vw, 22vw" className={`object-cover ${i === 1 ? "object-right" : ""}`} />
                   </div>
                 ))}
                 {momentC ? (
                   <div className="relative col-span-2 aspect-[3/2] overflow-hidden rounded-xl" style={{ boxShadow: `0 0 0 1px ${HAIRLINE}` }}>
-                    <Image src={momentC} alt="Wedding moment 3" fill sizes="(max-width: 1024px) 90vw, 45vw" className="object-cover" />
+                    <Image src={encodeURI(momentC)} alt={`${coupleDisplayName}, moment 3`} fill sizes="(max-width: 1024px) 90vw, 45vw" className="object-cover" />
                   </div>
                 ) : null}
               </div>
@@ -643,12 +654,13 @@ export function SnapShare() {
                 {content.moments.caption}
               </p>
             </ContentCard>
+            {websiteCard}
+            </div>
 
             <div className="w-full min-w-0 space-y-5 sm:space-y-6">
-              {websiteCard}
+              {uploadCard}
               {hashtagsCard}
               {socialCard}
-              {uploadCard}
             </div>
           </div>
         ) : !websiteCard && !hashtagsCard && !socialCard ? (
@@ -659,11 +671,11 @@ export function SnapShare() {
           <div className="mt-6 grid grid-cols-1 items-start gap-5 sm:mt-8 sm:gap-6 md:mt-10 lg:grid-cols-2 lg:gap-8">
             <div className="w-full min-w-0 space-y-5 sm:space-y-6">
               {websiteCard}
-              {hashtagsCard}
+              {socialCard}
             </div>
             <div className="w-full min-w-0 space-y-5 sm:space-y-6">
-              {socialCard}
               {uploadCard}
+              {hashtagsCard}
             </div>
           </div>
         )}

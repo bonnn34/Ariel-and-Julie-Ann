@@ -34,6 +34,9 @@ const HANDOFF_DELAY_MS = 450;
 const COVER_FADE_IN_MS = 1300;
 const LEAVE_EASE = 'cubic-bezier(0.4, 0, 0.2, 1)';
 
+// Wedding motif: periwinkle, cornflower, sky and navy
+const MOTIF_BLEND = 'linear-gradient(135deg, #9AADE0 0%, #739ACD 38%, #9CC5E5 70%, #172C4C 100%)';
+
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onComplete }) => {
   const siteConfig = useSiteConfig();
   const reduceMotion = useReducedMotion();
@@ -113,25 +116,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onCom
   const productionCredit = '';
 
 
-//   Background	#F5EFE6
-// --color-motif-deep:    #9C5A63; /* deeper rose */
-// --color-motif-medium:  #D88C9A; /* muted pink */
-// --color-motif-accent:  #F2B5B5; /* pastel pink */
-// --color-motif-cream:   #FFF8F5; /* creamy white */
-// --color-motif-soft:    #F9E4E4; /* soft background */
-// --color-motif-silver:  #CFC7C7; /* refined gray */
-  const palette = {
-    deep: '--color-motif-deep',
-    medium: '--color-motif-medium',
-    accent: '--color-motif-accent',
-    cream: '--color-motif-cream',
-    soft: '--color-motif-soft',
-    silver: '--color-motif-silver',
-  };
-
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#1d1a17] ${
+      className={`fixed inset-0 z-50 flex flex-col overflow-hidden bg-[#172C4C] ${
         leaving ? 'pointer-events-none' : ''
       }`}
       aria-busy={!leaving}
@@ -163,18 +150,23 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onCom
           sizes="100vw"
           priority
         />
-        {/* Gradient overlay — darkens top & bottom so text is legible */}
+        {/* Motif wash — soft-light keeps it a hint of colour, not a visible gradient */}
+        <div
+          className="absolute inset-0 mix-blend-soft-light"
+          style={{ background: MOTIF_BLEND, opacity: 0.3 }}
+        />
+        {/* Navy shade at the top and bottom so the text is legible */}
         <div
           className="absolute inset-0"
           style={{
             background: `linear-gradient(
               to bottom,
-              rgba(78, 59, 49, 0.75) 0%,
-              rgba(78, 59, 49, 0.35) 18%,
+              rgb(23 44 76 / 72%) 0%,
+              rgb(23 44 76 / 32%) 18%,
               transparent 35%,
               transparent 62%,
-              rgba(78, 59, 49, 0.45) 80%,
-              rgba(78, 59, 49, 0.80) 100%
+              rgb(23 44 76 / 45%) 80%,
+              rgb(23 44 76 / 82%) 100%
             )`,
           }}
         />
@@ -199,7 +191,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onCom
                   color: 'var(--color-motif-cream)',
                   fontSize: 'clamp(2.8rem, 10vw, 5.5rem)',
                   lineHeight: 1.1,
-                  textShadow: '0 2px 18px rgba(0,0,0,0.55), 0 0 32px var(--color-motif-accent)',
+                  textShadow: '0 2px 18px rgb(23 44 76 / 70%), 0 0 32px rgb(154 173 224 / 55%)',
                 }}
               >
                 Save the Date
@@ -212,7 +204,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onCom
                   fontSize: 'clamp(1.1rem, 5vw, 1.75rem)',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  textShadow: '0 2px 10px rgba(0,0,0,0.6)',
+                  textShadow: '0 2px 10px rgb(23 44 76 / 75%)',
                   opacity: 0.92,
                   fontWeight: 700,
                 }}
@@ -234,7 +226,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onCom
             return (
               <div
                 key={i}
-                className="relative flex-1 max-w-[28vw] sm:max-w-[140px] md:max-w-[160px] aspect-[3/4] overflow-hidden rounded-3xl border border-white/40 bg-white/10 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.35)]"
+                className="relative flex-1 max-w-[28vw] sm:max-w-[140px] md:max-w-[160px] aspect-[3/4] overflow-hidden rounded-3xl border border-[#9CC5E5]/45 bg-white/10 backdrop-blur-md shadow-[0_18px_45px_rgb(23_44_76/45%)]"
                 style={{
                   opacity: isVisible ? 1 : 0,
                   transform: isVisible
@@ -254,14 +246,14 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onCom
                 <div
                   className="absolute inset-0"
                   style={{
-                    background: `linear-gradient(145deg, ${palette.deep}66 0%, transparent 40%, ${palette.accent}aa 100%)`,
+                    background: 'linear-gradient(160deg, rgb(154 173 224 / 22%) 0%, transparent 42%, rgb(23 44 76 / 62%) 100%)',
                   }}
                 />
 
                 {/* Bold debut date number + label - centered at bottom */}
                 <div className="absolute bottom-2 inset-x-0 sm:bottom-3 flex flex-col items-center">
                   <span
-                    className="text-3xl sm:text-2xl md:text-4xl lg:text-7xl font-black select-none leading-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] text-center"
+                    className="text-3xl sm:text-2xl md:text-4xl lg:text-7xl font-black select-none leading-none drop-shadow-[0_2px_8px_rgb(23_44_76/70%)] text-center"
                     style={{
                       fontFamily: 'var(--font-granika), sans-serif',
                       color: 'var(--color-motif-cream)',
@@ -295,7 +287,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onCom
             style={{
               fontFamily: 'var(--font-playlist-script)',
               color: 'var(--color-motif-cream)',
-              textShadow: '0 2px 12px rgba(0,0,0,0.4)',
+              textShadow: '0 2px 12px rgb(23 44 76 / 60%)',
               fontWeight: 400,
             }}
           >
@@ -315,7 +307,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onCom
           {/* Divider */}
           <div
             className="w-16 h-px my-2"
-            style={{ backgroundColor: 'var(--color-motif-cream)', opacity: 0.3 }}
+            style={{ background: 'linear-gradient(to right, transparent, #9CC5E5, transparent)', opacity: 0.7 }}
           />
 
           {/* Preparing message + progress bar */}
@@ -332,13 +324,13 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFadeStart, onCom
           <div className="w-full max-w-[200px] sm:max-w-xs mx-auto">
             <div
               className="h-[3px] rounded-full overflow-hidden"
-              style={{ backgroundColor: 'rgba(255,255,255,0.2)' }}
+              style={{ backgroundColor: 'rgb(154 173 224 / 25%)' }}
             >
               <div
-                className="h-full rounded-full transition-all duration-300 ease-out shadow-[0_0_8px_rgba(255,255,255,0.6)]"
+                className="h-full rounded-full transition-all duration-300 ease-out shadow-[0_0_8px_rgb(156_197_229/70%)]"
                 style={{
                   width: `${progress}%`,
-                  backgroundColor: 'var(--color-motif-accent)',
+                  background: 'linear-gradient(to right, #9AADE0, #739ACD, #9CC5E5)',
                 }}
               />
             </div>

@@ -68,7 +68,7 @@ export type AttireColor = string | { name: string; hex: string }
 // ── The couple ──────────────────────────────────────────────────────────────
 const COUPLE = {
   bride: "Julie Ann L. Lelis",
-  brideNickname: "Julie Ann",
+  brideNickname: "Julie",
   groom: "Ariel J. Arivara",
   groomNickname: "Ariel",
 }
@@ -76,11 +76,19 @@ const COUPLE = {
 // ── Date & times ────────────────────────────────────────────────────────────
 const WEDDING_DATE = "January 22, 2027" // e.g. "June 5, 2027"
 const WEDDING_DAY = "Friday" // 
+// Every time on the invitation is set here, once: hero, venue cards, reminders, timeline and FAQ all read these.
 const TIMES = {
   entourageCall: "11:30 AM", // entourage assembly
   guestArrival: "1:00 PM", // guests arrival / assembly (shown in Event Details + reminders)
   ceremony: "1:30 PM",
   reception: "2:30 PM", // start of program
+  photoSession: "3:00 PM",
+  cocktailHour: "3:30 PM",
+  grandEntrance: "4:00 PM",
+  weddingFeast: "4:30 PM",
+  cakeCutting: "5:00 PM",
+  firstDance: "5:20 PM",
+  closing: "5:30 PM", // closing moments
 }
 
 // ── Venues ──────────────────────────────────────────────────────────────────
@@ -140,7 +148,7 @@ const VENUE_CARDS = {
 
 // ── RSVP & contact ──────────────────────────────────────────────────────────
 const RSVP = {
-  deadline: " December 10, 2026",
+  deadline: "December 10, 2026",
   coordinator: "{groom} / {bride}", // {groom} / {bride} → couple nicknames
   phone: "to be announced",
 }
@@ -270,27 +278,27 @@ const ATTIRE = {
 },
 
 guests: {
-  title: "Wedding Guests",
+  title: "Elegant Shades of Blue",
   image: "/Details/guest.png",
   dressCode: "Formal Attire",
   palette: DRESS_CODE_PALETTE,
 
   note:
-    "Celebrate with us in elegant shades of blue. Ladies are kindly requested to wear floor-length gowns in periwinkle blue, cornflower blue, sky blue, or navy blue. Gentlemen are requested to wear cream Barong Tagalog with formal trousers and dress shoes. Thank you for following our dress code and helping create a beautifully coordinated celebration.",
+    "Kindly avoid white, ivory, and other shades traditionally reserved for the bride and groom.",
 
   ladies: {
     label: "Ladies",
     details:
-      "Elegant floor-length gowns in periwinkle blue, cornflower blue, sky blue, or navy blue. Flowing chiffon, satin, or silk fabrics are encouraged. Kindly avoid white, ivory, cream, and other shades traditionally reserved for the bride and groom. Please also avoid short or midi dresses, busy prints, and colors outside our blue palette.",
-    highlight: "Floor-Length Gowns in Shades of Blue",
+      "Floor-length gowns or elegant dresses in shades of blue that complement our wedding color palette.",
+    highlight: "Floor-length gowns or elegant dresses in shades of blue",
     roles: [] as { role: string; attire: string }[],
   },
 
   gentlemen: {
     label: "Gentlemen",
     details:
-      "Elegant cream Barong Tagalog, either traditional long-sleeved or modern short-sleeved, with subtle embroidery. Wear it untucked with tailored deep navy formal trousers and polished dress shoes. Please avoid suits, tuxedos, casual shirts, jeans, shorts, and sneakers.",
-    highlight: "Cream Barong Tagalog with Formal Trousers",
+      "Please wear a cream barong, whether traditional long-sleeved or modern short-sleeved, to complement our elegant wedding theme.",
+    highlight: "cream barong",
     roles: [] as { role: string; attire: string }[],
   },
 },
@@ -301,7 +309,7 @@ guests: {
 const SITE_URL = "https://ariel-and-julie-ann.vercel.app/"
 // Image shown when the link is shared (Facebook, Messenger, Viber, X, …) — 1200×630 JPG in /public
 // Use a NEW filename whenever the image changes — Facebook caches images by URL.
-const LINK_PREVIEW_IMAGE = "/Details/linkprev.png"
+const LINK_PREVIEW_IMAGE = "/Details/link-preview-ariel-julie.jpg"
 
 // Site address with env override applied and no trailing slash — no need to edit
 export const canonicalSiteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? SITE_URL).replace(/\/$/, "")
@@ -319,32 +327,24 @@ const BRAND = {
   backgroundMusic: "/background_music/kay-tagal-kitang-hinintay-spongecola-piano-cover-by-gerard-chua_b8pL0ElX.mp3",
 }
 
-// Couple photos reused across the site (gallery, loader, reminders, snap & share, closing)
-// — every portrait in /public/mobile-background
-const COUPLE_PHOTOS = Array.from(
-  { length: 15 },
-  (_, i) => `/mobile-background/couple (${i + 1}).webp`,
-)
+// Couple photos reused across the site — every portrait in PRENUP PICTURES/mobile
+const prenupPhoto = (n: number) => `/JULIE ANN LELIS/PRENUP PICTURES/mobile/couple (${n}).JPG`
+const COUPLE_PHOTOS = [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(prenupPhoto)
 
 // Portraits for the envelope reveal + the main cover photo (soft natural light, no heavy filters)
 const COUPLE_PORTRAITS = {
-  groom: "/mobile-background/couple (14).webp", // left photo in the envelope
-  bride: "/mobile-background/couple (15).webp", // right photo in the envelope
-  cover: "/mobile-background/couple (11).webp", // photo pulled out of the envelope + home hero cover photo
+  groom: prenupPhoto(7), // left photo in the envelope
+  bride: prenupPhoto(12), // right photo in the envelope
+  cover: prenupPhoto(13), // photo pulled out of the envelope + home hero cover photo
 }
 
 // Sliding photo marquee behind the loader and envelope.
-// Phones use the portrait shots in /public/mobile-background, desktop the landscape
-// shots in /public/desktop-background — update the counts when files are added/removed.
-const MARQUEE_PHOTO_COUNT = 15
-const MARQUEE_PHOTOS = Array.from(
-  { length: MARQUEE_PHOTO_COUNT },
-  (_, i) => `/mobile-background/couple (${i + 1}).webp`,
-)
+// Phones use the portrait shots, desktop the landscape ones in PRENUP PICTURES/dektop
+const MARQUEE_PHOTOS = COUPLE_PHOTOS
 const MARQUEE_PHOTO_COUNT_DESKTOP = 19
 const MARQUEE_PHOTOS_DESKTOP = Array.from(
   { length: MARQUEE_PHOTO_COUNT_DESKTOP },
-  (_, i) => `/desktop-background/couple (${i + 1}).webp`,
+  (_, i) => `/JULIE ANN LELIS/PRENUP PICTURES/dektop/couple (${i + 1}).JPG`,
 )
 
 // Cross-fading photo background behind the invitation envelope (components/loader/Hero.tsx).
@@ -357,10 +357,11 @@ const ENVELOPE_BG_PHOTOS_DESKTOP = Array.from({ length: 13 }, (_, i) => `${ENVEL
 const HOME_HERO_BG_DIR = "/JULIE ANN LELIS/PRENUP PICTURES/YOU ARE INVITED - MAIN PAGE"
 const LOVE_STORY_PHOTOS = "/JULIE ANN LELIS/LOVE STORY/mobile"
 const GALLERY_PHOTOS = "/JULIE ANN LELIS/GALLERY/mobile"
+const galleryWide = (n: number) => `/JULIE ANN LELIS/GALLERY/desktop/couple (${n}).JPG`
 
 // ── Decorations ─────────────────────────────────────────────────────────────
 // Change a path here to swap it on every section at once.
-// To change ONE section only, override it there, e.g. decos: { ...SECTION_DECOS, footerVine: "" }
+// To change ONE section only, override it there, e.g. decos: { ...CORNER_DECOS, topLeft: "" }
 const DECOR = {
   cornerTopLeft: "/deco/new-corner-left.png", // floral corner tucked under the top vines (loader + envelope)
   cornerTopRight: "/deco/new-corner-right.png",
@@ -380,13 +381,6 @@ const CORNER_DECOS = {
   topRight: DECOR.cornerTopRight,
   bottomLeft: DECOR.cornerBottomLeft,
   bottomRight: DECOR.cornerBottomRight,
-}
-
-// Default decoration set used by most sections (corners + ornament + vine)
-const SECTION_DECOS = {
-  ...CORNER_DECOS,
-  headerOrnament: DECOR.headerOrnament,
-  footerVine: DECOR.footerVine,
 }
 
 // One love story chapter (content/site.ts → loveStory.chapters)
@@ -725,7 +719,7 @@ export const siteConfig = {
 
   // Event details section (components/sections/details.tsx)
   // Venue names, addresses, dates, times, maps and venue photos come from ceremony / reception below.
-  // In reminder text, {guestsTime} and {ceremonyTime} are replaced from ceremony below.
+  // In reminder text, {guestsTime}, {ceremonyTime} and {receptionTime} are filled in from TIMES.
   eventDetails: {
     eyebrow: "Our Celebration",
     title: "Event Details",
@@ -734,9 +728,6 @@ export const siteConfig = {
     // Verse under the description — "" hides it
     verse: "",
     verseCitation: "",
-    decos: { ...SECTION_DECOS },
-    // Thin double border around the section (false hides it)
-    showFrame: true,
     // Venue cards layout:
     //   "separate" = one card each for ceremony and reception (uses ceremony / reception below)
     //   "combined" = ONE card for both — use when ceremony and reception share a venue.
@@ -746,7 +737,7 @@ export const siteConfig = {
     venues: VENUE_CARDS,
     labels: {
       arrival: "Arrival",
-      at: "At",
+      at: "Starts at",
       scanForDirections: "Scan for directions",
       getDirections: "Get Directions",
       copyAddress: "Copy Address",
@@ -755,7 +746,7 @@ export const siteConfig = {
     // Cards, colors, images and which groups show → QUICK SETUP → ATTIRE
     attire: {
       title: "Attire Guidelines",
-      description: "Our day is dressed in soft dusty pinks, gentle grays and warm creams, and we would love for you to wear them with us. Please find your role below.",
+      description: "We invite our guests to wear elegant shades of blue, creating a beautiful and coordinated look for our special day.",
       // Shown above a card's palette
       paletteTitle: "Dress Code Palette",
       paletteSubtitle: "", // script line under the palette title — "" hides it
@@ -789,19 +780,20 @@ export const siteConfig = {
           ],
         },*/
         {
-          title: "No Surprise Announcements",
+          title: "Arrival",
           variant: "soft" as "accent" | "soft",
           showPalette: false,
           paragraphs: [
-            "To keep the focus on the celebration, we kindly ask that there be no surprise announcements or proposals during our wedding.",
+            "To ensure everything runs smoothly, please arrive at {guestsTime}. This will give you enough time to find your seat, settle in comfortably, and fully enjoy the beautiful ceremony before it begins at {ceremonyTime}. We truly appreciate your punctuality and look forward to celebrating this special moment with you.",
           ],
         },
         {
-          title: "Keep Our Invitation Private",
-          variant: "soft" as "accent" | "soft",
-          showPalette: false,
+          title: "Dress Code",
+          variant: "accent" as "accent" | "soft",
+          showPalette: true,
           paragraphs: [
-            "Please keep this just between us! Kindly refrain from posting our invitation online.",
+            "Gentlemen, please wear a cream barong. Ladies, please wear floor-length gowns or elegant dresses in shades of blue from our palette.",
+            "Kindly avoid white, ivory, and other shades traditionally reserved for the bride and groom.",
           ],
         },
         {
@@ -821,28 +813,27 @@ export const siteConfig = {
           ],
         },
         {
-          title: "Dress Code",
-          variant: "accent" as "accent" | "soft",
-          showPalette: true,
-          paragraphs: [
-            "Guests, kindly come in formal attire in shades of sage green, lilac, blush, or powder blue from our palette.",
-            "Please avoid casual clothes and all-white outfits.",
-          ],
-        },
-        {
-          title: "Arrival",
-          variant: "soft" as "accent" | "soft",
-          showPalette: false,
-          paragraphs: [
-            "To ensure everything runs smoothly, please arrive at {guestsTime}. This will give you enough time to find your seat, settle in comfortably, and fully enjoy the beautiful ceremony before it begins at {ceremonyTime}. We truly appreciate your punctuality and look forward to celebrating this special moment with you.",
-          ],
-        },
-        {
           title: "Reception Details",
           variant: "accent" as "accent" | "soft",
           showPalette: false,
           paragraphs: [
-            "Please join us for early dinner, laughter, and dancing after the ceremony.",
+            "The reception program begins at {receptionTime}, with early dinner, laughter and dancing to follow.",
+          ],
+        },
+        {
+          title: "Keep Our Invitation Private",
+          variant: "soft" as "accent" | "soft",
+          showPalette: false,
+          paragraphs: [
+            "Please keep this just between us! Kindly refrain from posting our invitation online.",
+          ],
+        },
+        {
+          title: "No Surprise Announcements",
+          variant: "soft" as "accent" | "soft",
+          showPalette: false,
+          paragraphs: [
+            "To keep the focus on the celebration, we kindly ask that there be no surprise announcements or proposals during our wedding.",
           ],
         },
       ],
@@ -857,10 +848,10 @@ export const siteConfig = {
       "From the first arrival to the last farewell, here is how we will spend this day together.",
     // Note under the timeline: header, script sub-header, message and closing line
     // ("" hides any line; note: "" hides the whole block)
-    noteTitle: "More to Come",
-    noteSubtitle: "the full program is on its way",
-    note: "We are still putting the finishing touches on our celebration. The complete program, along with a few special surprises in between, will be shared here very soon.",
-    noteClosing: "Stay tuned!",
+    noteTitle: "Our Day, With You",
+    noteSubtitle: "every moment means more with you here",
+    note: "Now you know how our day will unfold, and the only thing left is having you there. Kindly arrive on time and stay with us until the closing moments, because every part of this celebration means more with you beside us.",
+    noteClosing: "See you there!",
     // "" hides the verse
     quote: "",
     quoteCitation: "",
@@ -873,7 +864,7 @@ export const siteConfig = {
     },
     // Each event — shown top to bottom in this order (move a block to reorder):
     //   show:     true = display on the site, false = hide it (still kept here to edit later)
-    //   time:     shown above the title; TIMES.* come from QUICK SETUP, others are typed in, e.g. "4:00 PM"
+    //   time:     shown above the title; change it in TIMES (QUICK SETUP)
     //   location: text shown under the title; {ceremony} / {reception} are replaced
     //             with ceremony.location / reception.location ("" to hide)
     //   image:    line-art illustration from /public/weddingtimeline; "" to use the icon instead
@@ -901,7 +892,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "1:00 PM", //TIMES.ceremony
+        time: TIMES.ceremony,
         title: "Wedding Ceremony",
         description: "We exchange our vows before God, family and friends.",
         location: "{ceremony}",
@@ -919,7 +910,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "3:00 PM",
+        time: TIMES.photoSession,
         title: "Photo Session",
         description: "Join us for pictures with the newlyweds.",
         location: "{ceremony}",
@@ -928,7 +919,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "3:30 PM",
+        time: TIMES.cocktailHour,
         title: "Cocktail Hour",
         description: "Refreshments while we make our way to the reception.",
         location: "{reception}",
@@ -937,7 +928,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "4:00 PM",
+        time: TIMES.grandEntrance,
         title: "Grand Entrance",
         description: "Welcome the newlyweds as husband and wife.",
         location: "{reception}",
@@ -946,7 +937,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "4:30 PM",
+        time: TIMES.weddingFeast,
         title: "Wedding Feast",
         description: "Let's share a meal and celebrate together.",
         location: "{reception}",
@@ -955,7 +946,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "5:00 PM",
+        time: TIMES.cakeCutting,
         title: "Cake Cutting",
         description: "",
         location: "{reception}",
@@ -964,7 +955,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "5:20 PM",
+        time: TIMES.firstDance,
         title: "First Dance",
         description: "Our first dance as husband and wife.",
         location: "{reception}",
@@ -973,7 +964,7 @@ export const siteConfig = {
       },
       {
         show: true,
-        time: "5:30 PM",
+        time: TIMES.closing,
         title: "Closing Moments",
         description: "Thank you for celebrating with us!",
         location: "{reception}",
@@ -996,17 +987,8 @@ export const siteConfig = {
     brideRole: "Bride",
     loadingText: "Loading entourage...",
     retryingText: "Still gathering the wedding party. Trying again...",
-    errorText: "Unable to load entourage",
+    errorText: "We couldn't load the wedding party just now.",
     retryText: "Try again",
-    // Corner florals (sized per corner like the loader), sprig above the title and
-    // sprig at the end of the section — "" hides any of them
-    decos: {
-      ...CORNER_DECOS,
-      headerOrnament: DECOR.headerOrnament,
-      footerVine: DECOR.headerOrnament,
-    },
-    // Thin double border around the section (false hides it)
-    showFrame: true,
     // Rename any heading shown in the entourage card: "Heading as shown": "Your text"
     headingLabels: {
       "Parents of the Groom": "Parents of the Groom",
@@ -1032,7 +1014,6 @@ export const siteConfig = {
   // Placeholders in curly braces are filled in automatically: {name}, {count}, {n}.
   // The RSVP deadline itself comes from details.rsvp.deadline.
   rsvp: {
-    headerOrnament: DECOR.headerOrnament, // "" to hide
     title: "RSVP",
     script: "Are you going",
     intro: "Kindly confirm your attendance so we may prepare a place for you at our celebration.",
@@ -1040,10 +1021,12 @@ export const siteConfig = {
     openButton: "Tap here to respond",
     search: {
       title: "RSVP",
-      script: "Find your Name",
-      placeholder: "Begin with your first name",
+      script: "Find Your Name",
+      // Note under the title; it steps aside once the guest starts typing
+      intro: "We have saved a place for you, and we can't wait to celebrate together. Simply type your first name, then tap it when it appears.",
+      placeholder: "Type your first name",
       loading: "Preparing the guest list. We'll keep trying until names appear.",
-      refine: "Keep typing to refine results",
+      refine: "Don't see your name yet? Keep typing.",
       notFoundTitle: "Not finding your name?",
       notFoundText: "We'd love to have you with us. Send a request to join the celebration.",
       requestButton: "Request to Join",
@@ -1161,34 +1144,22 @@ export const siteConfig = {
     statsCaption: "Celebrating With Us",
     rsvpSingular: "RSVP",
     rsvpPlural: "RSVPs",
-    partySingular: "Party",
-    partyPlural: "Parties",
     thankYou: "Thank you for confirming your RSVP — your presence means the world to us.",
     updatedLabel: "Updated",
     refreshLabel: "Refresh guest counts",
     listEyebrow: "Joining Us",
     listDescription: "A glimpse of the wonderful guests celebrating with us",
     vipLabel: "VIP",
-    noTable: "No Table Yet",
     companionsLabel: "With Them",
     // Shown when a guest has more than 4 companions
     companionsMore: "+{count} more",
     companionsLess: "Show less",
     confirmedLabel: "Confirmed",
-    emptyTitle: "Guest list updating",
-    emptyText: "Confirmed guests will appear here as RSVPs come in.",
+    // Shown until the first guest confirms
+    emptyTitle: "Be the first to say yes",
+    emptyText: "Our guest book is just beginning. Send your RSVP and your name will be among the first here.",
     // How many guest cards show at once (rotates every few seconds when there are more)
     cardsPerView: 4,
-    // Corner florals (sized per corner like the loader), sprig above the title and
-    // sprig at the end of the section — "" hides any of them.
-    // On the invitation page Book of Guests shows the top corners and FAQ the bottom ones.
-    decos: {
-      ...CORNER_DECOS,
-      headerOrnament: DECOR.headerOrnament,
-      footerVine: DECOR.headerOrnament,
-    },
-    // Thin double border around the section (false hides it)
-    showFrame: true,
   },
   // FAQ (components/sections/faq.tsx)
   // In answers you can use:
@@ -1203,26 +1174,26 @@ export const siteConfig = {
     subtitle: "everything you need to know",
     description:
       "Helpful notes so you can simply arrive, celebrate, and enjoy this new chapter with us.",
-    // Corner florals (sized per corner like the loader), sprig above the title and
-    // sprig at the end of the section — "" hides any of them.
-    // On the invitation page Book of Guests shows the top corners and FAQ the bottom ones.
-    decos: {
-      ...CORNER_DECOS,
-      headerOrnament: DECOR.headerOrnament,
-      footerVine: DECOR.headerOrnament,
-    },
-    // Thin double border around the section (false hides it)
-    showFrame: true,
     // Answers: blank line = new paragraph, "• " = bullet, [label](#section) or [label](https://…) = link.
     // {deadline} {coordinator} {contact} {groom} {bride} are filled in automatically.
     items: [
       {
         question: "When and where is the wedding?",
-        answer: `Our wedding will be on ${WEDDING_DAY}, ${WEDDING_DATE}. Guests are expected to be at the venue at exactly ${TIMES.guestArrival}.\n\nBoth the ceremony and the reception will be held at ${CEREMONY_VENUE.name}, ${CEREMONY_VENUE.address}, so there is no need to travel between venues. [Open in Google Maps](${CEREMONY_VENUE.map})`,
+        answer: `Our wedding will be on ${WEDDING_DAY}, ${WEDDING_DATE}.\n\n• Ceremony at ${TIMES.ceremony}: ${CEREMONY_VENUE.name}, ${CEREMONY_VENUE.address}. [Open in Google Maps](${CEREMONY_VENUE.map})\n• Reception at ${TIMES.reception}: ${RECEPTION_VENUE.name}, ${RECEPTION_VENUE.address}. [Open in Google Maps](${RECEPTION_VENUE.map})`,
       },
       {
         question: "What time should I arrive?",
         answer: `Please arrive by ${TIMES.guestArrival} so you have time to park, find your seat and settle in. The ceremony will begin promptly at ${TIMES.ceremony}.`,
+      },
+      {
+        question: "How do I RSVP?",
+        answer:
+          "Simply find your name in our [RSVP section](#guest-list) and respond by {deadline}. Your reply helps us prepare a place for you.",
+      },
+      {
+        question: "What should I wear?",
+        answer:
+          "We invite you to wear elegant shades of blue. Gentlemen, please wear a cream barong, long or short-sleeved. Ladies, please wear floor-length gowns or elegant dresses in shades of blue. Kindly avoid white, ivory, and other shades reserved for the bride and groom. You will find the full palette in our [attire guide](#details).",
       },
       {
         question: "What if I RSVP'd but can no longer attend?",
@@ -1242,12 +1213,12 @@ export const siteConfig = {
       {
         question: "Are children invited?",
         answer:
-          "We love your little ones, but our celebration is adults-only unless the bride or groom has personally invited your child to attend. Otherwise, we kindly ask that you make childcare arrangements. We hope this gives you a relaxing evening off to celebrate with us!",
+          "We love your little ones, but our celebration is adults-only unless the bride or groom has personally invited your child to attend. Otherwise, we kindly ask that you make childcare arrangements. We hope this gives you a relaxing day off to celebrate with us!",
       },
       {
         question: "May we choose our own seats at the reception?",
         answer:
-          "We kindly ask that you take the seat reserved for you. Each table has been arranged with care so you can share the evening with the people we hoped you would sit with.",
+          "We kindly ask that you take the seat reserved for you. Each table has been arranged with care so you can share the celebration with the people we hoped you would sit with.",
       },
       {
         question: "Is there parking at the venue?",
@@ -1277,7 +1248,7 @@ export const siteConfig = {
       {
         question: "When is the best time to take our leave?",
         answer:
-          "It would mean so much if you could stay with us until the end of the program. We have prepared the evening with love, and we hope you will laugh, take photos and celebrate with us until the very last dance.",
+          `It would mean so much if you could stay with us until the end of the program, around ${TIMES.closing}. We have prepared the day with love, and we hope you will laugh, take photos and celebrate with us until the very end.`,
       },
     ],
   },
@@ -1286,10 +1257,9 @@ export const siteConfig = {
     eyebrow: "A Token of Love",
     title: "Gift Guide",
     subtitle: "with gratitude",
-    description: "Your presence on our wedding day is the greatest gift of all.",
+    description: "", // line under the title ("" hides it)
     paragraphs: [
-      "Your presence and prayers are all that we request; but should you wish to bless us further, a monetary gift is one we humbly suggest.",
-      "Your love and generosity mean the world to us.",
+      "Your presence at our wedding is the greatest gift we could ask for. However, should you wish to bless us with a gift, a monetary contribution would be sincerely appreciated as we begin this new chapter of our lives together.",
     ],
     thankYou: "Thank you for being part of our story.", // "" hides the line
     signOff: "With joyful hearts,",
@@ -1318,18 +1288,14 @@ export const siteConfig = {
     //   With 2+ visible accounts, guests switch between them with a toggle; each shows its QR and a "Save QR" button
     showAccounts: true,
     accountsTitle: "For e-gifts",
-    accountsNote: "Choose an account, then scan its QR — tap the QR to enlarge.",
+    accountsNote: "Scan with any InstaPay-enabled banking or e-wallet app. Tap the QR to enlarge.",
     saveQrLabel: "Save QR",
     zoomNote: "Scan with your banking or e-wallet app, or save it and upload from your gallery.",
-    // ⚠ The QR file names are swapped — checked by decoding each QR:
-    //   /QR/BDO.png → pays the GCash account (G-Xchange, "BR*******E L** A.")
-    //   /QR/BPI.png → pays the BDO account (Banco de Oro, "Brei", account ending 8451)
+    // Checked by decoding each QR. BDO.png is named for BDO but pays GCash (bank code GXCHPHM2XXX = G-Xchange).
     accounts: [
-      { show: true, label: "GCash", accountName: "ARIEL A.", accountNumber: "0926 666 ****", qr: "/QR/gcash1.png" },
-      { show: true, label: "GOtyme", accountName: "JULIE ANN LELIS", accountNumber: "******** 8202", qr: "/QR/gotyme.png" },
+      { show: true, label: "GCash", accountName: "Ariel A.", accountNumber: "0926 666 ****", qr: "/QR/BDO.png" },
+      { show: true, label: "GOtyme", accountName: "Julie Ann Lelis", accountNumber: "******* 8202", qr: "/QR/GOtyme.png" },
     ] as { show: boolean; label: string; accountName: string; accountNumber: string; qr: string }[],
-    // Leave any path "" to hide that decoration
-    decos: { ...SECTION_DECOS },
   },
   // Table finder page (/table — components/table-finder.tsx)
   tableFinder: {
@@ -1696,7 +1662,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   // Wedding playlist (components/sections/wedding-playlist.tsx). {couple} → "Groom & Bride" nicknames.
   playlist: {
     eyebrow: "Our Soundtrack",
-    title: "A Playlist from our hearts",
+    title: "Our Playlist",
     script: "songs of our love",
     subtitle: "Songs that have been part of our journey together",
     // Shown on the playlist card
@@ -1704,10 +1670,6 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     playlistName: `${COUPLE_LABEL} Wedding`,
     cardNote: "Press play and listen along — every song holds a little piece of our story.",
     buttonText: "Open in Spotify",
-    // Corner florals (sized per corner like the loader) — "" hides any of them
-    decos: { ...CORNER_DECOS, headerOrnament: DECOR.headerOrnament },
-    // Thin double border around the section (false hides it)
-    showFrame: true,
     embedUrl:
     //https://open.spotify.com/embed/playlist/5sT43YjdM8pJ3xtEkrxyEY?utm_source=generator&si=e5e64aa63fd04356
       "https://open.spotify.com/embed/playlist/6KuJpc2YN65W6dylhTsSAh?utm_source=generator&si=b743117448f84c0e",
@@ -1723,13 +1685,10 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     eyebrow: "Until we meet",
     script: "with love, {couple}",
     message: "We can't wait to celebrate this beautiful day with you.",
-    // Three side-by-side panels on desktop, a cross-fading full-screen photo on mobile.
-    // Portrait (9:16) photos fit best.
-    photos: [
-      "/mobile-background/couple (12).webp",
-      "/mobile-background/couple (13).webp",
-      "/mobile-background/couple (7).webp",
-    ],
+    // Phones: these cross-fade above the wording. Portrait (9:16) photos fit best.
+    photos: [4, 7, 8, 10, 12, 13, 14].map(prenupPhoto),
+    // Desktop: three side-by-side panels. The title sits over the middle one, so keep its couple low in the frame.
+    desktopPhotos: [7, 12, 13].map(prenupPhoto),
     photo: COUPLE_PHOTOS[4],
     photoAlt: "{couple}",
     // Plain mode
@@ -1737,10 +1696,6 @@ Now, as they prepare to say yes before God and the people they love most, Cather
       eyebrow: "Until we meet",
       script: "with love, {couple}",
       message: "We can't wait to celebrate this beautiful day with you.",
-      // Corner florals — top two here, bottom two on the footer below; "" hides any of them
-      decos: { ...CORNER_DECOS, footerVine: DECOR.headerOrnament },
-      // Thin double border around See You There + footer (false hides it)
-      showFrame: true,
     },
   },
   // Footer (components/sections/footer.tsx).
@@ -1748,7 +1703,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   footer: {
     showMonogram: true, // couple.monogram, tinted to the motif
     // Row of cards (A Note From Us · Wedding Date & RSVP · Follow Us & Quick Links) — false hides it
-    showCards: false,
+    showCards: true,
     dateLabel: "Wedding Date",
     // Ceremony & reception at a glance (times and places come from ceremony / reception)
     summary: {
@@ -1766,21 +1721,21 @@ Now, as they prepare to say yes before God and the people they love most, Cather
       show: true,
       title: "RSVP Deadline",
       label: "Please respond by",
-      note: "Please confirm your attendance by this date.",
+      note: "",
       button: "Tap here to respond",
       href: "#guest-list",
     },
-    // Social links — replace each href with your own profile link.
+    // The hashtag (snapShare.hashtag) shows here. To add social buttons, put in a real profile link and set show: true.
     //   show: false hides one; platforms: facebook | instagram | tiktok | youtube | twitter | threads | messenger | email
     //   email: use "mailto:you@example.com"; messenger: use "https://m.me/yourpage"
-    followTitle: "Follow Us",
-    followNote: "Share your photos and tag us — we'd love to see the day through your eyes.",
+    followTitle: "Share the Day",
+    followNote: "Post your photos with our hashtag. We'd love to see the day through your eyes.",
     socials: [
-      { show: true, platform: "facebook", href: "https://www.facebook.com" },
-      { show: true, platform: "instagram", href: "https://www.instagram.com/" },
-      { show: true, platform: "tiktok", href: "https://www.tiktok.com/" },
-      { show: true, platform: "youtube", href: "https://www.youtube.com" },
-      { show: true, platform: "twitter", href: "https://x.com/" },
+      { show: false, platform: "facebook", href: "https://www.facebook.com" },
+      { show: false, platform: "instagram", href: "https://www.instagram.com/" },
+      { show: false, platform: "tiktok", href: "https://www.tiktok.com/" },
+      { show: false, platform: "youtube", href: "https://www.youtube.com" },
+      { show: false, platform: "twitter", href: "https://x.com/" },
       { show: false, platform: "threads", href: "https://www.threads.net/" },
       { show: false, platform: "messenger", href: "https://m.me/" },
       { show: false, platform: "email", href: "mailto:" },
@@ -1809,10 +1764,6 @@ Now, as they prepare to say yes before God and the people they love most, Cather
       promoName: "Wedding Invitation Naga",
       promoUrl: "https://www.facebook.com/WeddingInvitationNaga",
     },
-    // Corner florals — bottom two here, top two on See You There above; "" hides any of them
-    decos: { ...CORNER_DECOS, headerOrnament: DECOR.headerOrnament },
-    // Thin double border when the footer is shown on its own (false hides it)
-    showFrame: true,
   },
   // Snap & Share (components/sections/snap-share.tsx). {couple} → "Groom & Bride" nicknames.
   snapShare: {
@@ -1825,32 +1776,31 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     subtitle: "Share your memories",
     description:
       "Help us remember the little moments of {couple}'s day — every smile, embrace, and candid laugh. Your photos and clips complete our love story.",
-    // "Our Favorite Moments" photo card — always hidden when loadingScreen.display is "plain"
+    // "Our Favorite Moments" photo card
     moments: {
       show: true,
       title: "Our Favorite Moments",
       caption: "Share your snapshots to be featured in our keepsake gallery.",
       // 3 photos: two squares on top, one wide photo below
-      images: COUPLE_PHOTOS.slice(0, 3),
+      images: [3, 6, 5].map(galleryWide), // the second photo is cropped from its right side
     },
     website: {
-      show: false,
-      title: "Share Our Wedding Website",
-      description:
-        "Spread the word about {couple}'s celebration. Share this QR code so friends and family can join us.",
+      show: true,
+      title: "Keep Our Invitation Handy",
+      description: "Save this QR code to open our invitation anytime on any device.",
       downloadButton: "Download QR",
       note: "Scan with any camera app to open the full invitation and schedule.",
     },
     hashtags: {
-      show: false,
-      title: "Wedding Hashtags",
+      show: true,
+      title: "Our Wedding Hashtag",
       copy: "Copy",
       copied: "Copied",
       copyAll: "Copy All",
       allCopied: "All Copied!",
     },
     social: {
-      show: false,
+      show: true,
       title: "Share on Social Media",
       description: "Help spread the word about {couple}'s wedding across your favorite platforms.",
       // Remove any you don't want: "instagram" | "facebook" | "tiktok" | "twitter"
@@ -1872,20 +1822,14 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     // "Puhon" banner — text comes from loveStory.closing*; photos crossfade behind it
     puhon: {
       show: true,
-      images: [
-       "/desktop-background/couple (1).webp",
-       "/desktop-background/couple (2).webp",
-      ],
+      images: [9, 4].map(galleryWide),
       intervalMs: 5000, // time each photo stays before fading to the next
     },
     // Bible verse panel at the bottom; photos cross-fade behind the verses
     verses: {
-      show: false,
+      show: true,
       eyebrow: "Words We Hold Dear",
-      images: [
-        "/desktop-background/couple (1).webp",
-        "/desktop-background/couple (2).webp",
-      ],
+      images: [9, 4, 2].map(galleryWide),
       quotes: [
         { text: "Love is patient, love is kind. It always protects, always trusts, always hopes, always perseveres.", reference: "1 Corinthians 13:4, 7" },
         { text: "Therefore what God has joined together, let no one separate.", reference: "Mark 10:9" },

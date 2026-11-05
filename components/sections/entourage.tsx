@@ -11,8 +11,6 @@ import { fetchUntilReady, isAbortError } from "@/lib/fetch-until-ready"
 import { fetchInvitationList } from "@/lib/invitation-data"
 import { PlainBubbles } from "@/components/loader/PlainBubbles"
 import { SectionBackdrop } from "@/components/section-backdrop"
-import { TintedDeco } from "@/components/tinted-deco"
-import { DecoCorners } from "@/components/deco-corners"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -70,11 +68,6 @@ const palette = {
   accent: ACCENT,
 } as const
 
-function DecoImg({ src, className }: { src: string; className: string }) {
-  if (!src) return null
-  return <TintedDeco src={src} className={className} />
-}
-
 function OutsideDivider() {
   return (
     <div className="flex items-center justify-center gap-2">
@@ -87,7 +80,7 @@ function OutsideDivider() {
 
 // Role category headings: one font (Cinzel capitals) for every heading — it has all
 // the glyphs ("&", "-", …), so nothing switches font mid-heading
-const SECTION_TITLE_CLASS = `${cinzel.className} font-semibold text-[0.64rem] sm:text-[0.8rem] md:text-[0.9rem] tracking-[0.14em] sm:tracking-[0.16em] md:tracking-[0.18em] uppercase leading-tight`
+const SECTION_TITLE_CLASS = `${cinzel.className} font-semibold text-[0.6875rem] sm:text-[0.8rem] md:text-[0.9rem] tracking-[0.14em] sm:tracking-[0.16em] md:tracking-[0.18em] uppercase leading-tight`
 
 // Names in Cormorant Garamond (loaded in app/layout.tsx) — an elegant serif that
 // stays readable at small sizes; slightly smaller on phones
@@ -96,16 +89,16 @@ const NAME_FONT = '"Cormorant Garamond", "SortsMillGoudy", Georgia, serif'
 const nameStyle: React.CSSProperties = {
   fontFamily: NAME_FONT,
   fontWeight: 600,
-  fontSize: "clamp(0.8rem, min(3.4vw, 4.4cqi), 1.12rem)",
+  fontSize: "clamp(0.875rem, min(3.7vw, 4.4cqi), 1.12rem)",
   lineHeight: 1.2,
   letterSpacing: "0.01em",
 }
 
-const featuredNameSize = "clamp(0.9rem, min(3.8vw, 4.8cqi), 1.24rem)"
+const featuredNameSize = "clamp(1rem, min(4.2vw, 5.2cqi), 1.24rem)"
 
 // Role titles: small engraved capitals in Cinzel
 const roleTitleStyle: React.CSSProperties = {
-  fontSize: "clamp(0.5rem, min(2.15vw, 2.7cqi), 0.68rem)",
+  fontSize: "clamp(0.5625rem, min(2.4vw, 2.9cqi), 0.68rem)",
   lineHeight: 1.25,
   letterSpacing: "0.12em",
   textTransform: "uppercase",
@@ -476,7 +469,6 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
   const sponsorsPath = sponsorsUrl(sponsorsList)
   const siteConfig = useSiteConfig()
   const content = siteConfig.entourage
-  const { decos } = content
   const groomName = siteConfig.couple.groom
   const brideName = siteConfig.couple.bride
   const [entourage, setEntourage] = useState<EntourageMember[]>([])
@@ -618,7 +610,7 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
   // Short italic line under a heading (e.g. what the role means)
   const SectionCaption = ({ children }: { children: React.ReactNode }) => (
     <p
-      className="font-goudy-italic mx-auto -mt-0.5 mb-2 max-w-md px-4 text-center text-[0.74rem] leading-snug sm:mb-3 sm:text-sm md:text-[0.95rem]"
+      className="font-goudy-italic mx-auto -mt-0.5 mb-2 max-w-md px-4 text-center text-[0.8125rem] leading-snug sm:mb-3 sm:text-sm md:text-[0.95rem]"
       style={{ color: SCRIPT }}
     >
       {children}
@@ -767,17 +759,9 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
       <SectionBackdrop />
       <Section
         id="entourage"
-        className="relative z-10 overflow-hidden pt-5 pb-5 sm:pt-10 sm:pb-10 md:pt-12 md:pb-12 lg:pt-14 lg:pb-14"
+        className="relative z-10 overflow-hidden pt-14 pb-12 sm:pt-16 sm:pb-14 md:pt-20 md:pb-16 lg:pt-24 lg:pb-20"
       >
-        {/* Corner florals + double border (content/site.ts → entourage.decos / showFrame) */}
-        {content.showFrame && <div className="deco-frame" aria-hidden="true" />}
-        <DecoCorners decos={decos} />
-
       <div className={`relative z-20 mx-auto mb-5 max-w-5xl px-3 text-center @container/entourage sm:mb-10 sm:px-4 md:mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}>
-        <DecoImg
-          src={decos.headerOrnament}
-          className="mx-auto mb-2 block h-auto w-20 select-none sm:mb-4 sm:w-36 md:w-44"
-        />
         <div className="mx-auto mb-2.5 sm:mb-5 md:mb-6">
           <OutsideDivider />
         </div>
@@ -824,12 +808,20 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
 
             <div className="relative z-20 px-3 pb-7 pt-[18%] sm:px-8 sm:pt-[22%] sm:pb-12 md:px-12 md:pb-14 lg:px-14">
             {isLoading || error || (entourage.length === 0 && sponsors.length === 0) ? (
-              <div className="flex items-center justify-center py-24 sm:py-28 md:py-32">
+              <div className="flex flex-col items-center justify-center gap-4 py-24 sm:py-28 md:py-32">
                 <p className={`font-goudy-italic ${ct.body} text-center`} style={{ color: palette.body }}>
-                  {isRetrying || (!isLoading && entourage.length === 0 && sponsors.length === 0)
-                    ? content.retryingText
-                    : content.loadingText}
+                  {!isLoading ? content.errorText : isRetrying ? content.retryingText : content.loadingText}
                 </p>
+                {!isLoading && (
+                  <button
+                    type="button"
+                    onClick={() => void loadParty(undefined, { reload: true })}
+                    className={`${cinzel.className} rounded-full px-6 py-2.5 text-[0.6875rem] font-semibold uppercase tracking-[0.18em] transition-transform duration-300 hover:-translate-y-0.5`}
+                    style={{ background: "var(--color-welcome-navy)", color: "var(--color-welcome-bg)" }}
+                  >
+                    {content.retryText}
+                  </button>
+                )}
               </div>
             ) : (
             <>
@@ -914,7 +906,7 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
                           </div>
                         )}
                         {hasParents && (
-                          <SectionCaption>With the blessings of our Parents</SectionCaption>
+                          <SectionCaption>With the blessings of our parents</SectionCaption>
                         )}
                         {hasGroomParents && hasBrideParents && (
                           <TwoColumnLayout leftTitle="Parents of the Groom" rightTitle="Parents of the Bride">
@@ -1665,10 +1657,6 @@ export function Entourage({ sponsorsList }: { sponsorsList?: SponsorsList } = {}
           </div>
         </div>
         </div>
-        <DecoImg
-          src={decos.footerVine}
-          className="relative z-20 mx-auto mt-6 block h-auto w-40 select-none opacity-90 sm:mt-12 sm:w-72 md:w-96"
-        />
       </div>
       </Section>
     </div>

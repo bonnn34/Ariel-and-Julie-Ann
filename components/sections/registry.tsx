@@ -171,12 +171,14 @@ export function Registry() {
           <div className="mx-auto mt-3 sm:mt-4 md:mt-5">
             <RegistryTitle title={content.title} subtitle={content.subtitle} />
           </div>
-          <p
-            className={`font-goudy-italic mx-auto mt-4 max-w-xl px-2 sm:mt-5 md:mt-6 ${ct.bodyLg}`}
-            style={{ ...onBg, fontWeight: 600 }}
-          >
-            {content.description}
-          </p>
+          {content.description ? (
+            <p
+              className={`font-goudy-italic mx-auto mt-4 max-w-xl px-2 sm:mt-5 md:mt-6 ${ct.bodyLg}`}
+              style={{ ...onBg, fontWeight: 600 }}
+            >
+              {content.description}
+            </p>
+          ) : null}
           <div className="mt-4 flex items-center justify-center sm:mt-5">
             <span className="h-px w-16 sm:w-24 md:w-32" style={dividerLineStyle} />
           </div>
@@ -238,13 +240,13 @@ export function Registry() {
                   <span className="h-px w-8 sm:w-12" style={{ background: `linear-gradient(to left, transparent, ${c.line})` }} />
                 </div>
                 <p
-                  className={`${cinzel.className} mt-3 text-[0.65rem] font-semibold uppercase tracking-[0.22em] sm:text-xs`}
+                  className={`${cinzel.className} mt-3 text-[0.6875rem] font-semibold uppercase tracking-[0.22em] sm:text-xs`}
                   style={{ color: c.eyebrow }}
                 >
                   {content.accountsTitle}
                 </p>
                 {content.accountsNote ? (
-                  <p className="font-goudy-italic mt-1 text-[0.75rem] sm:text-sm" style={{ color: c.soft }}>
+                  <p className="font-goudy-italic mx-auto mt-1 max-w-xs text-[0.8125rem] leading-snug sm:text-sm" style={{ color: c.soft }}>
                     {content.accountsNote}
                   </p>
                 ) : null}
@@ -272,7 +274,7 @@ export function Registry() {
                           aria-selected={selected}
                           aria-controls="registry-tabpanel"
                           onClick={() => setActiveTab(i)}
-                          className={`${cinzel.className} relative rounded-full py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)] sm:text-[0.74rem]`}
+                          className={`${cinzel.className} relative min-h-10 rounded-full py-2 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)] sm:text-[0.74rem]`}
                           style={{ color: selected ? buttonText : c.title }}
                         >
                           {selected && (
@@ -327,7 +329,7 @@ export function Registry() {
                         <button
                           type="button"
                           onClick={() => setZoomQr({ src: active.qr, label: active.label })}
-                          className="group relative block w-full max-w-[13rem] rounded-2xl bg-card p-2 transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)]"
+                          className="group relative block w-full max-w-[13rem] rounded-2xl bg-white p-2 transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)]"
                           style={{ boxShadow: `0 0 0 1px ${c.cardEdge}, 0 0 0 6px color-mix(in srgb, var(--color-motif-medium) 14%, transparent), 0 14px 26px -16px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)` }}
                           aria-label={`Enlarge ${active.label} QR code`}
                         >
@@ -364,7 +366,7 @@ export function Registry() {
                       ) : null}
                       {active.accountNumber ? (
                         <p
-                          className={`${cinzel.className} relative mt-0.5 text-[0.82rem] font-semibold tabular-nums tracking-[0.14em]`}
+                          className={`${cinzel.className} relative mt-0.5 text-[0.875rem] font-semibold tabular-nums tracking-[0.12em]`}
                           style={{ color: c.title }}
                         >
                           {active.accountNumber}
@@ -374,7 +376,7 @@ export function Registry() {
                         <a
                           href={active.qr}
                           download={qrFileName(active.label, active.qr)}
-                          className={`${cinzel.className} relative mt-3.5 inline-flex items-center gap-1.5 rounded-full border px-5 py-2 text-[0.62rem] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03] hover:brightness-110`}
+                          className={`${cinzel.className} relative mt-3.5 inline-flex min-h-10 items-center gap-1.5 rounded-full border px-5 py-2 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03] hover:brightness-110`}
                           style={{ background: buttonBg, color: buttonText, borderColor: "rgb(250 246 238 / 70%)", boxShadow: "0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent)" }}
                         >
                           <Download className="h-3 w-3" aria-hidden />
@@ -455,7 +457,7 @@ export function Registry() {
             <button
               type="button"
               onClick={() => setZoomQr(null)}
-              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full text-background transition-transform hover:rotate-90"
+              className="absolute right-2.5 top-2.5 flex h-10 w-10 items-center justify-center rounded-full text-background transition-transform hover:rotate-90"
               style={{ background: buttonBg }}
               aria-label="Close"
             >
@@ -464,7 +466,7 @@ export function Registry() {
             <p className={`${theSeasons.className} mb-3 text-lg uppercase tracking-[0.12em]`} style={{ color: c.title }}>
               {zoomQr.label}
             </p>
-            <div className="relative mx-auto w-full max-w-[18rem] overflow-hidden rounded-xl bg-card p-2" style={{ boxShadow: `0 0 0 1px ${c.glow}` }}>
+            <div className="relative mx-auto w-full max-w-[18rem] overflow-hidden rounded-xl bg-white p-2" style={{ boxShadow: `0 0 0 1px ${c.glow}` }}>
               <Image
                 src={encodeURI(zoomQr.src)}
                 alt={`${zoomQr.label} QR code`}
@@ -480,7 +482,7 @@ export function Registry() {
             <a
               href={zoomQr.src}
               download={qrFileName(zoomQr.label, zoomQr.src)}
-              className={`${cinzel.className} mt-4 inline-flex items-center gap-1.5 rounded-full border px-5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03] hover:brightness-110`}
+              className={`${cinzel.className} mt-4 inline-flex min-h-10 items-center gap-1.5 rounded-full border px-5 py-2 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03] hover:brightness-110`}
               style={{ background: buttonBg, color: buttonText, borderColor: "rgb(250 246 238 / 70%)" }}
             >
               <Download className="h-3.5 w-3.5" aria-hidden />

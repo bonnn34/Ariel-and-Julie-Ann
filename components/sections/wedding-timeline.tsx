@@ -43,6 +43,8 @@ const CORNER_DECO_CLASS =
 const INK = "var(--color-motif-soft)"
 const ROSE = "var(--color-motif-silver)"
 const SCRIPT = "var(--color-motif-cream)"
+// Times are what guests scan for, so they get a brighter tone than the other labels
+const TIME_INK = "color-mix(in srgb, var(--color-motif-silver) 45%, #FAF6EE)"
 const BODY = "var(--color-motif-soft)"
 const LINE = "color-mix(in srgb, var(--color-motif-soft) 70%, transparent)"
 const entryEase = [0.22, 1, 0.36, 1] as const
@@ -508,8 +510,8 @@ function TimelineText({
   return (
     <div className={`max-w-md ${textAlign} ${align === "right" ? "ml-auto" : "mr-auto"}`}>
       <p
-        className={`${cinzel.className} ${timelineType.label} font-semibold tracking-[0.2em] uppercase`}
-        style={{ color: ROSE, textShadow }}
+        className={`${cinzel.className} text-[0.8125rem] font-bold tracking-[0.14em] uppercase sm:text-sm`}
+        style={{ color: TIME_INK, textShadow }}
       >
         {event.time}
       </p>

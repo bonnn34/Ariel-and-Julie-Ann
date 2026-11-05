@@ -32,7 +32,7 @@ export interface InviteCoverProps {
 const ease: Transition['ease'] = [0.22, 1, 0.36, 1];
 // Click → copy + button fade out → home page mounts underneath → cover fades away
 const CONTENT_OUT_MS = 650;
-const COVER_FADE_MS = 1100;
+const COVER_FADE_MS = 1400;
 
 const stackVariants: Variants = {
   hidden: {},

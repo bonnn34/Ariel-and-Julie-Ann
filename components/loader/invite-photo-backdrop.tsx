@@ -172,9 +172,9 @@ export function PhotoBackground({
   desktopPhotos,
   veil = PHOTO_BACKGROUND_VEIL,
 }: {
-  /** Portrait photos (public/mobile-background) — phones */
+  /** Portrait photos — phones */
   photos: readonly string[];
-  /** Landscape photos (public/desktop-background) — 768px and up; falls back to `photos` */
+  /** Landscape photos — 768px and up; falls back to `photos` */
   desktopPhotos?: readonly string[];
   /** Strength of the white wash over the photos (0–1). */
   veil?: number;

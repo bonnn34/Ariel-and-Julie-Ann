@@ -22,8 +22,6 @@ import { PlainBubbles } from "@/components/loader/PlainBubbles"
 import { SectionBackdrop } from "@/components/section-backdrop"
 import { sectionType } from "@/lib/section-typography"
 import { Cinzel } from "next/font/google"
-import { TintedDeco } from "@/components/tinted-deco"
-import { DecoCorners } from "@/components/deco-corners"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -144,11 +142,6 @@ const rise: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
 }
 
-function DecoImg({ src, className }: { src: string; className: string }) {
-  if (!src) return null
-  return <TintedDeco src={src} className={className} />
-}
-
 // The Seasons has no clean glyphs for "&" and digits — show those in Cinzel
 function SpecialCharFont({ text }: { text: string }) {
   return (
@@ -187,7 +180,6 @@ function Label({ children }: { children: ReactNode }) {
 export function Footer({ background = true }: { background?: boolean } = {}) {
   const siteConfig = useSiteConfig()
   const content = siteConfig.footer
-  const { decos } = content
   const reduceMotion = useReducedMotion()
   const year = new Date().getFullYear()
   const ceremonyDate = siteConfig.ceremony.date
@@ -204,6 +196,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
     [quotes],
   )
   const socials = content.socials.filter((s) => s.show && s.href)
+  const hashtag = siteConfig.snapShare.hashtag[0]
 
   // Typewriter quote rotation
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
@@ -301,14 +294,10 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
       className={`${theSeasons.variable} ${aboveTheBeyond.variable} relative w-full overflow-hidden`}
       style={background ? { background: sectionBg } : undefined}
     >
-      {/* Same circle pattern as the gallery, with the light wash + double border
+      {/* Same circle pattern as the gallery, with the light wash
           (on the invitation page the shared wrapper paints these behind See You There and the footer) */}
       {background && <PlainBubbles />}
       {background && <SectionBackdrop />}
-      {background && content.showFrame && <div className="deco-frame" aria-hidden="true" />}
-
-      {/* Corner florals at all four corners (content/site.ts → footer.decos; "" hides one) */}
-      <DecoCorners decos={decos} />
 
       <footer className="relative z-20 pt-14 pb-10 sm:pt-16 sm:pb-12 md:pt-20 md:pb-14">
         {/* Header: monogram + couple */}
@@ -338,11 +327,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                 maskPosition: "center",
               }}
             />
-          ) : (
-            <motion.div variants={rise}>
-              <DecoImg src={decos.headerOrnament} className="mx-auto block h-auto w-28 select-none sm:w-36" />
-            </motion.div>
-          )}
+          ) : null}
 
           <motion.h2
             variants={rise}
@@ -381,7 +366,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
         <div className="relative z-10 mx-auto flex max-w-6xl min-w-0 flex-col px-4 @container/footer sm:px-6 md:px-8">
           {content.showCards && (
           <motion.div
-            className="mb-8 grid grid-cols-1 items-start gap-5 sm:mb-10 sm:gap-6 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-7"
+            className="mb-8 grid grid-cols-1 items-stretch gap-5 sm:mb-10 sm:gap-6 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-7"
             variants={stagger}
             initial={initial}
             whileInView="show"
@@ -399,7 +384,9 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                   <span className="invisible block select-none" aria-hidden="true">
                     &ldquo;{longestQuote}&rdquo;
                   </span>
-                  <span className="absolute inset-0" style={{ color: palette.body }} aria-live="polite">
+                  {/* Screen readers get each note whole, not one letter at a time */}
+                  <span className="sr-only">{quotes.join(" ")}</span>
+                  <span className="absolute inset-0" style={{ color: palette.body }} aria-hidden="true">
                     &ldquo;{displayedText}
                     {!reduceMotion && (
                       <span
@@ -428,8 +415,8 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
             </motion.div>
 
             {/* Date + RSVP */}
-            <motion.div className="min-w-0 space-y-5" variants={rise}>
-              <FooterCard>
+            <motion.div className="min-w-0" variants={rise}>
+              <FooterCard className="h-full">
                 <div className="flex items-start gap-3">
                   <span
                     className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
@@ -463,11 +450,11 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                           <Icon className="h-4 w-4" style={{ color: palette.accent }} />
                         </span>
                         <div className="min-w-0 flex-1">
-                          <p className={`${cinzel.className} text-[0.66rem] font-semibold uppercase tracking-[0.16em]`} style={{ color: palette.heading }}>
+                          <p className={`${cinzel.className} text-[0.6875rem] font-semibold uppercase tracking-[0.16em]`} style={{ color: palette.heading }}>
                             {label}
                           </p>
                           {place ? (
-                            <p className={`font-goudy-italic mt-0.5 flex items-start gap-1 text-[0.82rem] leading-snug`} style={{ color: palette.body }}>
+                            <p className={`font-goudy-italic mt-0.5 flex items-start gap-1 text-[0.875rem] leading-snug`} style={{ color: palette.body }}>
                               <MapPin className="mt-[0.2em] h-3 w-3 shrink-0" style={{ color: palette.soft }} aria-hidden />
                               <span className="min-w-0">{place}</span>
                             </p>
@@ -477,7 +464,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                               {times.map((t) => (
                                 <span
                                   key={t.label}
-                                  className={`${cinzel.className} inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.62rem] font-semibold tracking-[0.06em]`}
+                                  className={`${cinzel.className} inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.6875rem] font-semibold tracking-[0.06em]`}
                                   style={{ background: IVORY, color: palette.label, boxShadow: `inset 0 0 0 1px ${HAIRLINE}` }}
                                 >
                                   <Clock className="h-3 w-3" aria-hidden />
@@ -528,8 +515,8 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
 
             {/* Social + quick links */}
             <motion.div className="min-w-0" variants={rise}>
-              <FooterCard>
-                {socials.length > 0 && (
+              <FooterCard className="h-full">
+                {(socials.length > 0 || hashtag) && (
                   <>
                     <Label>{content.followTitle}</Label>
                     {content.followNote ? (
@@ -537,6 +524,15 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                         {content.followNote}
                       </p>
                     ) : null}
+                    {hashtag ? (
+                      <p
+                        className="mt-2.5 break-words text-[1.0625rem] font-semibold leading-snug"
+                        style={{ color: palette.heading, fontFamily: '"Crimson Text", "Cormorant Garamond", Georgia, serif' }}
+                      >
+                        {hashtag}
+                      </p>
+                    ) : null}
+                    {socials.length > 0 && (
                     <div className="mt-3 flex flex-wrap items-center gap-2">
                       {socials.map(({ platform, href }) => {
                         const icon = SOCIAL_ICONS[platform]
@@ -565,6 +561,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                         )
                       })}
                     </div>
+                    )}
                     <span className="my-4 block h-px w-full" style={dividerLineStyle} aria-hidden />
                   </>
                 )}
@@ -576,7 +573,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                       key={item.href}
                       href={item.href}
                       onClick={scrollTo(item.href)}
-                      className="group flex min-w-0 items-center justify-between gap-1.5 rounded-full py-2 pl-3.5 pr-2 transition-all duration-300 hover:-translate-y-0.5"
+                      className="group flex min-h-11 min-w-0 items-center justify-between gap-1.5 rounded-full py-2 pl-3.5 pr-2 transition-all duration-300 hover:-translate-y-0.5"
                       style={{ background: BUTTON, boxShadow: BUTTON_SHADOW }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.background = BUTTON_HOVER
@@ -586,7 +583,7 @@ export function Footer({ background = true }: { background?: boolean } = {}) {
                       }}
                     >
                       <span
-                        className={`${cinzel.className} min-w-0 truncate text-[0.64rem] font-semibold uppercase tracking-[0.12em] sm:text-[0.68rem]`}
+                        className={`${cinzel.className} min-w-0 truncate text-[0.6875rem] font-semibold uppercase tracking-[0.1em]`}
                         style={{ color: IVORY }}
                       >
                         {item.label}

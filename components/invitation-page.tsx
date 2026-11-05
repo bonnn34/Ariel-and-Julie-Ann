@@ -66,15 +66,11 @@ const navbarRevealVariants = {
   },
 }
 
+// The hero is fully there the moment the cover starts fading, so the two cross-fade directly
+// with no pale page showing between them. Its photo settle and text reveal live in hero.tsx.
 const heroRevealVariants = {
-  hidden: { opacity: 0, y: 52, scale: 1.05, filter: "blur(12px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    filter: "blur(0px)",
-    transition: { duration: 1.28, ease: mainEntryEase, delay: 0.58 },
-  },
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.01 } },
 }
 
 const sectionsRevealVariants = {
@@ -199,16 +195,6 @@ export function InvitationPage({ sponsorsList, showEntourage = true }: Invitatio
             variants={detailsShellVariants}
             animate={detailsVisible ? "show" : "hidden"}
           >
-            {cinematicEntry && (
-              <motion.div
-                className="fixed inset-0 z-[28] pointer-events-none bg-[#FAF6EE]"
-                aria-hidden="true"
-                initial={{ clipPath: "circle(0% at 50% 46%)", opacity: 0.98 }}
-                animate={{ clipPath: "circle(145% at 50% 46%)", opacity: 0 }}
-                transition={{ duration: 1.55, delay: 0.12, ease: mainEntryEase }}
-              />
-            )}
-
             {enableDecor && (
               <motion.div
                 className="fixed inset-0 z-0 pointer-events-none"
@@ -252,7 +238,7 @@ export function InvitationPage({ sponsorsList, showEntourage = true }: Invitatio
                 animate={cinematicEntry ? "show" : detailsVisible ? "show" : "hidden"}
                 transition={cinematicEntry ? undefined : { duration: 0.01 }}
               >
-                <MainHero />
+                <MainHero revealed={detailsVisible} />
               </motion.div>
               <motion.div
                 variants={sectionsRevealVariants}
@@ -264,12 +250,12 @@ export function InvitationPage({ sponsorsList, showEntourage = true }: Invitatio
               {/* One continuous circle pattern behind the video and love story (same as Details) — no seam between them */}
               <div className="relative">
                 <PlainBubbles />
-                 <CoupleVideo skyBackdrop={false} /> 
+                {/* <CoupleVideo skyBackdrop={false} /> */}
                 <LoveStory skyBackdrop={false} />
               </div>
               <Countdown />
               <Gallery />
-               <MessageVideo /> 
+              {/* <MessageVideo /> */}
               <Messages />
               <Details />
               <WeddingTimeline />
@@ -279,22 +265,20 @@ export function InvitationPage({ sponsorsList, showEntourage = true }: Invitatio
               <div className="relative isolate" style={{ background: "var(--color-bg-pattern-base)" }}>
                 {/* Pattern repeated down the height so circles stay dense across both sections */}
                 <PlainBubbles bands={3} />
-                {/* Pink paper wash + rising hearts (section-backdrop.tsx) + one double border around both sections */}
+                {/* Pink paper wash + rising hearts (section-backdrop.tsx) */}
                 <SectionBackdrop />
-                {siteConfig.bookOfGuests.showFrame && <div className="deco-frame" aria-hidden="true" />}
                 <BookOfGuests background={false} />
                 <FAQ background={false} />
               </div>
               <Registry />
               <WeddingPlaylist />
               <SnapShare />
-              {/* Full-bleed photos — kept outside the patterned wrapper so its wash and frame don't cover them */}
+              {/* Full-bleed photos — kept outside the patterned wrapper so its wash does not cover them */}
               <SeeYouThere />
-              {/* Circle pattern, paper wash + rising hearts (section-backdrop.tsx) and double border behind the footer */}
+              {/* Circle pattern, paper wash + rising hearts (section-backdrop.tsx) behind the footer */}
               <div className="relative isolate" style={{ background: "var(--color-bg-pattern-base)" }}>
                 <PlainBubbles bands={3} />
                 <SectionBackdrop />
-                {siteConfig.seeYouThere.plain.showFrame && <div className="deco-frame" aria-hidden="true" />}
                 <Footer background={false} />
               </div>
               </motion.div>

@@ -26,6 +26,8 @@ const playlistScript = localFont({
 })
 
 const entryEase = [0.22, 1, 0.36, 1] as const
+// Text waits for the invitation cover to be mostly gone
+const TEXT_LEAD_S = 0.55
 
 function pad2(n: number) {
   return String(n).padStart(2, "0")
@@ -47,19 +49,14 @@ function useIsMobile() {
 /**
  * Main page hero: full-screen couple photos cross-fading behind the invitation
  * wording — names in script, the date row, venue, a closing line and an RSVP button.
+ * It mounts behind the loader, so `revealed` holds the entrance until guests can see it.
  */
-export function Hero() {
+export function Hero({ revealed = true }: { revealed?: boolean } = {}) {
   const siteConfig = useSiteConfig()
   const homeHero = siteConfig.homeHero ?? defaultSiteConfig.homeHero
   const defaults = defaultSiteConfig.homeHero
   const reduceMotion = useReducedMotion()
   const isMobile = useIsMobile()
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const id = window.setTimeout(() => setVisible(true), 40)
-    return () => window.clearTimeout(id)
-  }, [])
 
   const photos = useMemo(() => {
     const mobile = homeHero.backgroundPhotos ?? defaults.backgroundPhotos ?? []
@@ -90,8 +87,8 @@ export function Hero() {
     }
     return {
       initial: { opacity: 0, y: 18 },
-      animate: visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
-      transition: { duration: 1, delay, ease: entryEase },
+      animate: revealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
+      transition: { duration: 1, delay: TEXT_LEAD_S + delay, ease: entryEase },
     }
   }
 
@@ -100,16 +97,23 @@ export function Hero() {
       id="home"
       className={`${cinzel.className} home-hero-photo relative -mt-12 flex min-h-[100dvh] w-full flex-col overflow-hidden sm:-mt-14 md:-mt-16`}
     >
-      <div className="home-hero-photo__bg" aria-hidden="true">
+      {/* Starts pushed in and settles as the cover fades, carrying on the cover's zoom */}
+      <motion.div
+        className="home-hero-photo__bg"
+        aria-hidden="true"
+        initial={false}
+        animate={{ scale: revealed || reduceMotion ? 1 : 1.08 }}
+        transition={{ duration: 2.4, ease: entryEase }}
+      >
         {isMobile !== null && (
           <CoverPhotoSlideshow
             key={isMobile ? "mobile" : "desktop"}
             photos={isMobile ? photos.mobile : photos.desktop}
-            paused={false}
+            paused={!revealed}
             reduceMotion={reduceMotion}
           />
         )}
-      </div>
+      </motion.div>
       <div className="home-hero-photo__shade" aria-hidden="true" />
 
       <div className="home-hero-photo__content">

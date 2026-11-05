@@ -3,9 +3,8 @@
    Full-screen photo · monogram on top · script + serif title and button below
    ========================================================================== */
 .invite-cover {
-  --cover-ink: #f8e9c9; /* warm champagne type */
-  --cover-glow: rgb(255 214 150 / 45%);
-  --cover-button: var(--color-motif-accent, #739acd);
+  --cover-ink: #faf6ee; /* ivory type */
+  --cover-navy: #172c4c;
 
   position: fixed;
   inset: 0;
@@ -22,7 +21,7 @@
     max(2.25rem, env(safe-area-inset-top))
     1.25rem
     max(2.75rem, calc(env(safe-area-inset-bottom) + 1.75rem));
-  background: #1d1a17;
+  background: var(--cover-navy);
   color: var(--cover-ink);
   text-align: center;
 }
@@ -40,7 +39,7 @@
 }
 
 .invite-cover__photos .env-invite-slideshow {
-  background: #1d1a17;
+  background: var(--cover-navy);
 }
 
 /* Darkens the top behind the monogram and the bottom behind the title */
@@ -49,10 +48,10 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  /* Soft dark at the top for the monogram; warm sepia haze over the lower half for the title */
+  /* Navy at the top for the monogram; navy melting through cornflower and periwinkle under the title */
   background:
-    linear-gradient(180deg, rgb(20 16 12 / 45%) 0%, rgb(20 16 12 / 10%) 22%, transparent 36%),
-    linear-gradient(0deg, rgb(146 112 80 / 62%) 0%, rgb(170 134 100 / 42%) 28%, rgb(190 156 120 / 14%) 48%, transparent 60%);
+    linear-gradient(180deg, rgb(23 44 76 / 55%) 0%, rgb(23 44 76 / 14%) 22%, transparent 36%),
+    linear-gradient(0deg, rgb(23 44 76 / 82%) 0%, rgb(44 72 116 / 56%) 28%, rgb(115 154 205 / 20%) 48%, transparent 60%);
 }
 
 .invite-cover__live {
@@ -82,7 +81,7 @@
   background: #fff;
   -webkit-mask: var(--monogram-src) center / contain no-repeat;
   mask: var(--monogram-src) center / contain no-repeat;
-  filter: drop-shadow(0 2px 10px rgb(0 0 0 / 35%));
+  filter: drop-shadow(0 2px 10px rgb(23 44 76 / 55%));
 }
 
 .invite-cover__names {
@@ -93,7 +92,7 @@
   text-indent: 0.34em;
   text-transform: uppercase;
   color: #fff;
-  text-shadow: 0 1px 6px rgb(0 0 0 / 45%);
+  text-shadow: 0 1px 6px rgb(23 44 76 / 70%);
 }
 
 .invite-cover__date {
@@ -101,7 +100,7 @@
   font-size: clamp(0.5rem, 1.9vw, 0.64rem);
   letter-spacing: 0.4em;
   color: rgb(255 255 255 / 82%);
-  text-shadow: 0 1px 6px rgb(0 0 0 / 45%);
+  text-shadow: 0 1px 6px rgb(23 44 76 / 70%);
 }
 
 /* ── Bottom: title + button ────────────────────────────────────────────── */
@@ -136,15 +135,15 @@
   padding: 0 0.2em; /* room for the swashes so they aren't clipped */
   font-size: clamp(3.8rem, 19vw, 6rem);
   line-height: 1.1;
-  color: #f8ead0;
+  color: var(--cover-ink);
   transform: translateX(0.04em) rotate(-6deg);
   transform-origin: 50% 70%;
   text-shadow:
-    0 0 8px rgb(255 240 214 / 55%),
-    0 0 22px rgb(255 226 180 / 35%);
+    0 0 8px rgb(156 197 229 / 50%),
+    0 0 22px rgb(154 173 224 / 40%);
 }
 
-/* Cinzel caps with a champagne-gold sheen */
+/* Cinzel caps with a soft sky-blue glow */
 .invite-cover__caps {
   display: block;
   padding-left: 0.05em; /* balances the trailing letter-spacing */
@@ -153,11 +152,11 @@
   letter-spacing: 0.04em;
   line-height: 1;
   text-transform: uppercase;
-  color: #f8ead0;
+  color: var(--cover-ink);
   text-shadow:
-    0 0 8px rgb(255 240 214 / 60%),
-    0 0 24px rgb(255 224 176 / 38%),
-    0 1px 2px rgb(110 80 50 / 25%);
+    0 0 8px rgb(156 197 229 / 55%),
+    0 0 24px rgb(154 173 224 / 42%),
+    0 1px 2px rgb(23 44 76 / 45%);
 }
 
 .invite-cover__button {
@@ -165,23 +164,23 @@
   width: min(76vw, 17.5rem);
   min-height: 3.3rem;
   padding: 0.85rem 1.5rem;
-  border: 1px solid rgb(255 255 255 / 22%);
+  border: 1px solid rgb(255 255 255 / 45%);
   border-radius: 0.4rem;
-  background: #7aa7d9;
-  color: #fff;
+  background: linear-gradient(135deg, #9cc5e5 0%, #9aade0 100%);
+  color: var(--cover-navy);
   font-size: clamp(0.82rem, 3.6vw, 0.95rem);
-  font-weight: 400; /* Cinzel Regular, like the reference */
+  font-weight: 700; /* Cinzel Bold: navy on light blue reads clearly */
   letter-spacing: 0.16em;
   text-indent: 0.16em; /* centres the letter-spaced text */
   text-transform: uppercase;
-  box-shadow: 0 6px 18px rgb(60 45 30 / 22%);
+  box-shadow: 0 6px 18px rgb(23 44 76 / 35%);
   cursor: pointer;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: filter 0.25s ease, box-shadow 0.25s ease;
 }
 
 .invite-cover__button:hover:not(:disabled) {
-  background: #86b1e0;
-  box-shadow: 0 10px 24px rgb(60 45 30 / 28%);
+  filter: brightness(1.06);
+  box-shadow: 0 10px 24px rgb(23 44 76 / 42%);
 }
 
 .invite-cover__button:focus-visible {
@@ -211,8 +210,8 @@
   }
   .invite-cover__shade {
     background:
-      linear-gradient(180deg, rgb(20 16 12 / 42%) 0%, transparent 30%),
-      linear-gradient(0deg, rgb(146 112 80 / 60%) 0%, rgb(170 134 100 / 36%) 30%, transparent 58%);
+      linear-gradient(180deg, rgb(23 44 76 / 50%) 0%, transparent 30%),
+      linear-gradient(0deg, rgb(23 44 76 / 78%) 0%, rgb(44 72 116 / 46%) 30%, transparent 58%);
   }
   .invite-cover__bottom {
     max-width: 34rem;

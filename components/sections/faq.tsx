@@ -9,8 +9,6 @@ import { useSiteConfig } from "@/hooks/use-site-config"
 import { layeredSectionTitleSize, sectionType } from "@/lib/section-typography"
 import { PlainBubbles } from "@/components/loader/PlainBubbles"
 import { SectionBackdrop } from "@/components/section-backdrop"
-import { TintedDeco } from "@/components/tinted-deco"
-import { DecoCorners } from "@/components/deco-corners"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -30,14 +28,10 @@ const aboveTheBeyond = localFont({
 })
 
 // Palette lives in globals.css → motif / welcome tokens.
-// White card, navy questions, body-blue answers; dusty blue marks the open question,
-// dusty-blue hairlines and a slate-blue diamond for ornaments.
-const TEAL = "var(--color-welcome-navy)"
-const BUTTON = "var(--color-welcome-heading)" // dusty blue — open question number
-const IVORY = "#FAF6EE"
+// One card of navy questions split by hairlines; dusty-blue hairlines and a slate-blue diamond for ornaments.
+const NAVY = "var(--color-welcome-navy)"
 const BODY = "var(--color-welcome-text)"
-const ACCENT = "var(--color-welcome-heading)"
-const SKY_TINT = (pct: number) => `color-mix(in srgb, var(--color-motif-medium) ${pct}%, #FAF6EE)`
+const ROW_LINE = "color-mix(in srgb, var(--color-motif-medium) 35%, transparent)"
 
 // Same circle pattern as the gallery (PlainBubbles paints the base)
 const sectionBg = "var(--color-bg-pattern-base)"
@@ -64,7 +58,6 @@ const dividerLineStyle = {
 
 const ct = {
   body: sectionType.textRelaxed,
-  question: sectionType.text,
 } as const
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -82,11 +75,6 @@ const listVariants: Variants = {
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 14 },
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
-}
-
-function DecoImg({ src, className }: { src: string; className: string }) {
-  if (!src) return null
-  return <TintedDeco src={src} className={className} />
 }
 
 // Dusty-blue hairlines either side of a slate-blue diamond
@@ -201,7 +189,6 @@ function FaqAnswer({ answer }: { answer: string }) {
 export function FAQ({ background = true }: { background?: boolean } = {}) {
   const siteConfig = useSiteConfig()
   const content = siteConfig.faq
-  const { decos } = content
   const reduceMotion = useReducedMotion()
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
@@ -224,18 +211,14 @@ export function FAQ({ background = true }: { background?: boolean } = {}) {
       className={`${theSeasons.variable} ${aboveTheBeyond.variable} relative w-full overflow-hidden`}
       style={background ? { background: sectionBg } : undefined}
     >
-      {/* Same circle pattern as the gallery, with the light wash + double border
+      {/* Same circle pattern as the gallery, with the light wash
           (on the invitation page the shared wrapper paints these behind Book of Guests and FAQ) */}
       {background && <PlainBubbles />}
       {background && <SectionBackdrop />}
-      {background && content.showFrame && <div className="deco-frame" aria-hidden="true" />}
       <section
         id="faq"
         className="relative z-10 overflow-hidden pt-14 pb-12 sm:pt-16 sm:pb-14 md:pt-20 md:pb-16 lg:pt-24 lg:pb-20"
       >
-        {/* Corner florals (content/site.ts → faq.decos) — bottom only; Book of Guests sits above */}
-        <DecoCorners decos={{ bottomLeft: decos.bottomLeft, bottomRight: decos.bottomRight }} />
-
         {/* Header */}
         <motion.div
           className="relative z-20 mx-auto mb-8 max-w-5xl px-3 text-center @container/faq sm:mb-10 sm:px-4 md:mb-12"
@@ -249,10 +232,6 @@ export function FAQ({ background = true }: { background?: boolean } = {}) {
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[120%] w-[min(40rem,110%)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
             style={{ background: "radial-gradient(ellipse at center, rgb(250 246 238 / 70%) 0%, rgb(250 246 238 / 30%) 50%, transparent 72%)" }}
-          />
-          <DecoImg
-            src={decos.headerOrnament}
-            className="mx-auto mb-3 block h-auto w-28 select-none sm:mb-4 sm:w-36 md:w-44"
           />
           <DiamondDivider />
           <p
@@ -289,7 +268,7 @@ export function FAQ({ background = true }: { background?: boolean } = {}) {
             viewport={{ once: true, amount: 0.1 }}
           >
             <motion.ul
-              className="relative z-20 space-y-2 px-4 py-5 sm:space-y-2.5 sm:px-6 sm:py-7 md:px-8"
+              className="relative z-20 px-5 py-2 sm:px-8 sm:py-3 md:px-10"
               variants={listVariants}
               initial={initial}
               whileInView="show"
@@ -302,73 +281,38 @@ export function FAQ({ background = true }: { background?: boolean } = {}) {
                   <motion.li
                     key={item.question}
                     variants={itemVariants}
-                    className="relative overflow-hidden rounded-2xl transition-all duration-300"
-                    style={{
-                      background: isOpen ? SKY_TINT(14) : SKY_TINT(5),
-                      border: `1px solid ${isOpen ? "color-mix(in srgb, var(--color-motif-medium) 70%, transparent)" : "color-mix(in srgb, var(--color-motif-medium) 30%, transparent)"}`,
-                      boxShadow: isOpen
-                        ? "inset 3px 0 0 var(--color-motif-yellow), 0 12px 24px -16px color-mix(in srgb, var(--color-welcome-navy) 45%, transparent)"
-                        : "none",
-                    }}
+                    className="border-b last:border-b-0"
+                    style={{ borderColor: ROW_LINE }}
                   >
                     <button
                       type="button"
                       onClick={() => setOpenIndex(isOpen ? null : index)}
-                      className="group flex w-full items-center gap-3 px-3.5 py-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)] sm:px-5 sm:py-3.5"
+                      className="group flex min-h-14 w-full items-center gap-3 rounded-lg py-3.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)] sm:py-4"
+                      style={{ color: NAVY }}
                       aria-expanded={isOpen}
                       aria-controls={contentId}
                     >
-                      <span
-                        className={`${cinzel.className} flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[0.66rem] font-semibold tabular-nums tracking-[0.02em] transition-all duration-300 sm:h-8 sm:w-8 sm:text-[0.72rem]`}
-                        style={
-                          isOpen
-                            ? {
-                                background:
-                                  "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)",
-                                color: IVORY,
-                                boxShadow: "0 0 0 2px #FAF6EE, 0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 70%, transparent)",
-                              }
-                            : {
-                                background: "#FAF6EE",
-                                color: TEAL,
-                                boxShadow: "inset 0 0 0 1px color-mix(in srgb, var(--color-motif-yellow) 70%, transparent)",
-                              }
-                        }
-                        aria-hidden
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span
-                        className={`${cinzel.className} ${ct.question} flex-1 font-semibold leading-snug transition-colors duration-200 ${
-                          isOpen
-                            ? "text-[var(--color-welcome-heading)]"
-                            : "text-[var(--color-welcome-navy)] group-hover:text-[var(--color-welcome-heading)]"
-                        }`}
-                      >
+                      <span className={`${cinzel.className} flex-1 text-[0.875rem] font-semibold leading-snug sm:text-[0.9375rem] md:text-base`}>
                         {item.question}
                       </span>
-                      <span
-                        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${isOpen ? "rotate-180" : "group-hover:translate-y-0.5"}`}
-                        style={{ background: isOpen ? BUTTON : SKY_TINT(22) }}
+                      <ChevronDown
+                        className={`h-5 w-5 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : "group-hover:translate-y-0.5"}`}
                         aria-hidden
-                      >
-                        <ChevronDown className="h-4 w-4" style={{ color: isOpen ? IVORY : ACCENT }} />
-                      </span>
+                      />
                     </button>
 
+                    {/* invisible when closed, so links in hidden answers can't be tabbed to */}
                     <div
                       id={contentId}
                       role="region"
+                      aria-label={item.question}
                       className={`grid transition-all duration-300 ease-out ${
-                        isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                        isOpen ? "visible grid-rows-[1fr] opacity-100" : "invisible grid-rows-[0fr] opacity-0"
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="px-3.5 pb-4 sm:px-5 sm:pb-5">
-                          <span className="mb-3 block h-px w-full" style={dividerLineStyle} aria-hidden />
-                          <div className="sm:pl-11">
-                            <FaqAnswer answer={fillAnswer(item.answer)} />
-                          </div>
+                        <div className="pb-4 pr-8 sm:pb-5">
+                          <FaqAnswer answer={fillAnswer(item.answer)} />
                         </div>
                       </div>
                     </div>
@@ -377,11 +321,6 @@ export function FAQ({ background = true }: { background?: boolean } = {}) {
               })}
             </motion.ul>
           </motion.div>
-
-          <DecoImg
-            src={decos.footerVine}
-            className="mx-auto mt-10 block h-auto w-56 select-none opacity-90 sm:mt-12 sm:w-72 md:w-96"
-          />
         </div>
       </section>
     </div>

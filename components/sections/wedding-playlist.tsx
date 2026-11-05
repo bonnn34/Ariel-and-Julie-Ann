@@ -9,8 +9,6 @@ import { Music2, Disc3 } from "lucide-react"
 import { motion, useReducedMotion, type Variants } from "motion/react"
 import { PlainBubbles } from "@/components/loader/PlainBubbles"
 import { SectionBackdrop } from "@/components/section-backdrop"
-import { TintedDeco } from "@/components/tinted-deco"
-import { DecoCorners } from "@/components/deco-corners"
 
 interface SpotifyPlaybackUpdate {
   playingURI: string
@@ -103,15 +101,10 @@ const aboveTheBeyond = localFont({
 })
 
 // Palette lives in globals.css → motif / welcome tokens.
-// White card, navy headings, body-blue text; dusty-blue buttons (no yellow for text).
-const TEAL = "var(--color-welcome-navy)"
-const BUTTON =
-  "linear-gradient(180deg, var(--color-welcome-heading) 0%, color-mix(in srgb, var(--color-welcome-heading) 72%, var(--color-welcome-navy)) 100%)"
-const BUTTON_SHADOW =
-  "0 0 0 3px color-mix(in srgb, var(--color-motif-medium) 22%, transparent), 0 12px 24px -12px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)"
+// Paper card, navy headings and buttons, body-blue text (no yellow for text).
+const BUTTON_SHADOW = "0 12px 24px -12px color-mix(in srgb, var(--color-welcome-navy) 55%, transparent)"
 const IVORY = "#FAF6EE"
-const PAPER = "#FAF6EE"
-const NAVY = TEAL
+const NAVY = "var(--color-welcome-navy)"
 const BODY = "var(--color-welcome-text)"
 const ACCENT = "var(--color-welcome-heading)"
 const HAIRLINE = "color-mix(in srgb, var(--color-motif-medium) 60%, transparent)"
@@ -138,7 +131,7 @@ const cardStyle = {
 const ct = {
   body: "text-sm sm:text-[0.95rem] md:text-base",
   bodyLg: "text-sm sm:text-base md:text-lg",
-  btn: "text-[0.65rem] sm:text-[0.7rem] md:text-xs",
+  btn: "text-xs",
 } as const
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -148,9 +141,49 @@ const revealVariants: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } },
 }
 
-function DecoImg({ src, className }: { src: string; className: string }) {
-  if (!src) return null
-  return <TintedDeco src={src} className={className} />
+// Spinning vinyl: navy grooves and a pastel label with the couple's monogram. The light
+// sheen sits outside the spinning part, so it stays put like a real reflection.
+function VinylRecord({ monogram, spin, className = "" }: { monogram?: string; spin: boolean; className?: string }) {
+  return (
+    <div
+      aria-hidden
+      className={`relative shrink-0 rounded-full ${className}`}
+      style={{ boxShadow: "0 16px 30px -14px color-mix(in srgb, var(--color-welcome-navy) 70%, transparent)" }}
+    >
+      <div
+        className={`absolute inset-0 rounded-full ${spin ? "animate-[spin_8s_linear_infinite]" : ""}`}
+        style={{ background: "repeating-radial-gradient(circle at center, #14263F 0, #14263F 1.5px, #1E3557 1.5px, #1E3557 3px)" }}
+      >
+        <div
+          className="absolute inset-[31%] rounded-full"
+          style={{
+            background: "conic-gradient(from 40deg, #F6D5E0, #FBE7C6, #CDE6F5, #D8D1F3, #F6D5E0)",
+            boxShadow: "0 0 0 2px rgb(250 246 238 / 35%)",
+          }}
+        >
+          {monogram ? (
+            <span
+              className="absolute inset-[12%]"
+              style={{
+                background: NAVY,
+                WebkitMask: `url("${encodeURI(monogram)}") center / contain no-repeat`,
+                mask: `url("${encodeURI(monogram)}") center / contain no-repeat`,
+              }}
+            />
+          ) : null}
+        </div>
+        {/* Spindle hole */}
+        <span className="absolute left-1/2 top-1/2 h-[5%] w-[5%] -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ background: IVORY }} />
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0 rounded-full"
+        style={{
+          background:
+            "conic-gradient(from 20deg, transparent 0 8%, rgb(255 255 255 / 16%) 13%, transparent 19% 53%, rgb(255 255 255 / 12%) 62%, transparent 68%)",
+        }}
+      />
+    </div>
+  )
 }
 
 // Dusty-blue hairlines either side of a slate-blue diamond
@@ -218,7 +251,7 @@ function PlaylistTitle({ title, script }: { title: string; script: string }) {
 export function WeddingPlaylist() {
   const siteConfig = useSiteConfig()
   const content = siteConfig.playlist
-  const { title, subtitle, spotifyUrl, decos } = content
+  const { title, subtitle, spotifyUrl } = content
   const { groomNickname, brideNickname } = siteConfig.couple
   const fillCouple = (text: string) => text.split("{couple}").join(`${groomNickname} & ${brideNickname}`)
   const playlistName = fillCouple(content.playlistName)
@@ -307,12 +340,8 @@ export function WeddingPlaylist() {
       <SectionBackdrop />
       <section
         id="playlist"
-        className="relative z-10 overflow-hidden pt-10 pb-9 sm:pt-16 sm:pb-14 md:pt-20 md:pb-16 lg:pt-24 lg:pb-20"
+        className="relative z-10 overflow-hidden pt-14 pb-12 sm:pt-16 sm:pb-14 md:pt-20 md:pb-16 lg:pt-24 lg:pb-20"
       >
-        {/* Corner florals + double border (content/site.ts → playlist.decos / showFrame) */}
-        {content.showFrame && <div className="deco-frame" aria-hidden="true" />}
-        <DecoCorners decos={decos} />
-
         <div className="relative z-20 mx-auto max-w-5xl px-4 sm:px-6 md:px-8">
           {/* Header */}
           <motion.div
@@ -328,14 +357,10 @@ export function WeddingPlaylist() {
               className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[120%] w-[min(40rem,110%)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
               style={{ background: "radial-gradient(ellipse at center, rgb(250 246 238 / 70%) 0%, rgb(250 246 238 / 30%) 50%, transparent 72%)" }}
             />
-            <DecoImg
-              src={decos.headerOrnament}
-              className="mx-auto mb-2 block h-auto w-20 select-none sm:mb-4 sm:w-36 md:w-44"
-            />
             <DiamondDivider />
             {content.eyebrow ? (
               <p
-                className={`${cinzel.className} mt-3 text-[0.625rem] font-semibold uppercase tracking-[0.2em] sm:mt-5 sm:text-[0.8rem] sm:tracking-[0.24em]`}
+                className={`${cinzel.className} mt-3 text-[0.6875rem] font-semibold uppercase tracking-[0.2em] sm:mt-5 sm:text-[0.8rem] sm:tracking-[0.24em]`}
                 style={onBgBlue}
               >
                 {content.eyebrow}
@@ -364,37 +389,28 @@ export function WeddingPlaylist() {
             <div className="relative z-20 grid grid-cols-1 items-center gap-4 px-3 py-4 sm:gap-6 sm:px-7 sm:py-9 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-10 md:px-10 md:py-10">
               {/* Info */}
               <div className="flex flex-row flex-wrap items-center gap-x-3 gap-y-2 px-1 text-left sm:flex-col sm:flex-nowrap sm:gap-0 sm:px-0 sm:text-center md:items-start md:text-left">
-                <span
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full sm:h-16 sm:w-16"
-                  style={{
-                    background: BUTTON,
-                    boxShadow: `0 0 0 4px ${PAPER}, 0 0 0 5px ${HAIRLINE}, 0 14px 28px -12px color-mix(in srgb, var(--color-welcome-navy) 60%, transparent)`,
-                  }}
-                  aria-hidden
-                >
-                  <Disc3
-                    className={`h-6 w-6 sm:h-8 sm:w-8 ${reduceMotion ? "" : "animate-[spin_6s_linear_infinite]"}`}
-                    style={{ color: IVORY }}
-                  />
-                </span>
-                <div className="min-w-0 sm:contents">
+                <VinylRecord
+                  monogram={siteConfig.couple.monogram}
+                  spin={!reduceMotion}
+                  className="h-24 w-24 sm:h-44 sm:w-44 md:h-52 md:w-52"
+                />
+                <div className="min-w-0 flex-1 sm:contents">
                   <p
-                    className={`${cinzel.className} text-[0.55rem] font-semibold uppercase tracking-[0.22em] sm:mt-4 sm:text-[0.65rem]`}
+                    className={`${cinzel.className} text-[0.6875rem] font-semibold uppercase tracking-[0.2em] sm:mt-6 sm:text-xs`}
                     style={{ color: ACCENT }}
                   >
                     {content.cardEyebrow}
                   </p>
                   <h3
-                    className={`${theSeasons.className} mt-0.5 truncate text-base uppercase leading-tight tracking-[0.06em] sm:mt-1.5 sm:whitespace-normal sm:text-2xl sm:tracking-[0.08em]`}
+                    className={`${theSeasons.className} mt-0.5 text-base uppercase leading-tight tracking-[0.06em] sm:mt-1.5 sm:text-2xl sm:tracking-[0.08em]`}
                     style={{ color: NAVY }}
-                    title={playlistName}
                   >
                     <SpecialCharFont text={playlistName} />
                   </h3>
                 </div>
                 {content.cardNote ? (
                   <p
-                    className={`font-goudy-italic w-full text-[0.82rem] leading-snug sm:mt-3 sm:w-auto sm:max-w-sm sm:text-[0.95rem] sm:leading-relaxed md:text-base`}
+                    className={`font-goudy-italic w-full text-[0.875rem] leading-snug sm:mt-3 sm:w-auto sm:max-w-sm sm:text-[0.95rem] sm:leading-relaxed md:text-base`}
                     style={{ color: BODY }}
                   >
                     {content.cardNote}
@@ -411,7 +427,7 @@ export function WeddingPlaylist() {
                   rel="noopener noreferrer"
                   className={`${cinzel.className} mt-5 hidden items-center sm:inline-flex justify-center gap-2 rounded-full border px-7 py-2.5 font-semibold uppercase tracking-[0.2em] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-motif-accent)] sm:py-3 md:mt-0 ${ct.btn}`}
                   style={{
-                    background: BUTTON,
+                    background: NAVY,
                     borderColor: "rgb(250 246 238 / 70%)",
                     color: IVORY,
                     boxShadow: BUTTON_SHADOW,
@@ -446,8 +462,8 @@ export function WeddingPlaylist() {
                       style={{ color: ACCENT }}
                     />
                     <span
-                      className={`${cinzel.className} text-[0.6rem] font-semibold uppercase tracking-[0.22em] opacity-70`}
-                      style={{ color: TEAL }}
+                      className={`${cinzel.className} text-[0.6875rem] font-semibold uppercase tracking-[0.2em] opacity-80`}
+                      style={{ color: NAVY }}
                     >
                       Loading playlist
                     </span>
@@ -462,7 +478,7 @@ export function WeddingPlaylist() {
                 rel="noopener noreferrer"
                 className={`${cinzel.className} inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full py-3 font-semibold uppercase tracking-[0.18em] transition-all active:scale-[0.98] sm:hidden ${ct.btn}`}
                 style={{
-                  background: BUTTON,
+                  background: NAVY,
                   color: IVORY,
                   boxShadow: BUTTON_SHADOW,
                 }}
