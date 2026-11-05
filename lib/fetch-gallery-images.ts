@@ -126,10 +126,10 @@ export type GalleryFolderImages = {
   mobile: GalleryImageFile[]
 }
 
-/** Gallery list from public/desktop-background and public/mobile-background. */
+/** Full gallery list from public/JULIE ANN LELIS/GALLERY/desktop and /mobile. */
 export async function fetchGalleryImages(): Promise<GalleryFolderImages> {
   return {
-    desktop: readImagesFromPublicDir("desktop-background"),
-    mobile: readImagesFromPublicDir("mobile-background"),
+    desktop: readImagesFromPublicDir("JULIE ANN LELIS/GALLERY/desktop"),
+    mobile: readImagesFromPublicDir("JULIE ANN LELIS/GALLERY/mobile"),
   }
 }

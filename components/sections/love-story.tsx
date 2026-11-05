@@ -2,14 +2,15 @@
 
 import React, { useMemo } from "react"
 import localFont from "next/font/local"
+import { Cinzel } from "next/font/google"
 import { motion, useReducedMotion } from "motion/react"
 import { StorySection } from "@/components/StorySection"
-import { layeredSectionTitleSize } from "@/lib/section-typography"
+import { layeredSectionTitleSize, sectionType } from "@/lib/section-typography"
 import { useSiteConfig } from "@/hooks/use-site-config"
 import { siteConfig as defaultSiteConfig } from "@/content/site"
+import { parseWeddingDate } from "@/lib/wedding-date"
 import { SkyBackdrop } from "@/components/sky-backdrop"
 import "@/components/loader/loading-screen.css"
-import { TintedDeco } from "@/components/tinted-deco"
 import { StoryGlyphText } from "@/lib/story-glyph-text"
 import { PuhonText } from "@/components/puhon-closing"
 
@@ -23,6 +24,11 @@ const aboveTheBeyond = localFont({
   src: "../../Font/above-the-beyond-script.otf",
   display: "swap",
   variable: "--font-above-beyond",
+})
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
 })
 
 const revealEase = [0.22, 1, 0.36, 1] as const
@@ -100,6 +106,45 @@ function LoveStoryTitle({
   )
 }
 
+// "Join us" invitation under the closing verse: date, venue, a line of wording and the RSVP button
+function ClosingCta() {
+  const siteConfig = useSiteConfig()
+  const cta = siteConfig.loveStory.closingCta ?? defaultSiteConfig.loveStory.closingCta
+  const { dayOfWeek, month, day, year } = parseWeddingDate(siteConfig.ceremony.date ?? siteConfig.wedding.date)
+  const venue = siteConfig.ceremony.location || siteConfig.wedding.venue
+  const deadline = siteConfig.details.rsvp.deadline?.trim()
+  const navy = "var(--color-welcome-navy)"
+
+  return (
+    <div className="mt-12 flex flex-col items-center gap-3 sm:mt-14 sm:gap-4" style={{ color: navy }}>
+      <p className={`${aboveTheBeyond.className} ${sectionType.script}`}>{cta.heading}</p>
+      <div className={`${cinzel.className} ${sectionType.label} font-semibold uppercase tracking-[0.16em]`}>
+        <p>{`${dayOfWeek}, ${month} ${day}, ${year}`}</p>
+        {venue ? <p className="mt-1">{venue}</p> : null}
+      </div>
+      {cta.text ? (
+        <p className={`font-goudy-italic max-w-md ${sectionType.textRelaxed}`}>
+          <StoryGlyphText text={cta.text} />
+        </p>
+      ) : null}
+      <a
+        href={cta.href}
+        className={`${cinzel.className} mt-2 inline-flex min-h-12 w-[min(80vw,19rem)] items-center justify-center rounded-full text-[0.8125rem] font-bold uppercase tracking-[0.32em] indent-[0.32em] no-underline transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-motif-teal)]`}
+        style={{
+          background: navy,
+          color: "var(--color-welcome-bg)",
+          boxShadow: "0 10px 24px color-mix(in srgb, var(--color-welcome-navy) 28%, transparent)",
+        }}
+      >
+        {cta.buttonText}
+      </a>
+      {deadline ? (
+        <p className={`font-goudy-italic ${sectionType.label}`}>Kindly RSVP by {deadline}</p>
+      ) : null}
+    </div>
+  )
+}
+
 function chapterTextFromParagraphs(
   paragraphs: readonly string[],
   groom: string,
@@ -124,17 +169,16 @@ function chapterTextFromParagraphs(
 // skyBackdrop: false when a parent already paints one sky behind this and the previous section
 export function LoveStory({ skyBackdrop = true }: { skyBackdrop?: boolean } = {}) {
   const siteConfig = useSiteConfig()
-  const loading = siteConfig.loadingScreen ?? defaultSiteConfig.loadingScreen
   const loveStory = siteConfig.loveStory ?? defaultSiteConfig.loveStory
-  // Corner florals + border live in content/site.ts → loveStory.decos / showFrame
-  const corners = loveStory.decos ?? defaultSiteConfig.loveStory.decos
-  const showFrame = loveStory.showFrame ?? defaultSiteConfig.loveStory.showFrame
   const intro = loveStory.intro ?? defaultSiteConfig.loveStory.intro
-  const headerOrnament = loveStory.headerOrnament ?? defaultSiteConfig.loveStory.headerOrnament
   const photoAlt = loveStory.photoAlt ?? defaultSiteConfig.loveStory.photoAlt
-  const showChapterNumbers = loveStory.showChapterNumbers ?? defaultSiteConfig.loveStory.showChapterNumbers
-  const showChapterDividers = loveStory.showChapterDividers ?? defaultSiteConfig.loveStory.showChapterDividers
-  const isPlain = loading.display === "plain"
+  const hasClosing = Boolean(
+    loveStory.closingEyebrow ||
+      loveStory.closingHashtag ||
+      loveStory.closingQuoteLead ||
+      loveStory.closingQuote ||
+      loveStory.closingCta?.heading,
+  )
   const reduceMotion = useReducedMotion()
 
   const groom =
@@ -146,48 +190,15 @@ export function LoveStory({ skyBackdrop = true }: { skyBackdrop?: boolean } = {}
     () => loveStory.chapters ?? defaultSiteConfig.loveStory.chapters,
     [loveStory.chapters],
   )
-  const eucalyptusDecos =
-    loveStory.eucalyptusDecos ?? defaultSiteConfig.loveStory.eucalyptusDecos
 
   return (
     <div
       id="love-story"
-      // z-[2]: the whole section is one layer ABOVE the circle pattern (PlainBubbles, z-index 1,
-      // painted by the parent wrapper) — its translucent wash then softens the circles behind it.
-      // (A bare `isolate` would put the section at z-index auto, under the circles' opaque base.)
-      className={`love-story-root ${theSeasons.variable} ${aboveTheBeyond.variable} relative z-[2] min-h-screen w-full overflow-x-hidden`}
+      // z-[2] + solid cream: the section sits above and hides the circle pattern (PlainBubbles, z-index 1)
+      className={`love-story-root ${theSeasons.variable} ${aboveTheBeyond.variable} relative z-[2] min-h-screen w-full overflow-x-hidden pb-5 md:pb-10`}
+      style={{ background: "var(--color-welcome-bg)" }}
     >
       {skyBackdrop && <SkyBackdrop haze />}
-      {/* Paper backdrop in the loading screen's colors (loading-screen.css → .love-story-bg) */}
-      {isPlain && (
-        <div className="love-story-bg" aria-hidden="true">
-          <span className="love-story-bg__grain" />
-        </div>
-      )}
-
-      {/* Corner florals at the section's four corners, sized per corner like the loader
-          (original artwork colors), over a thin double border */}
-      {isPlain && showFrame && <div className="love-story-frame" aria-hidden="true" />}
-      {(
-        [
-          { src: corners.topLeft, pos: "tl", className: "left-0 top-0" },
-          { src: corners.topRight, pos: "tr", className: "right-0 top-0" },
-          { src: corners.bottomLeft, pos: "bl", className: "left-0 bottom-0" },
-          { src: corners.bottomRight, pos: "br", className: "right-0 bottom-0" },
-        ] as const
-      )
-        .filter(({ src }) => src)
-        .map(({ src, pos, className }) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={pos}
-            src={src}
-            alt=""
-            aria-hidden="true"
-            className={`love-story-corner love-story-corner--${pos} pointer-events-none absolute z-[1] select-none ${className}`}
-          />
-        ))}
-
       <header
         className="love-story-header relative z-20 pb-6 pt-24 text-center sm:pb-12 sm:pt-36 md:pb-14 md:pt-44"
       >
@@ -198,9 +209,6 @@ export function LoveStory({ skyBackdrop = true }: { skyBackdrop?: boolean } = {}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.75, ease: revealEase }}
         >
-          {headerOrnament ? (
-            <TintedDeco src={headerOrnament} className="love-story-ornament mx-auto mb-3 sm:mb-4" />
-          ) : null}
           <LoveStoryTitle title={loveStory.title} subtitle={loveStory.subtitle} />
           <div className="mt-4 sm:mt-5">
             <OrnamentalDivider />
@@ -217,42 +225,38 @@ export function LoveStory({ skyBackdrop = true }: { skyBackdrop?: boolean } = {}
         <StorySection
           key={`${chapter.image}-${index}`}
           title={chapter.title}
-          // Sides (and light/dark cards) alternate automatically; a chapter's layout overrides it
+          // Sides (and cream/navy bands) alternate automatically; a chapter's layout overrides it
           theme={index % 2 ? "dark" : "light"}
           layout={chapter.layout ?? (index % 2 ? "image-right" : "image-left")}
           imageSrc={chapter.image}
           imageAlt={formatStoryParagraph(chapter.imageAlt || photoAlt, groom, bride)}
           imagePosition={chapter.imagePosition}
-          showNumber={showChapterNumbers}
-          showDivider={showChapterDividers}
-          date={chapter.date}
+          subheader={chapter.subheader}
+          caption={chapter.caption}
           text={chapterTextFromParagraphs(chapter.paragraphs, groom, bride)}
-          plain={isPlain}
           chapterIndex={index}
           isFirst={index === 0}
           isLast={index === chapters.length - 1}
-          eucalyptusDecos={isPlain ? eucalyptusDecos : undefined}
-          chapterLabelText={loveStory.chapterLabel}
         />
       ))}
 
-      <footer
-        className="relative z-20 px-4 pb-16 pt-8 text-center sm:px-6 sm:pb-20 sm:pt-10 md:pb-24 md:px-8 md:pt-12"
-      >
-        <motion.div
-          className="relative mx-auto max-w-xl px-2"
-          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.75, delay: 0.08, ease: revealEase }}
+      {hasClosing && (
+        <footer
+          className="relative z-20 px-4 pb-16 pt-8 text-center sm:px-6 sm:pb-20 sm:pt-10 md:pb-24 md:px-8 md:pt-12"
         >
-          <OrnamentalDivider />
-          <PuhonText className="mt-6 sm:mt-8" />
-          {isPlain && eucalyptusDecos.sectionBottom ? (
-            <TintedDeco src={eucalyptusDecos.sectionBottom} className="love-story-footer-euc mx-auto mt-8 sm:mt-10" />
-          ) : null}
-        </motion.div>
-      </footer>
+          <motion.div
+            className="relative mx-auto max-w-xl px-2"
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.75, delay: 0.08, ease: revealEase }}
+          >
+            <OrnamentalDivider />
+            <PuhonText className="mt-6 sm:mt-8" />
+            {loveStory.closingCta?.heading ? <ClosingCta /> : null}
+          </motion.div>
+        </footer>
+      )}
     </div>
   )
 }

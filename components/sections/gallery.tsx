@@ -10,9 +10,7 @@ import { Cinzel } from "next/font/google"
 import { Section } from "@/components/section"
 import { sectionType } from "@/lib/section-typography"
 import { useSiteConfig } from "@/hooks/use-site-config"
-import { TintedDeco } from "@/components/tinted-deco"
 import { PlainBubbles } from "@/components/loader/PlainBubbles"
-import { DecoCorners } from "@/components/deco-corners"
 import { HEART_PATH } from "@/components/rising-hearts"
 import { SectionBackdrop } from "@/components/section-backdrop"
 
@@ -78,11 +76,6 @@ const badgeStyle: React.CSSProperties = {
   color: C.light,
 }
 
-function DecoImg({ src, className }: { src: string; className: string }) {
-  if (!src) return null
-  return <TintedDeco src={src} className={className} />
-}
-
 function DiamondDivider({ children }: { children?: React.ReactNode }) {
   return (
     <div className="flex items-center justify-center gap-2">
@@ -136,7 +129,7 @@ function GalleryTitle({ title, subtitle }: { title: string; subtitle: string }) 
   )
 }
 
-type GalleryItem = { image: string; text: string }
+type GalleryItem = { image: string; text: string; position?: string }
 
 /**
  * Mobile carousel with endless swiping: the photos are rendered three times and,
@@ -238,6 +231,7 @@ function MobileInfiniteCarousel({
                   fill
                   sizes="86vw"
                   className="object-cover"
+                  style={{ objectPosition: item.position }}
                   priority={i === n}
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-lg" style={innerFrameStyle} />
@@ -292,7 +286,6 @@ function MobileInfiniteCarousel({
 export function Gallery() {
   const { gallery } = useSiteConfig()
   const galleryItems: GalleryItem[] = gallery.images
-  const decos = gallery.decos
 
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -412,16 +405,8 @@ export function Gallery() {
         id="gallery"
         className="relative z-10 overflow-hidden pt-14 pb-10 sm:pt-16 sm:pb-12 md:pt-20 md:pb-16 lg:pt-24 lg:pb-20"
       >
-        {/* Corner florals + double border (content/site.ts → gallery.decos / showFrame) */}
-        {gallery.showFrame && <div className="deco-frame" aria-hidden="true" />}
-        <DecoCorners decos={decos} />
-
       {/* Header */}
       <div className="relative z-20 mx-auto mb-8 max-w-5xl px-3 text-center sm:mb-10 sm:px-4 md:mb-12">
-        <DecoImg
-          src={decos.headerOrnament}
-          className="mx-auto mb-3 block h-auto w-28 select-none sm:mb-4 sm:w-36 md:w-44"
-        />
         <DiamondDivider />
         <p
           className={`${cinzel.className} mx-auto mt-4 max-w-[20rem] px-2 text-[0.6875rem] font-semibold leading-snug tracking-[0.12em] uppercase min-[400px]:max-w-none min-[400px]:text-[0.75rem] min-[400px]:tracking-[0.16em] sm:mt-5 sm:text-[0.9375rem] sm:tracking-[0.2em] md:text-base md:tracking-[0.22em]`}
@@ -480,7 +465,7 @@ export function Gallery() {
             </div>
 
             {/* Tablet/Desktop: framed grid with a gentle stagger */}
-            <div className="hidden sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5 lg:gap-6 lg:pb-8">
+            <div className="hidden sm:grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 lg:gap-6 lg:pb-8">
               {galleryItems.map((item, index) => (
                 <button
                   key={item.image + index}
@@ -497,8 +482,9 @@ export function Gallery() {
                       src={encodeURI(item.image)}
                       alt={item.text || `Gallery image ${index + 1}`}
                       fill
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                      sizes="(max-width: 768px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ objectPosition: item.position }}
                     />
                     <div
                       className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -543,10 +529,6 @@ export function Gallery() {
             >
               {gallery.footnote}
             </p>
-            <DecoImg
-              src={decos.footerVine}
-              className="mx-auto mt-6 block h-auto w-56 select-none opacity-90 sm:mt-8 sm:w-72 md:w-96"
-            />
           </>
         )}
       </div>

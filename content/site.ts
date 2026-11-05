@@ -144,7 +144,7 @@ const RSVP = {
   coordinator: "{groom} / {bride}", // {groom} / {bride} → couple nicknames
   phone: "to be announced",
 }
-const HASHTAGS = ["#TrizhaFoundHerWei"] // ⚠ check — looks like it's from a previous couple
+const HASHTAGS = ["#JulieAnnSaidArielDo"]
 
 // ── Attire guide (Event Details → Attire Guidelines) ────────────────────────
 // SHOW = which cards to display AND their order, top to bottom. Examples:
@@ -355,6 +355,8 @@ const ENVELOPE_BG_PHOTOS_DESKTOP = Array.from({ length: 13 }, (_, i) => `${ENVEL
 
 // Home hero (main page) photo folder — files listed in homeHero below
 const HOME_HERO_BG_DIR = "/JULIE ANN LELIS/PRENUP PICTURES/YOU ARE INVITED - MAIN PAGE"
+const LOVE_STORY_PHOTOS = "/JULIE ANN LELIS/LOVE STORY/mobile"
+const GALLERY_PHOTOS = "/JULIE ANN LELIS/GALLERY/mobile"
 
 // ── Decorations ─────────────────────────────────────────────────────────────
 // Change a path here to swap it on every section at once.
@@ -389,9 +391,10 @@ const SECTION_DECOS = {
 
 // One love story chapter (content/site.ts → loveStory.chapters)
 type StoryChapter = {
-  date?: string // small caps line above the title ("" shows "Chapter 0X")
   title: string
+  subheader?: string // small caps line under the title ("" hides it)
   image?: string // photo beside the text ("" for none)
+  caption?: string // place or name shown under the photo ("" hides it)
   imageAlt?: string // photo description ("" uses loveStory.photoAlt)
   paragraphs: string[] // {groom} / {bride} → nicknames
   imagePosition?: string // which part of the photo stays in frame, e.g. "center 20%" (default "center 30%")
@@ -537,7 +540,7 @@ export const siteConfig = {
     inviteLine: "Together with our families, we joyfully invite you to witness our union.",
     closingLine: "Your presence, prayers, and love will mean the world to us.",
     rsvpButtonText: "RSVP",
-    rsvpHref: "#rsvp",
+    rsvpHref: "#guest-list",
   },
   // Couple video (components/sections/couple-video.tsx)
   coupleVideo: {
@@ -551,99 +554,135 @@ export const siteConfig = {
     // YouTube video ID — the part after "watch?v=" (or after "youtu.be/")
     youtubeId: "yp1RUYF92gk",
     // Cover image shown before the video plays
-    thumbnail: "/desktop-background/couples (20).webp",
+    thumbnail: "/JULIE ANN LELIS/GALLERY/desktop/couple (5).JPG",
     thumbnailAlt: `${COUPLE_LABEL} — video cover`,
     playLabel: "Play our video",
   },
   // Thank-you messages to family and friends (components/sections/love-story.tsx + StorySection)
   loveStory: {
-    title: "With Gratitude",
-    subtitle: "to the people we love",
+    title: "Our Love Story",
+    subtitle: "from simple chats to forever",
     // Short opening line under the title ("" hides it)
     intro:
-      "To our families, our friends and everyone who has loved, guided and prayed for us: this day is as much yours as it is ours, and we would be so happy to celebrate it with you.",
-    // Small sprig above the title ("" hides it)
-    headerOrnament: DECOR.headerOrnament,
-    // Shown above a chapter's title when it has no date, e.g. "Chapter 03"
-    chapterLabel: "With Love",
+      "Two chat mates, countless adventures and one unforgettable yes: this is the story of how a simple conversation grew into a forever.",
     // Photo description used when a chapter has no imageAlt
     photoAlt: "{groom} and {bride}",
-    // Large faint chapter number (01, 02 …) behind each chapter's text
-    showChapterNumbers: false,
-    // Small heart divider between chapters
-    showChapterDividers: true,
-    // Closing block: big word, hashtag, then the verse (also shown in Snap & Share)
+    // Closing block under the last chapter: big word, hashtag, then the verse
     closingEyebrow: "", // large word on top (was "Puhon") — "" hides it
     closingHashtag: "", // hashtag under it (was HASHTAGS[0]) — "" hides it
     closingQuoteLead: "", // bold first line ("" for none)
-    closingQuote: "", // "" hides the verse block
-    closingCitation: "",
-    // Four corner florals framing the section, sized per corner like the loader ("" hides a corner)
-    decos: { ...CORNER_DECOS },
-    // Thin double border around the section, under the corner florals (false hides it)
-    showFrame: true,
-    eucalyptusDecos: {
-      topLeft: DECOR.sideLeft,
-      bottomRight: DECOR.sideRight,
-      timelineTop: DECOR.headerOrnament,
-      sectionBottom: DECOR.headerOrnament, // dusty-blue sprig under the closing verse ("" hides it)
+    closingQuote: "And now these three remain: faith, hope and love. But the greatest of these is love.", // "" hides the verse block
+    closingCitation: "1 Corinthians 13:13",
+    // Invitation under the verse; the date, venue and RSVP deadline fill in on their own ("" heading hides it)
+    closingCta: {
+      heading: "Be part of our next chapter",
+      text: "Our story is only beginning, and we would love to have you with us as it continues.",
+      buttonText: "Join Us",
+      href: "#guest-list",
     },
     // The story, one chapter at a time (fields: see StoryChapter above). Photos come from
-    // /public/mobile-background. Add, remove or reorder chapters freely — sides alternate on their own.
+    // LOVE_STORY_PHOTOS. Add, remove or reorder chapters freely — sides alternate on their own.
    chapters: [
       {
-        date: "2021",
-        title: "It Started With a Conversation",
-        image: "/mobile-background/couple (2).webp",
-        imageAlt: "{groom} and {bride} together",
-        imagePosition: "center 25%",
+        title: "From Chat Mates to First Date",
+        subheader: "Where It All Began",
+        image: `${LOVE_STORY_PHOTOS}/ANTIPOLO 2022 - PINTO ART MUSEUM 1ST DATE.JPG`,
+        caption: "Antipolo · Pinto Art Museum · First Date",
+        imageAlt: "{groom} and {bride} on their first date at Pinto Art Museum",
+        imagePosition: "center 10%",
         paragraphs: [
-          "Our story began in 2021 with simple conversations between two chat mates. What started as casual messages slowly became something we both looked forward to.",
-          "As we got to know each other, our connection deepened, and those everyday conversations became the beginning of a beautiful love story.",
+          "What began as simple conversations between two chat mates in 2021 slowly blossomed into something beautiful.",
+          "As they got to know each other, their connection grew deeper, and in 2022, they took a special step forward by officially dating and beginning their journey as a couple.",
         ],
       },
       {
-        date: "2022",
-        title: "The Beginning of Us",
-        image: "/mobile-background/couple (4).webp",
-        imageAlt: "{groom} and {bride} smiling together",
-        imagePosition: "center 30%",
+        title: "New Horizons Together",
+        subheader: "Countless Memories",
+        image: `${LOVE_STORY_PHOTOS}/ZAMBALES 2023.JPG`,
+        caption: "Zambales",
+        imageAlt: "{groom} and {bride} on the shore in Zambales with green hills behind them",
+        imagePosition: "center 50%",
+        paragraphs: ["Through the years, {groom} and {bride} created countless memories together."],
+      },
+      {
+        title: "Above the Clouds",
+        subheader: "Exploring Side by Side",
+        image: `${LOVE_STORY_PHOTOS}/SAGADA 2023_1.png`,
+        caption: "Sagada",
+        imageAlt: "{groom} and {bride} smiling above a sea of clouds in Sagada",
+        imagePosition: "center 55%",
+        paragraphs: ["Exploring different places, they kept discovering new adventures together."],
+      },
+      {
+        title: "Joy in the Little Moments",
+        subheader: "The Simple Things",
+        image: `${LOVE_STORY_PHOTOS}/BAGUIO 2024_2.jpg`,
+        caption: "Baguio",
+        imageAlt: "{groom} and {bride} sharing coffee and cake at a café in Baguio",
+        imagePosition: "center 90%",
+        paragraphs: ["Along the way, they found joy in the little moments they shared."],
+      },
+      {
+        title: "Closer With Every Journey",
+        subheader: "Every Trip, Every Laugh",
+        image: `${LOVE_STORY_PHOTOS}/TAGAYTAY 2025_2.png`,
+        caption: "Tagaytay",
+        imageAlt: "{groom} and {bride} smiling in Tagaytay with Taal Lake behind them",
+        imagePosition: "center 40%",
+        paragraphs: ["Every trip, every laugh, and every experience brought them closer."],
+      },
+      {
+        title: "Sunny Days by the Water",
+        subheader: "Even More Special",
+        image: `${LOVE_STORY_PHOTOS}/SORSOGON 2025_2.png`,
+        caption: "Sorsogon",
+        imageAlt: "{groom} and {bride} on a bamboo dock at Juag Lagoon in Sorsogon",
+        imagePosition: "center 45%",
+        paragraphs: ["Each new place made their love story even more special."],
+      },
+      {
+        title: "An Unforgettable Adventure",
+        subheader: "Journey to Legazpi",
+        image: `${LOVE_STORY_PHOTOS}/ALBAY 2025_6.jpg`,
+        caption: "Albay",
+        imageAlt: "{groom} and {bride} on an ATV in Albay with Mayon Volcano behind them",
+        imagePosition: "center 45%",
         paragraphs: [
-          "In 2022, we took a special step forward and officially became a couple. A connection that began through conversations had grown into a love we were ready to share.",
-          "Together, we began creating memories and discovering the joy of having each other by our side.",
+          "On May 8, 2025, during their travels in Legazpi, Albay, their journey reached another unforgettable milestone.",
         ],
       },
       {
-        date: "Our Adventures Together",
-        title: "Finding Joy Along the Way",
-        image: "/mobile-background/couple (5).webp",
-        imageAlt: "{groom} and {bride} enjoying an adventure together",
-        imagePosition: "center 35%",
+        title: "She Said Yes!",
+        subheader: "May 8, 2025",
+        image: `${LOVE_STORY_PHOTOS}/PROPOSAL 2025_1.PNG`,
+        caption: "Proposal",
+        imageAlt: "{groom} on one knee proposing to {bride} in front of a stone church",
+        imagePosition: "center 100%",
         paragraphs: [
-          "Through the years, we explored different places, discovered new adventures, and found happiness in the little moments we shared.",
-          "Every trip, every laugh, and every experience brought us closer. Wherever we went, being together was always the best part.",
+          "Amid the beauty of their adventure, {groom} popped the question, and {bride} said yes!",
+          "What started as simple chats had led them to a promise of forever.",
         ],
       },
       {
-        date: "May 8, 2025",
-        title: "A Question, a Yes, and Forever",
-        image: "/mobile-background/couple (12).webp",
-        imageAlt: "{groom} and {bride} celebrating their engagement",
-        imagePosition: "center 25%",
+        title: "Hearts Full of Love",
+        subheader: "Dreams of a Beautiful Future",
+        image: `${LOVE_STORY_PHOTOS}/LA UNION 2026_2.png`,
+        caption: "La Union",
+        imageAlt: "{groom} and {bride} smiling at the beach in La Union",
+        imagePosition: "center 70%",
         paragraphs: [
-          "During our travels in Legazpi, Albay, our journey reached an unforgettable milestone. On May 8, 2025, Ariel asked the question that would begin our next chapter, and Julie Ann said yes.",
-          "What began with simple chats had grown into a promise of forever, making that adventure one we would always hold close to our hearts.",
+          "Now, with hearts full of love and dreams of a beautiful future together, {groom} and {bride} are ready to begin their next chapter—not just as sweethearts, but as husband and wife.",
         ],
       },
       {
-        date: "Our Next Chapter",
-        title: "From a Conversation to Forever",
-        image: "/mobile-background/couple (10).webp",
-        imageAlt: "{groom} and {bride} looking forward to their future together",
-        imagePosition: "center 25%",
+        title: "A Conversation Turned Forever",
+        subheader: "The Next Chapter",
+        image: `${LOVE_STORY_PHOTOS}/PUERTO GALERA 2026_7.png`,
+        caption: "Puerto Galera",
+        imageAlt: "{groom} and {bride} sharing a meal at a wooden restaurant in Puerto Galera",
+        imagePosition: "center 90%",
         paragraphs: [
-          "Now, with hearts full of love and dreams for our future, we are ready to begin our next chapter as husband and wife.",
-          "As we look forward to a lifetime of love, laughter, and adventures, we carry with us the story that brought us here. We cannot wait to celebrate this new beginning with you.",
+          "As they look forward to a lifetime of love, laughter, and adventures, they carry with them the beautiful story that brought them here: a love that began with a conversation and grew into a forever.",
         ],
       },
     ]as StoryChapter[],
@@ -659,15 +698,6 @@ export const siteConfig = {
       "More pictures will be added as we gather the rest of our favorite moments. Please check back — this gallery is still growing.",
     buttonText: "View Full Gallery",
     buttonHref: "/gallery",
-    // Corner florals (sized per corner like the loader), sprig above the title and
-    // sprig under the footnote — "" hides any of them
-    decos: {
-      ...CORNER_DECOS,
-      headerOrnament: DECOR.headerOrnament,
-      footerVine: DECOR.headerOrnament,
-    },
-    // Thin double border around the section and the full gallery page (false hides it)
-    showFrame: true,
     // Small labels
     swipeHint: "Swipe to explore", // under the phone carousel
     lightboxSwipeHint: "Swipe to navigate", // inside the full-screen photo view
@@ -679,9 +709,18 @@ export const siteConfig = {
       label: "Gallery", // top bar, beside the couple's names
       emptyText: "No images to display.",
     },
-    // Uses COUPLE_PHOTOS; replace with your own list if the gallery should differ.
-    // text → caption used as the photo's description
-    images: COUPLE_PHOTOS.map((image, i) => ({ image, text: `Cid and Jas, photo ${i + 1}` })),
+    // Photos on the invitation page (the full /gallery page lists GALLERY/desktop and GALLERY/mobile on its own).
+    // text → the photo's description; position → which part stays in frame (default centered)
+    images: [
+      { image: `${GALLERY_PHOTOS}/couple (8).JPG`, text: `${COUPLE_LABEL} embracing in their prenup attire` },
+      { image: `${GALLERY_PHOTOS}/couple (2).jpg`, text: `${COUPLE_LABEL} in front of a small white chapel`, position: "center bottom" },
+      { image: `${GALLERY_PHOTOS}/couple (4).JPG`, text: `${COUPLE_LABEL} facing each other under a garden arch` },
+      { image: `${GALLERY_PHOTOS}/couple (3).jpg`, text: `${COUPLE_LABEL} with arms wide in front of a stone church`, position: "center bottom" },
+      { image: `${GALLERY_PHOTOS}/couple (9).JPG`, text: `${COUPLE_LABEL} hugging beneath a vine-covered arch` },
+      { image: `${GALLERY_PHOTOS}/couple (7).jpg`, text: `${COUPLE_LABEL} on a roadside trip with Mayon Volcano behind them`, position: "center bottom" },
+      { image: `${GALLERY_PHOTOS}/couple (5).JPG`, text: `${COUPLE_LABEL} in a sunlit park at golden hour` },
+      { image: `${GALLERY_PHOTOS}/couple (11).jpg`, text: `${COUPLE_LABEL} sitting together on a bench by a lake` },
+    ] as { image: string; text: string; position?: string }[],
   },
 
   // Event details section (components/sections/details.tsx)

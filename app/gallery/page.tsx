@@ -3,8 +3,6 @@ import { fetchGalleryImages } from "@/lib/fetch-gallery-images"
 import { layeredSectionTitleSize, sectionType } from "@/lib/section-typography"
 import { siteConfig } from "@/content/site"
 import { PlainBubbles } from "@/components/loader/PlainBubbles"
-import { TintedDeco } from "@/components/tinted-deco"
-import { DecoCorners } from "@/components/deco-corners"
 import { SectionBackdrop } from "@/components/section-backdrop"
 import localFont from "next/font/local"
 import { Cinzel } from "next/font/google"
@@ -103,7 +101,6 @@ function GalleryTitle({ title, subtitle }: { title: string; subtitle: string }) 
 
 export default async function GalleryPage() {
   const gallery = siteConfig.gallery
-  const decos = gallery.decos
   const { desktop, mobile } = await fetchGalleryImages()
   const images = [
     ...desktop.map((image) => ({
@@ -123,13 +120,9 @@ export default async function GalleryPage() {
       className={`${theSeasons.variable} ${aboveTheBeyond.variable} relative min-h-screen overflow-x-hidden`}
       style={{ background: "var(--color-bg-pattern-base)" }}
     >
-      {/* Same circle pattern, paper wash + grain and rising pink hearts as the
-          love story, with the loader's border and corner florals
-          (content/site.ts → gallery.decos / showFrame) */}
+      {/* Circle pattern, paper wash + grain and rising pink hearts */}
       <PlainBubbles />
       <SectionBackdrop />
-      {gallery.showFrame && <div className="deco-frame" aria-hidden="true" />}
-      <DecoCorners decos={decos} />
 
       <section className="relative z-20 mx-auto max-w-7xl px-3 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <div className="relative z-20 mb-8 px-3 text-center sm:mb-10 sm:px-4 md:mb-12">
@@ -139,9 +132,6 @@ export default async function GalleryPage() {
             className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[120%] w-[min(40rem,110%)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
             style={{ background: "radial-gradient(ellipse at center, rgb(250 246 238 / 75%) 0%, rgb(250 246 238 / 30%) 50%, transparent 72%)" }}
           />
-          {decos.headerOrnament ? (
-            <TintedDeco src={decos.headerOrnament} className="mx-auto mb-3 block h-auto w-24 select-none sm:mb-4 sm:w-32 md:w-40" />
-          ) : null}
           <div className="mx-auto mb-4 sm:mb-5 md:mb-6">
             <OutsideDivider />
           </div>
@@ -184,13 +174,6 @@ export default async function GalleryPage() {
             {gallery.page.emptyText}
           </p>
         )}
-
-        {decos.footerVine ? (
-          <TintedDeco
-            src={decos.footerVine}
-            className="relative z-20 mx-auto mt-10 block h-auto w-56 select-none opacity-90 sm:mt-12 sm:w-72 md:w-96"
-          />
-        ) : null}
       </section>
     </main>
   )

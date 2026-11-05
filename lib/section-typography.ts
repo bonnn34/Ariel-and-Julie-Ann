@@ -33,8 +33,8 @@ export const layeredSectionTitleSize = {
   overlap: "clamp(-0.5rem, min(-2.4vw, -2.8cqi), -1.5rem)",
 } as const
 
-/** Story chapter titles — scales within the story text column */
-export const storyChapterTitleSize = "clamp(1.125rem, min(5.5vw, 13cqi), 2.25rem)"
+/** Story chapter titles — sized from the text column so a long word ("CONVERSATION", ~8.4em) never overflows */
+export const storyChapterTitleSize = "clamp(0.95rem, 11cqi, 2.25rem)"
 
 /** Modal layered titles — compact container-aware sizing */
 export const modalTitleSize = {

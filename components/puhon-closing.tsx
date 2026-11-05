@@ -22,7 +22,7 @@ const theSeasons = localFont({
 const BURGUNDY = "var(--color-welcome-navy)"
 const ROSE = "#739ACD"
 const INK = "#172C4C" // soft cocoa for the long verse line — gentler than burgundy, still high contrast
-const QUOTE_MARK = "color-mix(in srgb, #F2F6FB 70%, transparent)"
+const QUOTE_MARK = "color-mix(in srgb, #739ACD 45%, transparent)"
 // Soft ivory edge keeps burgundy text crisp over pink or photos
 const glow = "0 1px 0 rgb(250 246 238 / 90%), 0 0 14px rgb(250 246 238 / 85%)"
 

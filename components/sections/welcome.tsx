@@ -87,6 +87,7 @@ export function Welcome() {
   const siteConfig = useSiteConfig()
   const brideName = siteConfig.couple.brideNickname || siteConfig.couple.bride
   const groomName = siteConfig.couple.groomNickname || siteConfig.couple.groom
+  const hashtag = siteConfig.snapShare.hashtag[0]
 
   return (
     <section
@@ -155,23 +156,51 @@ export function Welcome() {
               </p>
             </div>
 
-            <footer className="space-y-2 border-t pt-8 text-center sm:space-y-2.5 sm:pt-9 md:pt-10"
+            <footer
+              className="flex flex-col items-center gap-6 border-t pt-8 text-center sm:gap-7 sm:pt-9 md:gap-8 md:pt-10"
               style={{
                 borderColor: "color-mix(in srgb, var(--color-welcome-navy) 18%, transparent)",
+                color: "var(--color-welcome-navy)",
               }}
             >
-              <p
-                className={`${aboveTheBeyond.className} ${sectionType.script}`}
-                style={{ color: "var(--color-welcome-navy)" }}
-              >
-                With all our love,
-              </p>
-              <p
-                className={`${cinzel.className} ${sectionType.subheader} font-semibold tracking-[0.12em] sm:tracking-[0.16em] md:tracking-[0.18em]`}
-                style={{ color: "var(--color-welcome-navy)" }}
-              >
-                {groomName} &amp; {brideName}
-              </p>
+              {/* Sign-off */}
+              <div className="space-y-2 sm:space-y-2.5">
+                <p className={`${aboveTheBeyond.className} ${sectionType.script}`}>With all our love,</p>
+                <p
+                  className={`${cinzel.className} ${sectionType.subheader} font-semibold tracking-[0.12em] sm:tracking-[0.16em] md:tracking-[0.18em]`}
+                >
+                  {groomName} &amp; {brideName}
+                </p>
+              </div>
+
+              {hashtag && (
+                <>
+                  <OrnamentalDivider compact />
+
+                  {/* Hashtag invite: script lead-in, JOY in the title serif, tag in a soft pill */}
+                  <div className="flex max-w-full flex-col items-center gap-3 sm:gap-3.5">
+                    <p className="flex flex-wrap items-baseline justify-center gap-x-2 sm:gap-x-3">
+                      <span className={`${aboveTheBeyond.className} ${sectionType.script}`}>Share in our</span>
+                      <span
+                        className={`${theSeasons.className} text-[1.5rem] leading-none tracking-[0.14em] sm:text-[2rem] md:text-[2.25rem]`}
+                      >
+                        JOY
+                      </span>
+                    </p>
+                    {/* Crimson Text, not Cinzel: mixed case keeps the long tag readable */}
+                    <p
+                      className="max-w-full rounded-full border px-4 py-1.5 text-[0.9375rem] font-semibold leading-snug tracking-[0.02em] [overflow-wrap:anywhere] sm:px-5 sm:text-[1.0625rem] md:text-lg"
+                      style={{
+                        borderColor: "color-mix(in srgb, var(--color-welcome-navy) 28%, transparent)",
+                        background: "color-mix(in srgb, var(--color-motif-yellow) 14%, transparent)",
+                        fontFamily: '"Crimson Text", "Cormorant Garamond", Georgia, serif',
+                      }}
+                    >
+                      {hashtag}
+                    </p>
+                  </div>
+                </>
+              )}
             </footer>
           </div>
         </motion.article>
