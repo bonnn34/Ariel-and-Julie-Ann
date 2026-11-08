@@ -15,13 +15,13 @@ interface LoadingScreenProps {
 
 // Countdown boxes with color photos - numbers show days, hours, minutes
 const COUNTDOWN_BOXES = [
-  { src: '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/JAN.JPG' },
-  { src: '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/22.JPG' },
-  { src: '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/2026.JPG' }
+  { src: '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/JAN.webp' },
+  { src: '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/22.webp' },
+  { src: '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/2026.webp' }
 ];
 
-const MAIN_BW_IMAGE = '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/mobile-background.png';
-const DESKTOP_BW_IMAGE = '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/desktop-background.JPG';
+const MAIN_BW_IMAGE = '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/mobile-background.webp';
+const DESKTOP_BW_IMAGE = '/JULIE ANN LELIS/PRENUP PICTURES/SAVE THE DATE PAGE/desktop-background.webp';
 const STAGGER_DELAY_MS = 4000; // Each image appears every 4 seconds
 const BOX_TRANSITION_MS = 1200; // Slow, smooth transition
 const TOTAL_DURATION_MS = COUNTDOWN_BOXES.length * STAGGER_DELAY_MS + 3000;
